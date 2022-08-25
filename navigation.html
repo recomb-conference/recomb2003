@@ -1,0 +1,294 @@
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=ISO-8859-1">
+		<meta name="generator" content="UNICOM Werbeagentur GmbH | Berlin - Thomas KuschŽ">
+		<title>Welcome to RECOMB 2003</title>
+		<csscriptdict>
+			<script><!--
+CSInit = new Array;
+function CSScriptInit() {
+if(typeof(skipPage) != "undefined") { if(skipPage) return; }
+idxArray = new Array;
+for(var i=0;i<CSInit.length;i++)
+	idxArray[i] = i;
+CSAction2(CSInit, idxArray);}
+CSAg = window.navigator.userAgent; CSBVers = parseInt(CSAg.charAt(CSAg.indexOf("/")+1),10);
+CSIsW3CDOM = ((document.getElementById) && !(IsIE()&&CSBVers<6)) ? true : false;
+function IsIE() { return CSAg.indexOf("MSIE") > 0;}
+function CSIEStyl(s) { return document.all.tags("div")[s].style; }
+function CSNSStyl(s) { if (CSIsW3CDOM) return document.getElementById(s).style; else return CSFindElement(s,0);  }
+CSIImg=false;
+function CSInitImgID() {if (!CSIImg && document.images) { for (var i=0; i<document.images.length; i++) { if (!document.images[i].id) document.images[i].id=document.images[i].name; } CSIImg = true;}}
+function CSFindElement(n,ly) { if (CSBVers<4) return document[n];
+	if (CSIsW3CDOM) {CSInitImgID();return(document.getElementById(n));}
+	var curDoc = ly?ly.document:document; var elem = curDoc[n];
+	if (!elem) {for (var i=0;i<curDoc.layers.length;i++) {elem=CSFindElement(n,curDoc.layers[i]); if (elem) return elem; }}
+	return elem;
+}
+function CSGetImage(n) {if(document.images) {return ((!IsIE()&&CSBVers<5)?CSFindElement(n,0):document.images[n]);} else {return null;}}
+CSDInit=false;
+function CSIDOM() { if (CSDInit)return; CSDInit=true; if(document.getElementsByTagName) {var n = document.getElementsByTagName('DIV'); for (var i=0;i<n.length;i++) {CSICSS2Prop(n[i].id);}}}
+function CSICSS2Prop(id) { var n = document.getElementsByTagName('STYLE');for (var i=0;i<n.length;i++) { var cn = n[i].childNodes; for (var j=0;j<cn.length;j++) { CSSetCSS2Props(CSFetchStyle(cn[j].data, id),id); }}}
+function CSFetchStyle(sc, id) {
+	var s=sc; while(s.indexOf("#")!=-1) { s=s.substring(s.indexOf("#")+1,sc.length); if (s.substring(0,s.indexOf("{")).toUpperCase().indexOf(id.toUpperCase())!=-1) return(s.substring(s.indexOf("{")+1,s.indexOf("}")));}
+	return "";
+}
+function CSGetStyleAttrValue (si, id) {
+	var s=si.toUpperCase();
+	var myID=id.toUpperCase()+":";
+	var id1=s.indexOf(myID);
+	if (id1==-1) return "";
+	s=s.substring(id1+myID.length+1,si.length);
+	var id2=s.indexOf(";");
+	return ((id2==-1)?s:s.substring(0,id2));
+}
+function CSSetCSS2Props(si, id) {
+	var el=document.getElementById(id);
+	if (el==null) return;
+	var style=document.getElementById(id).style;
+	if (style) {
+		if (style.left=="") style.left=CSGetStyleAttrValue(si,"left");
+		if (style.top=="") style.top=CSGetStyleAttrValue(si,"top");
+		if (style.width=="") style.width=CSGetStyleAttrValue(si,"width");
+		if (style.height=="") style.height=CSGetStyleAttrValue(si,"height");
+		if (style.visibility=="") style.visibility=CSGetStyleAttrValue(si,"visibility");
+		if (style.zIndex=="") style.zIndex=CSGetStyleAttrValue(si,"z-index");
+	}
+}
+function CSClickReturn () {
+	var bAgent = window.navigator.userAgent; 
+	var bAppName = window.navigator.appName;
+	if ((bAppName.indexOf("Explorer") >= 0) && (bAgent.indexOf("Mozilla/3") >= 0) && (bAgent.indexOf("Mac") >= 0))
+		return true; // dont follow link
+	else return false; // dont follow link
+}
+function CSButtonReturn () { return !CSClickReturn(); }
+CSIm=new Object();
+function CSIShow(n,i) {
+	if (document.images) {
+		if (CSIm[n]) {
+			var img=CSGetImage(n);
+			if (img&&typeof(CSIm[n][i].src)!="undefined") {img.src=CSIm[n][i].src;}
+			if(i!=0) self.status=CSIm[n][3]; else self.status=" ";
+			return true;
+		}
+	}
+	return false;
+}
+function CSILoad(action) {
+	im=action[1];
+	if (document.images) {
+		CSIm[im]=new Object();
+		for (var i=2;i<5;i++) {
+			if (action[i]!='') {CSIm[im][i-2]=new Image(); CSIm[im][i-2].src=action[i];}
+			else CSIm[im][i-2]=0;
+		}
+		CSIm[im][3] = action[5];
+	}
+}
+CSStopExecution=false;
+function CSAction(array) {return CSAction2(CSAct, array);}
+function CSAction2(fct, array) { 
+	var result;
+	for (var i=0;i<array.length;i++) {
+		if(CSStopExecution) return false; 
+		var aa = fct[array[i]];
+		if (aa == null) return false;
+		var ta = new Array;
+		for(var j=1;j<aa.length;j++) {
+			if((aa[j]!=null)&&(typeof(aa[j])=="object")&&(aa[j].length==2)){
+				if(aa[j][0]=="VAR"){ta[j]=CSStateArray[aa[j][1]];}
+				else{if(aa[j][0]=="ACT"){ta[j]=CSAction(new Array(new String(aa[j][1])));}
+				else ta[j]=aa[j];}
+			} else ta[j]=aa[j];
+		}			
+		result=aa[0](ta);
+	}
+	return result;
+}
+CSAct = new Object;
+
+// --></script>
+		</csscriptdict>
+		<csactiondict>
+			<script><!--
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button',/*URL*/'images/01_contact.gif',/*URL*/'images/01_contact2.gif',/*URL*/'','Contact');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button2',/*URL*/'images/01_imprint.gif',/*URL*/'images/01_imprint2.gif',/*URL*/'','Imprint');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button3',/*URL*/'images/but_spon1.gif',/*URL*/'images/but_spon2.gif',/*URL*/'','Sponsors of RECOMB 2003');
+
+// --></script>
+		</csactiondict>
+	</head>
+
+	<body bgcolor="#ffffff" leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" background="images/navi_back.gif" onload="CSScriptInit();" link="#333366" alink="#993333" vlink="#6699cc">
+		<table border="0" cellpadding="0" cellspacing="0" width="200">
+			<tr>
+				<td><img src="images/logo_recomb.gif" width="200" height="80" border="0" alt="RECOMB 2003 - Berlin"></td>
+			</tr>
+			<tr>
+				<td>
+					<table border="0" cellpadding="0" cellspacing="0" width="200">
+						<tr>
+							<td valign="top" align="left" width="5">&nbsp;</td>
+							<td valign="top" align="left" width="195">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195"><a href="inhalt.html" target="Recomb2003" title="Home"><font size="3" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">Home</font></a></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" colspan="2"><img src="images/00_program.gif" width="200" height="25" border="0" alt="Programm Information"></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">&#149; </font><a href="preprog_wed.html" target="Recomb2003" title="Preliminary programme"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">Final programme</font></a></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">&#149; </font><a href="themeandscope.html" target="Recomb2003" title="Theme and scope of the conference"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">Theme and scope of the conference</font></a></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">&#149; </font><a href="keydates.html" target="Recomb2003" title="Key Dates"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">Key dates</font></a></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">&#149; </font><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3" color="#333366"><a href="accepted_papers.html" target="Recomb2003" title="Accepted Papers 2003">Accepted Papers 2003</a></font></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">&#149; <a href="recombdb/index.html" target="Recomb2003" title="Accepted Poster 2003">Accepted Posters 2003 &quot;NEW!&quot;</a></font></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">&#149; </font><a href="invspeakers.html" target="Recomb2003" title="Invited speakers"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">Invited speakers</font></a></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">&#149; </font><a href="http://www.erpland.org/recomb/howesaward.htm" target="_blank" title="Fred Howes Award"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">Fred Howes Award</font></a></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" colspan="2"><img src="images/00_committees.gif" width="200" height="25" border="0" alt="Committees"></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">&#149; </font><a href="steering.html" target="Recomb2003" title="Steering committee"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">Steering committee</font></a></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">&#149; </font><a href="organizing.html" target="Recomb2003" title="Organizing committee"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">Organizing committee</font></a></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">&#149; </font><a href="programcomm.html" target="Recomb2003" title="Program committee"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">Program committee</font></a></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" colspan="2"><img src="images/00_registration.gif" width="200" height="25" border="0" alt="Registration"></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">&#149; </font><a href="images/AktuelleTN-Liste14-4-03.pdf" title="List of Participants"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">List of Participants<br>
+									</font></a><font color="white" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">&#149; </font><a href="images/AktuelleTN-Liste14-4-03.pdf" title="List of Participants"><font size="2" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><b>(DOWNLOAD PDF)</b></font></a></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">&#149; </font><a href="registration.html" target="Recomb2003" title="Conference registration"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">Conference registration</font></a></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">&#149; </font><a href="financial.html" target="Recomb2003" title="Financial support"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">Financial support</font></a></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" colspan="2"><img src="images/00_general.gif" width="200" height="25" border="0" alt="General Information"></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">&#149; </font><a href="http://www.berlin-info.de" target="Recomb2003" title="Location"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">Location</font></a></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">&#149; </font><a href="confvenue.html" target="Recomb2003" title="Conference venue and accommodations"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">Conference venue and accommodations</font></a></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">&#149; </font><a href="localtransfer.html" target="Recomb2003" title="Local transfer to the conference site"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">Local transfer to the conference site</font></a></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">&#149; </font><a href="http://www.Berlin.de/stadtplan/explorer?ADR_STREET=Friedrichstra%DFe&ADR_HOUSE=151&ADR_ZIP=10117&search.x=25&search.y=10" target="Recomb2003" title="Map of Berlin"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">Map of Berlin</font></a></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">&#149; </font><a href="travelinfo.html" target="Recomb2003" title="Travel information"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">Travel information</font></a></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">&#149; <a href="satellites.html" target="Recomb2003" title="RECOMB Satellites">RECOMB Satellites</a></font></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">&#149; </font><a href="http://cg.ensmp.fr/~vert/kmb03/index.html" target="_blank" title="Workshop &quot;kernel method&quot;"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">Workshop &quot;kernel method&quot;</font></a></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">&#149; </font><a href="previous.html" target="Recomb2003" title="Previous RECOMB meetings"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="3">Previous RECOMB meetings</font></a></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195"><font size="2" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">&#149; </font><a href="images/Poster_Recomb2003.pdf" target="_blank" title="Download RECOMB-Poster"><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="2"><b>DOWNLOAD</b> RECOMB-Poster</font></a></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195">&nbsp;</td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" colspan="2"><csobj w="200" h="20" t="Button" ht="images/01_contact2.gif" st="Contact"><a href="contact.html" target="Recomb2003" onmouseover="return CSIShow(/*CMP*/'button',1)" onmouseout="return CSIShow(/*CMP*/'button',0)" onclick="return CSButtonReturn()"><img src="images/01_contact.gif" width="200" height="20" name="button" border="0" alt="Contact"></a></csobj></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" colspan="2"><csobj w="200" h="20" t="Button" ht="images/01_imprint2.gif" st="Imprint"><a href="imprint.html" target="Recomb2003" onmouseover="return CSIShow(/*CMP*/'button2',1)" onmouseout="return CSIShow(/*CMP*/'button2',0)" onclick="return CSButtonReturn()"><img src="images/01_imprint.gif" width="200" height="20" name="button2" border="0" alt="Imprint"></a></csobj></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" colspan="2"><csobj al="" w="200" h="20" t="Button" ht="images/but_spon2.gif" st="Sponsors of RECOMB 2003"><a href="sponsors.html" target="Recomb2003" onmouseover="return CSIShow(/*CMP*/'button3',1)" onmouseout="return CSIShow(/*CMP*/'button3',0)" onclick="return CSButtonReturn()"><img src="images/but_spon1.gif" width="200" height="20" name="button3" border="0" alt="Sponsors of RECOMB 2003"></a></csobj></td>
+						</tr>
+						<tr>
+							<td valign="top" align="left" width="5"></td>
+							<td valign="top" align="left" width="195"><br>
+										<br>
+									</font></a></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</body>
+
+</html>

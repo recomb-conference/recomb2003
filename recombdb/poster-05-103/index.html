@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>103. RNA Analysis and Antisense Oligodeoxyribonucleotide Prediction Tool</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category04.html'>&lt;&lt;</a> <a href='/recombdb/category05.html'><b>Protein Structure</b> Overview</a> <a href='/recombdb/category06.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-05-101/'>&lt;&lt;</a> Poster 103 [ <a href='poster-05-103.pdf'>PDF</a> | <a href='poster-05-103.tgz'>TeX</a> | <a href='poster-05-103.ps'>PostScript</a> ] <a href='/recombdb/poster-05-104/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>103. RNA Analysis and
+ Antisense Oligodeoxyribonucleotide Prediction
+ Tool<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Christian K&ouml;berle <a name="tex2html1"
+ href="#foot48"><sup>1</sup></a>, Volker Patzel <a name="tex2html2"
+ href="#foot49"><sup>2</sup></a>, Ina Koch <a name="tex2html3"
+    href="#foot50"><sup>3</sup></a></b></div>
+ <b>Keywords:</b> RNA, oligodeoxyribonucleotide, antisense, JAVA,
+ RMI 
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+ RNA molecules form complex three-dimensional structures.
+ Complementary parts of the strand of the same RNA molecule are
+ binding to each other. In this way helices are formed. Regions of
+ unpaired nucleotides disrupt helical structures. These unpaired
+ nucleotides are targets for antisense oligodeoxyribonucleotides
+ (ODN) which are binding efficiently to the RNA molecule. ODNs are
+ of great importance for knocking out genes [<a href=
+ "#NA1700">1</a>]. They can be also used for
+ sensitive detection of special RNAs. One way to find efficiently
+ binding ODNs is shown by Patzel et al. [<a href=
+ "#NA1199">2</a>] [<a href=
+ "#NA2700">3</a>] [<a href=
+ "#NA3700">4</a>]. To find the ODNs they used
+ information about the secondary structure of RNA. They show
+ experimentally a coherence between secondary structure and the
+ kinetics of binding of ODNs to RNA molecules. The result of this
+ investigation was a semi-automatical method to predict ODNs
+ efficiently binding to RNA molecules. The aim of our work was to
+ develop a fully automatic software to predict ODNs - the RNA
+ Analysis amd Antisense Oligodeoxyribonucleotide Prediction Tool
+ (RAOPT). 
+ <h1><a name="SECTION00020000000000000000"><font size=
+ "+1">Development of RAOPT</font></a></h1>
+ The prediction of ODNs by Patzel et al. is based on the secondary
+ structure prediction tool Mfold [<a href=
+ "#JBM93">5</a>], version 2.0 available in HUSAR
+ [<a href="#HUSAR">6</a>]. Using Mfold on HUSAR
+ the sequence length is limitted to 1400 nucleotides. Thus, to get
+ enough information about the whole structure, the sequence has to
+ be splitted in shorter partitions. These partitions have to overlap
+ in about 1150 nucleotides. The advantage of the partitioning is
+ that one gets more information about the conformation of each
+ nucleotide in the overlapping regions. Furthermore one gets a
+ better assessable computational time for each partition as for the
+ whole sequence. 
+ <p>The fact of partitioning can be used to accelerate the
+ prediction. If a problem could be divided into partitions and each
+ partition could be computed separatly it would be possible to
+ parallelize a program. Our tool RAOPT is implemented in JAVA using
+ the remote method invocation (RMI) technology of JAVA and
+ JAVA-threads. In RAOPT each sequence partition is an own thread,
+ which starts via RMI a secondary structure prediction on a remote
+ computer and returns a fold of this sequence partition to the
+ main-thread. The main-thread combines the information of structure
+ partitions to a consensus prediction of the whole structure. RAOPT
+ is looking in the consensus sequence for longer sequences of
+ unpaired nucleotides. Using rules developed by Patzel et al.
+ [<a href="#NA1700">1</a>] [<a href=
+ "#NA3700">4</a>] RAOPT decides which of these
+ regions of unpaired nucleotides could be involved in the ODN
+ targets using context information.</p>
+ <h1><a name="SECTION00030000000000000000"><font size=
+ "+1">Results</font></a></h1>
+ <p>We have implemented the automatic parallel method for ODN
+ prediction on a LINUX network using Mfold. This tool enables a user
+ to predict ODNs correctly in a reasonable time.</p>
+ <p>RAOPT can be used as a command line tool or with a graphical
+ user interface (GUI). The user can select sequences from files or
+ input the sequence directly, predict the ODNs, save the results,
+ and view statistical data via the GUI.</p>
+ <p></p>
+ <h2><a name="SECTION00040000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="NA1700">1</a></dt>
+ <dd>Lehmann MJ, Patzel V, Sczakiel G. 2000. Theoretical design of
+ antisense genes with statistically increased efficacy. <em>Nucleic
+ Acids Res.</em> 28(13):2597-604.</dd>
+ <dt><a name="NA1199">2</a></dt>
+ <dd>Patzel V, Steidl U, Kronenwett R, Haas R, Sczakiel G. 1999. A
+ theoretical approach to select effective antisense
+ oligodeoxyribonucleotides at high statistical probability.
+ <em>Nucleic Acids Res.</em> 27(22):4328-34.</dd>
+ <dt><a name="NA2700">3</a></dt>
+ <dd>Patzel V, Sczakiel G. 2000. In vitro selection supports the
+ view of a kinetic control of antisense RNA-mediated inhibition of
+ gene expression in mammalian cells.<em>Nucleic Acids Res.</em>
+ 28(13):2462-6.</dd>
+ <dt><a name="NA3700">4</a></dt>
+ <dd>Scherr M, Rossi JJ, Sczakiel G, Patzel V. 2000. RNA
+ accessibility prediction: a theoretical approach is consistent with
+ experimental studies in cell extracts. <em>Nucleic Acids Res.</em>
+ 28(13):2455-61.</dd>
+ <dt><a name="JBM93">5</a></dt>
+ <dd>Jacobson AB, Zuker M. 1993. Structural analysis by energy dot
+ plot of a large mRNA. <em>J.Mol.Biol.</em> 233(2):261-9.</dd>
+ <dt><a name="HUSAR">6</a></dt>
+ <dd>Heidelberg Unix Sequence Analysis Resources,
+ <em>http://genome.dkfz-heidelberg.de/</em>.</dd></dl>
+ <br>
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot48">...&ouml;berle</a> <a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Department of Bioinformatics, Technical University of Applied
+ Sciences - Berlin, Germany, E-mail: 
+ <div align="center">
+ <b><tt>christian.koeberle@gmx.net</tt></b></div></dd>
+ <dt><a name="foot49">... Patzel</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>Max Planck Institute for Infection Biology, Berlin, Germany,
+ E-mail: 
+ <div align="center">
+ <b><tt>patzel@mpiib-berlin.mpg.de</tt></b></div></dd>
+ <dt><a name="foot50">... Koch</a><a href=
+ "#tex2html3"><sup>3</sup></a></dt>
+ <dd>Department of Bioinformatics, Technical University of Applied
+ Sciences - Berlin, Germany, E-mail: 
+ <div align="center">
+ <b><tt>ikoch@tfh-berlin.de</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

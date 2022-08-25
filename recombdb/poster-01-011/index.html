@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>11. Prediction of Protein Function with THEMATICS</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center">  <a href='/recombdb/category01.html'><b>Genomics</b> Overview</a> <a href='/recombdb/category02.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-01-010/'>&lt;&lt;</a> Poster 011 [ <a href='poster-01-011.pdf'>PDF</a> | <a href='poster-01-011.doc'>MSWORD</a> ] <a href='/recombdb/poster-01-012/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>11. Prediction of Protein Function with THEMATICS</h2>
+ <p align="center"><b>Mary Jo Ondrechen<a href="#_ftn1" name=
+ "_ftnref1" title="">[1]</a>, Leonel F. Murga<sup>1</sup>, James G.
+ Clifton<a href="#_ftn2" name="_ftnref2" title="">[2]</a>, Dagmar
+ Ringe<sup>2</sup></b></p>
+ <p><b>Keywords:</b> electrostatics, functional genomics, function
+ prediction, THEMATICS, titration</p>
+ <p><b>1&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Introduction</b></p>
+ <p>In the wake of genome sequencing, structural genomics
+ initiatives are rapidly discovering thousands of new protein
+ structures; many of these structures are of unknown function. In
+ order to realize the many untold benefits of genome sequencing, a
+ next important step is to discover the function of these gene
+ products. We recently have reported [1, 2] on THEMATICS
+ (Theoretical Microscopic Titration Curves), a new method for the
+ prediction of protein function from structure based on established
+ computational tools. In the present paper we review the method for
+ obtaining the theoretical titration curves, then show how a small
+ fraction of these calculated curves have anomalous shapes. A group
+ of such anomalous residues that form a cluster in coordinate space
+ is a reliable predictor of active site location. As examples, we
+ show results for chorismate mutase from <i>Bacillus subtilus</i>,
+ colicin E3 from <i>E. coli</i>, and D<sup>5</sup>-3-ketosteroid
+ isomerase from <i>Pseudomonas putida</i>.</p>
+ <p><b>2&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Methods</b></p>
+ <p>THEMATICS requires the atomic coordinates of the protein as
+ input. First one solves for the electrical potential function using
+ a Finite Difference Poisson Boltzmann (FDPB) procedure, followed by
+ a Monte Carlo method to calculate the ensemble-average net charge C
+ for each of the ionizable residues (Arg, Asp, Cys, Glu, His, Lys,
+ Tyr and the N- and C- termini) as functions of the pH [3-7]. The
+ next step is to analyze the predicted titration curves to select
+ the ones with anomalous shape. It is found that most of the
+ ionizable residues in a protein obey the Henderson-Hasselbalch
+ (H-H) equation. The C(pH) curves, according to the H-H equation,
+ are sigmoidal with a sharp fall-off in charge in a narrow pH range
+ near the pK<sub>a</sub>. (The pK<sub>a</sub> is defined as the
+ value for the pH at which exactly one-half of the protein molecules
+ in the ensemble have that residue in charged form.) We have found
+ [1, 2, 8] that a small fraction of the residues (about 3-7%) in an
+ enzyme have titration curves that deviate substantially from the
+ predicted sigmoidal form.</p>
+ <p>We classify all of the ionizable residues in a given protein as
+ having either typical, sigmoidal titration curves or anomalous
+ titration curves. For most proteins, this can be done with simple
+ visual inspection. In order to screen large numbers of proteins, we
+ have developed two different automated procedures to perform this
+ classification on the calculated titration curves. One of these
+ classifiers involves fitting the calculated curves to a
+ parametrized sigmoid function, followed by statistical analysis.
+ The second classifier utilizes machine learning technologies.
+ Finally, the protein structure is searched to find clusters of
+ anomalous residues in physical proximity. We report the list of
+ anomalous residues, with clusters in proximity shown inside square
+ brackets. For previously characterized proteins such as those shown
+ here, known active site residues are given in <b>boldface</b>.</p>
+ <b><br clear="all"></b> 
+ <p><b>3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+ <b>Results</b></p>
+ <p>Chorismate mutase is a vital enzyme in the biosynthesis of
+ aromatic amino acids and it catalyzes the rearrangement of
+ chorismate to prephenate via a Claisen rearrangement. It has a-b
+ plaits topology and is active as a trimer. The calculations were
+ performed on the trimer from the PDB structure 1DBF (from
+ <i>Bacillus subtilus</i>) [9]. THEMATICS finds three equivalent
+ active sites, one located at each of the three trimer interfaces.
+ The THEMATICS result may be written as:</p>
+ <p>Chorismate mutase / 1DBF&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ [<b>C75, E78, R7, R63, Y108</b>], [E19], [E34]</p>
+ <p>Here C75, E78, R7, R63, and Y108 are all known active site
+ residues and form a cluster in physical space. E19 and E34 are each
+ isolated in space and are considered to be isolated false
+ positives.</p>
+ <p>Colicin E3 is an <i>E. coli</i> nuclease with a unique fold. The
+ calculation was performed on a 3.0 &Aring; resolution structure of
+ the catalytic domain only, obtained from Professor Menachem Shoham.
+ We obtained THEMATICS results prior to the completion of the
+ biochemical characterization and thus we did not know where the
+ active site should be. THEMATICS gave an unambiguous answer:</p>
+ <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Colicin
+ E3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ [<b>E517, H526, R495, R545, Y519</b>]</p>
+ <p>These five residues form a cluster around a cleft in the
+ structure. This has been shown to be the correct active site
+ [10].</p>
+ <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D<sup>5</sup>-3-Ketosteroid
+ isomerase catalyzes the allylic isomerization of a double bond in a
+ ketosteroid and has a cystatin B fold. Calculations were performed
+ on the PDB structure 1OPY [11] of the protein from <i>Pseudomonas
+ putida</i>. THEMATICS obtained the following results:</p>
+ <p>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ D<sup>5</sup>-3-ketosteroid isomerase /
+ 1OPY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ [<b>D103, Y16, Y32, Y57</b>]</p>
+ <p>Again THEMATICS finds the correct active site unambiguously.</p>
+ <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Of the several dozen proteins we
+ have studied to date, THEMATICS has proved to be a reliable
+ predictor of active site location. The false positives tend to be
+ isolated in space, such that a cluster of two or more anomalous
+ residues in physical proximity predicts the active site.</p>
+ <p><b>Acknowledgments:</b> We thank Professor Menachem Shoham for
+ supplying us with the structure of colicin E3 prior to publication.
+ This work was supported by the National Science Foundation through
+ grants MCB-0074574 and MCB-0135303.</p>
+ <p><b>4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>References
+ and bibliography.</b></p>
+ <p>[1] Ondrechen, M.J., Clifton, J.G. and Ringe, D. 2001 THEMATICS:
+ A simple computational predictor of enzyme function from structure.
+ <i>Proc. Natl. Acad. Sci.&nbsp; (USA)</i> 98: 12473-12478.</p>
+ <p>[2] Ondrechen, M.J., 2002&nbsp; THEMATICS as a tool for
+ functional genomics. Genome <i>Informatics</i> 13: 563-564.</p>
+ <p>[3] Warwicker, J. and Watson, H.C. 1982 Calculation of the
+ electric potential in the active site cleft due to alpha-helix
+ dipoles. <i>J Mol Biol.</i> 157: 671-9.</p>
+ <p>[4] Bashford, D. and Karplus, M. 1991 Multiple-site Titration
+ Curves of Proteins: An Analysis of Exact and Approximate Methods
+ for Their Calculation. <i>J. Phys. Chem.</i> 95: 9556-9561.</p>
+ <p>[5] Gilson, M.K. 1993&nbsp; Multiple-site titration and
+ molecular modeling: two rapid methods for computing energies and
+ forces for ionizable groups in proteins. <i>Proteins</i> 15:
+ 266-82.</p>
+ <p>[6] Yang, A.S., Gunner, M. R., Sampogna, R., Sharp, K., Honig,
+ B. 1993 On the calculation of pKas in proteins. <i>Proteins</i> 15:
+ 252-65.</p>
+ <p>[7] Antosiewicz, J., Briggs, J.M., Elcock, A.H., Gilson, M.K. ,
+ McCammon, J.A. 1996 Computing the Ionization States of Proteins
+ with a Detailed Charge Model. <i>J. Comp. Chem
+ .</i>17:1633-1644.</p>
+ <p>[8] Shehadi, I.A., Yang, H. and Ondrechen, M.J. 2002 Future
+ directions in protein function prediction. <i>Mol Biol Reports</i>
+ 29: 329-335.</p>
+ <p>[9] Ladner, J.E., Reddy, P., Davis, A. , Tordova, M.,
+ Howard.A.J., and Gilliland, G.L. 2000&nbsp; The 1.30 A resolution
+ structure of the Bacillus subtilis chorismate mutase catalytic
+ homotrimer. <i>Acta Crystallogr D Biol Crystallogr</i>. 56:
+ 673-683.</p>
+ <p>[10] Soelaiman, S., Jakes, K., Wu, N., Li, C., and Shoham, M.
+ 2001 Crystal Structure of Colicin E3: Implications for Cell Entry
+ and Ribosome Inactivation. <i>Molecular Cell</i> 8:1053-1062.</p>
+ <p>[11] Wu, Z.R., Ebrahimian, S.,&nbsp; Zawrotny, M.E., Thornburg,
+ L.D., Perez-Alvarado, G.C., Brothers, P., Pollack, R.M., Summers,
+ M.F. 1997 Solution structure of 3-oxo-delta5-steroid isomerase.
+ <i>Science</i> 276: 415-418.</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a> Department of
+ Chemistry and Chemical Biology and Institute for Complex Scientific
+ Software, Northeastern University, Boston, MA 02115 USA.
+ E&#8209;mail: <a href="mailto:mjo@neu.edu">mjo@neu.edu</a>,
+    <a href="mailto:leonel@mindspring.com">leonel@mindspring.com</a></p></div>
+ <div id="ftn2">
+ <p><a href="#_ftnref2" name="_ftn2" title="">[2]</a> Rosenstiel
+ Basic Medical Sciences Center and Departments of Chemistry and
+ Biochemistry, Brandeis University, Waltham, MA 02454 USA. E-mail:
+ <a href="mailto:clifton@brandeis.edu">clifton@brandeis.edu</a>
+ <a href=
+ "mailto:ringe@brandeis.edu">ringe@brandeis.edu</a></p></div></div>
+ </body>
+ </html>

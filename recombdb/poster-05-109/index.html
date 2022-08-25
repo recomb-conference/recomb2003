@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>109. Digital Signal Processing in Protein Secondary Structure Prediction</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category04.html'>&lt;&lt;</a> <a href='/recombdb/category05.html'><b>Protein Structure</b> Overview</a> <a href='/recombdb/category06.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-05-108/'>&lt;&lt;</a> Poster 109 [ <a href='poster-05-109.pdf'>PDF</a> | <a href='poster-05-109.doc'>MSWORD</a> ] <a href='/recombdb/poster-05-110/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>109. Digital Signal Processing in Protein<br>
+  Secondary Structure Prediction</h2>
+ <p align="center"><b>Debasis Mitra</b><a href="#_ftn1" name=
+ "_ftnref1" title=""><b>[1]</b></a><b>, Michael E. Smith1</b></p>
+ <p><b>Keywords:</b> digital signal processing, protein secondary
+ structure prediction</p>
+ <p><b>1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+ <b>Introduction</b></p>
+ <p>Considerable research effort has been devoted to predicting the
+ secondary structure of proteins solely from their amino acid
+ sequences. Methods for predicting protein secondary structure have
+ as their basis in graph theory, various computational and
+ mathematical techniques, including statistical modeling, constraint
+ programming, neural network and other avenues of machine learning.
+ However, despite the plethora of prediction techniques, present
+ methods typically have a 75% approximate level of accuracy, however
+ there is considerable room for improvement. [1]</p>
+ <p><b>2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+ <b>Digital Signal Processing</b></p>
+ <p>We present a novel approach to secondary structure prediction
+ using Digital Signal Processing (DSP) techniques. DSP is an
+ engineering discipline concerning the creation, manipulation and
+ analysis of digital signals. Our technique involves two DSP
+ operators, Convolution and Deconvolution, to predict secondary
+ structure, and it is quite easy to follow using any DSP
+ toolkit.</p>
+ <p>Convolution is a method of applying a filter on an incoming
+ signal, producing an outgoing signal. Deconvolution is the inverse
+ operation of convolution and permits the incoming signal to be
+ recovered if the outgoing signal and the filter are known.&nbsp;
+ Also, with this operator, the filter also can be calculated given
+ the incoming and outgoing signals.</p>
+ <p><b>3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>DSP
+ and Secondary Structure Prediction</b></p>
+ <p>Our method predicts three states&rsquo; (helix, strand, and
+ coil) of the secondary structure. We consider the primary structure
+ of a protein as the so called <i>incoming</i> <i>signal</i> and the
+ secondary structure of the same protein as the corresponding
+ <i>outgoing</i> <i>signal</i>. Each protein has a corresponding
+ <i>filter</i>, which when convolved with the incoming signal
+ (primary structure) produces the outgoing signal (secondary
+ structure). It is our contention that the unknown secondary
+ structure of a target protein t can be predicted by using the
+ appropriate filter fb for a base protein b of a significant amino
+ acid sequence-similarity and whose (b&rsquo;s) secondary structure
+ is known. Convolution will then be performed on the incoming signal
+ of the target protein t using the filter fb (of b) to produce an
+ estimated secondary structure of t.</p>
+ <p>The method is <i>homologous</i> in nature as the prediction of
+ unknown secondary structure is based on the known secondary
+ structure of a protein with a similar primary structure.
+ Availability of huge numbers of secondary structures, in public
+ protein databases, makes the homologous methods quite attractive.
+ Our method involves the following steps:</p>
+ <p>(1)&nbsp;&nbsp; Perform a PSI BLAST search with the primary
+ structure of the protein t whose secondary structure is to be
+ predicted (the target protein). The objective is to obtain a
+ protein b of significant primary sequence similarity.</p>
+ <p>(2)&nbsp;&nbsp; From the results of the search, select the
+ protein of closet match, as the base protein b.</p>
+ <p>(3)&nbsp;&nbsp; Obtain the secondary structure of the base
+ protein bs from the Protein Data Bank.</p>
+ <p>(4)&nbsp;&nbsp; Create incoming signals ti and bi from the
+ primary structure of the target and base proteins respectively by
+ substituting each amino acid for its numeric hydrophobicity value,
+ of Ktye and Doolittle [2].</p>
+ <p>(5)&nbsp;&nbsp; Create an outgoing signal from the secondary
+ structure bsi of the base protein by substituting the values 1, 2
+ for helix and strand respectively and 3 for all others.</p>
+ <p>(6)&nbsp;&nbsp; Obtain the filter fb by performing deconvolution
+ on the outgoing (bsi) and the incoming signals (bi), of the base
+ protein b.</p>
+ <p>(7)&nbsp;&nbsp; Perform convolution of the filter fb and the
+ incoming signal ti of the target protein t. The resulting signal is
+ the predicted secondary structure tsi. Convert this numeric signal
+ tsi into secondary structural elements ts by replacing 1, 2 with
+ helix and strand and all other values with coil.</p>
+ <p>(8)&nbsp;&nbsp; Compute the <i>accuracy</i> by expressing as a
+ percentage the number of correct predictions divided by the length
+ of the target primary structure.</p>
+ <p>The results of sixty experiments are presented in Figure 1. It
+ indicates that the prediction <i>accuracy</i> and sequence
+ <i>similarity</i> seem logarithmic. Even at 10% level of
+ similarity, accuracy is around 40%, however this value
+ substantially increases to over 65% with 30% similarity. We have an
+ average prediction accuracy of 71%. This gives an indication that
+ our method can be used as a basis of prediction if the base protein
+ is of significant primary sequence similarity. We are investigating
+ other measures of protein similarity and such research will lead to
+ the identification of a better base protein for secondary structure
+ prediction than we have using PSI BLAST. Future research will
+ involve further analysis of more protein data to ascertain the
+ relationships between the various measures of protein similarity
+ and the accuracy of secondary structure prediction.</p>
+ <p><img width="485" height="204" src="image002.gif"></p>
+ <p><b>Figure 1</b> &ndash; Experimental results. <b>Primary
+ Similarity</b> is a measure of similarity of the aligned target and
+ base primary structures from [3]. <b>Accuracy</b> is the prediction
+ accuracy</p>
+ <p><b>4&nbsp; References and bibliography</b></p>
+ <p>[1] Chandonia, J., Karplus M. 1999. New Methods for Accurate
+ Prediction of Protein Secondary Structure. <i>PROTEINS: Structure,
+ Function and Genetics</i>, 35:293-306</p>
+ <p>[2] Kyte, J., Doolittle, R. 1982. A Simple Method for Displaying
+ the Hydropathic Character of a Protein. <i>Journal of Molecular
+ Biology</i>, 157:105-132</p>
+ <p>[3] Pearson, W., et al. 1997. Comparison of DNA sequences with
+ protein sequences, <i>Genomics</i> 46:24-36</p>
+ <p>[4] Proakis, J., Manolakis, D. 1996. Digital Signal Processing,
+ Principles, Algorithms, and Applications<i>.
+ Prentice-Hall</i>.</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title=""></a>Department of
+ Computer Science, Florida Institute of Technology, Melbourne,
+ Florida, USA</p>
+ <p>[1]&nbsp; E&#8209;mail:
+ {dmitra,msmith}@cs.fit.edu</p></div></div>
+ </body>
+ </html>

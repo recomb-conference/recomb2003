@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>114. Beta Edge Strands in Protein Structure Prediction and Aggregation.</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category04.html'>&lt;&lt;</a> <a href='/recombdb/category05.html'><b>Protein Structure</b> Overview</a> <a href='/recombdb/category06.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-05-113/'>&lt;&lt;</a> Poster 114 [ <a href='poster-05-114.pdf'>PDF</a> | <a href='poster-05-114.doc'>MSWORD</a> ] <a href='/recombdb/poster-05-115/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>114. Beta Edge Strands in Protein Structure Prediction and
+ Aggregation.</h2>
+ <p align="center"><b>Jennifer A. Siepen<a href="#_ftn1" name=
+ "_ftnref1" title="">[1]</a> and&nbsp; David R. Westhead<a href=
+ "#_ftn2" name="_ftnref2" title="">1</a>.</b></p>
+ <p><b>Keywords:</b> secondary structure prediction, machine
+ learning, edge strands.</p>
+ <p>As a result of the genome and other sequencing projects the
+ prediction of the three-dimensional structure and function of
+ proteins from amino acid sequence is becoming increasingly more
+ important.&nbsp; The prediction of the secondary structure and the
+ arrangement of the secondary structure elements within the protein
+ are a valuable first step in the elucidation of three-dimensional
+ structure and protein function.</p>
+ <p>Two distinct tertiary contexts of a beta sheet may be defined,
+ "central strands, bordered on both sides by other beta strands, and
+ edge strands, bordered on only one side by another beta strand"
+ [1].&nbsp; It is well established that recognition between exposed
+ edge strands of beta sheets is an important mode of protein-protein
+ interaction and can have pathological consequences for instance the
+ aggregation of proteins into a fibrillar structure is associated
+ with a number of predominantly neurodegenerative disorders
+ [2,3].&nbsp; Despite this there are relatively few cases of
+ aggregation or insolubility in natural beta sheet proteins, and
+ recently Richardson, 2002 identified that charged residues, proline
+ residues and/or beta bulges are commonly found in the edge strands
+ of beta sheets to protect from interactions with other beta
+ strands.&nbsp; These protective features are unfavorable in the
+ interior strands of the beta sheet and as a result, tend to lower
+ the beta sheet propensity of the edge strand [4].&nbsp;&nbsp; This
+ and other studies demonstrate characteristic differences and
+ different beta sheet propensities between strands located towards
+ the edge of the beta sheet and those occupying a more central
+ location.&nbsp; These observations are likely to be reflected in
+ the classic three-state secondary structure prediction
+ accuracy.&nbsp; Here we show that edge strands are predicted
+ significantly worse with respect to central strands by the
+ secondary structure prediction software PHD [5] and PSI-PRED [6] on
+ a representative set of 564 protein domains.&nbsp;</p>
+ <p>The problem of distinguishing edge strands from central strands
+ based on sequence information alone is important in predicting
+ residues and mutations likely to be involved in aggregation, and is
+ also a first step in predicting folding topology.&nbsp; A decision
+ tree method (c4.5 [7]) and a support vector machine approach
+ (SVMTorch [8]) have been adopted to classify edge strands from
+ central strands in a representative set of protein domains. An
+ initial SVM classification from amino acid sequence of strands
+ assigned based on structure (DSSP [9]), achieved a mean
+ classification accuracy of 78.4%, which is significantly better
+ than expected by chance (50%).&nbsp; Following this we investigated
+ the accuracy of the method with predicted strands, and the use of
+ the method in improving secondary structure prediction.</p>
+ <h1>References</h1>
+ <p>[1] Minor, D. and Kim, P.&nbsp; 1994&nbsp; Context is a major
+ determinant of beta-sheet propensity.&nbsp; <i>Nature</i>&nbsp;
+ <b>371</b>: 264-267</p>
+ <p>[2] Serpell, L., Goldsteins, G., Dacklin, I., Lundgren, E. and
+ Balke, C.&nbsp; 1996&nbsp; The &lsquo;edge strand&rsquo;
+ hypothesis: prediction and test of a mutational hotspot on the
+ Transthyretin molecule associated with FAP amyloidosis.&nbsp;
+ <i>Amyloid&nbsp;</i> <b>3</b>: 75-85</p>
+ <p>[3] Trinh, C., Smith, D., Kalverda, A., Philips, S. and Radford,
+ S.&nbsp; 2002&nbsp; Crystal structure of monomeric human
+ beta-2-microglobulin reveals clues to its amyloidogenic
+ properties.&nbsp; <i>PNAS</i>&nbsp; <b>99</b>(15): 9771-9776</p>
+ <p>[4] Richardson, J. and Richardson, D.&nbsp; 2002&nbsp; Natural
+ beta-sheet proteins use negative design to avoid edge-to-edge
+ aggregation.&nbsp; <i>Proc. Natl. Acad. Sci</i>. <b>99</b>(5):
+ 2754-2759</p>
+ <p>[5] Rost, B. and Sander, C.&nbsp; 1993&nbsp; Prediction of
+ protein secondary structure at better than 70% accuracy.&nbsp;
+ <i>J. Mol. Biol</i>.&nbsp; <b>232</b>: 584-599</p>
+ <p>[6] Jones, D. 1999 Protein secondary structure prediction based
+ on position-specific scoring matrices. <i>J. Mol. Biol</i>.
+ <b>292</b>; 195-202</p>
+ <p>[7] Quinlan, J.R.&nbsp; 1993&nbsp; c4.5: Programs for machine
+ learning<i>.&nbsp;</i> <i>Morgan Kaufmann Publishers.</i> <i>San
+ Mateo, CA</i>.</p>
+ <p>[8] Collobert, R. and Bengio, S.&nbsp; 2001&nbsp; SVMTorch:
+ support vector machines for large-scale regression problems.
+ <i>Journal of Machine Learning Research</i>&nbsp; <b>1</b>:
+ 143-160</p>
+ <p>[9] Kabsch, W. and Sander, C. 1983 Dictionary of protein
+ secondary structure: pattern recognition of hydrogen-bonded and
+ geometrical features. <i>Biopolymers</i> <b>22</b>;
+ 2577-2637</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a> School of
+ Biochemistry and Molecular Biology, University of Leeds, Leeds, LS2
+ 9JT, UK. E&#8209;mail: bmbjas@bmb.leeds.ac.uk</p></div>
+ <div id="ftn2">
+ <p><a href="#_ftnref2" name="_ftn2" title=
+ ""></a>&nbsp;</p></div></div>
+ </body>
+ </html>

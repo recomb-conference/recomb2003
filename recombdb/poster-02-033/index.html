@@ -1,0 +1,353 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>33. A new method of finding functional sequence motifs and its application to human GC-rich genomic sequences.</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-032/'>&lt;&lt;</a> Poster 033 [ <a href='poster-02-033.pdf'>PDF</a> | <a href='poster-02-033.doc'>MSWORD</a> ] <a href='/recombdb/poster-02-034/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>33. A new method of finding functional<br>
+  sequence motifs and its application to human<br>
+  GC-rich genomic sequences.</h2>
+ <p align="center"><b>Tadashi Imanishi</b><a href="#_ftn1" name=
+ "_ftnref1" title=""><b>[1]</b></a><b>, Toshihide
+    Shikanai<a href="#_ftn2" name="_ftnref2" title="">[2]</a>, Shin
+    Nurimoto<a href="#_ftn3" name="_ftnref3" title="">[3]</a>,
+    Taichiro Sugisaki<a href="#_ftn4" name="_ftnref4" title=
+    "">[4]</a></b></p>
+ <p><b>Keywords:</b> motifs, relative entropy, GC contents</p>
+ <p><b>1&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Introduction</b></p>
+ <p>Aside from gene coding sequences, eukaryotic genomes contain
+ important functional sequences such as regulatory elements of gene
+ expression and chromosomal replication.&nbsp; However, many of them
+ remain uncharacterized.&nbsp; Finding functional sequence motifs in
+ genomic sequences is thus a very important and urgent issue in
+ bioinformatics.&nbsp; Here, we developed a new method of finding
+ sequence motifs, with the aim of discovering unknown functional
+ sequence motifs in eukaryotic genomes, and we implemented the
+ method in a computer program called OSMO-finder (Over-represented
+ Sequence MOtif finder).&nbsp; In this paper, we summarize the
+ outline of the new method and describe some results of its
+ application to human genomic sequences.</p>
+ <p><b>2&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Method</b></p>
+ <p>The purpose of the new method is to find over-represented
+ sequence motifs without gaps in a set of unaligned sequences.&nbsp;
+ For this purpose, we first prepare "seeds" of motifs by listing all
+ sequence segments of length W in the data set.&nbsp; We then search
+ for sequence matches to the seeds, and calculate the profiles and
+ consensus motifs based on matched sequences.&nbsp; Finally, we
+ count the number of occurrences L of a specific sequence motif of
+ length W in the data set, and calculate statistical measures for
+ assessing the validity of the motifs identified.&nbsp; Two types of
+ statistical measures are used.&nbsp; One is the exact probability
+ (P) of finding the motifs L or more times in random sequences with
+ the same size as the data set, while the other is L times D, the
+ relative entropy based on profiles of motifs[1].&nbsp; We developed
+ a computer program for this method, and named it OSMO-finder.</p>
+ <p><b>3&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Results and
+ Discussion</b></p>
+ <p>We applied OSMO-finder to find motifs in GC-rich DNA sequences
+ from human chromosome 2.&nbsp; After masking repetitive sequences
+ by RepeatMasker[2], we chose the 10</p>
+ <p>most GC-rich DNA segments of 10kb from human chromosome 2 (NCBI
+ build 30), and searched for motifs of 10 bps.&nbsp; We could
+ successfully identify various kinds of sequence motifs that are
+ abundant in the data set.&nbsp; Top ten motifs with smallest P
+ values had extremely high values of D x L (Table 1), suggesting
+ that these measures are both useful.&nbsp; Some of these motifs
+ were identified also by MEME[3].&nbsp; Interestingly, these motifs
+ overlap only partially with known sequence motifs in
+ TransFac[4].&nbsp; Therefore, the motifs identified by OSMO-finder
+ could be novel functional motifs in eukaryotic genomes.&nbsp; We
+ believe that our program could be a powerful tool for identifying
+ hidden sequence motifs in genomes of various species.</p>
+ <table border="0" cellspacing="0" cellpadding="0" width="508">
+ <tr>
+ <td width="91" nowrap valign="bottom">
+ <p align="center"><b>CONSENSUS</b></p></td>
+ <td width="44" nowrap valign="bottom">
+ <p align="center"><b>D</b></p></td>
+ <td width="44" nowrap valign="bottom">
+ <p align="center"><b>-Log(P)</b></p></td>
+ <td width="44" nowrap valign="bottom">
+ <p align="center"><b>L</b></p></td>
+ <td width="52" nowrap valign="bottom">
+ <p align="center"><b>D x L</b></p></td>
+ <td width="60" nowrap valign="bottom">
+ <p><b>TransFacID</b></p></td>
+ <td width="173" nowrap valign="bottom">
+ <p><b>TRANSFAC Consensus Sequence</b></p></td></tr>
+ <tr>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">GCC<b>C</b>C<b>TGCCC</b></p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">7.287</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">16498</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">3844</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">28011.2</p></td>
+ <td width="60" valign="bottom">
+ <p>M00034</p></td>
+ <td nowrap valign="bottom">
+ <p>GGA<b>C</b>A<b>TGCCC</b>GGGCATGTCY</p></td></tr>
+ <tr>
+ <td width="60" valign="bottom">
+ <p>M00414</p></td>
+ <td nowrap valign="bottom">
+ <p>VNRCACCTGKNN</p></td></tr>
+ <tr>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center"><b>CA</b>G<b>G</b>G<b>C</b>T<b>GGG</b></p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">7.788</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">13757</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">3057</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">23807.9</p></td>
+ <td width="60" valign="bottom">
+ <p>M00034</p></td>
+ <td nowrap valign="bottom">
+ <p>GGA<b>CA</b>T<b>G</b>C<b>C</b>C<b>GGG</b>CATGTCY</p></td></tr>
+ <tr>
+ <td width="60" valign="bottom">
+ <p>M00720</p></td>
+ <td nowrap valign="bottom">
+ <p>GRGGSTGGG</p></td></tr>
+ <tr>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center"><b>GCTG</b>G<b>GGCCC</b></p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">7.267</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">13505</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">3270</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">23763.1</p></td>
+ <td width="60" valign="bottom">
+ <p>M00058</p></td>
+ <td nowrap valign="bottom">
+ <p>NNGGGNCGCA<b>GCTG</b>C<b>GNCCC</b>NN</p></td></tr>
+ <tr>
+ <td width="60" valign="bottom">
+ <p>M00068</p></td>
+ <td nowrap valign="bottom">
+ <p>NNNGGNCNCAGCTGCGNCCCNN</p></td></tr>
+ <tr>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">
+ C(<b>T</b>|C)<b>CCC</b>T<b>GC</b>C<b>C</b></p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">7.787</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">13499</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">3010</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">23438.9</p></td>
+ <td width="60" valign="bottom">
+ <p>M00316</p></td>
+ <td nowrap valign="bottom">
+ <p>
+ GTGGTGGCRCAYRCCTTTAA<b>TCCC</b>A<b>GC</b>A<b>C</b>T</p></td></tr>
+ <tr>
+ <td width="60" valign="bottom">
+ <p>M00650</p></td>
+ <td nowrap valign="bottom">
+ <p>TBTGCACMCGGCCC</p></td></tr>
+ <tr>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">(<b>C</b>|G)GG<b>GC</b>AG<b>GGG</b></p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">7.356</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">13495</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">3268</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">24039.4</p></td>
+ <td width="60" valign="bottom">
+ <p>M00034</p></td>
+ <td nowrap valign="bottom">
+ <p>GGA<b>C</b>AT<b>GC</b>CC<b>GGG</b>CATGTCY</p></td></tr>
+ <tr>
+ <td width="60" valign="bottom">
+ <p>M00002</p></td>
+ <td nowrap valign="bottom">
+ <p>VSNGCAGGTGKNCNN</p></td></tr>
+ <tr>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center"><b>C</b>C<b>T</b>C<b>CC</b>C<b>CTC</b></p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">7.758</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">13417</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">2995</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">23235.2</p></td>
+ <td width="60" valign="bottom">
+ <p>M00326</p></td>
+ <td nowrap valign="bottom">
+ <p>C<b>C</b>G<b>T</b>T<b>CC</b>G<b>CTC</b>TAGATAT</p></td></tr>
+ <tr>
+ <td width="60" valign="bottom">
+ <p>M00212</p></td>
+ <td nowrap valign="bottom">
+ <p>CAATAAAACCYYYYKCTN</p></td></tr>
+ <tr>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">CC(<b>T</b>|C)<b>CAGC</b>C<b>CC</b></p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">7.786</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">13373</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">2987</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">23256.8</p></td>
+ <td width="60" valign="bottom">
+ <p>M00256</p></td>
+ <td nowrap valign="bottom">
+ <p>T<b>TCAGC</b>A<b>CC</b>ACGGACAGMGSC</p></td></tr>
+ <tr>
+ <td width="60" valign="bottom">
+ <p>M00361</p></td>
+ <td nowrap valign="bottom">
+ <p>NGCTCAGCGCN</p></td></tr>
+ <tr>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">G<b>GCCGG</b>GC<b>CC</b></p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">6.726</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">13287</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">3526</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">23715.9</p></td>
+ <td width="60" valign="bottom">
+ <p>M00306</p></td>
+ <td nowrap valign="bottom">
+ <p>H<b>KCCGG</b>TA<b>CC</b>GSYB</p></td></tr>
+ <tr>
+ <td width="60" valign="bottom">
+ <p>M00034</p></td>
+ <td nowrap valign="bottom">
+ <p>GGACATGCCCGGGCATGTCY</p></td></tr>
+ <tr>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center"><b>CA</b>G<b>GCCC</b>A<b>GG</b></p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">7.786</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">13165</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">2949</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">22960.9</p></td>
+ <td width="60" valign="bottom">
+ <p>M00034</p></td>
+ <td nowrap valign="bottom">
+ <p>GGA<b>CA</b>T<b>GCCC</b>G<b>GG</b>CATGTCY</p></td></tr>
+ <tr>
+ <td width="60" valign="bottom">
+ <p>M00256</p></td>
+ <td nowrap valign="bottom">
+ <p>TTCAGCACCACGGACAGMGSC</p></td></tr>
+ <tr>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center"><b>CC</b>T<b>CC</b>C<b>C</b>C<b>TG</b></p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">7.824</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">13078</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">2933</p></td>
+ <td nowrap rowspan="2" valign="bottom">
+ <p align="center">22947.8</p></td>
+ <td width="60" valign="bottom">
+ <p>M00400</p></td>
+ <td nowrap valign="bottom">
+ <p>
+ NNKCRN<b>YB</b>G<b>CC</b>A<b>C</b>G<b>TG</b>GCCNCGACA</p></td></tr>
+ <tr>
+ <td nowrap valign="bottom">
+ <p>M00212</p></td>
+ <td nowrap valign="bottom">
+ <p>CAATAAAACCYYYYKCTN</p></td></tr></table>
+ <p align="center">Table 1.&nbsp; Motifs identified by
+ OSMO-finder.&nbsp; Corresponding motifs in TransFac are
+ shown.&nbsp; Nucleotides in bold show matches between OSMO and
+ TransFac motifs.</p>
+ <h1>References</h1>
+ <p><b>&nbsp;</b></p>
+ <p>&nbsp;[1] Tompa, M. 1999. An exact method for finding short
+ motifs in sequences, with application to the ribosome binding site
+ problem. <i>Proceedings of the 7th Intl. Conf. Intelligent Systems
+ for Molecular Biology</i>, Heidelberg, Germany, pp. 262-271.</p>
+ <p>[2] Smit, A.F.A. and Green, P. RepeatMasker at
+ http://ftp.genome.washington.edu/RM/RepeatMasker.html</p>
+ <p>[3] Bailey, T.L. and Elkan, C. 1994. Fitting a mixture model by
+ expectation maximization to discover motifs in biopolymers.
+ <i>Proceedings of the Second International Conference on
+ Intelligent Systems for Molecular Biology,</i> pp. 28-36.</p>
+ <p>[4] Wingender, E., Dietze, P., Karas, H. and Kn&uuml;ppel R.
+ 1996. TRANSFAC: a database on transcription factors and their DNA
+ binding sites. <i>Nucleic Acids Research</i> 24:238-241.</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a> Japan
+ Biological Information Research Center, National Institute of
+ Advanced Industrial Science and Technology. Time24 Bldg. 10F, Aomi
+ 2-45, Koto-ku, Tokyo 135-0064, Japan. E-mail:
+ imanishi@jbirc.aist.go.jp</p></div>
+ <div id="ftn2">
+ <p><a href="#_ftnref2" name="_ftn2" title=""></a>2 Mitsui Knowledge
+ Industry Co., Ltd. Harmony Tower 21F, Honcho 1-32-2, Nakano-ku,
+ Tokyo 164-8721, Japan. E-mail: shikanai@hydra.mki.co.jp</p></div>
+ <div id="ftn3">
+ <p><a href="#_ftnref3" name="_ftn3" title="">[3]</a> Mitsui
+ Knowledge Industry Co., Ltd. Harmony Tower 21F, Honcho 1-32-2,
+ Nakano-ku, Tokyo 164-8721, Japan. E-mail:
+ nurimoto@hydra.mki.co.jp</p></div>
+ <div id="ftn4">
+ <p><a href="#_ftnref4" name="_ftn4" title="">[4]</a> Mitsui
+ Knowledge Industry Co., Ltd. Harmony Tower 21F, Honcho 1-32-2,
+ Nakano-ku, Tokyo 164-8721, Japan. E-mail:
+ sugisaki@hydra.mki.co.jp</p></div></div>
+ </body>
+ </html>

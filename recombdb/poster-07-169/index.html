@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>169. PyBioS -- object-oriented simulation tool for biological processes with application to the analysis of gene regulatory networks</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category06.html'>&lt;&lt;</a> <a href='/recombdb/category07.html'><b>Gene Networks</b> Overview</a> <a href='/recombdb/category08.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-07-168/'>&lt;&lt;</a> Poster 169 [ <a href='poster-07-169.pdf'>PDF</a> | <a href='poster-07-169.tgz'>TeX</a> | <a href='poster-07-169.ps'>PostScript</a> ] <a href='/recombdb/poster-08-170/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>169. PyBioS --
+ object-oriented simulation tool for biological processes with
+ application to the analysis of gene regulatory
+ networks<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Christoph K. Wierling, Hans Lehrach, and
+ Ralf Herwig <a name="tex2html1" href=
+ "#foot39"><sup>1</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> simulation, SBML, gene
+ regulatory networks, clustering</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size="+1">PyBioS --
+ object-oriented tool for modeling and simulation of biological
+ processes</font></a></h1>
+  <font size="-1">Modeling and simulation systems are a valuable
+ tool for the understanding of complex biological systems. We
+ present an object-oriented, web-based environment that supports the
+ modeling, simulation and storage of large models. The platform is
+ implemented as a Python-product for the Zope web application server
+ environment [<a href="#python">4</a>,<a href=
+ "#zope">5</a>]. The population of hierarchically
+ ordered biological models according to cytological and molecular
+ biological structures is done by the use of a web interface. It
+ supports the generation of large models based on knowledge from
+ high-troughput experiments, like expression profiles or
+ protein/protein interaction data, or publicly available information
+ like the metabolic data of the KEGG database or the Genome-Matrix
+ [<a href="#genomematrix">6</a>]. Based on
+ predefined kinetic laws automatic generation of ODE-systems and
+ following simulation of time courses is supported through the
+ web-interface. The models can be used for hypotheses generation by
+ forward-modeling, e.g. for <i>in silico</i> knock-out experiments.
+ Through automated import and population of systems via interaction
+ networks, elements of array analysis such as clustering and reverse
+ engineering can be incorporated. Visualization of the interaction
+ networks is enabled by automatically generated graphs that include
+ information about the objects, the reactions and the mass- and
+ information-flow. SBML-export/import enables compatibility to other
+ simulation tools.</font> 
+ <h1><a name="SECTION00020000000000000000"><font size=
+ "+1">Simulation of gene regulatory networks and clustering of gene
+ expression profiles</font></a></h1>
+ <p><font size="-1">We set up a framework in order to identify and
+ validate parameters that are useful to describe gene regulatory
+ systems [<a href="#herwig">1</a>]. The input is a
+ network containing N nodes (genes) and K edges that describe the
+ character of the interaction (activation, inhibition). Relevant
+ parameters are for instance the connectivity of the nodes
+ (regulatory input from other genes), the number of connected
+ components (separate pathways in the system), or the number of
+ regulating nodes (transcription factors). The regulatory network is
+ automatically converted into a PyBioS-model that includes
+ transcription, mRNA export into the cytosol, translation,
+ protein-import into the nucleus and mRNA and protein degradation.
+ Resulting concentration series at given time points with varying
+ initial concentrations are clustered by the gene expression
+ analysis tool J-Express [<a href="#dysvik">2</a>]
+ in order to judge the relevance of the input parameters. In the
+ poster we present results according to various artificial networks
+ and published gene regulatory data from yeast [<a href=
+ "#guelzim">3</a>].</font></p>
+ <p></p>
+ <h2><a name="SECTION00030000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="herwig">1</a></dt>
+ <dd>Herwig R. and Lehrach H. 2002. Clustering gene expression
+ profiles. In Analyzing gene expression -- a handbook of methods:
+ possibilities and pitfalls (eds. S. Lorkowski and P. Cullen);
+ Wiley-VCH, Weinheim.</dd>
+ <dt><a name="dysvik">2</a></dt>
+ <dd>Dysvik B. and Jonassen I. 2001. J-Express: exploring gene
+ expression data using Java. <em>Bioinformatics</em>
+ 17:369-370.</dd>
+ <dt><a name="guelzim">3</a></dt>
+ <dd>Guelzim N., Bottani S., Bourgine P. and Kepes F. 2002.
+ Topological and causal structure of the yeast transcriptional
+ regulatory network. <em>Nature Genetics</em> 31:60-63.</dd>
+ <dt><a name="python">4</a></dt>
+ <dd>http://www.python.org</dd>
+ <dt><a name="zope">5</a></dt>
+ <dd>http://www.zope.org</dd>
+ <dt><a name="genomematrix">6</a></dt>
+ <dd>http://genomematrix.org</dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot39">... Herwig</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Max Planck Institute for Molecular Genetics, Ihnestr. 73,
+ D-14195 Berlin, Germany. E-mail: 
+ <div align="center"><b><tt>wierling@molgen.mpg.de,
+ lehrach@molgen.mpg.de,
+ herwig@molgen.mpg.de</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

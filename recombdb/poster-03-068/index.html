@@ -1,0 +1,239 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>68. Measuring the Quality of Profiles</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category02.html'>&lt;&lt;</a> <a href='/recombdb/category03.html'><b>Recognition of Genes and Regulatory Elements</b> Overview</a> <a href='/recombdb/category04.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-03-067/'>&lt;&lt;</a> Poster 068 [ <a href='poster-03-068.pdf'>PDF</a> | <a href='poster-03-068.tgz'>TeX</a> | <a href='poster-03-068.ps'>PostScript</a> ] <a href='/recombdb/poster-03-069/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>68. Measuring the Quality of
+ Profiles<br>
+  for Transcription Factor Binding Site Detection<br>
+ <br>
+ <br></b></font> <b>Sven Rahmann<a name="tex2html1" href=
+ "#foot167"><sup>1</sup></a> Tobias M&uuml;ller<a name="tex2html2"
+ href="#foot168"><sup>2</sup></a> Martin Vingron<a name="tex2html3"
+ href="#foot169"><sup>3</sup></a></b></div>
+  <font size="-1"><b>Keywords:</b> transcription factor binding
+ site, profile, score matrix, power, significance.</font> 
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Summary</font></a></h1>
+ Transcription factor binding site (TFBS) detection plays an
+ important role in computational biology with applications to gene
+ finding and gene regulation. The sites are often modeled by gapless
+ profiles, also known as position-weight matrices. Past research has
+ focused on the significance of profile scores (the ability to avoid
+ false positives), but this alone is not enough; the profile must
+ also possess the power to detect the true positive signals. With
+ several completed genomes now available, the search for TFBSs is
+ moving to a large scale, and discriminating signal from noise
+ becomes more challenging. 
+ <p>We develop methods and measures that help in judging the
+ sensitivity and selectivity of a profile under various conditions,
+ such as varying background composition and different sequence
+ lengths. Profile power can be as easily computed as significance
+ (p-values). We propose a method to choose score thresholds based on
+ both power and significance. We introduce several quality measures
+ for a profile and apply our findings to the TRANSFAC database of
+ transcription factor binding sites. The results are alarming: If we
+ insist on classically significant scores (p-value <img width="32"
+ height="13" align="bottom" border="0" src="img1.png" alt="$ 0.05$">
+ in sequences of length <img width="59" height="13" align="bottom"
+ border="0" src="img2.png" alt="$ n=500$">), only <img width="33"
+ height="32" align="middle" border="0" src="img3.png" alt="$ 19\%$">
+ of the profiles can detect a true signal instance with
+      <img width="33" height="32" align="middle" border="0" src=
+      "img4.png" alt="$ 85\%$"> success probability under varying
+      sequence composition.</p>
+ <h1><a name="SECTION00020000000000000000"><font size="+1">Profiles
+ and Score Matrices</font></a></h1>
+ <p>A <i>profile</i> is a probabilistic description of a part of a
+ sequence, for example, of a TFBS. It specifies a probability
+ distribution over the alphabet's letters for each position. More
+ formally, a profile <img width="16" height="14" align="bottom"
+ border="0" src="img5.png" alt="$ P$"> of length <img width="15"
+ height="14" align="bottom" border="0" src="img6.png" alt="$ L$"> is
+ a stochastic <img width="42" height="30" align="middle" border="0"
+      src="img7.png" alt="$ L\times 4$"> matrix <img width="38"
+      height="32" align="middle" border="0" src="img8.png" alt=
+      "$ (P_{ij})$">.</p>
+ <p>For a sequence window <img width="21" height="14" align="bottom"
+ border="0" src="img9.png" alt="$ W$"> of length <img width="15"
+ height="14" align="bottom" border="0" src="img6.png" alt="$ L$">,
+ we want to decide if <img width="21" height="14" align="bottom"
+ border="0" src="img9.png" alt="$ W$"> is an occurrence of the
+ ``signal'' <img width="16" height="14" align="bottom" border="0"
+ src="img5.png" alt="$ P$">, or is better described by the
+ ``background''. The background is usually an i.i.d. model, that is,
+ a profile matrix <img width="16" height="14" align="bottom"
+      border="0" src="img10.png" alt="$ \Pi$">, where each line
+      consists of the same probability vector <img width="14"
+      height="13" align="bottom" border="0" src="img11.png" alt=
+      "$ \pi$">. By the Neyman-Pearson lemma, we obtain the most
+      test when we use the <i>log-odds score</i> of <img width="21"
+      height="14" align="bottom" border="0" src="img9.png" alt=
+      "$ W$">, i.e., 
+ &nbsp; &nbsp;Score<img width="50" height="32" align="middle"
+      border="0" src="img12.png" alt="$ (W) =$">&nbsp;
+      &nbsp;Prob<img width="52" height="32" align="middle" border=
+      "0" src="img13.png" alt="$ _P(W)/$">Prob<img width="44"
+      height="32" align="middle" border="0" src="img14.png" alt=
+      "$ _\Pi(W)$">.</p>
+ <p>For fixed <img width="14" height="13" align="bottom" border="0"
+      src="img11.png" alt="$ \pi$">, we translate <img width="16"
+      height="14" align="bottom" border="0" src="img5.png" alt=
+      "$ P$"> into a <i>score matrix</i>&nbsp;<img width="15"
+      height="15" align="bottom" border="0" src="img15.png" alt=
+      "$ S$"> by setting 
+ <img width="119" height="32" align="middle" border="0" src=
+ "img16.png" alt="$ S_{ij} := \log P_{ij}/\pi_j$"> and rounding all
+ scores to a certain granularity 
+ <img width="44" height="29" align="middle" border="0" src=
+ "img17.png" alt="$ \varepsilon \ll 1$"> (e.g., 
+ <img width="69" height="13" align="bottom" border="0" src=
+ "img18.png" alt="$ \varepsilon =0.001$">). We obtain 
+ Score<img width="134" height="40" align="middle" border="0"
+      src="img19.png" alt="$ (W) = \sum_{i=1}^L\, S_{i,W_i}$">. A
+      value of 
+ Score<img width="66" height="32" align="middle" border="0"
+      src="img20.png" alt="$ (W)\gg 0$"> is interpreted as strong
+      evidence for <img width="21" height="14" align="bottom"
+      border="0" src="img9.png" alt="$ W$"> being an instance of the
+      signal&nbsp;<img width="16" height="14" align="bottom" border=
+      "0" src="img5.png" alt="$ P$">.</p>
+ <p>The advantage of rounding is that the range of the scores
+ becomes a regular set 
+ <img width="253" height="36" align="middle" border="0" src=
+ "img21.png" alt=
+ "$ \Gamma = \{ \underline{S}+ \gamma \varepsilon \;\vert\; \gamma = 0, \dots, (\overline{S}-\underline{S})/\varepsilon \}$">
+ , where 
+ <img width="15" height="30" align="middle" border="0" src=
+ "img22.png" alt="$ \underline{S}$"> is the minimum and 
+ <img width="15" height="18" align="bottom" border="0" src=
+ "img23.png" alt="$ \overline{S}$"> the maximum possible score among
+ all windows of length <img width="15" height="14" align="bottom"
+ border="0" src="img6.png" alt="$ L$">.</p>
+ <h1><a name="SECTION00030000000000000000"><font size="+1">Score
+ Distribution and Quality Measures</font></a></h1>
+ <p>We can compute the distribution of 
+ Score<img width="34" height="32" align="middle" border="0"
+      src="img24.png" alt="$ (W)$"> on <img width="14" height="14"
+      align="bottom" border="0" src="img25.png" alt="$ \Gamma$">
+      under both the signal model (<img width="21" height="14"
+      align="bottom" border="0" src="img9.png" alt="$ W$"> generated
+      by <img width="16" height="14" align="bottom" border="0" src=
+      "img5.png" alt="$ P$">) and the background model (<img width=
+      "21" height="14" align="bottom" border="0" src="img9.png" alt=
+      "$ W$"> generated by <img width="16" height="14" align=
+      "bottom" border="0" src="img10.png" alt="$ \Pi$">). In both
+      cases 
+ Score<img width="34" height="32" align="middle" border="0"
+      src="img24.png" alt="$ (W)$"> is the sum of independent random
+      variables <img width="40" height="30" align="middle" border=
+      "0" src="img26.png" alt="$ S_{i,W_i}$">; therefore the
+      convolution of the their respective distributions gives the
+      distribution of 
+ Score<img width="34" height="32" align="middle" border="0"
+      src="img24.png" alt="$ (W)$"> [<a href=
+      "#staden89">1</a>]. Signal and background
+      distribution can be visualized and compared graphically.</p>
+ <div align="center"><img width="445" height="273" align="bottom"
+ border="0" src="img27.png" alt=
+ "\includegraphics[width=0.8\textwidth,height=6cm,angle=0]{poster-03-068-fig01.eps}">
+ </div>
+ To summarize the information contained in such a plot, we have
+ developed several profile quality measures. The underlying
+ principle is always the same: A good profile can separate the
+ signal from the background; therefore the overlap among the two
+ distributions should be small. 
+ <p>The poster presents a ranking of all TRANSFAC [<a href=
+ "#wingender00">2</a>] profiles according to
+ different quality measures for three different background models
+ (uniform, AT-rich, GC-rich). We find that many of the profiles in
+ the TRANSFAC database are of low quality in the sense that even in
+ a short sequence (length <img width="59" height="13" align="bottom"
+ border="0" src="img2.png" alt="$ n=500$">), type-II error and
+ type-I error (p-value) cannot both be kept below <img width="32"
+ height="13" align="bottom" border="0" src="img28.png" alt=
+ "$ 0.15$"> simultaneously for about two thirds of the profiles! Our
+ quality ranking has practical consequences: When scanning for
+ TFBSs, one should always look for the high-quality sites first.</p>
+ <p></p>
+ <h2><a name="SECTION00040000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="staden89">1</a></dt>
+ <dd>R.&nbsp;Staden.<br>
+ Methods for calculating the probabilities of finding patterns in
+ sequences.<br>
+ <em>CABIOS</em>, 5:89-96, 1989.</dd>
+ <dt><a name="wingender00">2</a></dt>
+ <dd>E.&nbsp;Wingender, X.&nbsp;Chen, R.&nbsp;Hehl, H.&nbsp;Karas,
+ I.&nbsp;Liebich, V.&nbsp;Matys, T.&nbsp;Meinhardt,
+ M.&nbsp;Pr&uuml;ss, I.&nbsp;Reuter, and F.&nbsp;Schacherer.<br>
+ TRANSFAC: an integrated system for gene expression regulation.<br>
+ <em>Nucleic Acids Res.</em>, 28:316-319, 2000.</dd></dl>
+  <br>
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot167">... Rahmann</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Max-Planck Institut f&uuml;r Molekulare Genetik,
+ Ihnestra&szlig;e 63-73, D-14195 Berlin, Germany.<br>
+ E-mail: 
+ <div align="center"><b><tt>Sven.Rahmann@molgen.mpg.de</tt>.
+ Department of Mathematics and Computer Science, Free University of
+ Berlin.</b></div></dd>
+ <dt><a name="foot168">... M\"uller</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>Max-Planck Institut f&uuml;r Molekulare Genetik,
+ Ihnestra&szlig;e 63-73, D-14195 Berlin, Germany.<br>
+ E-mail: 
+ <div align="center"><b><tt>Tobias.Mueller@molgen.mpg.de</tt>.
+ Funded by the Helmholtz Network for Bioinformatics.</b></div></dd>
+ <dt><a name="foot169">... Vingron</a><a href=
+ "#tex2html3"><sup>3</sup></a></dt>
+ <dd>Max-Planck Institut f&uuml;r Molekulare Genetik,
+ Ihnestra&szlig;e 63-73, D-14195 Berlin, Germany.<br>
+ E-mail: 
+ <div align="center">
+ <b><tt>Martin.Vingron@molgen.mpg.de</tt>.</b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

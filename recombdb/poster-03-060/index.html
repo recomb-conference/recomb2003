@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>60. A Unified Framework for Motif Finding: Finding Position Specific Scoring Matrices using Patterns with Mismatches</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category02.html'>&lt;&lt;</a> <a href='/recombdb/category03.html'><b>Recognition of Genes and Regulatory Elements</b> Overview</a> <a href='/recombdb/category04.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-03-059/'>&lt;&lt;</a> Poster 060 [ <a href='poster-03-060.pdf'>PDF</a> | <a href='poster-03-060.tgz'>TeX</a> | <a href='poster-03-060.ps'>PostScript</a> ] <a href='/recombdb/poster-03-061/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>60. A Unified Framework for
+ Motif Finding: Finding Position Specific Scoring Matrices using
+ Patterns with Mismatches<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Eleazar Eskin <a name="tex2html1" href=
+ "#foot55"><sup>1</sup></a></b></div>
+ <p><font size="-1"><b>Keywords:</b> Motif Finding, Position
+ Specific Scoring Matrices, Patterns with Mismatches.</font></p>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1">An important part of deciphering gene regulatory
+ mechanisms is discovering transcription factor binding sites. These
+ sites can be detected because they are typically over represented
+ in genomic sequences. The detection of the over represented signals
+ in sequences, or <em>motif-finding</em> has become a central
+ problem in computational biology with vast literature.</font></p>
+ <p><font size="-1">There are two major computational frameworks for
+ attacking the motif finding problem which differ in their
+ representation of the patterns. The most widely used is the PSSM
+ (Position Specific Scoring Matrix) representation. The goal of
+ these algorithms is to obtain probabilistic representations of the
+ over represented signals. These algorithms view the representation
+ of the signals as continuous. Each position in a PSSM consists of a
+ vector of probabilities for observing each nucleotide. The
+ algorithms in this framework typically attempt to discover PSSMs
+ that maximize a criteria such as the information content score.
+ Popular approaches within this framework include MEME [<a href=
+ "#bailey95unsupervised">1</a>], CONSENSUS
+ [<a href="#hertz99identifying">4</a>], Gibbs
+ sampler [<a href="#lawrence93detecting">6</a>],
+ and AlignAce [<a href="#AlignACE">5</a>]. A major
+ advantage of this framework is the fact that PSSMs are very
+ powerful representation of the signals. A major disadvantage is
+ that the problem of discovering the ``best'' PSSM is inherently
+ very difficult. For a signal of length <img width="9" height="14"
+ align="bottom" border="0" src="img1.png" alt="$l$">, the problem
+ reduces to finding the global maximum of a non-convex continuous
+ <img width="17" height="14" align="bottom" border="0" src=
+ "img2.png" alt="$3l$"> dimensional function. Typically algorithms
+ in this framework can be characterized as either performing
+ stochastic optimization or greedy searches and give no guarantees
+ of finding the best PSSM or even PSSMs close to the best
+ PSSMs.</font></p>
+ <p><font size="-1">The second framework uses the pattern with
+ mismatches representation. These algorithms define a signal to be a
+ consensus pattern and allow up to a certain amount of mismatches to
+ occur in each instance of the pattern. The goal of these algorithms
+ is to recover the consensus pattern with the highest number of
+ instances. These approaches view the representation of the signals
+ as discrete. The major advantage of many of these algorithms is
+ that even the classical algorithms such as the 1984 Waterman et al.
+ [<a href="#Waterman84">9</a>] and more efficient
+ recent algorithms for finding patterns with mismatches such as the
+ algorithms of Sagot [<a href="#Sagot98">7</a>]
+ and MITRA [<a href="#EskinISMB02">3</a>]
+ guarantee to find the best signals In addition, some pattern driven
+ algorithms such as MITRA [<a href=
+ "#EskinISMB02">3</a>] are modified to guarantee
+ to find the highest scoring signals for a given scoring function.
+ However, a major disadvantage to the pattern with mismatch
+ framework is the representation of the signals themselves. In
+ general, the PSSM representation is much more expressive than the
+ pattern with mismatches representations. For example, patterns with
+ mismatches in general can not distinguish between conserved and
+ unconserved positions.</font></p>
+ <p><font size="-1">The main difference between these two frameworks
+ can be summarized by noting that the continuous PSSM representation
+ is more expressive at the cost of the guaranteed convergence
+ properties of the less expressive discrete pattern with mismatches
+ representation. There is debate about which framework performs
+ better [<a href="#vonHippel88">2</a>,<a href=
+ "#Sze02">8</a>]. Ideally, the best of both worlds
+ approach would combine the expressiveness of the PSSM
+ representation with the guarantees of convergence of the pattern
+ with mismatches approach.</font></p>
+ <p><font size="-1">In this poster, we present MITRA-PSSM, an
+ algorithm for discovering PSSMs for over represented signals in
+ sequences which provides similar convergence guarantees to the
+ pattern with mismatches approach. The key to our approach is
+ formulating a common framework for pattern discovery which
+ encompasses both the PSSM and pattern with mismatches
+ representations. In this framework, we show how some PSSMs are
+ equivalent to patterns with mismatches. Using this common
+ framework, we are able to define an algorithm that functions on
+ discrete patterns with mismatches while performing the analogous
+ search over the space of PSSMs.</font></p>
+ <p><font size="-1">The MITRA-PSSM algorithm consists of two main
+ parts. The first part eliminates the portions of the space of all
+ PSSMs which cannot score higher than the threshold. The second part
+ performs a local search over the remaining regions of the space of
+ PSSMs. The main ideas behind the first part of the MITRA-PSSM
+ algorithm is that we search for the best PSSMs by partitioning the
+ space of all PSSMs into disjoint subspaces with each subspace
+ assigned a corresponding pattern with mismatches. The space of all
+ PSSMs is partitioned in a way that the ``relevant'' instances of
+ the PSSM in the sample are instances of the pattern with
+ mismatches. For each subspace of PSSMs and its corresponding
+ pattern with mismatches we can obtain an upper bound on the score
+ of all PSSMs in the subspace. If this maximum score is below our
+ minimum score threshold we can eliminate all of the PSSMs from this
+ subspace from consideration. After this phase of the algorithm, we
+ are left with subspaces of the PSSMs in which we perform a local
+ search for the highest scoring PSSMs. The advantage of the
+ MITRA-PSSM algorithm as opposed to other algorithms is that we can
+ obtain some guarantees about the PSSMs that the algorithm finds.
+ The algorithm can be used to find multiple high scoring PSSMs, not
+ just the highest scoring. This eliminates the need to mask high
+ scoring signals to discover the remaining signals.</font></p>
+ <p></p>
+ <h2><a name="SECTION00010000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="bailey95unsupervised">1</a></dt>
+ <dd>T.&nbsp;L. Bailey and C.&nbsp;Elkan.<br>
+ Unsupervised learning of multiple motifs in biopolymers using
+ expectation maximization.<br>
+ <em>Machine Learning</em>, 21:51, 1995.</dd>
+ <dt><a name="vonHippel88">2</a></dt>
+ <dd>O.G. Berg and P.&nbsp;H. von Hippel.<br>
+ Selection of DNA binding sites by regulatory proteins.<br>
+ <em>Trends Biochem Sci.</em>, 13:207-211, Jun 1998.</dd>
+ <dt><a name="EskinISMB02">3</a></dt>
+ <dd>E.&nbsp;Eskin and P.&nbsp;A. Pevzner.<br>
+ Finding composite regulatory patterns in dna sequences.<br>
+ In <em>Special Issue Proceedings of the Tenth International
+ Conference on Intelligent Systems for Molecular Biology (ISMB-2002)
+ Bioinformatics.</em>, pages 1:S354-63, 2002.</dd>
+ <dt><a name="hertz99identifying">4</a></dt>
+ <dd>G.&nbsp;Hertz and G.&nbsp;Stormo.<br>
+ Identifying DNA and protein patterns with statistically significant
+ alignments of multiple sequences.<br>
+ <em>Bioinformatics</em>, 15:563-577, 1999.</dd>
+ <dt><a name="AlignACE">5</a></dt>
+ <dd>JD&nbsp;Hughes, PW&nbsp;Estep, S&nbsp;Tavazoie, and
+ GM&nbsp;Church.<br>
+ Computational identification of cis-regulatory elements associated
+ with groups of functionally related genes in saccharomyces
+ cerevisiae.<br>
+ <em>Journal of Molecular Biology</em>, 296(5):1205-14, 2000.</dd>
+ <dt><a name="lawrence93detecting">6</a></dt>
+ <dd>C.&nbsp;E. Lawrence, S.&nbsp;F. Altschul, M.&nbsp;S. Boguski,
+ J.&nbsp;S. Liu, A.&nbsp;F. Neuwald, and J.&nbsp;C. Wootton.<br>
+ Detecting subtle sequence signals: a Gibbs sampling strategy for
+ multiple alignment.<br>
+ <em>Science</em>, 262:208-214, 1993.</dd>
+ <dt><a name="Sagot98">7</a></dt>
+ <dd>M.&nbsp;Sagot.<br>
+ Spelling approximate or repeated motifs using a suffix tree.<br>
+ <em>Lecture Notes in Computer Science</em>, 1380:111-127,
+ 1998.</dd>
+ <dt><a name="Sze02">8</a></dt>
+ <dd>S.&nbsp;Sze, M.&nbsp;S. Gelfand, and P.&nbsp;A. Pevzner.<br>
+ Finding subtle motifs in DNA sequences.<br>
+ In <em>Proceedings of Pacific Symposium on Biocomputing</em>, pages
+ 235-246, 2002.</dd>
+ <dt><a name="Waterman84">9</a></dt>
+ <dd>M.S. Waterman, R.&nbsp;Arratia, and D.J. Galas.<br>
+ Pattern recognition in several sequences: consensus and alignm
+ ent.<br>
+ <em>Bulletin of Mathematical Biology</em>, 46:515-527,
+ 1984.</dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot55">... Eskin</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>School of Computer Science and Engineering, The Hebrew
+ University, Jerusalem, Israel. E-mail: 
+ <div align="center">
+ <b><tt>eeskin@cs.huji.ac.il</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

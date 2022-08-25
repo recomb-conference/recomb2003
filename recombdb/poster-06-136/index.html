@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>136. Gene Ontology Driven Classification</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category05.html'>&lt;&lt;</a> <a href='/recombdb/category06.html'><b>Gene Expression</b> Overview</a> <a href='/recombdb/category07.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-06-135/'>&lt;&lt;</a> Poster 136 [ <a href='poster-06-136.pdf'>PDF</a> | <a href='poster-06-136.tgz'>TeX</a> | <a href='poster-06-136.ps'>PostScript</a> ] <a href='/recombdb/poster-06-137/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>136. Gene Ontology Driven
+ Classification<br>
+  of Gene Expression Patterns<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Claudio Lottaz<a name="tex2html1" href=
+ "#foot39"><sup>1</sup></a>, Stefan Bentink<img width="11"
+      height="18" align="bottom" border="0" src="img1.png" alt=
+      "$^1$">, Renate Kirschner<a name="tex2html2" href=
+      "#foot40"><sup>2</sup></a>,<br>
+  Christian Hagemeier<img width="11" height="18" align="bottom"
+ border="0" src="img2.png" alt="$^2$"> and Rainer
+      Spang<img width="11" height="18" align="bottom" border="0"
+      src="img1.png" alt="$^1$"></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> class prediction, gene
+ ontology, microarray, medical diagnostics</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+ <p><font size="-1">&gt;From a machine learning point of view,
+ classification of gene expression patterns is a very particular
+ task. Typically, training data consists of few samples (small
+ number of experiments) but contains many variables (expression
+ levels measured in each experiment). In this context classical
+ machine learning methods may cause various difficulties
+    [<a href="#Hastie01">1</a>]. For
+    instance:</font></p>
+ <ul>
+ <li>Statistical models, particularly those with many parameters,
+ may overfit the training data. Thereby, they rather adapt to noise
+ in the data than learn the desired phenomenon.</li>
+ <li>Moreover, common machine learning methods do not provide an
+ intuitive and biologically meaningful explanation of their results.
+ However, such explanations help users to trust a computational
+ analysis.</li></ul>
+  <font size="-1">In the research presented here, we try to cope
+ with these two problems in the context of medical diagnosis.</font>
+ 
+ <h1><a name="SECTION00020000000000000000"><font size="+1">Gene
+ Ontology driven classification</font></a></h1>
+ <p><font size="-1">We conjecture that the mentioned problems can be
+ tackled by giving the classifier a biologically meaningful
+ structure, i.e., by dividing the classification task into subtasks
+ according to biological criteria. Structuring biological knowledge
+ is one of the central goals of the Gene Ontology database
+    [<a href="#GO00">2</a>]. Biological terms
+    related to molecular functions, biological processes and
+    cellular components are collected into a directed acyclic graph
+    where each node represents a term and child-terms are either
+    members or representatives of their parent-terms. Moreover,
+    genes are attributed to GO-nodes according to their functions,
+    involvement into biological processes and location within the
+    cell. We suggest to use this structure in a classifier as
+    follows.</font></p>
+ <p><font size="-1">For each GO-node, one classifier is implemented
+ using classical logistic regression, determining a linear weight
+ for each input variable and providing a probability for each class
+ as classification result. Each of these classifiers is given the
+ same classification task, while input variables are the expression
+ values corresponding to the genes annotated to the classifier's
+ GO-node as well as the classification results of its children.
+ Thus, the classifiers corresponding to the leaf-nodes of the Gene
+ Ontology must be trained first. The overall classification result
+ is provided by the root node's classifier.</font></p>
+ <p><font size="-1">In this procedure each classifier bases its
+ decision only on information about the biological function it is
+ attributed to. Therefore, when considering an overall
+ classification result, its rationale can be deduced from the
+ various classifier results. Moreover, the weights determined after
+ training provide information about which biological aspects are
+ deemed important in the classification task. Finally, the
+ partitioning of the input variables among many classifiers, weakens
+ the mentioned overfitting problem.</font></p>
+ <h1><a name="SECTION00030000000000000000"><font size="+1">First
+ results and experiences</font></a></h1>
+ <p><font size="-1">A first implementation as an R program has been
+ used to evaluate the method on a large dataset from leukemia
+ patients (acute lymphoblastic leukemia) [<a href=
+ "#Yeoh02">3</a>]. The recognition of leukemia
+ subtypes has been used as the classification task. This task has
+ been shown to be a rather simple one yielding recognition rates of
+ 96% to 100% using sophisticated feature selection and support
+ vector machines. First tests with our classifier have shown
+ comparable recognition accuracies for five of the six subtypes
+ while the last subtype is more difficult to be recognized. Thereby,
+ many classifiers yield average or weak results and only a few
+ pin-point the important biological aspects for
+ classification.</font></p>
+ <p></p>
+ <h2><a name="SECTION00040000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="Hastie01">1</a></dt>
+ <dd>T.&nbsp;Hastie, R.&nbsp;Tibshirani &amp; J.&nbsp;Friedman.<br>
+ <em>The Elements of Statistical Learning</em>.<br>
+ Springer Series in Statistics. Springer, New York, 2001.</dd>
+ <dt><a name="GO00">2</a></dt>
+ <dd>The Gene Ontology Consortium.<br>
+ Gene ontology: Tool for the unification of biology.<br>
+ <em>Nature Genetics</em>, 25:25-29, May 2000.</dd>
+ <dt><a name="Yeoh02">3</a></dt>
+ <dd>E.-J. Yeoh, M.&nbsp;E. Ross et&nbsp;al.<br>
+ Classification, subtype discovery, and prediction of outcome in
+ pediatric acute lymphoblastic leukemia by gene expression
+ profiling.<br>
+ <em>Cancer Cell</em>, 1:133-145, March 2002.</dd></dl>
+ <br>
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot39">... Lottaz</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Max-Planck-Institute for Molecular Genetics, Ihnestr. 73,
+ D-14195 Berlin (Germany) . E-mail: 
+ <div align="center"><b><tt>Claudio.Lottaz|Stefan.Bentink|Reiner
+ Spang@molgen.mpg.de</tt></b></div></dd>
+ <dt><a name="foot40">... Kirschner</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>Medical Center Charit&eacute;, Augustenburger Platz 1, D-13353
+ Berlin (ermany) E-mail: 
+ <div align="center">
+ <b><tt>r.kirschner|christian.hagemeier@charite.de</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

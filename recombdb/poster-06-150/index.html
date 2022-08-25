@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>150. Trait: a knowledgebase to retrieve annotated and differentially expressed transcripts found in human skeletal muscle</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category05.html'>&lt;&lt;</a> <a href='/recombdb/category06.html'><b>Gene Expression</b> Overview</a> <a href='/recombdb/category07.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-06-149/'>&lt;&lt;</a> Poster 150 [ <a href='poster-06-150.pdf'>PDF</a> | <a href='poster-06-150.doc'>MSWORD</a> ] <a href='/recombdb/poster-06-151/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>150.&nbsp; Trait: a knowledgebase to retrieve annotated and
+ differentially expressed transcripts found in human skeletal
+ muscle</h2>
+ <p align="center"><b>Stefano Toppo<a href="#_ftn1" name="_ftnref1"
+ title="">[1]</a>, Nicola Cannata<a name=
+    "_Ref29651796"></a><a href="#_ftn2" name="_ftnref2" title=
+    "">[2]</a>, Chiara Romualdi2, Paolo Laveder2, Gerolamo
+    Lanfranchi2. Giorgio Valle2</b></p>
+ <p><b>Keywords:</b> microarray, muscle, knowledgebase, transcripts
+ and genes annotation</p>
+ <p>TRAIT [3] is a knowledgebase integrating information on human
+ transcripts to related data from genome, proteins, ortholog genes,
+ gene ontology, diseases and expression data based both on ESTs
+ occurrence and microarray experiments.</p>
+ <p>It was initially built as a system to manage an EST-based gene
+ discovery project on human skeletal muscle [2], that yielded to
+ over 4,500 independent sequence clusters. Transcripts are
+ anno&shy;tated using automatic as well as manual procedures, aiming
+ to link known transcripts to the main public domain resources and
+ unknown transcripts to tables of predicted features.</p>
+ <p>In order to manage our data and to accomplish high quality
+ annotation of the transcripts, the function of which is in many
+ cases still unknown, we developed several bioinformatic tools
+ performing many combined tasks. These tools make use of available
+ programs such as BLAST as well as new algorithms developed in our
+ bioinformatic laboratory such as AlphaSimp [1] that may be used to
+ study conserved protein patterns.</p>
+ <p>In addition to TRAIT, a separate database has been specifically
+ created to store the results obtained from filter hybridisation
+ experiments (macroarrays) as well as microarrays. Currently, the
+ expression patterns of ten different tissues are available,
+ including the information about clones, spots and raw/normalised
+ values.</p>
+ <p>These data are freely available at the following web addresses
+ by means of a specifically designed retrieval system:
+ http://muscle.cribi.unipd.it/features,
+ http://muscle.cribi.unipd.it/expression.</p>
+ <p>All of the data are stored in a MySQL database and dedicated
+ user friendly web interfaces have been developed to perform complex
+ queries that allow the concurrent selection of different fields.
+ Most fields are entered with the help of menus that only allow the
+ definition of existing instances in the annotated database.</p>
+ <p>The main query form, dedicated to the retrieval of features, is
+ divided into four main sections: transcripts and their ontology,
+ genes, proteins and orthologs.</p>
+ <p>The free selection of the fields is automatically translated
+ into SQL language, using OR operators to merge the searching
+ criteria defined for each field. The resulting query is used to
+ select suitable records from a TRAIT &ldquo;view&rdquo;, where all
+ the original tables are merged into a single one, thus overcoming
+ the difficulty of making &ldquo;joins&rdquo; using MySQL. Then the
+ results are processed by a PHP script that sorts the hits on the
+ basis of the number of satisfied criteria. For instance, if six
+ criteria were defined in the query form and no entries satisfies
+ them all, then instead of returning &ldquo;no hits found&rdquo; the
+ PHP script will show all the entries satisfying at least five
+ criteria, indicating which of the criteria were satisfied.</p>
+ <p>The latest version of TRAIT was produced to enhance the query
+ capabilities and to allow an in-depth investigation of transcript
+ features and gene expression levels. The user can perform different
+ queries starting from the gene expression pattern. The results of
+ over/under expressed genes may either be displayed or further
+ investigated by using a dynamically generated query form. In this
+ way the subset of over/under expressed genes may be further
+ restricted to focus on particular annotated features.</p>
+ <p>For instance, it is possible to select the transcripts with a
+ level of expression at least 10 times higher in skeletal muscle
+ than in cardiac muscle; then it is possible to further restrict the
+ query on the basis of the chromosomal location and on the presence
+ of a particular domain on the translated protein, or on other
+ features. Furthermore, TRAIT may also be accessed in the opposite
+ way, starting from the query form of features and ontology of the
+ transcripts. Also in this case the resulting ranked subsets may
+ either be displayed or further restricted on the basis of their
+ gene expression levels.</p>
+ <h3>References</h3>
+ <p>[1]&nbsp;&nbsp; Cannata, N., Toppo, S. and Valle, G. 2002.
+ Simplifying amino acid alphabets by means of a branch and bound
+ algorithm and substitution matrices. <i>Bioinformatics</i>
+ 18(8):1102-1108.</p>
+ <p>[2]&nbsp;&nbsp; Lanfranchi, G., Muraro, T., Caldara, F.,
+ Pacchioni, B., Pallavicini, A., Pandolfo, D., Toppo, S., Trevisan,
+ S., Scarso, S. and Valle, G. 1996. Identification of 4370 expressed
+ sequence tags from a 3'-end-specific cDNA library of human skeletal
+ muscle by DNA sequencing and filter hybridization. <i>Genome
+ Research.</i>, 6(1),35-42.</p>
+ <p>[3]&nbsp;&nbsp; Toppo, S., Fontana, F., Romualdi, C., Laveder,
+ P., Bertocco, E., Lanfranchi, G. and Valle, G. 2003. TRAIT
+ (TRAnscript Integrated Table): a knowledgebase of human skeletal
+ muscle transcripts.&nbsp; <i>Bioinformatics</i> (in
+ press).</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a> Dept.
+ Biological Chemistry &ndash; University of Padua, via G. Colombo 3
+ &ndash; 35121 Padova Italy. E-mail:
+ stefano@cribi.unipd.it</p></div>
+ <div id="ftn2">
+ <p><a href="#_ftnref2" name="_ftn2" title="">[2]</a> CRIBI
+ Biotechnology Center &ndash; University of Padua, via G. Colombo 3
+ &ndash; 35121 Padova Italy.</p></div></div>
+ </body>
+ </html>

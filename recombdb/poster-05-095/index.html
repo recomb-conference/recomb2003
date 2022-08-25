@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>95. Native loop conformation recognition by MM/PBSA energy calculation</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category04.html'>&lt;&lt;</a> <a href='/recombdb/category05.html'><b>Protein Structure</b> Overview</a> <a href='/recombdb/category06.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-05-094/'>&lt;&lt;</a> Poster 095 [ <a href='poster-05-095.pdf'>PDF</a> | <a href='poster-05-095.tgz'>TeX</a> | <a href='poster-05-095.ps'>PostScript</a> ] <a href='/recombdb/poster-05-096/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>95. Native loop conformation
+ recognition by MM/PBSA energy calculation<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Federico Fogolari, <a name="tex2html1"
+    href="#foot61"><sup>1</sup></a> Silvio Tosatto, <a name=
+    "tex2html2" href="#foot62"><sup>2</sup></a> Alessandro Cestaro,
+    <a name="tex2html3" href="#foot63"><sup>3</sup></a> Giorgio
+    Valle, <a name="tex2html4" href="#foot64"><sup>4</sup></a>
+    Henriette Molinari <a name="tex2html5" href=
+    "#foot65"><sup>5</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> structure prediction,
+ continuum, Poisson-Boltzmann, loop modeling</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+  <font size="-1">The fold prediction problem can be divided in two
+ parts: the generation of alternative conformations and the
+ estimation of the stability of every available structure. We show
+ that the latter task can be accomplished by a a hybrid method
+ (molecular mechanics/Poisson-Boltzmann solvent accessibility
+ (MM/PBSA)) method.</font> 
+ <h1><a name="SECTION00020000000000000000"><font size="+1">Materials
+ and methods</font></a></h1>
+  <font size="-1">The free energy corresponding to each alternative
+ conformation (involving in the present study only limited loop
+ regions of the protein) has been estimated using the MM/PBSA
+ (molecular mechanics/ Poisson Boltzmann Solvent Accessible surface
+ area) methodology (see e.g. [<a href=
+ "#Fog2002">1</a>],[<a href=
+ "#Bag1997">2</a>],[<a href=
+ "#Kol2000">3</a>]). In this approach only solute
+ degrees of freedom are explicitly represented, so that the
+ potential of mean force <img width="21" height="14" align="bottom"
+ border="0" src="img1.png" alt="$W$"> is written as the sum of a
+ solute energy term 
+ <img width="108" height="32" align="middle" border="0" src=
+ "img2.png" alt="$ U( \vec r_1, \vec r_2, ..., \vec r_n)$">,
+ estimated after minimization, using the classical forcefield CHARMM
+ (v. 27b2) and a solvation free energy term which can be further
+ split in a polar (electrostatic) and a non-polar (hydrophobic)
+ term:<br>
+  
+ <img width="331" height="35" align="middle" border="0" src=
+ "img3.png" alt=
+ "$ W = U( \vec r_1, \vec r_2, ..., \vec r_n) + \Delta G^{polar} + \Delta G^{non-polar}$">
+  [1]<br>
+  
+ <img width="61" height="17" align="bottom" border="0" src=
+ "img4.png" alt="$\Delta G^{polar}$"> has been computed according to
+ the Poisson-Boltzmann theoretical framework ([<a href=
+ "#SH1990">4</a>],[<a href=
+ "#FB1997">5</a>]) as the difference in free
+ energy for the hypothetical charging process of the solute in vacuo
+ and in ionic solvent. 
+ <img width="93" height="17" align="bottom" border="0" src=
+ "img5.png" alt="$\Delta G^{non-polar}$"> is taken to be
+ proportional to the solvent accessible surface area <img width="16"
+      height="14" align="bottom" border="0" src="img6.png" alt=
+      "$A$"> i.e. 
+ <img width="135" height="35" align="middle" border="0" src=
+ "img7.png" alt="$\Delta G^{non-polar} = \gamma A$"> ([<a href=
+ "#N1991">6</a>]). The potential of mean force may
+ be used to estimate the free energy of each conformation, except
+ for the entropic part associated with solute degrees of freedom.
+ This choice is roughly equivalent to assume that the entropy of
+ each conformation is the same.</font> 
+ <h1><a name="SECTION00030000000000000000"><font size=
+ "+1">Results</font></a></h1>
+  <font size="-1">In analysing results obtained on a database of 726
+ loops of d1.3 antibody (available from http://dd.stanford.edu/), it
+ must be considered that only low energy conformations should be
+ taken into account, due to the fact that many conformations have
+ poor local geometry and therefore their MM energy is high. When all
+ the minima at increasing RMSDs are considered a very strong
+ correlation between energy and RMSD from native structure is found.
+ These results prove that MM/PBSA may play a relevant role in
+ protein structure prediction and refinement.<br></font> 
+ <div align="center"><a name="43"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure:</strong> <font size=
+ "-1">MM/PBSA energy plotted versus overall RMSD from native
+ structure.</font></caption>
+ <tr>
+ <td>
+ <div align="center"><font size="-1">[width=8 cm, height = 8
+ cm]poster-05-095-fig01.eps</font></div></td></tr></table></div>
+   
+ <p></p>
+ <h2><a name="SECTION00040000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="Fog2002">1</a></dt>
+ <dd>Fogolari, F., A. Brigo and H. Molinari. 2002. The
+ Poisson-Boltzmann equation for biomolecular electrostatics: a tool
+ for structural biology. <i>J. Mol. Rec.</i> 15:377-392.</dd>
+ <dt><a name="Bag1997">2</a></dt>
+ <dd>Baginski, M., F. Fogolari and J. M. Briggs. 1997. Electrostatic
+ and non-electrostatic contributions to the binding free energies of
+ anthracycline antibiotics to DNA. <i>J. Mol. Biol.</i>
+ 274:253-67.</dd>
+ <dt><a name="Kol2000">3</a></dt>
+ <dd>Kollman, P. A., I. Massova, C. Reyes, B. Kuhn, S. Huo, L.
+ Chong, M. Lee, T. Lee,Y. Duan, W. Wang, O. Donini, P. Cieplak, J.
+ Srinivasan, D. A. Case and T. E. 3rd Cheatham. 2000. Calculating
+ structures and free energies of complex molecules: combining
+ molecular mechanics and continuum models. <i>Acc. Chem. Res.</i>
+ 33:889-897.</dd>
+ <dt><a name="SH1990">4</a></dt>
+ <dd>Sharp, K. A. and B. Honig. 1990. Calculating total
+ electrostatic energies with the non-linear Poisson-Boltzmann
+ equation. <i>J. Phys. Chem.</i> 94:7684-7692.</dd>
+ <dt><a name="FB1997">5</a></dt>
+ <dd>Fogolari, F. and J. M. Briggs. 1997. On the variational
+ approach to the Poisson-Boltzmann free energies, <i>Chem. Phys.
+ Lett.</i> 281:135-139.</dd>
+ <dt><a name="N1991">6</a></dt>
+ <dd>Nicholls, A., K. A. Sharp and B. Honig. 1991. Protein folding
+ and association: insights from the interfacial and thermodynamic
+ properties of hydrocarbons. <i>Proteins: Struct. Funct. Genet.</i>
+ 11:281-96.</dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot61">... Fogolari,</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Dipartimento Scientifico-Tecnologico, Universita' di Verona.
+ Strada Le Grazie 15, 37134 Verona (Italy). E-mail: 
+ <div align="center">
+ <b><tt>fogolari@sci.univr.it</tt></b></div></dd>
+ <dt><a name="foot62">... Tosatto,</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>CRIBI and Dipartimento di Biologia, Universita' di Padova.
+ Viale G. Colombo 3, 35131 - Padova (Italy), E-mail: 
+ <div align="center">
+ <b><tt>silvio@cribi.unipd.it</tt></b></div></dd>
+ <dt><a name="foot63">... Cestaro,</a><a href=
+ "#tex2html3"><sup>3</sup></a></dt>
+ <dd>CRIBI and Dipartimento di Biologia, Universita' di Padova.
+ Viale G. Colombo 3, 35131 - Padova (Italy), E-mail: 
+ <div align="center">
+ <b><tt>adepto@cribi.unipd.it</tt></b></div></dd>
+ <dt><a name="foot64">... Valle,</a><a href=
+ "#tex2html4"><sup>4</sup></a></dt>
+ <dd>CRIBI and Dipartimento di Biologia, Universita' di Padova.
+ Viale G. Colombo 3, 35131 - Padova (Italy), E-mail: 
+ <div align="center">
+ <b><tt>giorgio.valle@unipd.it</tt></b></div></dd>
+ <dt><a name="foot65">... Molinari</a><a href=
+ "#tex2html5"><sup>5</sup></a></dt>
+ <dd>Dipartimento Scientifico-Tecnologico, Universita' di Verona.
+ Strada Le Grazie 15, 37134 Verona (Italy). E-mail: 
+ <div align="center">
+ <b><tt>Henriette.molinari@ismac.cnr.it</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

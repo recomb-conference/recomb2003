@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>24. Improving Profile Hidden Markov Models for the Detection of Remote Homologs Through Introduction of Phylogenetic Inference</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-023/'>&lt;&lt;</a> Poster 024 [ <a href='poster-02-024.pdf'>PDF</a> | <a href='poster-02-024.doc'>MSWORD</a> ] <a href='/recombdb/poster-02-026/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>24. Improving Profile Hidden Markov Models for the Detection of
+ Remote Homologs Through Introduction of Phylogenetic Inference</h2>
+ <p align="center"><b>Dawn J. Brooks and Sean R. Eddy<a href=
+ "#_ftn1" name="_ftnref1" title="">[1]</a></b></p>
+ <p><b>Keywords:</b> hidden Markov models, sequence analysis,
+ phylogenetics, evolutionary models</p>
+ <p><b>1&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Introduction</b></p>
+ <p>Because sequence homology often provides the first clue to
+ protein function, considerable effort has been invested in
+ developing sequence analysis tools that can successfully
+ discriminate between highly divergent homologs and unrelated
+ sequences. Profile hidden Markov models (HMMs), probabilistic
+ representations of the sequences of the members of a protein
+ family, are one such tool. Here we introduce phylogenetic inference
+ and maximum likelihood (ML) models of protein evolution in building
+ HMMs. Others have previously demonstrated that phylogenetic
+ information can be used to improve dramatically the ability to
+ detect remote homologs [3]. Our initial findings confirm these
+ earlier ones.&nbsp;</p>
+ <p><b>2&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>General Strategy and
+ Significance</b></p>
+ <p>In our first approach, we use ML to build target-specific
+ profile HMMs that exploit knowledge of where the target homolog is
+ likely to be within protein family sequence space; rather than
+ building a profile HMM to model the family as a whole, we build one
+ which models the specific target sequence. We expect this
+ application to be particularly useful in cases in which there is
+ strong reason to expect a protein family member to exist, but
+ traditional means for detecting sequence homology have failed to
+ find it. For example, analysis of the complete genome sequences of
+ various organisms suggests that enzymes involved in certain
+ metabolic pathways are either missing or have yet to be correctly
+ annotated. By providing a more sensitive model of the target
+ sequences, we hope to identify existing homologs in many cases
+ where other tools have failed, thus demonstrating the protein to be
+ present. On the other hand, where our model fails to detect a
+ homolog, we will have greater confidence that the homolog truly is
+ absent. As a complementary problem, rather than being unable to
+ detect an expected sequence as above, one might have a sequence (or
+ many sequences, as in the case of genome annotation) for which
+ existing search tools have failed to identify a homolog. In this
+ case, one could search through a database containing a complete set
+ of target-specific profile HMMs for the genome of the query
+ sequence. A significant match between a target-specific profile HMM
+ and the query sequence will indicate the protein family to which
+ the query sequence belongs. Thus, we hope that target-specific
+ profile HMMs will have utility as part of an assembly of
+ computational tools used in annotation of complete genome
+ sequences.</p>
+ <p>Since the first method relies on general congruence of species
+ and protein family trees, it is not applicable to cases in which
+ the phylogenetic tree representing the protein family is poorly
+ resolved or generally inconsistent with the species phylogenetic
+ tree. Thus, in our second approach, we use ML and simulated
+ evolution to build profile HMMs that attempt to capture sequence
+ features of highly divergent protein family members in general,
+ rather than modeling specific target sequences.</p>
+ <p><b>3&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Methods</b></p>
+ <p>Phylogenetically-based ML sequence inference [4] is used to
+ determine the probability distribution for the identity of the
+ residue in the target sequence (which will be located at an
+ external node on a phylogenetic tree) in the first approach, and
+ the root sequence in the second approach. Since each match state in
+ a profile HMM represents a residue residing within a specific
+ protein environment and subject to a particular evolutionary rate,
+ ML can be used to choose the substitution probability matrix from
+ among several alternatives that best fits (i.e., assigns the
+ greatest likelihood to) the observed data at each match state.
+ Knowledge of the prior distribution of amino acids in the target
+ proteome is used to further refine the model.</p>
+ <p>In the first method, the probability distribution for each
+ residue, derived as described above, is used directly to estimate
+ the emission probabilities for a match state in the target
+ sequence.&nbsp; In the second method, this distribution is
+ &ldquo;evolved&rdquo; using the matrix determined to best model the
+ evolution of the site in the sequence, in order to represent a more
+ divergent sequence.</p>
+ <p>Since all amino acids have a non-zero probability of being
+ observed at a given site in the inferred sequence under ML, the
+ method provides a well-justified means to estimate the probability
+ that amino acids not observed at a given position in the alignment
+ might be present in homologous sequences. In this way, we eliminate
+ the need for pseudocounts, substitution matrix or Dirichlet
+ mixtures, which are typically employed in profile HMM
+ parameterization to compensate for small sample size, and
+ frequently to represent features of divergent (undetected) family
+ members at the same time. Another attractive feature of the ML
+ approach is that it inherently weights the contributions of the
+ various descendant sequences in a probabilistic manner, so that
+ more closely related sequences contribute less to the profile
+ probabilities than do more highly divergent ones. This is an
+ improvement over commonly used weighting schemes, which lack formal
+ justification.</p>
+ <p><b>4&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Preliminary Results</b></p>
+ <p>We have found that incorporation of phylogenetic information in
+ building HMMs dramatically improves their performance.&nbsp; In
+ addition, introducing knowledge of the prior distribution of
+ residues in the target proteome provides significant gains. In
+ initial trials, allowing substitution matrices to vary between
+ sites in the model (according to variations in evolutionary rate
+ and structural environment) resulted in significantly diminished
+ performance, possibly due to overfitting of the data.&nbsp; We are
+ exploring more sophisticated means by which these refinements in
+ evolutionary modeling may lead to improvements in profile HMMs.</p>
+ <p>In the future, the performance of our profile HMMs will be
+ compared with that of existing ones, e.g., those used in the
+ current version of HMMER[1] and SAM-T98 [2]. Our profile HMMs, as
+ well as software for creating custom profile HMMs, will be made
+ available online as an extension of the existing Pfam
+ (http://pfam.wustl.edu/) and HMMER (http://hmmer.wustl.edu/)
+ websites.</p>
+ <h1>References</h1>
+ <p>&nbsp;</p>
+ <p>[1] Eddy, S.R. 2001. HMMER: Profile hidden Markov models for
+ biological sequence analysis (<a href=
+ "http://hmmer.wustl.edu/">http://hmmer.wustl.edu/</a>).</p>
+ <p>[2] Karplus, K., Barrett, C. and Hughey, R. (1998) Hidden Markov
+ models for detecting remote protein homologies.&nbsp;
+ <i>Bioinformatics</i>. 14:846-856.</p>
+ <p>[3] Rehmsmeier, M. and Vingron, M. (2001) Phylogenetic
+ information improves homology detection.&nbsp; <i>Proteins</i>.
+ 45:360-371.</p>
+ <p>[4] Yang, Z., Kumar, S. and Nei, M. (1995) A new method of
+ inference of ancestral nucleotide and amino acid sequences.&nbsp;
+ <i>Genetics</i> 141:1641-1650.</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a> Department of
+ Genetics, Washington University. Box 8232, 4566 Scott Ave., St.
+ Louis, MO 63110 USA</p>
+ <p>&nbsp;E&#8209;mail: dbrooks@genetics.wustl.edu</p></div></div>
+ </body>
+ </html>

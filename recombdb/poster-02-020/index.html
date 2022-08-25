@@ -1,0 +1,331 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>20. Tabu search method for isothermic DNA sequencing by hybridization</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-019/'>&lt;&lt;</a> Poster 020 [ <a href='poster-02-020.pdf'>PDF</a> | <a href='poster-02-020.tgz'>TeX</a> | <a href='poster-02-020.ps'>PostScript</a> ] <a href='/recombdb/poster-02-021/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>20. Tabu search method for
+ isothermic DNA sequencing by hybridization<a name="footfnm1"
+    href="#fnm1"><sup>1</sup></a><br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Jacek B<img width="5" height="14"
+      align="bottom" border="0" src="img1.png" alt=
+      "\l">azewicz<a name="footfnm2" href=
+      "#fnm2"><sup>2</sup></a><a name="footfnm3" href=
+      "#fnm3"><sup>3</sup></a>, Piotr Formanowicz<a name="tex2html1"
+      href="#footfnm2"><sup>2</sup></a><a name="tex2html2" href=
+      "#footfnm3"><sup>3</sup></a>, Marta Kasprzak<a name=
+      "tex2html3" href="#footfnm2"><sup>2</sup></a><a name=
+      "tex2html4" href="#footfnm3"><sup>3</sup></a>, Wojciech T.
+      Markiewicz<a name="tex2html5" href=
+      "#footfnm3"><sup>3</sup></a>, Aleksandra Swiercz<a name=
+      "tex2html6" href="#footfnm2"><sup>2</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> sequencing by hybridization,
+ isothermic libraries, heuristics, tabu search</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction.</font></a></h1>
+  <font size="-1">In this work, a problem of isothermic DNA
+ sequencing by hybridization (SBH) is considered. The
+ <em>classical</em> approach to SBH uses sets of oligonucleotides of
+ <em>equal lengths</em> [<a href=
+ "#BS88">1</a>,<a href=
+ "#LFK+88">7</a>,<a href=
+ "#Sou88">9</a>,<a href=
+ "#DLB+89">5</a>,<a href=
+ "#Pev89">8</a>,<a href=
+ "#Gue92">6</a>]. The <em>isothermic</em> version
+ of the SBH method uses sets of oligonucleotides of <em>equal
+ temperatures</em> (in fact, melting temperatures of oligonucleotide
+ duplexes) but different lengths [<a href=
+ "#BFK+00">2</a>,<a href=
+ "#BFK+02">3</a>]. Every nucleotide adds its
+ increment to the oligonucleotide temperature and it is widely
+ assumed, that A or T gives 2 degrees and C or G gives 4 degrees. It
+ has been proved, that two isothermic libraries that differ in their
+ temperatures by 2 degrees are sufficient to cover any DNA sequence.
+ The hybridization experiment using isothermic libraries is expected
+ to provide data with a lower number of errors than the classical
+ approach, due to the similarity of melting temperatures. As a
+ result, reconstructed sequences are usually much more similar to
+ the original ones.</font> 
+ <h1><a name="SECTION00020000000000000000"><font size="+1">The
+ algorithm.</font></a></h1>
+  <font size="-1">From the computational point of view, the problem
+ of isothermic DNA sequencing with errors in input data is hard,
+ similarly to its classical counterpart [<a href=
+ "#BK02">4</a>]. Hence, there is a need for
+ developing heuristic algorithms providing good suboptimal
+ solutions. In this work, a heuristic algorithm based on the tabu
+ search approach is proposed. The algorithm solves the problem with
+ both positive and negative errors. Results of the computational
+ experiment, shown in Tables <a href="#tab1">1</a> and <a href=
+ "#tab2">2</a>, prove a high quality of the proposed method.</font> 
+ <p><font size="-1">In the tables, 600-20%+20% means, that to the
+ ideal data without errors, created on the base of sequences of
+ length 600 nucleotides, 20% of random negative errors and
+ additionally 20% of random positive errors have been introduced
+ (i.e. 120+120=240 errors in total). The values presented in the
+ table are average for 10 coding sequences taken from GenBank.
+ <em>Usage</em> is the percentage of correct oligonucleotides used
+ in building solutions, while <em>similarity</em> shows how close
+ the original and the reconstructed sequences are. The first
+ oligonucleotide in an original sequence has been assumed to be
+ known.</font></p>
+ <div align="center"><a name="51"></a> 
+ <table>
+ <caption><strong>Table:</strong> <font size="-1">Results for the
+ sets of oligonucleotides of temperatures 26 and 28
+ degrees.</font></caption>
+ <tr>
+ <td>
+ <div align="center">
+ <table cellpadding="3" border="1" align="center">
+ <tr>
+ <td align="center"><font size="-1">Instances</font></td>
+ <td align="center"><font size="-1">Usage [%]</font></td>
+ <td align="center"><font size="-1">Similarity [%]</font></td>
+ <td align="center"><font size="-1">Length [nucl.]</font></td>
+ <td align="center"><font size="-1">Time [s]</font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">200-5%+5%</font></td>
+ <td align="center"><font size="-1">98.23</font></td>
+ <td align="center"><font size="-1">99.90</font></td>
+ <td align="center"><font size="-1">199.80</font></td>
+ <td align="center"><font size="-1">10.13</font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">200-10%+10%</font></td>
+ <td align="center"><font size="-1">98.75</font></td>
+ <td align="center"><font size="-1">99.90</font></td>
+ <td align="center"><font size="-1">199.80</font></td>
+ <td align="center"><font size="-1">17.37</font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">200-20%+20%</font></td>
+ <td align="center"><font size="-1">92.11</font></td>
+ <td align="center"><font size="-1">93.25</font></td>
+ <td align="center"><font size="-1">199.50</font></td>
+ <td align="center"><font size="-1">43.10</font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">400-5%+5%</font></td>
+ <td align="center"><font size="-1">96.65</font></td>
+ <td align="center"><font size="-1">92.58</font></td>
+ <td align="center"><font size="-1">399.40</font></td>
+ <td align="center"><font size="-1">57.74</font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">400-10%+10%</font></td>
+ <td align="center"><font size="-1">97.84</font></td>
+ <td align="center"><font size="-1">81.82</font></td>
+ <td align="center"><font size="-1">399.20</font></td>
+ <td align="center"><font size="-1">94.21</font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">400-20%+20%</font></td>
+ <td align="center"><font size="-1">90.66</font></td>
+ <td align="center"><font size="-1">73.76</font></td>
+ <td align="center"><font size="-1">399.30</font></td>
+ <td align="center"><font size="-1">219.67</font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">600-5%+5%</font></td>
+ <td align="center"><font size="-1">95.75</font></td>
+ <td align="center"><font size="-1">81.88</font></td>
+ <td align="center"><font size="-1">598.80</font></td>
+ <td align="center"><font size="-1">115.94</font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">600-10%+10%</font></td>
+ <td align="center"><font size="-1">97.30</font></td>
+ <td align="center"><font size="-1">80.31</font></td>
+ <td align="center"><font size="-1">596.30</font></td>
+ <td align="center"><font size="-1">223.19</font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">600-20%+20%</font></td>
+ <td align="center"><font size="-1">89.41</font></td>
+ <td align="center"><font size="-1">76.47</font></td>
+ <td align="center"><font size="-1">598.70</font></td>
+ <td align="center"><font size=
+ "-1">483.21</font></td></tr></table></div>
+ <a name="tab1"></a></td></tr></table></div>
+ <br>
+ <p><br></p>
+ <div align="center"><a name="60"></a> 
+ <table>
+ <caption><strong>Table:</strong> <font size="-1">Results for the
+ sets of oligonucleotides of temperatures 36 and 38
+ degrees.</font></caption>
+ <tr>
+ <td>
+ <div align="center">
+ <table cellpadding="3" border="1" align="center">
+ <tr>
+ <td align="center"><font size="-1">Instances</font></td>
+ <td align="center"><font size="-1">Usage [%]</font></td>
+ <td align="center"><font size="-1">Similarity [%]</font></td>
+ <td align="center"><font size="-1">Length [nucl.]</font></td>
+ <td align="center"><font size="-1">Time [s]</font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">200-5%+5%</font></td>
+ <td align="center"><font size="-1">99.80</font></td>
+ <td align="center"><font size="-1">99.71</font></td>
+ <td align="center"><font size="-1">199.80</font></td>
+ <td align="center"><font size="-1">9.51</font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">200-10%+10%</font></td>
+ <td align="center"><font size="-1">99.02</font></td>
+ <td align="center"><font size="-1">98.90</font></td>
+ <td align="center"><font size="-1">199.80</font></td>
+ <td align="center"><font size="-1">15.69</font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">200-20%+20%</font></td>
+ <td align="center"><font size="-1">99.66</font></td>
+ <td align="center"><font size="-1">99.75</font></td>
+ <td align="center"><font size="-1">199.50</font></td>
+ <td align="center"><font size="-1">29.94</font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">400-5%+5%</font></td>
+ <td align="center"><font size="-1">99.80</font></td>
+ <td align="center"><font size="-1">97.10</font></td>
+ <td align="center"><font size="-1">399.20</font></td>
+ <td align="center"><font size="-1">39.87</font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">400-10%+10%</font></td>
+ <td align="center"><font size="-1">99.38</font></td>
+ <td align="center"><font size="-1">96.30</font></td>
+ <td align="center"><font size="-1">398.00</font></td>
+ <td align="center"><font size="-1">64.49</font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">400-20%+20%</font></td>
+ <td align="center"><font size="-1">98.04</font></td>
+ <td align="center"><font size="-1">95.32</font></td>
+ <td align="center"><font size="-1">397.10</font></td>
+ <td align="center"><font size="-1">154.87</font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">600-5%+5%</font></td>
+ <td align="center"><font size="-1">99.10</font></td>
+ <td align="center"><font size="-1">94.50</font></td>
+ <td align="center"><font size="-1">597.90</font></td>
+ <td align="center"><font size="-1">89.87</font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">600-10%+10%</font></td>
+ <td align="center"><font size="-1">98.87</font></td>
+ <td align="center"><font size="-1">93.87</font></td>
+ <td align="center"><font size="-1">597.60</font></td>
+ <td align="center"><font size="-1">147.84</font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">600-20%+20%</font></td>
+ <td align="center"><font size="-1">98.85</font></td>
+ <td align="center"><font size="-1">93.21</font></td>
+ <td align="center"><font size="-1">597.50</font></td>
+ <td align="center"><font size=
+ "-1">375.13</font></td></tr></table></div>
+ <a name="tab2"></a></td></tr></table></div>
+ <br>
+ <p></p>
+ <h2><a name="SECTION00030000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="BS88">1</a></dt>
+ <dd>Bains, W. and Smith G.C. 1988. A novel method for nucleic acid
+ sequence determination. <em>Journal of Theoretical Biology</em>
+ 135: 303-307.</dd>
+ <dt><a name="BFK+00">2</a></dt>
+ <dd>B<img width="5" height="14" align="bottom" border="0" src=
+ "img1.png" alt="\l">azewicz, J., Formanowicz, P., Kasprzak, M., and
+ Markiewicz, W.T. 2000. Isothermic oligonucleotide libraries. In
+ Miyano, S., Shamir, R., and Takagi, T., editors, <em>Currents in
+ Computational Molecular Biology</em>, Tokyo: Universal Academy
+ Press, pp. 97-98.</dd>
+ <dt><a name="BFK+02">3</a></dt>
+ <dd>B<img width="5" height="14" align="bottom" border="0" src=
+ "img1.png" alt="\l">azewicz, J., Formanowicz, P., Kasprzak, M., and
+ Markiewicz, W.T. 2002. Sequencing by hybridization with isothermic
+ oligonucleotide libraries. Submitted to <em>Discrete Applied
+ Mathematics</em>.</dd>
+ <dt><a name="BK02">4</a></dt>
+ <dd>B<img width="5" height="14" align="bottom" border="0" src=
+ "img1.png" alt="\l">azewicz, J. and Kasprzak, M. 2002.
+ Computational complexity of isothermic DNA sequencing. Submitted to
+ <em>Discrete Applied Mathematics</em>, also presented at ALIO/EURO
+ Workshop, Pucon 2002.</dd>
+ <dt><a name="DLB+89">5</a></dt>
+ <dd>Drmanac, R., Labat, I., Brukner, I., and Crkvenjakov, R. 1989.
+ Sequencing of megabase plus DNA by hybridization: theory of the
+ method. <em>Genomics</em> 4: 114-128.</dd>
+ <dt><a name="Gue92">6</a></dt>
+ <dd>Guenoche, A. 1992. Can we recover a sequence, just knowing all
+ its subsequences of given length? <em>Computer Applications in the
+ Biosciences</em> 8: 569-574.</dd>
+ <dt><a name="LFK+88">7</a></dt>
+ <dd>Lysov, Yu.P., Florentiev, V.L., Khorlin, A.A., Khrapko, K.R.,
+ Shik, V.V., and Mirzabekov, A.D. 1988. Determination of the
+ nucleotide sequence of DNA using hybridization with
+ oligonucleotides. A new method. <em>Doklady Akademii Nauk SSSR</em>
+ 303: 1508-1511.</dd>
+ <dt><a name="Pev89">8</a></dt>
+ <dd>Pevzner, P.A. 1989. l-tuple DNA sequencing: computer analysis.
+ <em>Journal of Biomolecular Structure and Dynamics</em> 7:
+ 63-73.</dd>
+ <dt><a name="Sou88">9</a></dt>
+ <dd>Southern, E.M. 1988. United Kingdom Patent Application
+ GB8810400.</dd></dl>
+  
+ <p><br></p>
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="fnm1">... hybridization</a><a href=
+ "#footfnm1"><sup>1</sup></a></dt>
+ <dd>The research has been partially supported by KBN grant
+ 7T11F02621</dd>
+ <dt><a name="fnm2">...zewicz</a><a href=
+ "#footfnm2"><sup>2</sup></a></dt>
+ <dd>Institute of Computing Science, Poznan University of
+ Technology, Piotrowo 3A, 60-965 Poznan Poland. E-mails: 
+ <div align="center"><b><tt>blazewic@put.poznan.pl,
+ piotr@cs.put.poznan.pl, marta@cs.put.poznan.pl,
+ aleksandra.swiercz@cs.put.poznan.pl</tt></b></div></dd>
+ <dt><a name="fnm3">...2</a><a href=
+ "#footfnm3"><sup>3</sup></a></dt>
+ <dd>Institute of Bioorganic Chemistry, Polish Academy of Sciences,
+ Noskowskiego 12/14, 61-704 Poznan, Poland. E-mail: 
+ <div align="center">
+ <b><tt>markwt@ibch.poznan.pl</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

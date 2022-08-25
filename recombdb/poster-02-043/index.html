@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>43. YASS: similarity search in DNA sequences</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-042/'>&lt;&lt;</a> Poster 043 [ <a href='poster-02-043.pdf'>PDF</a> | <a href='poster-02-043.tgz'>TeX</a> | <a href='poster-02-043.ps'>PostScript</a> ] <a href='/recombdb/poster-02-044/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>43. YASS: similarity search
+ in DNA sequences<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Laurent No&eacute;<a name="tex2html1"
+    href="#foot135"><sup>1</sup></a>, Gr&eacute;gory
+    Kucherov<a name="tex2html2" href=
+    "#foot136"><sup>2</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> DNA, sequence repeat, local
+ alignment, sequence similarity</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+  <font size="-1">Identifying similarity regions inside a DNA
+ sequence (repeats), or between two sequences (local alignment), is
+ a fundamental problem in bioinformatics. For this task, many
+ algorithms use a technique based on searching for small exact
+ repetitions of fixed size (<i>seeds</i>) and trying to extend those
+ into larger approximate repeats. <tt>BLAST</tt> family [<a href=
+ "#AMS97">3</a>] is the most prominent
+ representative of this approach.</font> 
+ <p><font size="-1">A slightly different but related method is
+ implemented in <tt>FASTA</tt> [<a href=
+ "#LP88">2</a>] where the ``hit strategy'' is
+ based on the count of the number of seeds found on each diagonal.
+ <tt>REPuter</tt> [<a href="#KOS01">4</a>] uses a
+ different approach, based on suffix trees.</font></p>
+ <p><font size="-1">In YASS (Yet Another Similarity Searcher), we
+ propose another method which tries to group together multiple seeds
+ in order to consider a ``distributed hit'', as in FASTA. But since
+ we deal with larger seeds than <tt>FASTA</tt> (for the sake of
+ speed), but smaller than <tt>BLAST</tt> (for the sake of
+ sensitivity), we have formulated another hit criterion based on the
+ overall seed size of a group (group size), which allows us to be
+ more sensitive than <tt>BL2SEQ</tt> (Blast on two sequences)
+ without loosing in time efficiency.</font></p>
+ <p><font size="-1">For example, if we consider approximate repeats
+ scored 30 by <tt>BLAST</tt> (+1/-3), one will more frequently find
+ a group of (possibly overlapping) seeds each of size at least 9
+ with group size at least 13, rather than one seed of size at least
+ 11 (which is the default parameter of <tt>BL2SEQ</tt>).</font></p>
+ <p><font size="-1">Grouping multiple seeds reduces the number of
+ infertile extensions, thus saving time for computing unnecessary
+ alignement scores.</font></p>
+ <h1><a name="SECTION00020000000000000000"><font size=
+ "+1">Method</font></a></h1>
+ <p><font size="-1">Parameters used to group seeds are estimated
+ according to probability distributions, assuming a Bernoulli model
+ of DNA sequence. Three probability criteria have been
+ used:</font></p>
+ <ul>
+ <li>seed size and the minimal seed number which trigger grouping,
+ are computed from the minimum repeat size and the minimal
+ similarity rate between copies, according to the distribution of
+ the longest run of one value in a Bernoulli sequence,</li>
+ <li>maximal distance <img width="12" height="29" align="middle"
+ border="0" src="img2.png" alt="$\rho$"> between seeds inside one
+ repeat copy is computed according to the <em>waiting time
+ distribution</em>,</li>
+ <li>indels are accounted for by computing a statistical bound
+ <img width="12" height="14" align="bottom" border="0" src=
+ "img3.png" alt="$\delta$"> of <em>random walk distribution</em>,
+ which simulates the variation of distance between corresponding
+ seeds inside a repeat copy.</li></ul>
+  <font size="-1">Similar criteria have been used in <tt>Tandem
+ Repeats Finder</tt>&nbsp;[<a href="#Ben99">1</a>]
+ for computing criteria needed to find tandem repeats. The three
+ criteria are used to <em>chain</em> seeds which potentially belong
+ to the same approximate repeat. Chains found are then validated by
+ computing a classical alignement score.</font> 
+ <p><font size="-1">The chaining algorithm is linear on the number
+ of seed pairs found.</font></p>
+ <h1><a name="SECTION00030000000000000000"><font size="+1">Results
+ and Discussion</font></a></h1>
+ <p><font size="-1">Tests have been carried out on chromosomes of
+ <i>S.Cerevisiae</i> on a <tt>Pentium IV</tt> 1.7 Ghz. Running times
+ are given below, depending on the <em>seed size</em> and <em>group
+ size</em>. <img width="12" height="14" align="bottom" border="0"
+ src="img3.png" alt="$\delta$"> and <img width="12" height="29"
+ align="middle" border="0" src="img2.png" alt="$\rho$"> have been
+ introduced in Section&nbsp;2. Comparison has been made with
+ <tt>BLAT</tt>, <tt>REPuter</tt> as well as with <tt>BL2SEQ</tt>, in
+ term of selectivity and sensitivity.</font></p>
+ <div align="center"><a name="103"></a> 
+ <table>
+ <caption><strong>Table:</strong> <font size="-1">Tests and Results
+ on chromosomes V and chromosomes IX.</font></caption>
+ <tr>
+ <td>
+ <div align="center">
+ <table cellpadding="3" border="1" align="center">
+ <tr>
+ <td align="center" colspan="2"><font size="-1"><img width="32"
+ height="14" align="bottom" border="0" src="img4.png" alt=
+ "$size$"></font></td>
+ <td align="center" colspan="2"></td>
+ <td align="center" colspan="3"><font size="-1"><img width="66"
+ height="29" align="middle" border="0" src="img5.png" alt=
+ "$cpu\ time$"></font></td>
+ <td align="center" colspan="3"><font size="-1"><img width="54"
+ height="14" align="bottom" border="0" src="img6.png" alt=
+ "$results$"></font></td></tr>
+ <tr>
+ <td align="center" colspan="1"><font size="-1"><img width="35"
+ height="14" align="bottom" border="0" src="img7.png" alt=
+ "$seed$"></font></td>
+ <td align="center" colspan="1"><font size="-1"><img width="45"
+ height="29" align="middle" border="0" src="img8.png" alt=
+ "$group$"></font></td>
+ <td align="center" colspan="1"><font size="-1"><img width="12"
+ height="14" align="bottom" border="0" src="img3.png" alt=
+ "$\delta$"></font></td>
+ <td align="center" colspan="1"><font size="-1"><img width="12"
+ height="29" align="middle" border="0" src="img2.png" alt=
+ "$\rho$"></font></td>
+ <td align="center" colspan="1"><font size="-1"><img width="43"
+ height="29" align="middle" border="0" src="img9.png" alt=
+ "$t_{chain}$"></font></td>
+ <td align="center" colspan="1"><font size="-1"><img width="41"
+ height="29" align="middle" border="0" src="img10.png" alt=
+ "$t_{align}$"></font></td>
+ <td align="center" colspan="1"><font size="-1"><img width="37"
+ height="29" align="middle" border="0" src="img11.png" alt=
+ "$t_{total}$"></font></td>
+ <td align="center" colspan="1"><font size="-1"><img width="64"
+ height="30" align="middle" border="0" src="img12.png" alt=
+ "$\char93 chains$"></font></td>
+ <td align="center" colspan="1"><font size="-1"><img width="94"
+ height="30" align="middle" border="0" src="img13.png" alt=
+ "$\char93 extensions$"></font></td>
+ <td align="center" colspan="1"><font size="-1"><img width="98"
+ height="30" align="middle" border="0" src="img14.png" alt=
+ "$\char93 alignments$"></font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">9</font></td>
+ <td align="center"><font size="-1">13</font></td>
+ <td align="center"><font size="-1">135</font></td>
+ <td align="center"><font size="-1">5</font></td>
+ <td align="center"><font size="-1">2s</font></td>
+ <td align="center"><font size="-1">2s</font></td>
+ <td align="center"><font size="-1"><b>4s</b></font></td>
+ <td align="center"><font size="-1">759558</font></td>
+ <td align="center"><font size="-1">46546</font></td>
+ <td align="center"><font size="-1">5439</font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">9</font></td>
+ <td align="center"><font size="-1">11</font></td>
+ <td align="center"><font size="-1">135</font></td>
+ <td align="center"><font size="-1">5</font></td>
+ <td align="center"><font size="-1">2s</font></td>
+ <td align="center"><font size="-1">6s</font></td>
+ <td align="center"><font size="-1"><b>8s</b></font></td>
+ <td align="center"><font size="-1">759558</font></td>
+ <td align="center"><font size="-1">231955</font></td>
+ <td align="center"><font size="-1">58389</font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">8</font></td>
+ <td align="center"><font size="-1">13</font></td>
+ <td align="center"><font size="-1">97</font></td>
+ <td align="center"><font size="-1">4</font></td>
+ <td align="center"><font size="-1">7s</font></td>
+ <td align="center"><font size="-1">7s</font></td>
+ <td align="center"><font size="-1"><b>14s</b></font></td>
+ <td align="center"><font size="-1">2710181</font></td>
+ <td align="center"><font size="-1">205014</font></td>
+ <td align="center"><font size="-1">5755</font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">8</font></td>
+ <td align="center"><font size="-1">11</font></td>
+ <td align="center"><font size="-1">97</font></td>
+ <td align="center"><font size="-1">4</font></td>
+ <td align="center"><font size="-1">7s</font></td>
+ <td align="center"><font size="-1">11s</font></td>
+ <td align="center"><font size="-1"><b>18s</b></font></td>
+ <td align="center"><font size="-1">2710181</font></td>
+ <td align="center"><font size="-1">379643</font></td>
+ <td align="center"><font size="-1">56528</font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">7</font></td>
+ <td align="center"><font size="-1">13</font></td>
+ <td align="center"><font size="-1">69</font></td>
+ <td align="center"><font size="-1">4</font></td>
+ <td align="center"><font size="-1">22s</font></td>
+ <td align="center"><font size="-1">35s</font></td>
+ <td align="center"><font size="-1"><b>57s</b></font></td>
+ <td align="center"><font size="-1">10227901</font></td>
+ <td align="center"><font size="-1">1610229</font></td>
+ <td align="center"><font size="-1">9995</font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">7</font></td>
+ <td align="center"><font size="-1">11</font></td>
+ <td align="center"><font size="-1">69</font></td>
+ <td align="center"><font size="-1">4</font></td>
+ <td align="center"><font size="-1">22s</font></td>
+ <td align="center"><font size="-1">41s</font></td>
+ <td align="center"><font size="-1"><b>69s</b></font></td>
+ <td align="center"><font size="-1">10227901</font></td>
+ <td align="center"><font size="-1">1772701</font></td>
+ <td align="center"><font size="-1">62188</font></td></tr></table>
+ <a name="tests_V.IX"></a></div></td></tr></table></div>
+ <br>
+ <font size="-1"><br></font> 
+ <div align="center"><a name="hit_probability"></a><a name=
+ "112"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure:</strong> <font size=
+ "-1">Hit probability on sequences of length <img width="9"
+      height="14" align="bottom" border="0" src="img1.png" alt=
+      "$l$"> and score 25</font></caption>
+ <tr>
+ <td>
+ <div align="center"><img width="291" height="209" align="bottom"
+ border="0" src="img15.png" alt=
+ "\includegraphics[width=6.5cm]{poster-02-043-fig01.eps}"><img width="282"
+      height="209" align="bottom" border="0" src="img16.png" alt=
+      "\includegraphics[width=6.5cm]{poster-02-043-fig02.eps}"></div></td></tr></table></div>
+ <font size="-1"><br></font> 
+ <p><font size="-1">Figure&nbsp;<a href="#hit_probability">1</a>
+ illustrates the hit probability of our method compared to
+ <tt>BL2SEQ</tt> for pairs of sequences scored 25. As a conclusion,
+ our program runs in a time comparable to that of <tt>BLAST</tt>,
+ but can be made more sensitive for detecting significant
+ similarities.</font> </p>
+ <h2><a name="SECTION00040000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="Ben99">1</a></dt>
+ <dd>Benson, G. 1999. Tandem repeats finder: a program to analyse
+ DNA sequences. <em>Nucleic Acids Research</em>, 27(2):573-580.</dd>
+ <dt><a name="LP88">2</a></dt>
+ <dd>Lipman, D. and Pearson, W. 1988. Improved tools for biological
+ sequence comparison. <em>Proc. Natl. Acad. Sci. USA</em>,
+ 85:2444-2448.</dd>
+ <dt><a name="AMS97">3</a></dt>
+ <dd>Altschul, S. and Madden, T. and Sch&auml;ffer, A. and Zhang, J.
+ and Zhang, Z. and Miller, W. and Lipman, D. 1997 Gapped BLAST and
+ PSI-BLAST: a new generation of protein database search programs.
+ <em>Nucleic Acids Research</em>, 25(17):3389-3402</dd>
+ <dt><a name="KOS01">4</a></dt>
+ <dd>Kurtz, S. and Ohlebusch, E. and Schleiermacher, C. and Stoye,
+ J. 2001 REPuter: the manifold applications of repeat analysis
+ <em>Nucleic Acids Research</em>, 29(22):4633-4642</dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot135">... No\'e</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Loria/UHP Nancy France. E-mail: 
+ <div align="center"><b><tt>laurent.noe@loria.fr</tt></b></div></dd>
+ <dt><a name="foot136">... Kucherov</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>Loria/Inria Nancy France. E-mail: 
+ <div align="center">
+ <b><tt>gregory.kucherov@loria.fr</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

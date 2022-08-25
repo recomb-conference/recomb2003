@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>3. Haplotypes histories as networks of recombinations</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center">  <a href='/recombdb/category01.html'><b>Genomics</b> Overview</a> <a href='/recombdb/category02.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-01-002/'>&lt;&lt;</a> Poster 003 [ <a href='poster-01-003.pdf'>PDF</a> | <a href='poster-01-003.tgz'>TeX</a> | <a href='poster-01-003.ps'>PostScript</a> ] <a href='/recombdb/poster-01-004/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>3. Haplotypes histories as
+ networks of recombinations<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Nadia El-Mabrouk, <a name="tex2html1"
+    href="#foot134"><sup>1</sup></a> Damian Labuda, <a name=
+    "tex2html2" href="#foot135"><sup>2</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> haplotype, SNP, recombination,
+ algorithm, network.</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction.</font></a></h1>
+  <font size="-1">Diversity of the human genome, seen across
+ individuals in populations, is quantal rather than continuous.
+ Mutations lead to discrete new alleles, whereas recombinations
+ create discrete haplotypes redistributing these alleles among
+ homologous segments. Retracing the trajectories of past genetic
+ events is crucial to understand the structure of the genome, in
+ individuals and across populations. Diversity of haplotype,
+ represented as a string of polymorphic sites along DNA sequence,
+ increases exponentially with the number of sites if recombinations
+ are taking place. Reconstructing the history of recombinations
+ compared to that of the polymorphic sites is thus notoriously
+ difficult. However, because of a relatively simple pattern of
+ haplotype diversity in the human genome, dominated by a few common
+ haplotypes, the complexity of the recombinational network can be
+ reduced making its reconstruction feasible. Common frequent
+ haplotypes are likely to recombine. We focus thus on the problem of
+ inferring the recombination pathways starting with common
+ haplotypes, and leading to rare haplotypes. We describe an
+ algorithm that generates a set of ``representative'' most
+ parsimonious sequences of recombinations. We test the algorithm on
+ haplotypes representing polymorphisms of the 8kb dystrophin gene
+ segment <em>dys44</em>. This work has been submitted to Genetics
+ (<a href="#EL02">1</a>).</font> 
+ <h1><a name="SECTION00020000000000000000"><font size=
+ "+1">Method.</font></a></h1>
+ <p><font size="-1">A <b>haplotype</b> composed of <img width="14"
+ height="13" align="bottom" border="0" src="img2.png" alt="$n$">
+ bi-allelic sites is an ordered binary string of 0's and 1's of size
+ <img width="14" height="13" align="bottom" border="0" src=
+ "img2.png" alt="$n$">. A <b>recombination</b> between two
+ haplotypes <img width="18" height="14" align="bottom" border="0"
+ src="img3.png" alt="$X$"> and <img width="17" height="14"
+      align="bottom" border="0" src="img4.png" alt="$Y$"> is an
+      operation of form:</font></p>
+ <div align="center">
+ <img width="226" height="27" border="0" src="img5.png" alt=
+ "\begin{displaymath}X^{I}X^{T},Y^{I}Y^{T} \longrightarrow X^{I}Y^{T},Y^{I}X^{T} \end{displaymath}">
+ </div>
+ <br clear="all">
+  <font size="-1">where <img width="86" height="16" align="bottom"
+ border="0" src="img6.png" alt="$X= X^{I}X^{T}$">, 
+ <img width="81" height="16" align="bottom" border="0" src=
+ "img7.png" alt="$Y = Y^{I}Y^{T}$"> and <img width="53" height="35"
+ align="middle" border="0" src="img8.png" alt="$X^{I},Y^{I}$">, as
+ well as <img width="58" height="35" align="middle" border="0"
+      src="img9.png" alt="$X^{T}, Y^{T}$">, have the same
+      length.</font> 
+ <p><font size="-1">Let 
+ <img width="124" height="32" align="middle" border="0" src=
+ "img10.png" alt="${\cal C} = \{C_{1},\cdots ,C_{h}\}$"> be a set of
+ common haplotypes, and <img width="16" height="14" align="bottom"
+ border="0" src="img11.png" alt="$R$"> be a rare one. The problem is
+ to find all minimal sequences of recombinations generating
+ <img width="16" height="14" align="bottom" border="0" src=
+ "img11.png" alt="$R$"> from a subset of <img width="13" height="14"
+      align="bottom" border="0" src="img12.png" alt=
+      "${\cal C}$">.</font></p>
+ <p><font size="-1">To simplify the subsequent algorithmic
+ developments, we describe a preprocessing of <img width="13"
+      height="14" align="bottom" border="0" src="img12.png" alt=
+      "${\cal C}$"> into a new set of binary strings <img width="18"
+      height="15" align="bottom" border="0" src="img13.png" alt=
+      "${\cal H}$">. For any haplotype <img width="23" height="30"
+      align="middle" border="0" src="img14.png" alt="$C_k$">, define
+      a haplotype <img width="25" height="30" align="middle" border=
+      "0" src="img15.png" alt="$H_k$"> such that for any position
+      <img width="27" height="29" align="middle" border="0" src=
+      "img16.png" alt="$pos$">, 
+ <img width="86" height="32" align="middle" border="0" src=
+ "img17.png" alt="$H_{k}[pos] = 1$"> if and only if 
+ <img width="121" height="32" align="middle" border="0" src=
+ "img18.png" alt="$R[pos] = C_{k}[pos]$">. Define also the
+ <b>unitary haplotype</b> <img width="19" height="14" align="bottom"
+ border="0" src="img19.png" alt="$H$"> such that <img width="62"
+ height="32" align="middle" border="0" src="img20.png" alt=
+ "$H[i]=1$"> for any <img width="10" height="14" align="bottom"
+ border="0" src="img21.png" alt="$i$">.</font></p>
+ <p><font size="-1">The problem of generating <img width="16"
+      height="14" align="bottom" border="0" src="img11.png" alt=
+      "$R$"> form <img width="13" height="14" align="bottom" border=
+      "0" src="img12.png" alt="${\cal C}$"> by recombinations can be
+      reduced to the problem of generating <img width="19" height=
+      "14" align="bottom" border="0" src="img19.png" alt="$H$"> from
+      <img width="18" height="15" align="bottom" border="0" src=
+      "img13.png" alt="${\cal H}$"> by recombinations.</font></p>
+ <p><font size="-1">A <b>canonical sequence of recombinations</b>
+ generating <img width="19" height="14" align="bottom" border="0"
+ src="img19.png" alt="$H$"> from <img width="18" height="15"
+      align="bottom" border="0" src="img13.png" alt="${\cal H}$"> is
+      a sequence of recombinations that does not contain any
+      recombination on two rare haplotypes.</font></p>
+ <p><font size="-1">A <b>greedy recombination</b> is a recombination
+ that creates a new haplotype with the largest possible prefix of
+ 1s. For example, the following recombination is greedy:</font></p>
+ <div align="center">
+ <img width="451" height="28" border="0" src="img22.png" alt=
+ "\begin{displaymath}1 \; 1 \; \vert \; 0 \; 0 \; 1 \; 1 \; 0 \; 1 \; 1 \; 1 \; \;... ...rightarrow \; \; 1 \; 1 \; 1 \; 1 \; 1 \; 0 \; 0 \; 1 \; 1 \; 0\end{displaymath}">
+ </div>
+ <br clear="all">
+  <font size="-1">whereas the following recombination is not
+ greedy:</font> <br>
+ <div align="center">
+ <img width="442" height="28" border="0" src="img23.png" alt=
+ "\begin{displaymath}0 \; 1 \; \vert \; 1 \; 1 \; 1 \; 0 \; 0 \; 1 \; 1 \; 0 \; \;... ...rightarrow \; \; 0 \; 1 \; 0 \; 0 \; 1 \; 1 \; 0 \; 1 \; 1 \; 1\end{displaymath}">
+ </div>
+ <br clear="all">
+ <p><font size="-1">An example of a canonical sequence of greedy
+ recombinations is given below. Its associated <b>haplotype set</b>
+ is 
+ <img width="95" height="32" align="middle" border="0" src=
+ "img24.png" alt="$\{H_{1}, H_{2}, H_{3}\}$">.<br></font></p>
+ <div align="center">
+ <table cellpadding="3">
+ <tr>
+ <td align="center"><font size="-1">
+ <img width="174" height="32" align="middle" border="0" src=
+ "img25.png" alt=
+ "$H_{1} = 1 \; 1 \; \vert \; 0 \; 0 \; 1 \; 1 \; 0 \; 1 \; 1 \; 1$">
+ </font></td>
+ <td align="center"><font size="-1">,</font></td>
+ <td align="center"><font size="-1">
+ <img width="174" height="32" align="middle" border="0" src=
+ "img26.png" alt=
+ "$H_{2} = 0 \; 1 \; \vert \; 1 \; 1 \; 1 \; 0 \; 0 \; 1 \; 1 \; 0$">
+ </font></td>
+ <td align="center"><font size="-1">
+ <img width="43" height="16" align="bottom" border="0" src=
+ "img27.png" alt="$\longrightarrow^{r_{1}}$"></font></td>
+ <td align="center"><font size="-1">
+ <img width="164" height="32" align="middle" border="0" src=
+ "img28.png" alt=
+ "$R'_{2} = 1 \; 1 \; 1 \; 1 \; 1 \; 0 \; 0 \; 1 \; 1 \; 0$"></font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">
+ <img width="173" height="32" align="middle" border="0" src=
+ "img29.png" alt=
+ "$R'_{2} = 1 \; 1 \; 1 \; 1 \; 1 \; \vert \; 0 \; 0 \; 1 \; 1 \; 0$">
+ </font></td>
+ <td align="center"><font size="-1">,</font></td>
+ <td align="center"><font size="-1">
+ <img width="174" height="32" align="middle" border="0" src=
+ "img30.png" alt=
+ "$H_{3} = 0 \; 0 \; 1 \; 1 \; 0 \; \vert \; 1 \; 1 \; 1 \; 0 \; 1$">
+ </font></td>
+ <td align="center"><font size="-1">
+ <img width="43" height="16" align="bottom" border="0" src=
+ "img31.png" alt="$\longrightarrow^{r_{2}}$"></font></td>
+ <td align="center"><font size="-1">
+ <img width="164" height="32" align="middle" border="0" src=
+ "img32.png" alt=
+ "$R'_{3} = 1 \; 1 \; 1 \; 1 \; 1 \; 1 \; 1 \; 1 \; 0 \; 1$"></font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">
+ <img width="173" height="32" align="middle" border="0" src=
+ "img33.png" alt=
+ "$R'_{3} = 1 \; 1 \; 1 \; 1 \; 1 \; 1 \; 1 \; 1 \; \vert \; 0 \; 1$">
+ </font></td>
+ <td align="center"><font size="-1">,</font></td>
+ <td align="center"><font size="-1">
+ <img width="178" height="32" align="middle" border="0" src=
+ "img34.png" alt=
+ "$H_{1} = 1 \; 1 \; \; 0 \; 0 \; 1 \; 1 \; 0 \; 1 \; \vert \; 1 \; 1$">
+ </font></td>
+ <td align="center"><font size="-1">
+ <img width="43" height="16" align="bottom" border="0" src=
+ "img35.png" alt="$\longrightarrow^{r_{3}}$"></font></td>
+ <td align="center"><font size="-1">
+ <img width="164" height="14" align="bottom" border="0" src=
+ "img36.png" alt=
+ "$H\; = 1 \; 1 \; 1 \; 1 \; 1 \; 1 \; 1 \; 1 \; 1 \; 1$"></font></td></tr></table></div>
+ <div><a name="greedyRec"><b>Theorem 1</b></a> &nbsp; <i>Suppose
+ there is a sequence of <img width="12" height="29" align="middle"
+ border="0" src="img37.png" alt="$p$"> recombinations generating
+ <img width="19" height="14" align="bottom" border="0" src=
+ "img19.png" alt="$H$"> from the associated haplotype set
+      <img width="25" height="30" align="middle" border="0" src=
+      "img38.png" alt="${\cal H}_{k}$">. Then there is a canonical
+      sequence of at most <img width="12" height="29" align="middle"
+      border="0" src="img37.png" alt="$p$"> greedy recombinations
+      generating <img width="19" height="14" align="bottom" border=
+      "0" src="img19.png" alt="$H$"> from an associated haplotype
+      set being a subset of 
+ <img width="25" height="30" align="middle" border="0" src=
+ "img38.png" alt="${\cal H}_{k}$">.</i></div>
+ <p><font size="-1">We developed an algorithm, based on the
+ construction of an oriented graph, that finds all minimal canonical
+ sequences of greedy recombinations. An example is given in
+ Figure&nbsp;<a href="#B047">1</a>.</font></p>
+ <div align="center"><a name="B047"></a><a name="141"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure:</strong> <font size=
+ "-1">Pathways obtained by our algorithm (<a href=
+ "#EL02">1</a>). Here, haplotypes correspond to
+ the dystrophin gene segment</font> <font size="-1"><em>dys44</em>
+ (<a href="#LZY00">2</a>). Labels of vertices
+ correspond to polymorphic site numbers. Each pathway (from vertex 0
+ to vertex 30) represents a set of most parsimonious sequences of
+ recombinations required to derive the african rare haplotype B047
+ from the set of common african haplotypes. Except the first edge
+ (incident to vertex 0), each edge corresponds to one recombination.
+ Thus, 4 recombinations are required to derive B047. The edge labels
+ indicate all the common haplotypes that can be considered in a most
+ parsimonious sequence of recombinations. For example, one solution
+ corresponding to the pathway 
+ <img width="123" height="32" align="middle" border="0" src=
+ "img1.png" alt="$(0,2,7,16,21,30)$"> is to recombine B005 with
+ B002, then to recombine the resulting haplotype with B012, then the
+ resulting haplotype with B001, and finally the resulting haplotype
+ with B005.</font></caption>
+ <tr>
+ <td>
+ <div align="center"><img width="452" height="159" align="bottom"
+ border="0" src="img39.png" alt=
+ "\includegraphics[width=10cm]{poster-01-003-fig01.eps}"></div></td></tr></table></div>
+ <h2><a name="SECTIONREF">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="EL02">1</a></dt>
+ <dd>El-Mabrouk, N. and Labuda, D. 2002. Haplotypes histories as
+ networks of recombinations. Submitted to
+ <em>Genetics</em>.<br></dd>
+ <dt><a name="LZY00">2</a></dt>
+ <dd>Labuda, A., Zietkiewicz, E. and Yotova, V. 2000. Archaic
+ lineages in the history of modern humans. <em>Genetics</em> 156:
+ 799- 808.<br></dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot134">... El-Mabrouk,</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>D&eacute;partement d'informatique et de recherche
+ op&eacute;rationnelle, Universit&eacute; de Montr&eacute;al, CP
+ 6128 Succursale Centre-ville, Montr&eacute;al, QC, Canada, H3C 3J7.
+ E-mail: 
+ <div align="center">
+ <b><tt>mabrouk@iro.umontreal.ca</tt></b></div></dd>
+ <dt><a name="foot135">... Labuda,</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>Centre de recherche, Hopital Sainte-Justine, D&eacute;partement
+ de P&eacute;diatrie, Universit&eacute; de Montr&eacute;al, 3175
+ C&ocirc;te-Sainte-Catherine, Montr&eacute;al, QC, Canada, H3T 1C5.
+ E-mail: 
+ <div align="center">
+ <b><tt>damian.labuda@umontreal.ca</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

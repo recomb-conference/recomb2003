@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>132. Robustness evaluation of clusterings</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category05.html'>&lt;&lt;</a> <a href='/recombdb/category06.html'><b>Gene Expression</b> Overview</a> <a href='/recombdb/category07.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-06-131/'>&lt;&lt;</a> Poster 132 [ <a href='poster-06-132.pdf'>PDF</a> | <a href='poster-06-132.doc'>MSWORD</a> ] <a href='/recombdb/poster-06-133/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>132. Robustness evaluation of clusterings</h2>
+ <p align="center"><b>Hans A. Kestler<a href="#_ftn1" name=
+ "_ftnref1" title="">[1]</a><sup>,<a href="#_ftn2" name="_ftnref2"
+ title="">[2]</a></sup>, Andre M&uuml;ller<sup>1,2</sup>, Malte
+ Bucholz<sup>2</sup>,<br>
+  G&uuml;nther Palm<sup>1</sup>, Thomas M. Gress<sup>2</sup></b></p>
+ <p>Clustering is an important tool for the generation and
+ evaluation of hypotheses. This is especially true for data
+ generated from microarray and comparative genomic hybridization
+ (CGH) experiments. This data is usually of high dimensionality and
+ low cardinality. The commonly used hierarchical clustering methods
+ are as such applied only in a biased way in that there is no
+ measure of the trustworthiness of a particular result. Here, we
+ will present a measure of robustness of clusterings and give
+ results on two different data sets: (a) CGH data from prostate
+ carcinomas<sup>1</sup> and (b) leukemia gene expression
+ data<sup>2</sup>.</p>
+ <p>Cluster robustness is assessed through repeating the prototype
+ based cluster procedure with fixed parameters, i.e. number of
+ clusters and training parameters, distance metric, but under
+ varying initial conditions, i.e. initial cluster centers,
+ presentation of data points. A cluster solution is then called
+ robust if the fluctuations in the cluster assignments of the data
+ points among the different runs are small and the individual
+ clusterings are in that manner consistent to each other.</p>
+ <p>The new measure we introduce is based on the pairwise similarity
+ between set partitions (score) and can be interpreted as the mean
+ proportion of samples being consistent over the different
+ clusterings. The cluster correspondence problem is hereby solved
+ via a linear assignment procedure<sup>3</sup>. The concept is
+ illustrated in the following diagrams:</p>
+ <p><img width="182" height="161" src=
+ "image001.gif">(a)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ (b)</p>
+ <br>
+ <table cellpadding="0" cellspacing="0" align="left">
+ <tr>
+ <td width="9" height="0"></td></tr>
+ <tr>
+ <td><img width="209" height="184" src=
+ "image002.gif"></td></tr></table>
+ &nbsp;<br>
+ <br>
+ <br clear="all">
+  
+ <p>Two clusterings A and B are compared (panel (a)). The number of
+ sample points in the clusters is given in the intersection graph
+ (panel (b)). The maximum correspondence between the two clusterings
+ is given by: <b>A1</b><b>&laquo;</b><b>B2,
+ A2</b><b>&laquo;</b><b>B1, A3</b><b>&laquo;</b><b>B3.</b> This then
+ results in the score:</p>
+ <p><img width="120" height="30" src="image004.gif" align="left"
+ hspace="12"></p>
+ <br clear="all">
+  
+ <p>This pairwise similarity measure is then averaged over all
+ pairings and compared to a random clustering.</p>
+ <p>In this investigation we applied the proposed robustness
+ evaluation measure to three different prototype based algorithms
+ (self-organizing feature maps (SOM), k-means- and fuzzy c-means
+ clustering) and to data sets from Mattfeldt et al.<sup>1</sup> and
+ Golub et al.<sup>2</sup>. The two following graphs show the
+ averaged robustness score (MCA) over a varying number of cluster
+ centers for the different cluster algorithms and the data sets:</p>
+ <table cellpadding="0" cellspacing="0" align="left">
+ <tr>
+ <td width="13" height="0"></td>
+ <td width="204"></td>
+ <td width="63"></td>
+ <td width="204"></td></tr>
+ <tr>
+ <td height="204"></td>
+ <td align="left" valign="top"><img width="204" height="204"
+      src="image007.jpg"></td>
+ <td align="left" valign="top"><img width="204" height="204"
+      src="image008.jpg"></td></tr></table>
+ <br clear="all">
+  &nbsp;<br>
+ <br>
+ <br clear="all">
+  
+ <p>To correctly judge the found results the performance of a random
+ cluster algorithm is included as a base-line. This suggests for the
+ prostate carcinoma data 3 clusters and for the leukemia data 2
+ clusters, as the difference of the MCA values of the fuzzy c-means
+ (leukemia) and the self-organizing feature map (prostate) to the
+ respective random clusterings is maximal in these cases. The two
+ class scenario of the leukemia data is confirmed in the 2 cluster
+ result<sup>2</sup>. Analysis of the data assigned to the three
+ clusters of the prostate carcinoma cases showed a differentiation
+ into different grades of malignancy<sup>1</sup>.</p>
+ <p>The proposed method of assessing cluster robustness is a general
+ method not limited to prototype based cluster algorithms, but also
+ applicable to hierachical methods. In comparing the found
+ robustness results to a random clustering a measure of
+ trustworthiness in the clustering result can be established.</p>
+ <p>1. Mattfeldt T, Wolter H, Kemmerling R, Gottfried H-W, Kestler
+ HA, Cluster analysis of comparative genomic (CGH) data using
+ self-organizing maps: Application to prostate carcinomas,
+ Analytical Cellular Pathology, 23:29-37, 2001.</p>
+ <p>2. Golub TR et al., Molecular classification of cancer: Class
+ discovery and class description by gene expression monitoring,
+ Science, 286(15):531-537, 1999.</p>
+ <p>3. Jonker R, Volgenant A, A&nbsp; shortest augmenting path
+ algorithm for dense and sparse linear assignment problems,
+ Computing, 38:325-340, 1987.</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a>
+ Neuroinformatics, University of Ulm, Germany, Email:
+ hans.kestler@medizin.uni-ulm.de</p></div>
+ <div id="ftn2">
+ <p><a href="#_ftnref2" name="_ftn2" title="">[2]</a> Internal
+ Medicine I, University of Ulm, Germany</p></div></div>
+ </body>
+ </html>

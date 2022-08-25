@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>59. Correlating Protein-DNA and Protein-Protein Interactions of Transcription Factors</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category02.html'>&lt;&lt;</a> <a href='/recombdb/category03.html'><b>Recognition of Genes and Regulatory Elements</b> Overview</a> <a href='/recombdb/category04.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-03-058/'>&lt;&lt;</a> Poster 059 [ <a href='poster-03-059.pdf'>PDF</a> | <a href='poster-03-059.tgz'>TeX</a> | <a href='poster-03-059.ps'>PostScript</a> ] <a href='/recombdb/poster-03-060/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>59. Correlating Protein-DNA
+ and Protein-Protein Interactions of Transcription
+ Factors<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Ricardo Bringas <a name="tex2html1" href=
+ "#foot62"><sup>1</sup></a>, Thomas Manke <a name="tex2html2"
+    href="#foot63"><sup>2</sup></a>, Martin Vingron <a name=
+    "tex2html3" href="#foot64"><sup>3</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> protein-protein interaction,
+ protein-DNA interaction, transcription, regulation.</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+  <font size="-1">Recent advances in proteomics have resulted in
+ comprehensive maps for protein-protein interactions [<a href=
+ "#UETZ">1</a>,<a href=
+ "#ITO">2</a>,<a href=
+ "#CELLZOME">3</a>,<a href=
+ "#HO">4</a>] as well as genome-wide location of
+ protein-DNA binding sites [<a href=
+ "#LEE">5</a>,<a href=
+ "#TRANSFAC">6</a>]. The sizeable fraction of
+ false positive and false negative results in these large-scale
+ experiments calls for data integration. Here we investigate whether
+ protein-protein interaction data may be used to enhance our
+ understanding of protein-DNA binding and regulation. We demonstrate
+ a statistically significant correlation between co-operatively
+ acting transcription factors and their interaction profiles, when
+ compared to random samples. We argue that combining the data from
+ protein interaction networks with genome-wide localisation of
+ transcription factor binding sites can help achieving a more
+ accurate definition of regulatory networks.</font> 
+ <h1><a name="SECTION00020000000000000000"><font size=
+ "+1">Methods</font></a></h1>
+  <font size="-1">We consider the network of protein-protein
+ interactions and define an <i>interaction distance</i>, 
+ <img width="91" height="32" align="middle" border="0" src=
+ "img2.png" alt="$d_{\rm PPI} (P_I,P_J)$">, as the minimal number of
+ interactions necessary to link two proteins <img width="22"
+      height="30" align="middle" border="0" src="img3.png" alt=
+      "$P_I$"> and <img width="23" height="30" align="middle"
+      border="0" src="img4.png" alt="$P_J$">. The protein-DNA
+      binding data, on the other hand, defines a bipartite graph,
+      which can be represented as a binary matrix, <img width="21"
+      height="14" align="bottom" border="0" src="img5.png" alt=
+      "$M$">. A raw, <img width="10" height="14" align="bottom"
+      border="0" src="img6.png" alt="$i$">, in this matrix
+      corresponds to the binding pattern of transcription factor,
+      <img width="20" height="30" align="middle" border="0" src=
+      "img7.png" alt="$P_i$">, over the whole genome. With this
+      information we can define a <i>similarity score</i>,
+      <img width="67" height="32" align="middle" border="0" src=
+      "img8.png" alt="$S(P_i,P_j)$">, for all pairs of known
+      DNA-binding proteins. We then ask the question to what extent
+      <img width="64" height="32" align="middle" border="0" src=
+      "img9.png" alt="$d(P_i,P_j)$"> is correlated with <img width=
+      "67" height="32" align="middle" border="0" src="img8.png" alt=
+      "$S(P_i,P_j)$">. We also searched for significant <img width=
+      "13" height="14" align="bottom" border="0" src="img10.png"
+      alt="$k$">-tuples (<img width="42" height="30" align="middle"
+      border="0" src="img11.png" alt="$k&gt;2$">) of transcription
+      factors and studied their binding pattern and function of
+      their regulated genes.</font> 
+ <h1><a name="SECTION00030000000000000000"><font size=
+ "+1">Results</font></a></h1>
+  <font size="-1">In this work we consider different data sets for
+ protein-protein interactions [<a href=
+ "#UETZ">1</a>,<a href=
+ "#ITO">2</a>,<a href=
+ "#CELLZOME">3</a>,<a href=
+ "#HO">4</a>] and different methods for obtaining
+ protein-DNA binding information [<a href=
+ "#LEE">5</a>,<a href=
+ "#TRANSFAC">6</a>] in Saccharomyces cerevisiae.
+ In each case we observe a clear enhancement of directly interacting
+ proteins for high scoring pairs, i.e. pairs with similar binding
+ pattern (see Fig. <a href="#fig:score_vs_dPPI">1</a>). This
+ corresponds to the biological picture of transcription factors
+ acting as modules. The data we analysed also supports the view that
+ that transcription factors occurring in the same protein-complex
+ bind preferentially to the same promoter regions. Using the binding
+ patterns of significant <img width="13" height="14" align="bottom"
+ border="0" src="img10.png" alt="$k$">-tuples of transcription
+ factors, we also find new binding sites and a preference to
+ putatively regulate genes with the same functional category. This
+ is plausible and allows identification of new regulated genes and
+ functional assignement for unclassified genes.</font> 
+ <div align="center"><a name="fig:score_vs_dPPI"></a><a name=
+ "65"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure:</strong> <font size=
+ "-1">Histogramm for the 100 highest scoring (co-occuring) pairs. In
+ this example, we use a combined set of 28.551 protein-protein
+ interactions and the DNA-binding information from [<a href=
+ "#LEE">5</a>]. As a score for synergy we employ
+ the Shannon mutual information. An increase of pairs with
+ <img width="64" height="30" align="middle" border="0" src=
+ "img13.png" alt="$d_{\rm PPI}=1$"> is apparent, as is a significant
+ reduction in the number of disconnected proteins.</font></caption>
+ <tr>
+ <td>
+ <div align="center"><font size="-1"><img width="454" height="2"
+ align="bottom" border="0" src="img12.png" alt=
+ "\includegraphics[width=10cm, angle=-90]{poster-03-059-fig01.ps}"></font></div></td></tr></table></div>
+   
+ <p></p>
+ <h2><a name="SECTION00040000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="UETZ">1</a></dt>
+ <dd>P. Uetz <i>et al</i>. A comprehensive analysis of
+ protein-protein interactions in Saccharomyces cerevisiae. Nature
+ <b>403</b>, 623 (2000).</dd>
+ <dt><a name="ITO">2</a></dt>
+ <dd>T. Ito <i>et al</i>. Comprehensive two hybrid analysis to
+ explore the yeast protein interactome. PNAS <b>97</b>, 1143
+ (2000).</dd>
+ <dt><a name="CELLZOME">3</a></dt>
+ <dd>A. Gavin <i>et al</i>. Functional organization of the yeast
+ proteome by systematic analysis of protein complexes. Nature
+ <b>415</b>, 141 (2002).</dd>
+ <dt><a name="HO">4</a></dt>
+ <dd>Y. Ho <i>et al</i>. Systematic identification of protein
+ complexes in Saccharomyces cerevisiae. Nature <b>415</b>, 180
+ (2002).</dd>
+ <dt><a name="LEE">5</a></dt>
+ <dd>T.I. Lee <i>et al</i>. Transcriptional Regulatory Networks in
+ Saccharomyces cerevisiae. Science <b>298</b>, 799-804 (2002).</dd>
+ <dt><a name="TRANSFAC">6</a></dt>
+ <dd>E. Wingender <i>et al</i>. TRANSFAC: an integrated system for
+ gene expression regulation. Nucleic Acids Res. 28, 316
+ (2000).</dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot62">... Bringas</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Centro de Ingenieria Gen&egrave;tica y Biotecnolgia, Ave 31 y
+ calle 158, Cubanacan, La Habana, Cuba. E-mail: 
+ <div align="center">
+ <b><tt>ricardo.bringas@cigb.edu.cu</tt></b></div></dd>
+ <dt><a name="foot63">... Manke</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>Max Planck Institute for Molecular Genetics, Ihnestr. 73,
+ Berlin, Germany. E-mail: 
+ <div align="center"><b><tt>manke@molgen.mpg.de</tt></b></div></dd>
+ <dt><a name="foot64">... Vingron</a><a href=
+ "#tex2html3"><sup>3</sup></a></dt>
+ <dd>Max Planck Institute for Molecular Genetics, Ihnestr. 73,
+ Berlin, Germany. E-mail: 
+ <div align="center">
+ <b><tt>vingron@molgen.mpg.de</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

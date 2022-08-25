@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+ <html>
+ <head>
+ 
+ <title>104. Computational Mutagenesis Using an Empirical Four-Body Potential</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category04.html'>&lt;&lt;</a> <a href='/recombdb/category05.html'><b>Protein Structure</b> Overview</a> <a href='/recombdb/category06.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-05-103/'>&lt;&lt;</a> Poster 104 [ <a href='poster-05-104.pdf'>PDF</a> | <a href='poster-05-104.doc'>MSWORD</a> ] <a href='/recombdb/poster-05-105/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>104. Computational Mutagenesis Using an Empirical Four-Body
+ Potential</h2>
+ <p align="center"><b>Zhibin Lu and Iosif
+ Vaisman<sup>1</sup></b></p>
+ <p><b>Keywords:</b> protein structure, mutations, Delaunay
+ tessellation</p>
+ <p>Nonlocal interactions between the amino acid residues play
+ important role in the specificity and stability of protein
+ structures. Methods of computational geometry, including Delaunay
+ tessellation, provide a robust and effective approach for
+ quantitative description of nonlocal residue contacts in proteins
+ [1,2]. An empirical four-body potential derived using Delaunay
+ tessellation of structures from a representative protein data set
+ helps facilitate understanding and interpretation of
+ structure-sequence and structure-function correlations in
+ proteins.</p>
+ <p><img width="488" height="314" src="image002.gif" align="left"
+ hspace="12" vspace="10" alt="Text Box: &#13;
+      Figure 1: 3D-1D profiles for a wild type HIV reverse transcriptase (1rtj) and three mutants.&#13;
+      ">A training set of 1,000 non-homologous high quality X-ray
+      structures of protein chains without gaps in sequence was
+      selected from PDB. These proteins were tessellated using
+      single point per residue (Ca) representation. Distribution of
+      log-likelihood values for all residue combinations in the
+      Delaunay quadruplets was used as a four-body statistical
+      potential. This knowledge-based potential has been used to
+      study the effects of mutation on protein activity and
+      stability. Each residue in a protein participates in a number
+      of Delaunay quadruplets. Total score for a residue is
+      calculated as a sum of log-likelihood scores of all Delaunay
+      quadruplets in which this residue participates. This score for
+      all residues along the sequence is shown in the upper plot in
+      Fig. 1. To evaluate the effect of mutation we simply change
+      the identity of one or more residues in the protein and
+      recalculate the score. Then we subtract the mutant profile
+      from that of wild type protein and get a difference profile
+      shown in the lower plots of Fig. 1 for D185E, D185V, and D185Y
+      mutants of HIV reverse transcriptase. The difference profiles
+      reflect the magnitude of change that is caused by residue
+      replacement and identify all residues affected by such a
+      change.</p>
+ <p><img width="590" height="314" src="image004.gif" align="left"
+ hspace="12" vspace="10" alt="Text Box: &#13;
+      &#13;
+ Figure 2: Correlation between computed score and experimental activity for 1rtj.&#13;
+      ">Correlation between the changes in calculated protein scores
+      caused by mutations, experimental activity and thermodynamic
+      data, is shown in Fig. 2. Here the average change in potential
+      for all replacements in a set of almost 400 mutants of HIV
+      reverse transcriptase [3] is correlated with the
+      experimentally determined activity of mutants. For mutants
+      with the higher than a wild type activity the average change
+      in potential is positive, for less active mutants the negative
+      change in potential is proportional to the decrease in
+      activity. A strong correlation suggests significant predictive
+      power of the computational mutagenesis method.</p>
+ <p><b>References</b></p>
+ <p>[1]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ Singh R.K., Tropsha A., Vaisman I.I.&nbsp; Delaunay Tessellation of
+ Proteins: Four Body Nearest Neighbor Propensities of Amino Acid
+ Residues. <i>J. Comput. Biol.</i> 1996, 3, 2, 213-222.</p>
+ <p>[2]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ Vaisman I.I., Tropsha A., Zheng W.&nbsp; Compositional Preferences
+ in Quadruplets of Nearest Neighbor Residues in Protein Structures:
+ Statistical Geometry Analysis. <i>IEEE Symposia on Intelligence and
+ Systems Proceedings,</i> 1998, p.163-168.</p>
+ <p>[3]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ Wrobel J.A., Chao S.F., Conrad M.J., Merker J.D., Swanstrom R.,
+ Pielak G.J., Hutchison C.A. 3rd.&nbsp; A genetic approach for
+ identifying critical residues in the fingers and palm subdomains of
+ HIV-1 reverse transcriptase. <i>Proc Natl Acad Sci USA</i> 1998,
+ 95, 2, 638-645.</p></div>
+ </body>
+ </html>

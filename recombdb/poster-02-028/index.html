@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>28. Gabor Wavelets to Assess the Harmonic Content of DNA Sequences</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-027/'>&lt;&lt;</a> Poster 028 [ <a href='poster-02-028.pdf'>PDF</a> | <a href='poster-02-028.tgz'>TeX</a> | <a href='poster-02-028.ps'>PostScript</a> ] <a href='/recombdb/poster-02-029/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>28. Gabor Wavelets to Assess
+ the Harmonic Content of DNA Sequences<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Gunther J. L. Gerhardt, <a name="tex2html1"
+ href="#foot91"><sup>1</sup></a> Marcelo C. Pinto, <a name=
+ "tex2html2" href="#foot92"><sup>2</sup></a> Tarso B. L.
+ Kist</b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> Frequency analysis, wavelets,
+ DNA</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+   
+ <p><font size="-1">There is a great amount of work assessing
+ harmonic content of DNA in the form of Fourier Spectral Analysis of
+ Correlation Functions (CF) calculated for DNA nucleotide sequences
+ [<a href="#DVL+00">1</a>,<a href=
+ "#An00">2</a>,<a href=
+ "#FKM+01">3</a>]. The Wavelet Transform (WT) has
+ the advantage over Fourier Transform (FT) of giving information
+ about the local (and not only global) frequency composition
+ [<a href="#Me93">4</a>]. Along the next sections
+ we will describe the CF and WT construction and apply them to a
+ genomic sequence bin [<i>Saccharomyces cerevisiae chromosome
+ VII</i> (GenBank NC001139)]. All data used here were taken from
+ GenBank Database <tt>http://www.ncbi.nlm.nih.gov</tt>.</font></p>
+ <h1><a name="SECTION00020000000000000000"><font size="+1">Methods
+ and Results</font></a></h1>
+ <p><font size="-1">Correlation Functions can be considered, for our
+ purposes, as a linear combination of joint probabilities in the
+ following way [<a href=
+    "#DVL+00">1</a>,<a href="#CT96">
+ 5</a>,<a href="#LL97">6</a>]: 
+ <img width="169" height="32" align="middle" border="0" src=
+ "img5.png" alt="$C(\tau)=\sum_{i,j}P_{i,j}(\tau)S_{i,j},$"> where
+ <img width="29" height="30" align="middle" border="0" src=
+ "img6.png" alt="$S_{i,j}$"> is some inner product normally taken as
+ a Kroneker delta function (<img width="26" height="30" align=
+ "middle" border="0" src="img7.png" alt="$\delta_{i,j}$">),
+ <img width="10" height="14" align="bottom" border="0" src=
+ "img8.png" alt="$i$"> and <img width="11" height="29" align=
+ "middle" border="0" src="img9.png" alt="$j$"> represent the base
+ pairs and <img width="29" height="30" align="middle" border="0"
+      src="img10.png" alt="$P_{i, j}$"> is a joint probability. The
+      parameter <img width="13" height="13" align="bottom" border=
+      "0" src="img11.png" alt="$\tau$"> is normally taken as a delay
+      between two base pairs. Actual physical or biological
+      properties are taken into account during the construction of a
+      CF [<a href="#DVL+00">1</a>,<a href=
+      "#LL97">6</a>,<a href=
+      "#CT96">5</a>]. This function itself can
+      give a map of periodicities present in DNA that can be
+      assessed using some frequency decomposition technique like FT
+      or WT.</font></p>
+ <p><font size="-1">A WT, like a Windowed Fourier Transform (WFT),
+ is a transform that can map a function of position into a space of
+ frequencies. The WT is defined not only in frequency but also in
+ position. It is defined as [<a href=
+ "#Me93">4</a>]</font></p>
+ <div align="right">
+ <table width="100%" align="center">
+ <tr valign="middle">
+ <td align="center" nowrap><a name="eq-1"></a><img width="269"
+ height="65" border="0" src="img12.png" alt=
+ "\begin{displaymath} {\cal W}\{C(\tau)\}(b, s)=\int_{-\infty}^{\infty} C(\tau )\Psi\bigg(\frac{\tau-b}{s}\bigg)d\tau, \end{displaymath}">
+ </td>
+ <td width="10" align="right">(1)</td></tr></table></div>
+ <br clear="all">
+  <font size="-1">where 
+ <img width="88" height="32" align="middle" border="0" src=
+ "img13.png" alt="$\Psi[(\tau-b)/s]$"> is the mother wavelet with
+ position and frequency localization. An example is the plane wave
+ modulated by a Gaussian curve in the form also known as Gabor
+ Wavelet (GW) and that possesses a structure that maximizes the
+ relationship between position and frequency. Here we used 
+ <img width="112" height="19" align="bottom" border="0" src=
+ "img14.png" alt="$e^{-(\tau-b)^2/2s^{2}}e^{is\tau}$">. The Power
+ Spectrum is defined in the same way as in the Fourier space as 
+ 
+ <img width="167" height="34" align="middle" border="0" src=
+ "img15.png" alt=
+ "$ P[{\cal W} (b, \tau)]= \vert{\cal W} (b, \tau)\vert^{2}$">.</font>
+ 
+ <p><font size="-1">To make the spectral analysis of CF and also
+ keep the information on nucleotide position we proceed as follows:
+ For each segment of <img width="15" height="14" align="bottom"
+ border="0" src="img16.png" alt="$L$"> nucleotides we compute
+ <img width="38" height="32" align="middle" border="0" src=
+ "img17.png" alt="$C(\tau )$"> and 
+ <img width="71" height="32" align="middle" border="0" src=
+ "img18.png" alt="${\cal W}\{ C(\tau) \}$"> in sequence. Then we
+ take a small step (for example a dozen nucleotides) and repeat the
+ procedure making a so-called <i>moving window</i> of lenght
+ <img width="15" height="14" align="bottom" border="0" src=
+ "img16.png" alt="$L$"> along the sequence. With this approach we
+ can see changes in spectral composition of CF along the sequence of
+ small steps. A coding region must appear as a peak at
+      <img width="28" height="32" align="middle" border="0" src=
+      "img4.png" alt="$1/3$">. Note that we have here a function of
+      two parameters: position shift (<img width="13" height="13"
+      align="bottom" border="0" src="img11.png" alt="$\tau$">) and
+      frequency dilation (<img width="11" height="13" align="bottom"
+      border="0" src="img19.png" alt="$s$">), which is very
+      different from a WFT where the frequency dilation is keept
+      constant.</font></p>
+ <div align="center"><a name="94"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure:</strong> <font size=
+ "-1">Power spectrum for</font> <font size="-1"><i>S. cerevisiae</i>
+ cromossome VII ranging between <img width="52" height="13"
+      align="bottom" border="0" src="img1.png" alt=
+      "$110000$">...<img width="52" height="13" align="bottom"
+      border="0" src="img2.png" alt="$119400$">. The horizontal axis
+      is denoted in kbp<img width="32" height="29" align="middle"
+      border="0" src="img3.png" alt="$\times 10$"> and the vertical
+      axis is the Power Spectrum at the <img width="28" height="32"
+      align="middle" border="0" src="img4.png" alt="$1/3$"> band. In
+      the figure are shown some structures explained in the
+      text.</font></caption>
+ <tr>
+ <td>
+ <div align="center"><img width="375" height="143" align="bottom"
+ border="0" src="img20.png" alt=
+ "\includegraphics[width=.7\textwidth,height=3.2cm]{poster-02-028-fig01.ps}">
+ </div></td></tr></table></div>
+ <p><font size="-1">Figure 1 shows the method applied to a
+ nucleotide bin of an Eukatiotic structure (<i>S. cerevisiae</i>).
+ There we are able to see structures like KEX1 (COG 2939, killer
+ toxin and alpha factor precursor processing) and MCM6 (COG1241,
+ Member of the MCM/P1 family of proteins involved in DNA
+ replication). Using this technique we can assess the frequency
+ content at each segment position with the best possible resolution.
+ As pointed out in literature [<a href=
+ "#An00">2</a>,<a href=
+ "#FKM+01">3</a>,<a href=
+ "#LL97">6</a>] there exist periodicities (other
+ than <img width="28" height="32" align="middle" border="0"
+      src="img4.png" alt="$1/3$">) playing some role in gene finding
+      but it is relevant to note that there are also some harmonics
+      without biological significance [<a href=
+      "#LL97">6</a>]. The next step is to make a
+      good benchmark for this method [<a href=
+      "#FT92">7</a>] and to look for complementary
+      tools like the string-based one. It is also noteworthy that
+      there are recent studies aiming to locate and characterize
+      regions with <img width="36" height="32" align="middle"
+      border="0" src="img21.png" alt="$1/10$"> and <img width="36"
+      height="32" align="middle" border="0" src="img22.png" alt=
+      "$1/11$"> spectral content [<a href=
+      "#FIK+02">8</a>] using FT speculating about
+      arrays of special compact form of nucleosomes clustered in
+      DNA.</font></p>
+ <p></p>
+ <h2><a name="SECTION00030000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="DVL+00">1</a></dt>
+ <dd>Dodiin, G. Vandergheynst, P., Levoir, P., Cordier, C., Marcout,
+ L. 2000 Fourier and wavelet transform analysis, a tool for
+ visualizing regular pattern in DNA sequences. <i>Journal of
+ Theoretical Biology</i> 206 pp.323-326. </dd>
+ <dt><a name="An00">2</a></dt>
+ <dd>Anastassiou, D. 2000 Frequency-domain analysis of biomolecular
+ sequences. <i>Bioinformatics</i> 16(12) pp.1073-1081. </dd>
+ <dt><a name="FKM+01">3</a></dt>
+ <dd>Fukushima, A., Kudo, Y., Mori, H., Kinouchi, M., Kanaya, S.,
+ Ikemura, T. 2001 Statistical analysis of genomic information:
+ various periodicities in DNA sequence. <i>Genome Informatics</i> 12
+ pp.435-436. </dd>
+ <dt><a name="Me93">4</a></dt>
+ <dd>Meyer, Y. 1993 <i>Wavelets: Algorithms and aplications.</i>
+ Society for Industrial and Applied Mathematics, Philadelphia. </dd>
+ <dt><a name="CT96">5</a></dt>
+ <dd>Chechetkin, V. R., Turygin, A. Y. 1996 Study of correlations in
+ DNA sequences. <i>Jornal of Theoretical Biology</i> 178 pp.205-217.
+ </dd>
+ <dt><a name="LL97">6</a></dt>
+ <dd>Lee, W., Luo, L. 1997 Periodicity of base correlation in
+ nucleotide sequence. <i>Physical Review E</i> 56(1) pp.848-851.
+ </dd>
+ <dt><a name="FT92">7</a></dt>
+ <dd>Ficket, J. W., Tung, C. 1992 Assessment of protein coding
+ measures. <i>Nucleic Acids Research</i> 20(24) pp.6441-6450. </dd>
+ <dt><a name="FIK+02">8</a></dt>
+ <dd>Fukushima, A., Kudo, Y., Oshima, T., Mori, H., Kinouchi, M.,
+ Kanaya, S., Ikemura, T. 2002 Periodicity in prokariotic and
+ eukariotic genomes identified by power spectrum analysis
+ <i>Gene</i> 300 pp.203-211. </dd></dl>
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot91">... Gerhardt,</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Departamento de F&iacute;sica e Qu&iacute;mica da Universidade
+ de Caxias do Sul, Rua Francisco Getulio Vargas 1130 95001-970
+ Caxias do Sul Brazil and Departamento de Biof&iacute;sica da
+ Universidade Federal do Rio Grande do Sul. Av. Bento
+ Gon&ccedil;alves 9500 91501-970 Porto Alegre Brazil E-mail: 
+ <div align="center"><b><tt>gunther@if.ufrgs.br</tt></b></div></dd>
+ <dt><a name="foot92">... Pinto,</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>Instituto de Inform&aacute;tica da Universidade Federal do Rio
+ Grande do Sul, Av. Bento Gon&ccedil;alves 9500 91501-970 Porto
+ Alegre Brazil E-mail: 
+ <div align="center">
+ <b><tt>mcpinto@inf.ufrgs.br</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

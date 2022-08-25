@@ -1,0 +1,274 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>21. Combinatorial aspects of the Simplified Partial Digest Problem.</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-020/'>&lt;&lt;</a> Poster 021 [ <a href='poster-02-021.pdf'>PDF</a> | <a href='poster-02-021.tgz'>TeX</a> | <a href='poster-02-021.ps'>PostScript</a> ] <a href='/recombdb/poster-02-022/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>21. Combinatorial aspects of
+ the Simplified Partial Digest Problem.<br></b></font></div>
+ <br>
+ <div align="center">Jacek B<img width="5" height="14" align=
+ "bottom" border="0" src="img1.png" alt="\l">azewicz <a name=
+ "tex2html1" href="#foot82"><sup>1</sup></a> Marcin Jaroszewski
+ <a name="tex2html2" href="#foot83"><sup>2</sup></a> Michael
+ Waterman <a name="tex2html3" href="#foot84"><sup>3</sup></a></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> DNA restriction maps, Double
+ Digest Problem, Partial Digest Problem</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction.</font></a></h1>
+ <p><font size="-1">A creation of a physical map is one of the basic
+ steps in genome studies. Such a&nbsp;map of&nbsp;a&nbsp;DNA strand
+ contains information about locations of markers, which are short
+ and specific sequences of nucleotides. There are many ways of a
+ physical map construction. One of them consists in a digestion of
+ DNA with restriction enzymes. These enzymes cut DNA molecules in
+ the places a short and specific pattern of nucleotides, called
+ restriction site, occurs. What is more, for any given input strand,
+ the&nbsp;number of&nbsp;sites recognized and cleft by
+ an&nbsp;enzyme depends on&nbsp;the&nbsp;time span of
+ a&nbsp;digestion [<a href="#SM97">3</a>],
+ [<a href="#Wat95">6</a>].</font></p>
+ <p><font size="-1">One possible approach involves two enzymes and
+ reduces to the Double Digest Problem (DDP). This problem is known
+ to be computationally hard. Moreover, a number of distinct,
+ feasible solutions is exponential [<a href=
+ "#GW87">2</a>]. Thus, other approaches, based on
+ one enzyme cuts have been proposed. The first, presented in
+ [<a href="#SSL90">4</a>] takes as the input
+ lengths of DNA fragments obtained by cutting a target DNA in one,
+ two and all the places the restriction site occurs, a number of the
+ cuts being dependent on the duration of the digestion process. This
+ biochemical experiment reduces then to the Partial Digest Problem
+ (PDP). Its complexity is an open question, but a number of
+ alternative solutions may be bounded from above by a polynomial in
+ a number of restriction sites [<a href=
+ "#SSL90">4</a>]. Presented algorithms can handle
+ ideal case as well as a limited error data one [<a href=
+ "#SS94">5</a>].</font></p>
+ <p><font size="-1">In the paper the PDP approach is simplified and
+ the copies of&nbsp;a&nbsp;target strand are split into two sets and
+ two digestions are performed only: a&nbsp;short digestion and
+ a&nbsp;long digestion (thus, the name the Simplified Partial Digest
+ Problem - SPDP). The goal of a short digestion is to have almost
+ all molecules from the first set cut at most once. This can be
+ assured by a properly chosen time span of the&nbsp;reaction.
+ Molecules from the other set are cut in all the places the
+ restriction site occurs due to the long reaction time span (a long
+ digestion). Then, the lengths of obtained fragments are measured
+ during a gel electrophoresis process and recorded. In the paper, a
+ new algorithm for the Simplified Partial Digest Problem is
+ introduced. It compares favorably with the classical version of the
+ PDP approach [<a href="#SS94">5</a>] and with the
+ first SPDP algorithm presented in [<a href=
+ "#Betal01">1</a>]. A number of distinct, feasible
+ solutions is estimated as well.</font></p>
+ <h1><a name="SECTION00020000000000000000"><font size="+1">Problem
+ formulation.</font></a></h1>
+ <p><font size="-1">Let 
+ <img width="148" height="32" align="middle" border="0" src=
+ "img2.png" alt=
+ "$\Gamma = \{\gamma_1, \gamma_2,\ldots, \gamma_{2n}\}$"> be the
+ multiset of fragment lengths (excluding the length of a whole DNA
+ strand) that have been obtained out of&nbsp;a&nbsp;short digestion
+ and let 
+ <img width="162" height="32" align="middle" border="0" src=
+ "img3.png" alt=
+ "$\Lambda = \{\lambda_1, \lambda_2, \ldots, \lambda_{n+1}\}$"> be
+ the multiset of fragment lengths that have been obtained out
+ of&nbsp;a&nbsp;long digestion, <img width="14" height="13"
+      align="bottom" border="0" src="img4.png" alt="$n$"> denotes
+      the&nbsp;number of restriction sites in a&nbsp;target DNA.
+      Furthermore, let us sort the elements of multiset <img width=
+      "14" height="14" align="bottom" border="0" src="img5.png" alt=
+      "$\Gamma$"> in non-decreasing order. In this way we obtain the
+      list 
+ <img width="147" height="32" align="middle" border="0" src=
+ "img6.png" alt="$A = \langle a_1, a_2, \ldots, a_{2n} \rangle$">.
+ It is easy to observe that in the ideal case (assuming no
+ experimental errors) 
+ <img width="117" height="30" align="middle" border="0" src=
+ "img7.png" alt="$a_i + a_{2n-i+1} = l$">, 
+ <img width="84" height="29" align="middle" border="0" src=
+ "img8.png" alt="$i = 1, \ldots, n$">, <img width="9" height="14"
+ align="bottom" border="0" src="img9.png" alt="$l$"> denotes the
+ length of the target DNA strand. The restriction fragments whose
+ lengths equal, respectively, <img width="18" height="29"
+      align="middle" border="0" src="img10.png" alt="$a_i$"> and
+      <img width="58" height="29" align="middle" border="0" src=
+      "img11.png" alt="$a_{2n-i+1}$"> will be called complementary
+      and the&nbsp;pair of complementary fragments will be denoted
+      by 
+ <img width="95" height="32" align="middle" border="0" src=
+ "img12.png" alt="$\{a_i, a_{2n-i+1}\}$">, 
+ <img width="84" height="29" align="middle" border="0" src=
+ "img8.png" alt="$i = 1, \ldots, n$">. Obviously, each pair
+ corresponds to exactly one restriction site in the target molecule.
+ Unfortunately, the real ordering of complementary fragments within
+ a pair is not known as the actual information gets lost during the
+ digestion processes. Thus, let 
+ <img width="128" height="32" align="middle" border="0" src=
+ "img13.png" alt="$P_i = \langle a_i, a_{2n-i+1} \rangle$"> and 
+ 
+ <img width="168" height="32" align="middle" border="0" src=
+ "img14.png" alt="$P_{2n-i+1} = \langle a_{2n-i+1}, a_i \rangle$">
+ denote the permutations of the pair 
+ <img width="95" height="32" align="middle" border="0" src=
+ "img12.png" alt="$\{a_i, a_{2n-i+1}\}$">, 
+ <img width="84" height="29" align="middle" border="0" src=
+ "img8.png" alt="$i = 1, \ldots, n$"> and let us call
+      <img width="18" height="29" align="middle" border="0" src=
+      "img10.png" alt="$a_i$"> the <em>predecessor</em> in
+      <img width="20" height="30" align="middle" border="0" src=
+      "img15.png" alt="$P_i$">. Furthermore, let us denote by 
+      
+ <img width="140" height="32" align="middle" border="0" src=
+ "img16.png" alt="$Q=\{q_1, q_2, \ldots, q_n\}$"> the set of
+ permutations, where <img width="53" height="30" align="middle"
+ border="0" src="img17.png" alt="$q_i = P_i$"> or 
+ <img width="93" height="30" align="middle" border="0" src=
+ "img18.png" alt="$q_i = P_{2n-i+1}$"> for 
+ <img width="84" height="29" align="middle" border="0" src=
+ "img8.png" alt="$i = 1, \ldots, n$">. Moreover, let 
+ <img width="145" height="32" align="middle" border="0" src=
+ "img19.png" alt="$X=\langle x_1, x_2,\ldots, x_n \rangle$"> be the
+ list of predecessors from each permutation being in <img width="17"
+      height="30" align="middle" border="0" src="img20.png" alt=
+      "$Q$">, sorted non-decreasingly. To each set <img width="17"
+      height="30" align="middle" border="0" src="img20.png" alt=
+      "$Q$"> there corresponds multiset 
+ <img width="156" height="32" align="middle" border="0" src=
+ "img21.png" alt="$R=\{r_1, r_2,\ldots,r_{n+1}\}$"> of integer
+ numbers such that <img width="56" height="29" align="middle"
+      border="0" src="img22.png" alt="$r_ 1 = x_1$">, 
+ <img width="102" height="29" align="middle" border="0" src=
+ "img23.png" alt="$r_i = x_i-x_{i-1}$"> for 
+ <img width="84" height="29" align="middle" border="0" src=
+ "img24.png" alt="$i = 2, \ldots, n$"> and 
+ <img width="99" height="30" align="middle" border="0" src=
+ "img25.png" alt="$r_{n+1} = l-x_n$">.</font></p>
+ <div align="center"><font size="-1"><em>The Simplified Partial
+ Digest Problem (SPDP) is formulated as follows:</em></font></div>
+  <font size="-1">Given multisets <img width="14" height="14"
+      align="bottom" border="0" src="img5.png" alt="$\Gamma$"> and
+      <img width="15" height="14" align="bottom" border="0" src=
+      "img26.png" alt="$\Lambda$"> of fragment lengths, find list
+      <img width="18" height="14" align="bottom" border="0" src=
+      "img27.png" alt="$X$"> such that the corresponding multiset
+      <img width="16" height="14" align="bottom" border="0" src=
+      "img28.png" alt="$R$"> is equal to <img width="15" height="14"
+      align="bottom" border="0" src="img26.png" alt=
+      "$\Lambda$">.</font> 
+ <h1><a name="SECTION00030000000000000000"><font size=
+ "+1">Results.</font></a></h1>
+ <p><font size="-1">Firstly, to solve the SPDP problem the algorithm
+ has been designed for ideal as well as erroneous data case
+    [<a href="#Betal01">1</a>]. As a&nbsp;model
+    of&nbsp;errors the&nbsp;one assumed in [<a href=
+    "#SS94">5</a>] had been adopted. The results
+    were quite promising, but still much work had left to be done.
+    In&nbsp;the following paper we presented a new, very efficient
+    algorithm for solving SPDP. The algorithm is based on the matrix
+    of distances between restricion sites and uses neighbourhood
+    rules that are valid for restriction sites in order
+    to&nbsp;construct a feasible solution to the problem. The
+    results of the tests indicate that the algorithm is much faster
+    than the ones presented in [<a href=
+    "#Betal01">1</a>], [<a href=
+    "#SS94">5</a>] and that the number of
+    generated solutions tends to be lower. On the other hand, it is
+    proved that, in the worst case, a number of alternative
+    solutions is exponential. However, the worst case is very rare
+    and may occur only if the data (cuts) are very
+    symmetric.</font></p>
+ <p></p>
+ <h2><a name="SECTION00040000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="Betal01">1</a></dt>
+ <dd>B<img width="5" height="14" align="bottom" border="0" src=
+ "img1.png" alt="\l">azewicz, J., Formanowicz, P., Jaroszewski, M.,
+ Kasprzak, M., Markiewicz, W.&nbsp;T. 2001. Construction of DNA
+ restriction maps based on a simplified experiment.
+ <em>Bioinformatics</em>, <b>5</b>, pp. 398-404.</dd>
+ <dt><a name="GW87">2</a></dt>
+ <dd>Goldstein, L. and Waterman, M.&nbsp;S. 1987. Mapping DNA by
+ stochastic relaxation. <em>Adv. Appl. Math.</em>, <b>8</b>, pp.
+ 194-207.</dd>
+ <dt><a name="SM97">3</a></dt>
+ <dd>Setubal, J. and Meidanis, J. 1997. <em>Introduction to
+ Computational Biology.</em> Boston: PWS Publishing Company.</dd>
+ <dt><a name="SSL90">4</a></dt>
+ <dd>Skiena, S.&nbsp;S., Smith, W.&nbsp;D., Lemke, P. 1990.
+ Reconstructing sets from interpoint distances. In: <em>Proc. Sixth
+ ACM Symp. Computational Geometry</em>, pp. 332-339.</dd>
+ <dt><a name="SS94">5</a></dt>
+ <dd>Skiena, S.&nbsp;S. and Sundaram, G. 1994. A partial digest
+ approach to restriction site mapping. <em>Bulletin of Mathematical
+ Biology</em>, <b>56</b>(2), pp. 275-294.</dd>
+ <dt><a name="Wat95">6</a></dt>
+ <dd>Waterman, M.&nbsp;S. 1995. <em>Introduction to Computational
+ Biology. Maps, Sequences and Genomes.</em> London: Chapman &amp;
+ Hall.</dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot82">...zewicz</a> <a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Institute of Computing Science, Poznan University of
+ Technology, Poznan, Poland and Institute of Bioorganic Chemistry,
+ Polish Academy of Sciences, Poznan, Poland. E-mail: 
+ <div align="center"><tt>blazewic@put.poznan.pl</tt></div></dd>
+ <dt><a name="foot83">... Jaroszewski</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>Institute of Computing Science, Poznan University of
+ Technology, Poznan, Poland and Institute of Bioorganic Chemistry,
+ Polish Academy of Sciences, Poznan, Poland. E-mail: 
+ <div align="center">
+ <tt>marcin.jaroszewski@cs.put.poznan.pl</tt></div></dd>
+ <dt><a name="foot84">... Waterman</a><a href=
+ "#tex2html3"><sup>3</sup></a></dt>
+ <dd>University of Southern California, Los Angeles, USA. Email: 
+ <div align="center"><tt>msw@hto-b.usc.edu</tt></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

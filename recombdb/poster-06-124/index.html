@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>124. Meta-analysis on Microarrays Using Effect Size</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category05.html'>&lt;&lt;</a> <a href='/recombdb/category06.html'><b>Gene Expression</b> Overview</a> <a href='/recombdb/category07.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-06-123/'>&lt;&lt;</a> Poster 124 [ <a href='poster-06-124.pdf'>PDF</a> | <a href='poster-06-124.doc'>MSWORD</a> ] <a href='/recombdb/poster-06-125/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>124. Meta-analysis on Microarrays Using Effect Size</h2>
+ <p align="center"><b>Jung Kyoon Choi</b><a href="#_ftn1" name=
+ "_ftnref1" title=""><b>[1]</b></a><b>,&nbsp;</b> <b>Sangsoo
+ Kim</b><a href="#_ftn2" name="_ftnref2" title=
+ ""><b>[2]</b></a><b>,&nbsp;</b> <b>Ook Joon Yoo</b><a href="#_ftn3"
+ name="_ftnref3" title=""><b>[3]</b></a></p>
+ <p><b>Keywords:</b> microarray, meta-analysis, effect size, fixed
+ effects, random effects, Bayesian meta-analysis</p>
+ <p><b>1&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Introduction</b></p>
+ <p>One of the most challenging tasks microarray analysts will face
+ would be how to extract, compare, and integrate information from an
+ enormous amount of accumulating data.&nbsp; However, the lack of
+ standards for microarray experiments generates heterogeneous
+ datasets of which direct comparison is not possible.&nbsp; The
+ reasonable approach, in this situation, is to combine results of
+ individual studies.&nbsp; For this purpose, we introduced the most
+ developed meta-analytic method, which expresses the result in the
+ form of effect size.</p>
+ <p>Effect size refers to a family of indices that measure the
+ magnitude of a treatment effect. &nbsp;By virtue of wide utility of
+ effect size indices, the effect size method is generally applicable
+ to many types of microarray studies.&nbsp; Here we employed two
+ sets of cancer studies.&nbsp; One set contains our four cDNA
+ microarray datasets on liver cancer (LC), which are created in
+ controlled experimental conditions. The other set is comprised of
+ four publicly available prostate cancer (PC) studies.&nbsp; This
+ set was used for another meta-analysis method in the previous study
+ (Rhodes et al. 2002).</p>
+ <p><b>2&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Models and
+ implementations</b></p>
+ <p>Effect size of each study was measured by a standardized mean
+ difference (Hedges and Olkin. 1985) between normal and tumor groups
+ for each gene.&nbsp; To address interstudy variation, a fixed
+ effects (FE) and random effects (RE) model were employed.&nbsp;
+ Based on the result of homogeneity tests (Figure 1), the FE model
+ was adopted for the LC datasets, assuming that the effect size of
+ each study is a draw from a population with an overall mean.&nbsp;
+ By contrast, for the PC datasets, the RE model was shown to be
+ proper.&nbsp; The RE model postulates that each study effect is a
+ draw from a distribution with a study-specific mean, which in turn
+ is a draw from a superpopulation with an overall mean.&nbsp;
+ Therefore it requires estimating and incorporating a between-study
+ variance.&nbsp; The conventional method developed by DerSimonian
+ and Laird (1986) and a Bayesian approach were applied and compared
+ for the RE model.</p>
+ <p>The effect sizes were efficiently combined to obtain the
+ estimate of the overall mean and its <i>z</i> score.&nbsp; By
+ gathering the separate datasets, we could gain the same effect as
+ increasing sample size.&nbsp; The data integration promoted the
+ discovery of the small but consistent effects with increased
+ sensitivity and reliability.&nbsp; In many cases, the <i>z</i>
+ score of the overall mean exceeded a given threshold, while none of
+ the study effects did.&nbsp; We term these "integration-driven
+ discoveries" and the ratio over the total discoveries was
+ computed.&nbsp; We show that the more significant the overall mean,
+ the higher proportion integration-driven discoveries account for
+ (Figure 2).&nbsp; Expression patterns of the significant genes can
+ be visualized at http://centi.kribb.re.kr/~choi/MA/PCsupp.</p>
+ <p><b>3&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Figures</b></p>
+ <p><img width="499" height="182" src="image002.gif" align="left"
+ hspace="12" alt="Text Box: "></p>
+ <p>Figure 1: Gene by gene testing for the homogeneity of the study
+ effects.&nbsp; Overall test results are shown by the QQ plot of the
+ observed vs. expected <i>Q</i> values.&nbsp; The expected <i>Q</i>
+ values are from a chi-squared distribution.</p>
+ <p>Left; The plot for the LC datasets.&nbsp; Right; The plot for
+ the PC datasets.</p>
+ <p><img width="510" height="172" src="image004.gif" align="left"
+ hspace="12" alt="Text Box: "></p>
+ <p>Figure 2:&nbsp; Integration-driven discovery rate (IDR) for
+ given thresholds of the <i>z</i> values.&nbsp; The thresholds were
+ set from the ordered <i>z</i> scores.&nbsp; IDR was computed
+ separately for <i>z</i>&gt;0 and <i>z</i>&lt;0.&nbsp;</p>
+ <p>Left; IDR for the LC datasets.&nbsp; Right; IDR for the PC
+ datasets.</p>
+ <p><b>4&nbsp; References</b></p>
+ <p><b>&nbsp;</b></p>
+ <p>[1] DerSimonian, R. and Laird, N. M. 1986. Meta-analysis in
+ clinical trials. <i>Controlled Clinical Trials</i> 7:177-188.</p>
+ <p>[2] Hedges, L. V. and Olkin, I. 1985. Statistical methods for
+ meta-analysis. Academic Press, Orlando.</p>
+ <p>[3] Rhodes, D. R., Barrette, T. R., Rubin, M. A., Ghosh, D. and
+ Chinnaiyan, A. M. 2002. Meta-analysis of microarrays: Interstudy
+ validation of gene expression profiles reveals pathway
+ dysregulation in prostate cancer. <i>C</i><i>ancer</i>
+ <i>Research</i>. 62:4427-4433.</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a> Department of
+ Biological Sciences, Korea Advanced Institute of Science and
+ Technology. E&#8209;mail: jkchoi@kaist.ac.kr</p></div>
+ <div id="ftn2">
+ <p><a href="#_ftnref2" name="_ftn2" title="">[2]</a> Genome
+ Research Center, Korea Research Institute of Bioscience and
+ Biotechnology. E-mail: sskimb@mail.kribb.re.kr</p></div>
+ <div id="ftn3">
+ <p><a href="#_ftnref3" name="_ftn3" title="">[3]</a>&nbsp;
+ Department of Biological Sciences, Korea Advanced Institute of
+ Science and Technology. E-mail: ojyoo@kaist.ac.kr</p></div></div>
+ </body>
+ </html>

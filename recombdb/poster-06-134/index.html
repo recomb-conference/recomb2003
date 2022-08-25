@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>134. Screening for gain or loss of co-regulation</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category05.html'>&lt;&lt;</a> <a href='/recombdb/category06.html'><b>Gene Expression</b> Overview</a> <a href='/recombdb/category07.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-06-133/'>&lt;&lt;</a> Poster 134 [ <a href='poster-06-134.pdf'>PDF</a> | <a href='poster-06-134.tgz'>TeX</a> | <a href='poster-06-134.ps'>PostScript</a> ] <a href='/recombdb/poster-06-135/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>134. Screening for gain or
+ loss of co-regulation<br>
+  in cancer specific expression profiles<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Dennis Kostka <a name="tex2html1" href=
+ "#foot40"><sup>1</sup></a> and Rainer Spang <a name="tex2html2"
+ href="#foot40"><sup>1</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> gene expression profiling,
+ cancer subtypes</font></p>
+ <h1><a name="SECTION00010000000000000000">Introduction</a></h1>
+   
+ <p><font size="-1">Microarray experiments can be used to search for
+ and identify subgroups of patients with the same heterogeneous
+ disease [<a href="#AA">1</a>,<a href=
+ "#S">2</a>,<a href=
+ "#SJ">3</a>]. In the case of pediatric acute
+ lymphoblastic leukemia (ALL) chemo-therapy is adapted to a
+ patient's risk of relapse, and therefore risk-groups have been
+ identified on a cytogenetic basis. It has been shown that it is
+ possible to find these groups on the basis of gene expression data
+ [<a href="#SJ">3</a>], which is freely available
+ to the public.</font></p>
+ <p><font size="-1">In our work we use this data to look for groups
+ of correlated genes which lose their coherence in a specific
+ risk-group. In this way we find genes that are not necessarily
+ differentially expressed, but which take part in a regulatory
+ scheme corrupted in that group. Specific genes exhibiting this kind
+ of behavior can therefore be characteristic for a
+ risk-group.</font></p>
+ <h1><a name="SECTION00020000000000000000">Method</a></h1>
+ <p><font size="-1">To find groups of genes showing the above
+ mentioned expression pattern, we make use of a test statistic
+ defined in the following way: The samples of the experiment are
+ divided into two groups: One group (A), in which we look for
+ co-regulated genes that lose their correlation in the second group
+ or risk-group (B).</font></p>
+ <p><font size="-1">The searching for the co-regulated genes is
+ implemented as follows: We calculate the correlation matrix of the
+ 1000 most variable genes (using only the samples in group A) and
+ scan column-wise for genes with a correlation coefficient greater
+ than 1-<img width="12" height="14" align="bottom" border="0"
+      src="img1.png" alt="$\delta$">. The parameter <img width="12"
+      height="14" align="bottom" border="0" src="img1.png" alt=
+      "$\delta$"> determines how well the genes should be correlated
+      to that one specific gene determining the current row of the
+      correlation matrix. The genes we find by this method form a
+      group of genes (G), which is dependent on the column of the
+      correlation matrix and the parameter <img width="12" height=
+      "14" align="bottom" border="0" src="img1.png" alt="$\delta$">.
+      Having selected these genes by their correlation to one
+      specific gene, we next construct a measure of the correlation
+      of all of the genes in G among each other: We project their
+      expression values (using only the samples in A) onto the first
+      principal component. The fraction of variance conserved by
+      this procedure (<img width="22" height="29" align="middle"
+      border="0" src="img2.png" alt="$v_A$">) then yields a quantity
+      we can employ: if it is close to one all the genes in G are
+      tightly correlated, whereas smaller values stand for
+      increasing decoherence.</font></p>
+ <p><font size="-1">Searching for genes which lose co-regulation in
+ group B, we also calculate their projection onto their first
+ principal component using the samples in B. If the fraction of
+ variance conserved during this process is called <img width="23"
+ height="29" align="middle" border="0" src="img3.png" alt="$v_B$">,
+ the final test statistic reads: 
+ <img width="101" height="30" align="middle" border="0" src=
+ "img4.png" alt="$T_G = v_A - v_B$">. The subscript G denotes that
+ the statistic is dependent on the group of correlated genes, and
+ therefore on the column of the correlation matrix as well as the
+ choice of the parameter <img width="12" height="14" align="bottom"
+ border="0" src="img1.png" alt="$\delta$">. Maximizing
+      <img width="24" height="30" align="middle" border="0" src=
+      "img5.png" alt="$T_G$"> means looking for genes which lose
+      co-regulation in group B most prominently. To look for genes
+      which gain co-regulation in B, one simply has to swap the
+      groups A and B.</font></p>
+ <p><font size="-1">We maximize the test statistic by choosing the
+ appropriate column in the correlation matrix, and therefore get a
+ ordering of the clusters we found. To test the statistical
+ significance of these genes, we sample from the null hypothesis by
+ repeatedly permuting the samples, which enables us to calculate a
+ corresponding <img width="12" height="29" align="middle" border="0"
+      src="img6.png" alt="$p$">-value. First tests indicate, that it
+      is indeed possible to find significant clusters of genes for
+      different risk-groups.</font></p>
+ <p></p>
+ <h2><a name="SECTION00030000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="AA">1</a></dt>
+ <dd>Alizadeh, A.&nbsp;<em>et al.</em> 2000. Distinct types of
+ diffuse large B-cell lymphoma identified by gene-expression
+ profiling. <em>Nature</em> 4051:503-511.</dd>
+ <dt><a name="S">2</a></dt>
+ <dd>Shipp, M.A.&nbsp;<em>et al.</em> 2002. Diffuse large B-cell
+ lymphoma outcome prediction by gene expression profiling using
+ supervised machine learning. <em>Nature Medicine</em> 8:64-78.</dd>
+ <dt><a name="SJ">3</a></dt>
+ <dd>Yeoh, E.-J.&nbsp; <em>et al.</em> 2002. Classification, subtype
+ discovery, and prediction of outcome in pediatric acute
+ lymphoblastic leukemia by gene expression profiling. <em>Cancer
+ Cell</em> 1:133-143</dd></dl>
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot40">... Kostka</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Computational Diagnostics Group, Department of Computational
+ Molecular Biology, Max- Planck-Institute for Molecular Genetics,
+ Ihnestrasse 63-73, 14195 Berlin, Germany. E-mail: 
+ <div align="center">
+ <b><tt>first.last@molgen.mpg.de</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

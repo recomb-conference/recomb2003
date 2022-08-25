@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>1. Development and Implementation of the G-language Genome Analysis Environment Version 2</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center">  <a href='/recombdb/category01.html'><b>Genomics</b> Overview</a> <a href='/recombdb/category02.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center">  Poster 001 [ <a href='poster-01-001.pdf'>PDF</a> | <a href='poster-01-001.doc'>MSWORD</a> ] <a href='/recombdb/poster-01-002/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>1. Development and Implementation of the G-language Genome
+ Analysis Environment Version 2</h2>
+ <p align="center"><b>Kazuharu Arakawa<a href="#_ftn1" name=
+ "_ftnref1" title="">[1]</a><sup>, <a href="#_ftn2" name="_ftnref2"
+ title="">[2]</a></sup>, Koya Mori1<sup>, 2</sup>, Tatekimi
+ Matsuzaki1<sup>, <a href="#_ftn3" name="_ftnref3" title=
+ "">[3]</a></sup>,</b></p>
+ <p align="center"><b>Ryo Hattori1<sup>,</sup></b> <a href="#_ftn4"
+ name="_ftnref4" title=""><b>[4]</b></a><b>, Yohei Yamada1<sup>,
+ 4</sup>, Masaru Tomita1<sup>, 4</sup></b></p>
+ <p><b>Keywords:</b> analysis software, G-language Genome Analysis
+ Environment, workbench</p>
+ <p><b>1&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Introduction</b></p>
+ <p>G-language Project of Institute for Advanced Biosciences aims to
+ introduce higher efficiency in genome analyses by:</p>
+ <p>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Constructing an
+ integrated environment for the development of analysis
+ software.</p>
+ <p>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Systematically
+ accumulating existing analysis software, methodologies for analysis
+ and their results.</p>
+ <p>3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Constructing
+ generic analysis packages that allow users to avoid redundancy in
+ the process of analysis.</p>
+ <p>Development of version 1 of the G-language Genome Analysis
+ Environment (G-language GAE) [1] has reached a stable stage in July
+ 2002, and we are currently implementing version 2 of the software
+ with greater efficiency and flexibility.</p>
+ <p><b>2&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>System Overview</b></p>
+ <p>The version 2 core is rewritten to gain further speed and
+ integrity through more flexible object-oriented architecture.
+ Database access drivers, IO controllers, and calculation engines
+ are easily pluggable, and by defining a specific super class, the
+ internal data structures can also be altered. Supported genome
+ database formats are extended to GenBank, Fasta, EMBL, Swiss, PIR,
+ SCF, GCG, Ace, raw, ptt, eri, Qual, Phd, and the XML genome
+ database formats such as GAME, BSML, and EML. Most common
+ relational database systems such as Oracle, MySQL, Postgres,
+ Ingres, Sybase, and Informix can be accessed under unified
+ procedures. The whole system is perfectly compatible with version 1
+ of the software and Perl [2], and it can be easily linked to
+ bioperl [3]. An instance of G-language GAE is interchangeable with
+ that of bioperl, and all analysis methods provided by the system is
+ directly accessible with a bioperl instance.</p>
+ <p>&nbsp;Large scale caching and storage of data internally with
+ relational database reduces the cost of computation and memory, and
+ a structured and persistent data realizes a &ldquo;session&rdquo;
+ of analysis that allows continuous analysis through cascades of
+ analysis programs. An instance of G-language GAE can be instantly
+ converted to and stored as a relational database.</p>
+ <p>&nbsp;The new front-end &ldquo;Inspire&rdquo; achieves platform
+ independence and freedom in presentation by making HTML the basic
+ framework of the output. With HTML, anyone can create multi-media
+ presentation with little experience, and an expert will be able to
+ create interactive and dynamic presentation with enhancements with
+ Java, Flash, SVG, and etc. G-language GAE version 2 provides a set
+ of API for the development of SVG, the Scalable Vector Graphics.
+ SVG presentation can be clicked, zoomed in and out, dragged, and
+ animated, and it can of course gain all the merits of Hyper Link to
+ connect to the useful resources online. Inspire front-end runs both
+ locally and on the Web; therefore, an application created for
+ Inspire can be directly converted into a web application. This
+ achieves complete operation system independence. Figure 1 shows the
+ new genome map output in SVG.</p>
+ <p align="center"><img width="311" height="253" src=
+ "image002.jpg"></p>
+ <p align="center">Figure 1: Genome map enhanced with the new
+ front-end, &ldquo;Inspire&rdquo;.</p>
+ <p>Analysis systems concurrently developed with G-language GAE
+ version 2 are the new version of cDNA Analysis System (CASYS:
+ Matsuzaki <i>et al.</i>), Comparative Genome Analysis System
+ (COMGA: Nakamura <i>et al.</i>), Chi Sequence Analysis System
+ (Arakawa and Kyuma <i>et al.</i>), and Bacteria Analysis System
+ (BAS: Mori <i>et al.</i>).</p>
+ <h1>Acknowledgements</h1>
+ <p>This work is supported by the members of G-language Project.
+ URL: http://www.g-language.org/. G-language Project official Web
+ site.</p>
+ <h1>References</h1>
+ <p><b>&nbsp;</b></p>
+ <p>[1] Arakawa, K., Mori, K., Ikeda, K., Matsuzaki, T., Kobayashi,
+ Y., Tomita, M., G-language Genome Analysis Environment: a workbench
+ for nucleotide sequence data mining, <i>Bioinformatics,</i> in
+ press, 2002.</p>
+ <p>[2] Stein L.D., Using Perl to facilitate biological analysis,
+ <i>Methods Biochem Anal</i>., 43:413-49, 2001.</p>
+ <p>[3] Stein L., Creating a bioinformatics nation, <i>Nature</i>,
+ 417:119-20, 2002.</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a> Institute for
+ Advanced Biosciences, Keio University, Tsuruoka, 997-0035,
+ Japan</p></div>
+ <div id="ftn2">
+ <p><a href="#_ftnref2" name="_ftn2" title="">[2]</a> Bioinformatics
+ Program, Graduate School of Media and Governance</p></div>
+ <div id="ftn3">
+ <p><a href="#_ftnref3" name="_ftn3" title="">[3]</a> Department of
+ Policy Management</p></div>
+ <div id="ftn4">
+ <p><a href="#_ftnref4" name="_ftn4" title="">[4]</a> Department of
+ Environmental Information</p></div></div>
+ </body>
+ </html>

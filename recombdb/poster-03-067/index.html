@@ -1,0 +1,268 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>67. Finding Motifs with Bipositional Profiles</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category02.html'>&lt;&lt;</a> <a href='/recombdb/category03.html'><b>Recognition of Genes and Regulatory Elements</b> Overview</a> <a href='/recombdb/category04.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-03-066/'>&lt;&lt;</a> Poster 067 [ <a href='poster-03-067.pdf'>PDF</a> | <a href='poster-03-067.tgz'>TeX</a> | <a href='poster-03-067.ps'>PostScript</a> ] <a href='/recombdb/poster-03-068/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>67. Finding Motifs with
+ Bipositional Profiles<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Alkes Price,<a name="tex2html1" href=
+ "#foot59"><sup>1</sup></a> Narayan Ramabhadran,<a name="tex2html2"
+ href="#foot59"><sup>1</sup></a> Pavel Pevzner<a name="tex2html3"
+ href="#foot59"><sup>1</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> motif finding, pattern
+ discovery, regulatory motifs</font></p>
+ <p><font size="-1"><br>
+ <br>
+  Early work on the motif finding problem was dominated by
+ profile-based approaches, in which each position of the motif is
+ modeled by probabilities for each nucleotide, estimated via Gibbs
+ sampling ([<a href="#GIBBS">5</a>]) or the EM
+ algorithm ([<a href="#MEME">1</a>]). More
+ recently, much work has been done on pattern-based approaches, in
+ which each position of the motif is modeled by a single consensus
+ nucleotide with some probability of a mutation. Pevzner and Sze,
+ 2000 [<a href="#SPSTAR">6</a>] observed that
+ profile-based approaches were unable to solve the following Motif
+ Challenge Problem: given a sample of <img width="51" height="13"
+ align="bottom" border="0" src="img1.png" alt="$n=20$"> sequences,
+ each <img width="64" height="14" align="bottom" border="0"
+      src="img2.png" alt="$N=600$"> nucleotides long and each
+      containing a pattern of length <img width="46" height="14"
+      align="bottom" border="0" src="img3.png" alt="$l=15$"> with
+      <img width="42" height="14" align="bottom" border="0" src=
+      "img4.png" alt="$k=4$"> mutations, find the pattern. Since
+      then, various pattern-based algorithms have solved the Motif
+      Challenge Problem, both for <img width="64" height="14" align=
+      "bottom" border="0" src="img2.png" alt="$N=600$"> and for
+      larger values of <img width="19" height="14" align="bottom"
+      border="0" src="img5.png" alt="$N$">, with decreasing speed
+      and increasing probability of success ([<a href=
+      "#SPSTAR">6</a>],[<a href=
+      "#PROJ">2</a>],[<a href=
+      "#MULTI">4</a>],[<a href=
+      "#MITRA">3</a>]).</font></p>
+ <p><font size="-1">We propose to solve the Motif Challenge Problem
+ very quickly by following the pattern-based MULTIPROFILER algorithm
+ [<a href="#MULTI">4</a>], which uses
+ multipositional profiles to simultaneously correct all 4 incorrect
+ positions of a putative motif occurrence, with two key
+ modifications. First, we will use bipositional profiles to correct
+ only 2 of the 4 incorrect positions of a putative motif occurrence,
+ with the remaining 2 incorrect positions to be (more easily)
+ corrected in a second iteration. Second, we will decide which
+ corrections to attempt using a more powerful profiling method,
+ which is only applicable to this iterative approach.</font></p>
+ <p><font size="-1">We first review the MULTIPROFILER algorithm
+ [<a href="#MULTI">4</a>], for <img width="42"
+ height="14" align="bottom" border="0" src="img4.png" alt="$k=4$">.
+ For each of <img width="21" height="29" align="middle" border="0"
+ src="img6.png" alt="$n_r$"> reference sequences, for each
+ <img width="9" height="14" align="bottom" border="0" src="img7.png"
+ alt="$l$">-mer <img width="16" height="14" align="bottom"
+      border="0" src="img8.png" alt="$A$"> in that sequence,
+      <img width="16" height="14" align="bottom" border="0" src=
+      "img8.png" alt="$A$"> might be <img width="12" height="13"
+      align="bottom" border="0" src="img9.png" alt="$4$"> mutations
+      away from the pattern (if it is the pattern occurrence). We
+      count, for each 4-wordlet <img width="13" height="29" align=
+      "middle" border="0" src="img10.png" alt="$\gamma$"> consisting
+      of <img width="12" height="13" align="bottom" border="0" src=
+      "img9.png" alt="$4$"> positions of <img width="16" height="14"
+      align="bottom" border="0" src="img8.png" alt="$A$"> and new
+      values for those positions, the number of other sequences
+      which contain an <img width="9" height="14" align="bottom"
+      border="0" src="img7.png" alt="$l$">-mer which both belongs to
+      <img width="48" height="32" align="middle" border="0" src=
+      "img11.png" alt="$N_{8}(A)$">, and agrees with <img width="13"
+      height="29" align="middle" border="0" src="img10.png" alt=
+      "$\gamma$">. (This can be done in a single pass through the
+      other sequences, and does not require separate work for each
+      <img width="13" height="29" align="middle" border="0" src=
+      "img10.png" alt="$\gamma$">.) If this number exceeds a
+      threshold <img width="14" height="30" align="middle" border=
+      "0" src="img12.png" alt="$\beta$">, then <img width="16"
+      height="14" align="bottom" border="0" src="img8.png" alt=
+      "$A$"> corrected by <img width="13" height="29" align="middle"
+      border="0" src="img10.png" alt="$\gamma$"> might be the
+      correct pattern, and we perform additional work to check if
+      this is the case.</font></p>
+ <p><font size="-1">We now describe our iterative algorithm, in the
+ case of <img width="42" height="14" align="bottom" border="0"
+      src="img4.png" alt="$k=4$">. For each of <img width="21"
+      height="29" align="middle" border="0" src="img6.png" alt=
+      "$n_r$"> reference sequences, for each <img width="9" height=
+      "14" align="bottom" border="0" src="img7.png" alt="$l$">-mer
+      <img width="16" height="14" align="bottom" border="0" src=
+      "img8.png" alt="$A$"> in that sequence, <img width="16"
+      height="14" align="bottom" border="0" src="img8.png" alt=
+      "$A$"> might be <img width="12" height="13" align="bottom"
+      border="0" src="img9.png" alt="$4$"> mutations away from the
+      pattern (if it is the pattern occurrence). We count, for each
+      2-wordlet <img width="13" height="29" align="middle" border=
+      "0" src="img10.png" alt="$\gamma$"> consisting of 2 positions
+      of <img width="16" height="14" align="bottom" border="0" src=
+      "img8.png" alt="$A$"> and new values for those positions, the
+      weighted number of other sequences which contain an
+      <img width="9" height="14" align="bottom" border="0" src=
+      "img7.png" alt="$l$">-mer which both belongs to 
+ <img width="56" height="32" align="middle" border="0" src=
+ "img13.png" alt="$N_{\alpha_1}(A)$">, for some 
+ <img width="80" height="29" align="middle" border="0" src=
+ "img14.png" alt="$4 \leq \alpha_1 \leq 8$">, and agrees with
+ <img width="13" height="29" align="middle" border="0" src=
+ "img10.png" alt="$\gamma$">. The number is weighted to give more
+ credit for lower values of <img width="21" height="29" align=
+ "middle" border="0" src="img15.png" alt="$\alpha_1$"> according to
+ log likelihood ratios which are described below. If this number
+ exceeds a threshold <img width="20" height="30" align="middle"
+ border="0" src="img16.png" alt="$\beta_1$">, then <img width="16"
+ height="14" align="bottom" border="0" src="img8.png" alt="$A$">
+ corrected by <img width="13" height="29" align="middle" border="0"
+      src="img10.png" alt="$\gamma$"> might be only <img width="12"
+      height="13" align="bottom" border="0" src="img17.png" alt=
+      "$2$"> mutations away from the pattern, and we perform
+      additional work. Specifically, the additional work we perform
+      is a second iteration of the algorithm.</font></p>
+ <p><font size="-1">The log likelihood ratios we mentioned above are
+ the expressions</font></p>
+ <div align="center">
+ <img width="283" height="45" border="0" src="img18.png" alt=
+ "\begin{displaymath} \lambda_{\alpha_1} = \log\left( \frac{P(\mbox{$(A,\gamma... ...($A,\gamma)$\ is not valid} ~ \vert ~ \alpha_1 )} \right), \end{displaymath}">
+ </div>
+ <br clear="all">
+  <font size="-1">where <img width="45" height="32" align="middle"
+ border="0" src="img19.png" alt="$(A,\gamma)$"> is valid means that
+ <img width="16" height="14" align="bottom" border="0" src=
+ "img8.png" alt="$A$"> is 4 mutations away from the pattern and
+ <img width="13" height="29" align="middle" border="0" src=
+ "img10.png" alt="$\gamma$"> corrects 2 of those 4 mutations, and
+ <img width="21" height="29" align="middle" border="0" src=
+ "img15.png" alt="$\alpha_1$"> is the minimum distance from
+ <img width="16" height="14" align="bottom" border="0" src=
+ "img8.png" alt="$A$"> among <img width="9" height="14" align=
+ "bottom" border="0" src="img7.png" alt="$l$">-mers agreeing with
+ <img width="13" height="29" align="middle" border="0" src=
+ "img10.png" alt="$\gamma$"> in the (non-reference) sequence being
+ evaluated. Routine calculations show that the cases 
+ <img width="186" height="29" align="middle" border="0" src=
+ "img20.png" alt="$\alpha_1=4, \ldots, \alpha_1=8, \alpha_1&gt;8$">
+ produce different values 
+ <img width="29" height="30" align="middle" border="0" src=
+ "img21.png" alt="$\lambda_{\alpha_1}$">. The weighted number of
+ sequences described above is the sum over all (non-reference)
+ sequences of values 
+ <img width="29" height="30" align="middle" border="0" src=
+ "img21.png" alt="$\lambda_{\alpha_1}$">, which is equivalent up to
+ a constant to the sum of values 
+ <img width="87" height="32" align="middle" border="0" src=
+ "img22.png" alt="$(\lambda_{\alpha_1} - \lambda_{&gt;8})$"> over
+ sequences where 
+ <img width="51" height="29" align="middle" border="0" src=
+ "img23.png" alt="$\alpha_1 \leq 8$">. We note that if we are trying
+ to correct 4 positions of <img width="16" height="14" align=
+ "bottom" border="0" src="img8.png" alt="$A$"> in a single
+ iteration, the only relevant cases are <img width="43" height="13"
+ align="bottom" border="0" src="img24.png" alt="$\alpha=8$"> and
+ <img width="43" height="29" align="middle" border="0" src=
+ "img25.png" alt="$\alpha&gt;8$">, thus the weighted number of
+ sequences is equivalent up to a constant to a simple count and
+ there is no advantage to computing the log likelihood
+ ratios.</font> 
+ <p><font size="-1">Preliminary results indicate that, for
+ <img width="50" height="29" align="middle" border="0" src=
+ "img26.png" alt="$n_r=1$"> and parameters <img width="20"
+      height="30" align="middle" border="0" src="img16.png" alt=
+      "$\beta_1$"> and <img width="20" height="30" align="middle"
+      border="0" src="img27.png" alt="$\beta_2$"> chosen to produce
+      a success rate very close to 1, the iterative algorithm solves
+      the Motif Challenge Problem almost instantly for <img width=
+      "64" height="14" align="bottom" border="0" src="img2.png" alt=
+      "$N=600$">, with the speed improvement over other motif
+      finding algorithms slowly degrading as <img width="19" height=
+      "14" align="bottom" border="0" src="img5.png" alt="$N$"> is
+      increased.</font></p>
+ <p></p>
+ <h2><a name="SECTION00010000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="MEME">1</a></dt>
+ <dd>Bailey T.&nbsp;L. and Elkan C. 1995. Unsupervised learning of
+ multiple motifs in biopolymers using expectation maximization.
+ <em>Machine Learning</em> 21: 51-80.</dd>
+ <dt><a name="PROJ">2</a></dt>
+ <dd>Buhler J. and Tompa M. 2001. Finding motifs using random
+ projections. <em>Proc. of the 5th RECOMB</em>, pages 69-76.</dd>
+ <dt><a name="MITRA">3</a></dt>
+ <dd>Eskin E. and Pevzner P. 2002. Finding composite regulatory
+ patterns in DNA sequences. <em>Bioinformatics</em>, Supplement
+ 1:S354-363. Proc. of the 10th ISMB.</dd>
+ <dt><a name="MULTI">4</a></dt>
+ <dd>Keich U. and Pevzner P. 2002. Finding motifs in the twilight
+ zone. <em>Proc. of the 6th RECOMB</em>, pages 195-204.</dd>
+ <dt><a name="GIBBS">5</a></dt>
+ <dd>Lawrence C., Altschul S., Boguski M., Liu J., Neuwald A. and
+ Wootton J. 1993. Detecting subtle sequence signals: a Gibbs
+ sampling strategy for multiple alignment. <em>Science</em> 262:
+ 208-214</dd>
+ <dt><a name="SPSTAR">6</a></dt>
+ <dd>Pevzner P. and Sze S. 2000. Combinatorial approaches to finding
+ subtle signals in DNA sequences. <em>Proc. of the 8th ISMB</em>,
+ pages 269-278.</dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot59">... Price,</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Department of Computer Science and Engineering, University of
+ California at San Diego, La Jolla, CA 92093-0114. Email: 
+ <div align="center">
+ <b><tt><u>aprice@cs.ucsd.edu</u></tt>;</b></div>
+ <div align="center"><b><tt>nramabha@cs.ucsd.edu</tt>;</b></div>
+ <div align="center">
+ <b><tt>ppevzner@cs.ucsd.edu</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

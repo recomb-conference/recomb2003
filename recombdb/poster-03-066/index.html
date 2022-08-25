@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>66. Discriminative Learning of Composite Regulatory Modules</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category02.html'>&lt;&lt;</a> <a href='/recombdb/category03.html'><b>Recognition of Genes and Regulatory Elements</b> Overview</a> <a href='/recombdb/category04.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-03-065/'>&lt;&lt;</a> Poster 066 [ <a href='poster-03-066.pdf'>PDF</a> | <a href='poster-03-066.tgz'>TeX</a> | <a href='poster-03-066.ps'>PostScript</a> ] <a href='/recombdb/poster-03-067/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>66. Discriminative Learning
+ of Composite Regulatory Modules<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Tomer Naveh, Tommy Kaplan, and Nir Friedman
+ <a name="tex2html1" href="#foot65"><sup>1</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> Discriminative Learning,
+ Composite Binding Sites, Regulatory Modules.<br>
+ <br></font></p>
+ <p><font size="-1">A central goal of molecular biology is to
+ uncover transcription regulation circuits that govern gene
+ expression. These circuits involve transcription factors that act
+ in concert to modulate the transcription of genes. The recent
+ advances in high-throughput assays, such as microarray experiments
+ and ChIP localization, allow us to infer groups of genes that are
+ co-expressed and co-regulated. The challenge is to use this wealth
+ of information to gain insight about transcriptional regulation.
+ Several works have confronted this challenge. Most of them focus on
+ finding overabundant motifs within the regulatory regions of the
+ co-expressed group [<a href=
+ "#Bailey+Elkan:1994">1</a>,<a href=
+ "#Roth+al:1998">3</a>]. As these works show, one
+ can often discover binding sites that have also been verified
+ experimentally. This general approach, however, might fail as those
+ promoter regions often contain inherent genomic phenomena that are
+ not specific to the genes under study.</font></p>
+ <p><font size="-1">In this work, we present a procedure for
+ locating regulatory modules in promoter regions. A module
+ represents the binding sites of a pair of transcription factors
+ that act in cooperation. Our approach is <i>discriminative</i>,
+ searching for modules that are overabundant in the promoter regions
+ of the target group of co-expressed genes and are infrequent in the
+ control group of genes outside the target group. By doing this, we
+ filter out phenomena that are shared among both groups, leaving us
+ with the core motifs.</font></p>
+ <p><font size="-1">Our method works as follows. We consider 2
+ groups of promoter sequences. The first is the group of promoters
+ of co-expressed genes (typically a few dozens) and the second is
+ all other promoters (typically a few thousands). We characterize a
+ module as a pair of PSSMs each representing the binding site of one
+ transcription factor, requiring both sites to occur in proximity to
+ each other. We evaluate such modules with respect to the promoter
+ groups by using a discriminative likelihood function that extends
+ the approach of [<a href="#Segal+al:2002">4</a>].
+ Maximizing this function results in a module that is expected to be
+ found with high probability in promoters of the co-expressed group
+ and with a much lower probability in all other promoters. We find
+ parameters that maximize the likelihood function using a
+ <i>conjugate gradient ascent</i> method, ensuring convergence to a
+ local optimum.</font></p>
+ <p><font size="-1">We evaluate our method on synthetic data and
+ yeast promoters. To test our method, we created a synthetic dataset
+ matching ``real world'' parameters. The set consisted of 5070
+ sequences of length 500. In 50 of those sequences we planted a pair
+ of motifs, generated from known yeast PSSMs [<a href=
+ "#Wingender+al:2001">5</a>]. The motifs were
+ planted in various distances up to 50 bps apart. These were
+ labelled as ``co-expressed'' together with other 20 random
+ sequences, acting as false positive noise. The other 5000 sequences
+ were used as the control group. We then applied our algorithm, and
+ reconstructed the planted module (see figure&nbsp;<a href=
+ "#fig:syn">1</a>a). We used the learned module to classify a
+ similar test set. For each sequence, we computed the posterior
+ probability of being regulated by the module.
+    Figure&nbsp;<a href="#fig:syn">1</a>b shows the cumulative
+    percentage of genes for which the posterior probability exceeds
+    the threshold.</font></p>
+ <div align="center"><a name="fig:syn"></a><a name="31"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure 1:</strong> (a) Motifs
+ generated from top PSSMs were planted in 50 of 5070 promoter
+ sequences of length 500. Another 20 sequences were used as a false
+ positives. The bottom module was learned, correctly reconstructing
+ both motifs. (b) Evaluation of learned module on 5050 unlabelled
+ test sequences. Using posterior probability of 0.85 or higher, will
+ accept 77% of the regulated sequences, with about 1% of false
+ positives.</caption>
+ <tr>
+ <td><img width="555" height="207" border="0" src="img1.png"
+      alt="\begin{figure} \centerline{ \epsfig{file=poster-03-066-fig02.eps,width=1.0\columnwidth,height=130pt} } \end{figure}">
+ </td></tr></table></div>
+ <p><font size="-1">Next, we used our method to analyze groups of
+ genes from ChIP localization assays in Yeast. Based on the results
+ of Lee <i>et al</i>&nbsp;[<a href=
+ "#Lee+al:2002">2</a>], we constructed several
+ groups of putative combinatorial co-regulated genes. Each group is
+ supposedly co-regulated by (at least) two transcription factors,
+ and contained a few dozens of genes. The rest of the genes (about
+ 6000) were used as a control group. We trained on two thirds of the
+ data, and tested the learned module on the remaining promoters.
+ Figure&nbsp;<a href="#fig:ROC">2</a> shows the performance of our
+ algorithm on test data from one of these runs.</font></p>
+ <div align="center">
+ <p><a name="fig:ROC"></a></p>
+ <table width="0%">
+ <tr>
+ <td>
+ <div align="center">
+ file=poster-03-066-fig01.eps,width=0.9</div></td></tr></table>
+ <table width="0%">
+ <caption align="bottom"><strong>Figure 2:</strong> ROC curves
+ comparing the discriminative separation on Yeast ChIP localization
+ assays [<a href="#Lee+al:2002">2</a>]. Our method
+ achieved good classification on test promoters - allowing for 3.5%
+ false positives, we captured more than 70% of the true positive
+ promoters. Also plotted are ROC curves for a single PSSM and for a
+ module constructed from two separately trained PSSMs. All methods
+ were trained and tested on the same data.</caption></table></div>
+ <p></p>
+ <h2><a name="SECTION00010000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="Bailey+Elkan:1994">1</a></dt>
+ <dd>T.L. Bailey and Elkan C.<br>
+ 1994. Fitting a mixture model by expectation maximization to
+ discover motifs in biopolymers.<br>
+ In <em>Proc. Int. Conf. Intell. Syst. Mol. Biol.</em>,
+ volume&nbsp;2, pages 28-36.</dd>
+ <dt><a name="Lee+al:2002">2</a></dt>
+ <dd>T.I. Lee, N.J. Rinaldi, F.&nbsp;Robert, D.T. Odom,
+ Z.&nbsp;Bar-Joseph, G.K. Gerber, N.M. Hannett, C.R. Harbison, C.M.
+ Thompson, Zeitlinger&nbsp;J. Simon&nbsp;I., E.G. Jennings, H.L.
+ Murray, D.B. Gordon, B.&nbsp;Ren, J.J. Wyrick, J.&nbsp;Tagne,
+ Fraenkel Volkert&nbsp;T.L., Gifford&nbsp;D.K. E., and R.A.
+ Young.<br>
+ 2002. Transcriptional regulatory networks in saccharomyces
+ cerevisiae.<br>
+ <em>Science</em>, 298(5594):799-804.</dd>
+ <dt><a name="Roth+al:1998">3</a></dt>
+ <dd>F.P. Roth, P.W. Hughes, J.D.&nbsp;Estep, and G.M. Church.<br>
+ 1998. Finding DNA regulatory motifs within unaligned noncoding
+ sequences clustered by whole-genome mRNA quantitation.<br>
+ <em>Nat. Biotechnol.</em>, 16:939-945.</dd>
+ <dt><a name="Segal+al:2002">4</a></dt>
+ <dd>E.&nbsp;Segal, Y.&nbsp;Barash, I.&nbsp;Simon, N.&nbsp;Friedman,
+ and D.&nbsp;Koller.<br>
+ 2002. From promoter sequence to expression:a probabilistic
+ framework.<br>
+ In <em>RECOMB '02</em>.</dd>
+ <dt><a name="Wingender+al:2001">5</a></dt>
+ <dd>E.&nbsp;Wingender, X.&nbsp;Chen, E.&nbsp;Fricke,
+ R.&nbsp;Geffers, R.&nbsp;Hehl, I.&nbsp;Liebich, M.&nbsp;Krull,
+ V.&nbsp;Matys, H.&nbsp;Michael, R.&nbsp;Ohnhauser, M.&nbsp;Pruss,
+ F.&nbsp;Schacherer, S.&nbsp;Thiele, and S.&nbsp;Urbach.<br>
+ 2001. The TRANSFAC system on gene expression regulation.<br>
+ <em>Nucleic Acids Res.</em>, 29:281-283.</dd></dl>
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot65">... Friedman</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>School of Computer Science &amp; Engineering, The Hebrew
+ University, Jerusalem 91904, Israel<br>
+ E-mail: {tomern,tommy,nir}@cs.huji.ac.il</dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

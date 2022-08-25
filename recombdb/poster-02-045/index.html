@@ -1,0 +1,383 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>45. Optimum Nucleotide Background Frequency Measures for DNA Motif Detection</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-044/'>&lt;&lt;</a> Poster 045 [ <a href='poster-02-045.pdf'>PDF</a> | <a href='poster-02-045.doc'>MSWORD</a> ] <a href='/recombdb/poster-02-046/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>45. Optimum Nucleotide Background Frequency Measures for DNA
+ Motif Detection</h2>
+ <p align="center"><b>Krzysztof M. Rajkowski<a href="#_ftn1"
+    name="_ftnref1" title="">[1]</a>.</b></p>
+ <p><b>Keywords:</b> DNA motifs, nucleotide background
+ frequencies</p>
+ <p><b>1&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Introduction</b></p>
+ <p>Reliable detection of DNA motifs, such as transcription factor
+ binding sites, is essential for genome decryption. Motif detection
+ methods, such as Profiles [1,4] or Hidden Markov models [2],
+ ultimately involve comparing what is found in a sequence with what
+ would be expected by chance, for DNA the latter being calculated
+ from nucleotide background frequencies or probabilities. Usually
+ nucleotides are assumed to have a zero order Markov distribution in
+ DNA, at least to a good approximation, but this does not appear to
+ have been tested. The availability of sequenced chromosomes makes
+ an empirical test of this assumption, and a search for more
+ realistic assumptions, possible as described here.</p>
+ <p><b>2&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Methods and Results</b></p>
+ <p>Using the human chromosome 22 sequence as the databank, the
+ observed frequencies of each nucleotide and each di-, tri- ...
+ nona-nucleotide (henceforth n-nucleotide, n = 2 - 9) were
+ determined. The test consisted of comparing the distribution of
+ observed frequencies of each of the 4<sup>n</sup> n-nucleotides
+ with that of their calculated expected frequencies according to the
+ M<sub>0</sub> assumption. Assumptions of first, second and third
+ order Markov (M<sub>1</sub>,M<sub>2</sub>,M<sub>3</sub>)
+ distributions and of a biconditional distribution
+ (B<sub>2</sub>)(found superior to M<sub>0</sub> for amino acid
+ background frequencies in protein motif detection [5]) were also
+ tested. The expected frequencies of a polynucleotide
+ AGTA...(observed with a frequency p(AGTA...)) according to these
+ assumptions would be calculated as:</p>
+ <p align="left">
+ M<sub>0</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ p(A)p(G)p(T)p(A)....</p>
+ <p align="left">
+ M<sub>3</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ p(A)(p(AG)|p(A))(p(AGT)|p(AG))(p(AGTA)|p(AGT))...</p>
+ <p align="left">
+ B<sub>2</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ p(A)(p(AGT)|p(A)p(T))(p(GTA)|p(G)(p(A))...</p>
+ <p>The Wilcoxon signed rank test for paired samples was used to
+ test whether observed and expected frequency distributions were
+ significantly different by the M<sub>0</sub> assumption, though it
+ would be expected to give conservative results as it measures the
+ difference in median values between two distributions and
+ probability distributions have, by definition, identical mean
+ values.The Jensen-Shannon divergence D<sub>JS</sub> [3], designed
+ for probability distributions, was also used but it varies
+ non-linearly with the difference between two distributions.
+ Empirically for two-valued distributions, however, it can be
+ linearised (r<sup>2</sup> &gt; 0.999) such that the degree of
+ identity between two distributions (I) is given by I = 1 -
+ D<sub>JS</sub><sup>0.473</sup> (I=0 to 1). (I is equivalent to
+ D<sub>JS</sub> as a measure of which of two assumptions is more
+ realistic). Also, the normalised rms (rms/0.25<sup>n</sup>) between
+ observed and expected frequencies was used to compare the different
+ assumptions with each other.</p>
+ <p>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ The Wilcoxon test showed that the expected and observed frequency
+ distributions for the zero order Markov assumption were
+ significantly different at the p=0.05 level for n = 5 and at the
+ p=0.01 level for n=6. The Jensen-Shannon degrees of identity and
+ the normalised rms differences between observed and expected
+ nucleotide frequencies according to each assumption are shown in
+ Table 1.</p>
+ <table border="1" cellspacing="0" cellpadding="0">
+ <tr>
+ <td width="31" valign="top">
+ <p align="center">n</p></td>
+ <td width="91" colspan="2" valign="top">
+ <p align="center">M<sub>0</sub></p></td>
+ <td width="91" colspan="2" valign="top">
+ <p align="center">M<sub>1</sub></p></td>
+ <td width="91" colspan="2" valign="top">
+ <p align="center">M<sub>2</sub></p></td>
+ <td width="91" colspan="2" valign="top">
+ <p align="center">M<sub>3</sub></p></td>
+ <td width="91" colspan="2" valign="top">
+ <p align="center">B<sub>2</sub></p></td></tr>
+ <tr>
+ <td width="31" valign="top"></td>
+ <td width="45" valign="top">
+ <p align="center">rms</p></td>
+ <td width="45" valign="top">
+ <p align="center">I</p></td>
+ <td width="45" valign="top">
+ <p align="center">rms</p></td>
+ <td width="45" valign="top">
+ <p align="center">I</p></td>
+ <td width="45" valign="top">
+ <p>rms</p></td>
+ <td width="45" valign="top">
+ <p align="center">I</p></td>
+ <td width="45" valign="top">
+ <p align="center">rms</p></td>
+ <td width="45" valign="top">
+ <p align="center">I</p></td>
+ <td width="45" valign="top">
+ <p align="center">rms</p></td>
+ <td width="45" valign="top">
+ <p align="center">I</p></td></tr>
+ <tr>
+ <td width="31" valign="top">
+ <p align="center">2</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.25</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.87</p></td>
+ <td width="45" valign="top">
+ <p align="center">-</p></td>
+ <td width="45" valign="top">
+ <p align="center">-</p></td>
+ <td width="45" valign="top">
+ <p align="center">-</p></td>
+ <td width="45" valign="top">
+ <p align="center">-</p></td>
+ <td width="45" valign="top">
+ <p align="center">-</p></td>
+ <td width="45" valign="top">
+ <p align="center">-</p></td>
+ <td width="45" valign="top">
+ <p align="center">-</p></td>
+ <td width="45" valign="top">
+ <p align="center">-</p></td></tr>
+ <tr>
+ <td width="31" valign="top">
+ <p align="center">3</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.38</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.80</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.15</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.93</p></td>
+ <td width="45" valign="top">
+ <p align="center">-</p></td>
+ <td width="45" valign="top">
+ <p align="center">-</p></td>
+ <td width="45" valign="top">
+ <p align="center">-</p></td>
+ <td width="45" valign="top">
+ <p align="center">-</p></td>
+ <td width="45" valign="top">
+ <p align="center">-</p></td>
+ <td width="45" valign="top">
+ <p align="center">-</p></td></tr>
+ <tr>
+ <td width="31" valign="top">
+ <p align="center">4</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.50</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.75</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.25</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.89</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.11</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.95</p></td>
+ <td width="45" valign="top">
+ <p align="center">-</p></td>
+ <td width="45" valign="top">
+ <p align="center">-</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.24</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.88</p></td></tr>
+ <tr>
+ <td width="31" valign="top">
+ <p align="center">5</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.62</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.72</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.36</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.86</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.22</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.91</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.14</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.94</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.42</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.82</p></td></tr>
+ <tr>
+ <td width="31" valign="top">
+ <p align="center">6</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.80</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.67</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.54</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.81</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.41</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.86</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.32</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.88</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.65</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.76</p></td></tr>
+ <tr>
+ <td width="31" valign="top">
+ <p align="center">7</p></td>
+ <td width="45" valign="top">
+ <p align="center">1.05</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.62</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.82</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.76</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.70</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.80</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.61</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.83</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.98</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.70</p></td></tr>
+ <tr>
+ <td width="31" valign="top">
+ <p align="center">8</p></td>
+ <td width="45" valign="top">
+ <p align="center">3.10</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.40</p></td>
+ <td width="45" valign="top">
+ <p align="center">2.85</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.52</p></td>
+ <td width="45" valign="top">
+ <p align="center">2.72</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.55</p></td>
+ <td width="45" valign="top">
+ <p align="center">2.63</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.56</p></td>
+ <td width="45" valign="top">
+ <p align="center">2.51</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.56</p></td></tr>
+ <tr>
+ <td width="31" valign="top">
+ <p align="center">9</p></td>
+ <td width="45" valign="top">
+ <p align="center">4.62</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.37</p></td>
+ <td width="45" valign="top">
+ <p align="center">4.43</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.50</p></td>
+ <td width="45" valign="top">
+ <p align="center">4.31</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.52</p></td>
+ <td width="45" valign="top">
+ <p align="center">4.23</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.53</p></td>
+ <td width="45" valign="top">
+ <p align="center">4.14</p></td>
+ <td width="45" valign="top">
+ <p align="center">0.52</p></td></tr></table>
+ <p align="center">Table 1:&nbsp; Normalised rms differences and
+ Jensen-Shannon identities (I) between expected and observed
+ n-nucleotide frequences assuming zero, first, second and third
+ order Markov nucleotide distributions and a biconditional
+ distribution.</p>
+ <p>It can be seen that that the third order Markov assumption,
+ which is used in the Bioprospector programme [2], gives the most
+ realistic background frequencies except for the octa- and
+ nonanucleotides when it was the biconditional assumption. (If the
+ expected third order Markov frequencies were calculated as
+ p(A)(p(AG)|p(A))(p(AGT)|p(A)p(G))(p(AGTA)|p(A)p(G)p(T))... (for the
+ above example) then the biconditional assumption would be most
+ realistic for all values of n). The zero order Markov assumption
+ gave results very similar to those obtained if it is assumed that
+ all n-nucleotides in a set are equiprobable (p=4<sup>-n</sup>) (not
+ shown). It was not possible to determine if the biconditional
+ assumption was also more realistic for longer n-nucleotides - the
+ databank used was not large enough for adequate sampling of
+ decanucleotides and, indeed, 428 (0.16%) of the nonanucleotides
+ were absent from chromosome 22.</p>
+ <p>In conclusion, zero order Markov nucleotide background
+ frequencies should be avoided if possible as they are little better
+ than assigning a background frequency p = 4<sup>-n</sup> to all
+ polynucleotides of length n. Third order Markov background
+ frequencies are the most realistic of those tested overall and the
+ slight superiority of biconditional frequencies for octa- and
+ nonanucleotides is probably not sufficient to warrent using the
+ latter.</p>
+ <h1>References</h1>
+ <p>[1] Gribscov, M., L&uuml;thy, R. and Eisenberg, D.1987 Profile
+ analysis: Detection of distantly related proteins. Identification
+ of common molecular subsequences. <i>Proceedings of the National
+ Academy of Sciences USA</i> 84: 4355-4358.</p>
+ <p>[2] Krogh, A., Brown, M., Mian, I.S., Sjolander, K. and
+ Haussler, D. 1994. Hidden Markov models in computational biology:
+ applications to protein modelling. <i>Journal of Molecular
+ Biology</i> 235: 1501-1531.</p>
+ <p>[3] Lin, J. 1991. Divergence measures based on the Shannon
+ entropy. <i>IEEE Transactions in Information Theory</i> 37:
+ 145-151.</p>
+ <p>[4] Liu, X., Brutlag, D.L. and Liu, J.S. 2001. Bioprospector:
+ discovering conserved DNA motifs in upstream regulatory regions of
+ co-expressed genes. In Altman, R.B, Dunker, A.K., Hunter, L.,
+ Lauderdale, K., and Klein, T.E. editors <i>Pacific Symposium on
+ Biocomputing 2001.</i> Singapore, World Scientific pp.127-138.</p>
+ <p>[5] Rajkowski, K.M. 2001. Improved discrimination in Bayesian
+ profile searching using biconditional residue background
+ frequencies. In El-Mabrouk, N., Lengauer, T. and Sankoff, D.
+ editors <i>Currents in Computational Molecular Biology (2001)</i>,
+ Montreal, Les Publications CRM pp.49-50</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a> INSERM U488,
+ H&ocirc;pital de Bic&ecirc;tre, 80 rue du G&eacute;n&eacute;ral
+ Leclerc, F-94276 Le Kremlin Bic&ecirc;tre, France E&#8209;mail:
+ rajkow@kb.inserm.fr</p></div></div>
+ </body>
+ </html>

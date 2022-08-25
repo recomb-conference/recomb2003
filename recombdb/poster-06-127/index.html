@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>127. Automated Identification and Classification of alternative splice isoforms derived from EST data assembly</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category05.html'>&lt;&lt;</a> <a href='/recombdb/category06.html'><b>Gene Expression</b> Overview</a> <a href='/recombdb/category07.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-06-126/'>&lt;&lt;</a> Poster 127 [ <a href='poster-06-127.pdf'>PDF</a> | <a href='poster-06-127.doc'>MSWORD</a> ] <a href='/recombdb/poster-06-128/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>127. Automated Identification and Classification of alternative
+ splice isoforms derived from EST data assembly</h2>
+ <p align="center"><b>Gupta Shobhit<a href="#_ftn1" name="_ftnref1"
+ title="">[1]</a>,&nbsp; Haas Stefan1,&nbsp; Vingron Martin1</b></p>
+ <p><b>Keywords:</b> alternative splicing, EST, splicenest, splice
+ variants.</p>
+ <p><b>1&nbsp;&nbsp;&nbsp; Introduction</b></p>
+ <p>Alternative splicing is currently envisaged to explain the vast
+ disparity between the predicted human genome and the highly diverse
+ proteome. One of the methodologies being adopted for the prediction
+ of alternative splicing is with the use of Expressed Sequence Tag
+ (EST) data. Assembly of the EST data into different clusters
+ (genes) containing different contigs (alternative splice isoforms)
+ and subsequent mapping of these contigs to the genome provides a
+ good means of deciphering the gene structure. Such a mapping
+ indicates probable exon-intron boundaries, thereby giving splicing
+ related information (Genenest [1], Splicenest [2]). The current
+ work associates a quality value to every exon-intron boundary and
+ also to every exon predicted. With the use of this data we filter
+ out alternative splice predictions based on reliable (high quality)
+ exon-intron boundaries. Thus we remove false predictions due to
+ incomplete splicing, contamination by genomic sequences or
+ erroneous inclusion of ESTs from similar genes in other locations.
+ Reducing the number of false positives while predicting alternative
+ splicing will enable large-scale experimental verification of these
+ predictions. The schema of our work can be split up into two main
+ parts.</p>
+ <p>&Oslash;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Automated
+ Identification of Alternative Splice variants : Identification of
+ Alternatively spliced variants is made by comparing the differences
+ between various contigs of a cluster aligned to the same region of
+ the genome. Quality values are then calculated for the predicited
+ alternative splice variants based on a number of parameters like
+ the EST coverage and the shared boundaries. Using such a quality
+ value distribution, we can separately list reliable predictions of
+ different types of alternative splicing like &ldquo;skipped
+ exon&rdquo; events, &ldquo;alternative donor-acceptor sites&rdquo;
+ events etc.</p>
+ <p>&Oslash;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;Classification of Splice variants : Correlating the
+ annotation of ESTs with splice data may provide information
+ regarding expression patterns of specific splice isoforms. We are
+ focusing on the following aspects.</p>
+ <p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ Tissue specific isoforms.</p>
+ <p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ Stage specific isoforms.</p>
+ <p>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ Tumor specific isoforms.</p>
+ <p>Such an analysis of alternative splicing patterns and
+ specificity will facilitate the detection of disease related
+ splicing events, which could find wide applicability in
+ pharmaceutical research.</p>
+ <p><b>&nbsp;</b></p>
+ <b><br clear="all"></b> 
+ <p><b>2&nbsp;&nbsp;&nbsp; References</b></p>
+ <p><b>&nbsp;</b></p>
+ <p>[1] Haas, S.A., Beissbarth,T., Rivals,E., Krause,A. and
+ Vingron,M. 2000. GeneNest: Automated generation and visualisation
+ of gene indices. <i>Trends Genet. 16(11):521</i>-523.</p>
+ <p>[2] Coward,E., Haas, S.A. and Vingron,M. 2002. SpliceNest:
+ visualization of gene structure and alternative splicing based on
+ EST clusters. <i>Trends Genet. 18(1): 53-55.</i></p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a> Max Planck
+ Institute for Molecular Genetics, Computational Molecular Biology,
+ Ihnestrasse 73, Berlin, Germany. E&#8209;mails: <a href=
+ "mailto:gupta@molgen.mpg.de">gupta@molgen.mpg.de</a>, <a href=
+ "mailto:haas@molgen.mpg.de">haas@molgen.mpg.de</a>, <a href=
+ "mailto:vingron@molgen.mpg.de">vingron@molgen.mpg.de</a></p></div></div>
+ </body>
+ </html>

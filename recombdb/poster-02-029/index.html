@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>29. Maximum likelihood estimation</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-028/'>&lt;&lt;</a> Poster 029 [ <a href='poster-02-029.pdf'>PDF</a> | <a href='poster-02-029.tgz'>TeX</a> | <a href='poster-02-029.ps'>PostScript</a> ] <a href='/recombdb/poster-02-031/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>29. Maximum likelihood
+ estimation<br>
+  for duplication-loss model<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Pawe<img width="5" height="14" align=
+ "bottom" border="0" src="img1.png" alt="\l">
+    G&oacute;recki<a name="tex2html1" href=
+    "#foot217"><sup>1</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> maximum likelihood,
+ phylogenetics, reconciliation, duplication-loss model</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+   
+ <p><font size="-1">The poster presents the introduction to the
+ extended reconciliation problem in which branch lengths are
+ considered.</font></p>
+ <p><font size="-1">The reconciled trees where examined by Goodman
+ [<a href="#Goodman">1</a>] in seventies of XX
+ century. He introduced the terms <em>mapping</em> and
+ <em>reconciled tree</em> which inspired research on
+ <em>duplication-loss</em> model. The duplication-loss model is the
+ model of evolution in which the unexpected differences between
+ phylogenetic gene tree and species tree are caused by possible gene
+ duplications and gene losses. The topic has been studied by Page,
+ Charleston and others [<a href=
+ "#Page94">2</a>,<a href=
+ "#Mirkin95">3</a>,<a href=
+ "#Eulenstein98">4</a>] and last years gave
+ interesting mathematical and biological results [<a href=
+ "#BinMa98">5</a>] and extensions [<a href=
+ "#Charleston98">6</a>]. It is known that the
+ model is biologically meaningful [<a href=
+ "#Mirkin95">3</a>] but one of its limitations is
+ that the final species tree and embedded gene tree (reconciled
+ tree) have no information related to branch lengths. The lengths in
+ most current phylogenetic methods represent the number of
+ aminoacids substitutions required to transform one sequence into
+ another.</font></p>
+ <p><font size="-1">The problem of estimating the branch lengths in
+ the reconciled tree will be solved by maximum likelihood approach
+ [<a href="#Fel81">7</a>,<a href=
+ "#molphy">8</a>].</font></p>
+ <h1><a name="SECTION00020000000000000000"><font size="+1">Gene tree
+ and species tree</font></a></h1>
+ <p><font size="-1">The Figure <a href="#gst">1</a> presents a gene
+ tree <img width="17" height="14" align="bottom" border="0"
+      src="img2.png" alt="$G$"> and a species tree <img width="15"
+      height="15" align="bottom" border="0" src="img3.png" alt=
+      "$S$">. The label of each leaf in the species tree represents
+      name of species i.e. we have five species <img width="39"
+      height="29" align="middle" border="0" src="img4.png" alt=
+      "$a-e$">. Leaves in the gene tree represents gene sequences
+      taken from species. If a leaf in the gene tree has label
+      <img width="13" height="13" align="bottom" border="0" src=
+      "img5.png" alt="$x$"> then the sequence is taken from species
+      <img width="13" height="13" align="bottom" border="0" src=
+      "img5.png" alt="$x$">. The internal labels of the trees
+      denotes ancestral sequences or species
+      respectively.</font></p>
+ <div align="center"><a name="gst"></a><a name="104"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure:</strong> <font size=
+ "-1">Species tree and gene tree</font></caption>
+ <tr>
+ <td><img width="481" height="148" border="0" src="img6.png"
+      alt="\begin{figure} \begin{center} \footnotesize %FIGURE: (../geneandspeciestr... ...e} ,(87.500000,-4.375000) *{S} \end{xy} } \end{center} \end{figure}">
+ </td></tr></table></div>
+   
+ <p><font size="-1">The question solved by the reconciliation is
+ <em>Why the trees are incongruent?"</em>.</font></p>
+ <div align="center"><a name="ght"></a><a name="191"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure:</strong> <font size=
+ "-1">Species tree and embedded gene tree</font></caption>
+ <tr>
+ <td><img width="259" height="141" border="0" src="img7.png"
+      alt="\begin{figure} \begin{center} \footnotesize \par \mbox{ \begin{xy} ; (22... ...{-} ,(56.000000,7.875000) *{e} \end{xy} } \end{center} \end{figure}">
+ </td></tr></table></div>
+   
+ <p><font size="-1">The next picture presents result of the
+ reconciliation (visual presentation of the reconciled tree).
+ Squares denote gene duplication, horizontal lines denote speciation
+ and circles denote gene loss (they occur after the speciation
+ event). Note that after removing all squares, horizontal lines and
+ circles the gene tree will remain.</font></p>
+ <h1><a name="SECTION00030000000000000000"><font size=
+ "+1">Problem</font></a></h1>
+   
+ <p><font size="-1">We will assume that the trees are constructed.
+ The poster will present the conditions which have to be satisfied
+ to properly estimate branch lengths in the reconciled tree (Figure
+ <img width="12" height="13" align="bottom" border="0" src=
+ "img8.png" alt="% latex2html id marker 230 $\ref{ght}$">) and the
+ maximum likelihood estimation for the case will be
+ defined.</font></p>
+ <h1><a name="SECTION00040000000000000000"><font size=
+ "+1">Acknowledgement</font></a></h1>
+   
+ <p><font size="-1">I thank Prof. J. Tiuryn for helpful suggestions
+ for this work. Financial support is provided by KBN Grant 8 T11F
+ 016 21.</font></p>
+ <p></p>
+ <h2><a name="SECTION00050000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="Goodman">1</a></dt>
+ <dd>Goodman, M., Czelusniak, J., Moore, G.&nbsp;W., Romero-Harrera,
+ A.&nbsp;E. and Matsuda, G. 1979. Fitting the gene lineage into its
+ species lineage. A parsimony strategy illustrated by cladograms
+ constructed from globin sequences, <em>Syst. Zool.</em> 28,
+ 132-163.</dd>
+ <dt><a name="Page94">2</a></dt>
+ <dd>Page, R.&nbsp;D.&nbsp;M. 1994. Maps between trees and cladistic
+ analysis of historical associations among genes, organisms, and
+ areas. <em>Systematic Biology</em>, 43:58-77.</dd>
+ <dt><a name="Mirkin95">3</a></dt>
+ <dd>Mirkin, B., Muchnik, I. and Smith, T. 1995 A biologically
+ meaningful model for comparing molecular phylogenies, <em>Journal
+ of Computational Biology</em> 2, 493-507.</dd>
+ <dt><a name="Eulenstein98">4</a></dt>
+ <dd>Eulenstein, O., Mirkin, B. and Vingron, M. 1998.
+ Duplication-based measures of difference between gene and species
+ trees, <em>Journal of Computational Biology</em> 1, 135-148</dd>
+ <dt><a name="BinMa98">5</a></dt>
+ <dd>Bin Ma, Ming Li and Liouxing Zhang, On Reconstructing Species
+ Trees from Gene Trees in Term of Duplications and Losses,
+ <em>RECOMB 1998</em>, 182-191</dd>
+ <dt><a name="Charleston98">6</a></dt>
+ <dd>Charleston, M.&nbsp;A. 1998. Jungles: a new solution to the
+ host/parasite phylogeny reconciliation problem. <em>Mathematical
+ Biosciences</em>, 149, 191-223.</dd>
+ <dt><a name="Fel81">7</a></dt>
+ <dd>Felsenstein, J. 1981. Evolutionary trees from DNA sequences: a
+ maximum likelihood approach. <em>Journal of Molecular
+ Evolution</em>, 17:368-376.</dd>
+ <dt><a name="molphy">8</a></dt>
+ <dd>Jun Adachi and Masami Hasegawa. MOLPHY Version 2.3 Programs for
+ Molecular Phylogenetics Based on Maximum Likelihood.</dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot217">... G\'orecki</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Institute of Informatics, Warsaw University, Warsaw, Poland,
+ E-mail: 
+ <div align="center">
+ <b><tt>gorecki@mimuw.edu.pl</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

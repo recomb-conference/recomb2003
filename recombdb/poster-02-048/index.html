@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>48. Multiple Local Sequence Structure Alignment of unaligned RNA Sequences</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-047/'>&lt;&lt;</a> Poster 048 [ <a href='poster-02-048.pdf'>PDF</a> | <a href='poster-02-048.tgz'>TeX</a> | <a href='poster-02-048.ps'>PostScript</a> ] <a href='/recombdb/poster-02-049/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>48. Multiple Local Sequence
+ Structure Alignment of unaligned RNA Sequences<br>
+ <br>
+ <br></b></font> <b>Sven Siebert, <a name="tex2html1" href=
+ "#foot50"><sup>1</sup></a> Rolf Backofen <a name="tex2html2"
+    href="#foot51"><sup>2</sup></a></b></div>
+  <font size="-1"><br>
+ <br></font> 
+ <p><font size="-1"><b>Keywords:</b> multiple
+ alignment,rna,local,sequence structure</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+  <font size="-1">We present a new method that finds and aligns
+ local sequence structure segments in a set of unaligned RNA
+ sequences of unknown structures. Recognizing secondary structural
+ features allows us to find highly probable sequence structure
+ segments with high similarities among them. Given a local structure
+ hint, e.g. a stem loop, structures are generated around this
+ starting structure. All generated structures are searched for in
+ RNA sequences fitting to their sequence segments. Occurrence
+ probabilities and pairwise similarity scores are computed for the
+ multiple alignment step which is done by the program T-Coffee. It
+ has been shown that our results coincide mostly with experimental
+ results.</font> 
+ <h1><a name="SECTION00020000000000000000"><font size=
+ "+1">Algorithm</font></a></h1>
+  <font size="-1">The method is a five step algorithm, of which the
+ input consists of n unaligned RNA sequences and a structure hint
+ given in bracket notation (e.g. ``((...))''). The output is a
+ multiple alignment of local sequence structure segments out of the
+ n unaligned RNA sequences. This algorithm is characterized by
+ mainly two features, namely in searching local sequence structure
+ segments fulfilling</font> 
+ <ul>
+ <li>highly probable occurrences of sequence structure segments
+ and</li>
+ <li>maximizing local sequence structure similarity among all RNA
+ sequences.</li></ul>
+  <font size="-1">The following diagram shows the five steps of our
+ algorithm :</font> 
+ <div align="center"><font size="-1">Generate structures<br>
+  
+ <img width="18" height="30" align="middle" border="0" src=
+ "img1.png" alt="\(\bigtriangledown\)"><br>
+  Find highly probable structure occurrences<br>
+  
+ <img width="18" height="30" align="middle" border="0" src=
+ "img1.png" alt="\(\bigtriangledown\)"><br>
+  Pairwise alignment scores restricted on local segments<br>
+  
+ <img width="18" height="30" align="middle" border="0" src=
+ "img1.png" alt="\(\bigtriangledown\)"><br>
+  Assign final local structure to each sequence<br>
+  
+ <img width="18" height="30" align="middle" border="0" src=
+ "img1.png" alt="\(\bigtriangledown\)"><br>
+  Multiple local sequence structure alignment</font></div>
+  <font size="-1">Structures are generated around the structure hint
+ with an edit distance (of at most constant d). It is a sum of
+ weights of the edit operations insertion of a base, deletion of a
+ base and breaking a base pair into two bases. These local
+ structures are searched for in the RNA sequences. Two additional
+ parameters qualify a local sequence structure segment for each RNA
+ sequence. On the one hand, structure occurrence probabilities are
+ computed by slight modifications of the McCaskill's base pair
+ probability equation[1]. On the other hand, pairwise similarity
+ scores as proposed by Zhang[3] ensure sequence structure
+ similarities. These final segments can be seen as RNAs on their
+ own, such that multiple alignment is done by the program
+ T-COFFEE[4] from Higgins.</font> 
+ <div align="center"><a name="35"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure 1:</strong> Multiple
+ Alignment of local sequence structure segments with respect to
+ structure probability and similarity</caption>
+ <tr>
+ <td><img width="584" height="222" border="0" src="img2.png"
+      alt="\begin{figure} \begin{verbatim} local segments Probability *************... ...AU CUAUGGUUAAAGAAAUA ((((-.--..---)))) 0.23431\end{verbatim} \end{figure}">
+ </td></tr></table></div>
+ <h1><a name="SECTION00030000000000000000">Test data</a></h1>
+  <font size="-1">Our sequences are taken from SELEX (Selective
+ Evolution of Ligands by EXponential enrichment) experiments. These
+ primary mRNA sequences are proved to contain nearly common local
+ sequence structure motifs by experiments. They form a stem loop
+ like structure called selenocysteine incorporation sequence (SECIS)
+ after the UGA stop codon. They are recognized by the special
+ elongation factor SelB, which is required for the incorporation of
+ the 21st amino acid Selenocysteine into proteins. In fig.1, five
+ mRNA sequences from SELEX experiments are given. Structures similar
+ to ``((((.....))))'' are searched for in these sequences. Best
+ local structures are assigned to their sequences with respect to
+ occurrence probabilities and sequence structure similarities. These
+ results coincide with experimental results.</font>  
+ <h2><a name="SECTION00040000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="Mc90">1</a></dt>
+ <dd>J.S. McCaskill. The equilibrium partition function and base
+ pair binding probabilities, <em>Biopolymers</em>, vol.29, no.6-7,
+ pp.1105-19, 1990</dd>
+ <dt><a name="GHS97">2</a></dt>
+ <dd>Gorodkin, J and Heyer, LJ and Stormo, GD. Finding the Most
+ Significant Common Sequence and Structure Motifs in a Set of RNA
+ Sequences, <em>Nucleic Acids Res</em>, vol.25, no.18, pp.3724-32,
+ 1997</dd>
+ <dt><a name="JLGMZ02">3</a></dt>
+ <dd>Jiang, Tao and Lin, Guohui and Ma, Bin and Zhang, Kaizhong. A
+ General Edit Distance between RNA Structures, <em>JCB</em>, vol.9,
+ no.2, pp.371-88, 2002</dd>
+ <dt><a name="NHH00">4</a></dt>
+ <dd>C. Notredame and D. G. Higgins and J. Heringa. T-Coffee: A
+ novel method for fast and accurate multiple sequence alignment,
+ <em>JMB</em>, vol.302, no.1, pp.205-17, 2000</dd></dl>
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot50">... Siebert,</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Institute of Computer Science, Chair for Bioinformatics,
+ Ernst-Abbe Platz 1-4, 07743 Jena, E-mail: 
+ <div align="center">
+ <b><tt>siebert@inf.uni-jena.de</tt></b></div></dd>
+ <dt><a name="foot51">... Backofen</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>Institute of Computer Science, Chair for Bioinformatics,
+ Ernst-Abbe Platz 1-4, 07743 Jena, E-mail: 
+ <div align="center">
+ <b><tt>backofen@inf.uni-jena.de</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

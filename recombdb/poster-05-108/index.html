@@ -1,0 +1,319 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>108. A tabu search strategy for finding low energy structures of proteins in HP-model</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category04.html'>&lt;&lt;</a> <a href='/recombdb/category05.html'><b>Protein Structure</b> Overview</a> <a href='/recombdb/category06.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-05-107/'>&lt;&lt;</a> Poster 108 [ <a href='poster-05-108.pdf'>PDF</a> | <a href='poster-05-108.tgz'>TeX</a> | <a href='poster-05-108.ps'>PostScript</a> ] <a href='/recombdb/poster-05-109/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>108. A tabu search strategy
+ for finding low energy structures of proteins in HP-model
+    <a name="footfnm4" href=
+    "#fnm4"><sup>4</sup></a><br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Maciej Mi<img width="5" height="14"
+      align="bottom" border="0" src="img1.png" alt=
+      "\l">ostan,<a name="footfnm1" href="#fnm1"><sup>1</sup></a>
+      Piotr <img width="11" height="13" align="bottom" border="0"
+      src="img2.png" alt="\L">ukasiak,<a name="tex2html1" href=
+      "#footfnm1"><sup>1</sup></a><img width="9" height="15" align=
+      "bottom" border="0" src="img3.png" alt="$^,$"><a name=
+      "footfnm2" href="#fnm2"><sup>2</sup></a> Ken Dill <a name=
+      "footfnm3" href="#fnm3"><sup>3</sup></a>, Jacek B<img width=
+      "5" height="14" align="bottom" border="0" src="img1.png" alt=
+      "\l">azewicz,<a name="tex2html2" href=
+      "#footfnm1"><sup>1</sup></a><img width="9" height="15" align=
+      "bottom" border="0" src="img3.png" alt="$^,$"><a name=
+      "tex2html3" href="#footfnm2"><sup>2</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> HP-model, tabu search, lattice
+ models, protein structure prediction</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+  <font size="-1">Over forty years ago the experiments of Anfinsen
+ and co-workers [<a href="#Ant73">1</a>] showed
+ that proteins can fold reversibly, and native structures of some
+ globular proteins are conformations at the global minima of their
+ accessible free energies.</font> 
+ <p><font size="-1">One view of protein folding assumes that the
+ local interactions are the main determinants of protein structure.
+ An alternative view shows how the nonlocal interactions can give
+ rise to protein structure, stability and folding kinetics
+    [<a href="#Dil95">5</a>]. Among all proposed
+    models there are some <i>simplified models</i>, that use
+    mathematical abstraction of proteins for hiding many aspects of
+    folding process and exaggerating the effects of others. Those
+    models work as hypothesis generators[<a href=
+    "#Dil99">6</a>].</font></p>
+ <p><font size="-1">One of the most successful and well-studied
+ simplified model is the HP-model (H-hydrophobic amino acid,
+ P-polar) proposed by Dill [<a href=
+ "#Dil95">5</a>]. The aim of this model is to
+ investigate how hydrophobic interactions influence protein folds,
+ whether delocalize ''solvation'' code is essential. HP-model was
+ proposed on the basis of observation that most of hydrophobic amino
+ acid's residues are buried in the core of the protein [<a href=
+ "#Dil95">5</a>,<a href=
+ "#Dil99">6</a>].</font></p>
+ <h1><a name="SECTION00020000000000000000"><font size="+1">Problem
+ formulation</font></a></h1>
+ <font size="-1">In the basic HP-model each amino acid is
+ represented as a bead (black bead-hydrophobic, white-polar),
+ connecting bonds are represented as lines. The whole conformation
+ is embedded in the two (or more) dimensional lattice. The
+ background lattice simply divides the space into monomer-sized
+ units. A lattice site may be either empty or filled by one bead.
+ Bond angles have only a few discrete values, dictated by the
+ structure of the lattice[<a href="#Dil95">5</a>].
+ For each conformation one can compute value of energy function,
+ which models free energies of protein folds. The simplest form of
+ energy function counts a number of HH-contacts and multiplies it by
+ a constant lower then zero. Two amino acid residues create
+ HH-contact if they are topological neighbors and they are not
+ connected by a bond. The aim is to find a conformation with the
+ lowest energy.</font> 
+ <h1><a name="SECTION00030000000000000000"><font size="+1">The
+ algorithm</font></a></h1>
+ <font size="-1">Due to NP-hardness [<a href=
+ "#13">9</a>] and NP-completeness results
+    [<a href="#papa">4</a>,<a href=
+    "#berger">3</a>] of the protein folding
+    problem (which in practice means its practical unsolvability to
+    optimality) many computer scientists have tried to find fast
+    approximation algorithms and meta-heuristics for searching
+    enormous number of protein states.</font> 
+ <p><font size="-1">The large number of methods have been already
+ applied for HP-model, but there are still some metaheuristics, that
+ have been successfully applied for many other problems, and not
+ adapted or not well tested in conjunction with the HP-model. Among
+ these metaheuristics is Tabu Search strategy proposed and
+ consecutively improved by Glover [<a href=
+ "#GL97">7</a>].</font></p>
+ <p><font size="-1">In the paper, the method for finding low energy
+ conformations of proteins in HP-models has been proposed as a
+ variant of tabu search strategy, that incorporates problem domain
+ knowledge, such as conformational motifs, in the search
+ procedure.</font></p>
+ <h1><a name="SECTION00040000000000000000"><font size="+1">Results
+ and discussion</font></a></h1>
+  <font size="-1">The proposed algorithm has been extensively
+ tested. It appeared that it has a very good performance and finds
+ optimal conformations for all short sequences from 5 to 12 amino
+ acid's residues length. As a tested benchmark sequences
+    [<a href="#BD96">2</a>] for 2D HP-model with
+    rectangular lattice have been used and the results have been
+    compared with those obtained by genetic algorithms GA [<a href=
+    "#UM93">10</a>], contact interactions method
+    CI [<a href="#TT96">8</a>], and core-directed
+    growth method CG [<a href="#BD96">2</a>],
+    respectively (Table <a href="#tab_porownanie">1</a>).</font>
+    <br>
+ <div align="center"><a name="94"></a> 
+ <table>
+ <caption><strong>Table:</strong> <font size="-1">Comparison between
+ methods GA, CI , CG, and TS based on [<a href=
+ "#BD96">2</a>] for 2D HP-model.</font></caption>
+ <tr>
+ <td>
+ <div align="center">
+ <table cellpadding="3" border="1">
+ <tr>
+ <td align="left"></td>
+ <td align="left"></td>
+ <td align="center" colspan="3"><font size="-1"><em>Sparc
+ 1</em></font></td>
+ <td align="right"><font size="-1"><em>AMD Duron</em></font></td>
+ <td align="left"></td></tr>
+ <tr>
+ <td align="left"><font size="-1"><em>No.</em></font></td>
+ <td align="left"><font size="-1"><em>Length</em></font></td>
+ <td align="right"><font size="-1"><em><img width="46" height="32"
+ align="middle" border="0" src="img4.png" alt=
+ "$t_{GA}[s]$"></em></font></td>
+ <td align="right"><font size="-1"><em><img width="43" height="32"
+ align="middle" border="0" src="img5.png" alt=
+ "$t_{CI}[s]$"></em></font></td>
+ <td align="right"><font size="-1"><em><img width="47" height="32"
+ align="middle" border="0" src="img6.png" alt=
+ "$t_{CG}[s]$"></em></font></td>
+ <td align="right"><font size="-1"><em><img width="45" height="32"
+ align="middle" border="0" src="img7.png" alt=
+ "$t_{TS}[s]$"></em></font></td>
+ <td align="left"><font size="-1"><em><img width="34" height="30"
+ align="middle" border="0" src="img8.png" alt=
+ "$E_{opt}$"></em></font></td></tr>
+ <tr>
+ <td align="left"><font size="-1">1</font></td>
+ <td align="left"><font size="-1">20</font></td>
+ <td align="right"><font size="-1">5.60</font></td>
+ <td align="right"><font size="-1">0.11</font></td>
+ <td align="right"><font size="-1">2.16</font></td>
+ <td align="right"><font size="-1">0.03</font></td>
+ <td align="left"><font size="-1">-9</font></td></tr>
+ <tr>
+ <td align="left"><font size="-1">2</font></td>
+ <td align="left"><font size="-1">24</font></td>
+ <td align="right"><font size="-1">6.00</font></td>
+ <td align="right"><font size="-1">0.24</font></td>
+ <td align="right"><font size="-1">6.60</font></td>
+ <td align="right"><font size="-1">0.01</font></td>
+ <td align="left"><font size="-1">-9</font></td></tr>
+ <tr>
+ <td align="left"><font size="-1">3</font></td>
+ <td align="left"><font size="-1">25</font></td>
+ <td align="right"><font size="-1">3.66</font></td>
+ <td align="right"><font size="-1">0.18</font></td>
+ <td align="right"><font size="-1">4.68</font></td>
+ <td align="right"><font size="-1"><img width="16" height="29"
+      align="middle" border="0" src="img9.png" alt=
+      "$&lt;$">0.01</font></td>
+ <td align="left"><font size="-1">-8</font></td></tr>
+ <tr>
+ <td align="left"><font size="-1">4</font></td>
+ <td align="left"><font size="-1">36</font></td>
+ <td align="right"><font size="-1">54.60</font></td>
+ <td align="right"><font size="-1">6.60</font></td>
+ <td align="right"><font size="-1">132.00</font></td>
+ <td align="right"><font size="-1">0.34</font></td>
+ <td align="left"><font size="-1">-14</font></td></tr>
+ <tr>
+ <td align="left"><font size="-1">5</font></td>
+ <td align="left"><font size="-1">48</font></td>
+ <td align="right"></td>
+ <td align="right"><font size="-1">34.80</font></td>
+ <td align="right"><font size="-1">378.00</font></td>
+ <td align="right"><font size="-1">3.70</font></td>
+ <td align="left"><font size="-1">-23</font></td></tr>
+ <tr>
+ <td align="left"><font size="-1">6</font></td>
+ <td align="left"><font size="-1">50</font></td>
+ <td align="right"><font size="-1">3180.00</font></td>
+ <td align="right"><font size="-1">0.24</font></td>
+ <td align="right"><font size="-1">18600.00</font></td>
+ <td align="right"><font size="-1">0.80</font></td>
+ <td align="left"><font size="-1">-21</font></td></tr>
+ <tr>
+ <td align="left"><font size="-1">7</font></td>
+ <td align="left"><font size="-1">60</font></td>
+ <td align="right"></td>
+ <td align="right"><font size="-1">60.00</font></td>
+ <td align="right"><font size="-1">5820.00</font></td>
+ <td align="right"></td>
+ <td align="left"><font size="-1">-35</font></td></tr>
+ <tr>
+ <td align="left"><font size="-1">8</font></td>
+ <td align="left"><font size="-1">64</font></td>
+ <td align="right"></td>
+ <td align="right"></td>
+ <td align="right"><font size="-1">546.00</font></td>
+ <td align="right"><font size="-1">0.65</font></td>
+ <td align="left"><font size="-1">-42</font></td></tr></table></div>
+ <a name="tab_porownanie"></a></td></tr></table></div>
+ <br>
+    
+ <h2><a name="SECTION00050000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="Ant73">1</a></dt>
+ <dd>C.B. Anfinsen. Principles that govern the folding of protein
+ chains. <em>Science 181 (1973),</em> pp. 223-230.</dd>
+ <dt><a name="BD96">2</a></dt>
+ <dd>T.C. Beutler, K.A. Dill. A fast conformational search strategy
+ for finding low energy structures of model proteins. <em>Protein
+ Science 5 (1996),</em> pp. 2037-2043.</dd>
+ <dt><a name="berger">3</a></dt>
+ <dd>B. Berger, T. Leighton. Protein folding in the
+ hydrophobic-hydrophilic (HP) model is NP-complete. <em>Journal of
+ Computational Biology, Spring(1998),vol. 5,no. 1,</em> pp.
+ 27-40.</dd>
+ <dt><a name="papa">4</a></dt>
+ <dd>P. Crescenzi, D. Goldman, C. Papadimitriou, A. Piccolboni, M.
+ Yannakakis On the complexity of protein folding <em>Proc. 1998
+ STOC,</em> and <em>J. of Computational Biology (1998),</em> vol.5,
+ no.2.</dd>
+ <dt><a name="Dil95">5</a></dt>
+ <dd>K.A. Dill, S. Bomberg, K. Yue, K.M. Fiebig, D.P. Yee, P.D.
+ Thomas, H.S. Chan. Principles of protein folding: A perspective
+ from simple exact models. <em>Protein Sci 4 (1995),</em> pp.
+ 561-602.</dd>
+ <dt><a name="Dil99">6</a></dt>
+ <dd>K.A. Dill. Polymer principles and protein folding. <em>Protein
+ Sci 8 (1999),</em> pp. 1166-1180.</dd>
+ <dt><a name="GL97">7</a></dt>
+ <dd>F. Glover, M. Laguna <em>Tabu Search.</em> Kluwer Academic
+ Publishers (1997),Boston, USA, pp. 1-357.</dd>
+ <dt><a name="TT96">8</a></dt>
+ <dd>L. Toma, S. Toma. Contact Interactions Method: A new algorithm
+ for protein folding simulations. <em>Protein Sci 5 (1996),</em> pp.
+ 147-153</dd>
+ <dt><a name="13">9</a></dt>
+ <dd>R. Unger, J. Moult. Finding the lowest free energy conformation
+ of a&nbsp;protein is an NP-hard problem: proof and implications.
+ <em>Bulletin of Mathematical Biology 55(6) (1993),</em> pp.
+ 1183-1198.</dd>
+ <dt><a name="UM93">10</a></dt>
+ <dd>R. Unger, J. Moult. Genetic algorithms for protein folding
+ simulations. <em>Journal of Molecular Biology 231 (1993),</em> pp.
+ 75-81.</dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="fnm4">... HP-model</a><a href=
+ "#footfnm4"><sup>4</sup></a></dt>
+ <dd>Partially supported by KBN grant 7T11F02621</dd>
+ <dt><a name="fnm1">...ostan,</a><a href=
+ "#footfnm1"><sup>1</sup></a></dt>
+ <dd>Institute of Computing Science, Poznan University of
+ Technology,Piotrowo 3a, 60-965 Poznan, Poland. E-mail: 
+ <div align="center">
+ <b><tt>Maciej.Milostan@cs.put.poznan.pl</tt></b></div></dd>
+ <dt><a name="fnm2">...<img width="9" height="15" align="bottom"
+ border="0" src="img3.png" alt="$^,$"></a><a href=
+ "#footfnm2"><sup>2</sup></a></dt>
+ <dd>Institute of Bioorganic Chemistry, Polish Academy of Science,
+ Poznan, Poland</dd>
+ <dt><a name="fnm3">... Dill</a><a href=
+ "#footfnm3"><sup>3</sup></a></dt>
+ <dd>Department of Pharmaceutical Chemistry, University of
+ California, San Francisco, California</dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

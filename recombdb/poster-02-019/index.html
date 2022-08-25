@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>19. Effective antiviral combination therapies against drug-resistant HIV mutants</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-018/'>&lt;&lt;</a> Poster 019 [ <a href='poster-02-019.pdf'>PDF</a> | <a href='poster-02-019.tgz'>TeX</a> | <a href='poster-02-019.ps'>PostScript</a> ] <a href='/recombdb/poster-02-020/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>19. Effective antiviral
+ combination therapies against drug-resistant HIV mutants<br>
+ <br>
+ <br></b></font> <b>Niko Beerenwinkel, Thomas Lengauer, <a name=
+ "tex2html1" href="#foot61"><sup>1</sup></a> Martin D&auml;umer,
+ Rolf Kaiser, <a name="tex2html2" href="#foot62"><sup>2</sup></a>
+ Hauke Walter, Klaus Korn, <a name="tex2html3" href=
+ "#foot63"><sup>3</sup></a> Daniel Hoffmann, <a name="tex2html4"
+ href="#foot64"><sup>4</sup></a> Joachim Selbig <a name="tex2html5"
+ href="#foot65"><sup>5</sup></a></b></div>
+  <font size="-1"><br>
+ <br>
+  <b>Keywords:</b> HIV, drug resistance, antiviral therapy,
+ phenotype prediction, SVM regression, sequence space search</font> 
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+  <font size="-1">There are currently 16 antiretroviral agents for
+ treatment of patients infected with human immunodeficiency virus
+ type 1 (HIV-1), including inhibitors of the viral protease and
+ reverse transcriptase. Despite the introduction of combination
+ thearpies of three to six different drugs, therapeutic success in
+ the management of HIV-infected patients is limited. The evolution
+ of drug-resistant genetic variants plays a key role in treatment
+ failure [<a href="#shafer00">1</a>]. Persistent
+ replication at a high mutation rate produces escape mutants that
+ become dominant in the viral population resulting in therapy
+ failure. Finding a new potent drug combination after therapy
+ failure is considered challenging [<a href=
+ "#vandamme99">2</a>]. Resistance can be detected
+ either by growing the isolated virus in cell culture in the
+ presence of drug (phenotypic resistance testing, [<a href=
+ "#walter99">3</a>]) or by sequencing the viral
+ genes coding for the drug targets (genotypic resistance testing,
+ [<a href="#shafer00">1</a>]). The latter method,
+ while faster and cheaper, relies on the ability of interpreting
+ sequence information. Matched genotype-phenotype pairs have
+ previously been used to derive models that allow for predicting
+ phenotype from genotype [<a href=
+ "#beerenwinkel01">4</a>,<a href=
+ "#beerenwinkel02">5</a>]. Here we extend this
+ sequence based classification approach to quantitative predictions
+ and use these predictions for identifying effective drug
+ combinations against a given viral mutant.</font> 
+ <h1><a name="SECTION00020000000000000000"><font size="+1">Scoring
+ function</font></a></h1>
+   
+ <div align="center"><a name="rf-pdf"></a><a name="43"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure:</strong> <font size=
+ "-1">Frequency distributions of resistance factors for the two
+ antiretroviral drugs zidovudine (ZDV, left) and saquinavir (SQV,
+ right). Dashed lines represent the Gaussian mixture model that was
+ fitted to histogram data. Solid lines show single Gaussian
+ component densities and the solid logistic curve on the top depicts
+ activity scores.</font></caption>
+ <tr>
+ <td>
+ [width=4cm]poster-02-019-fig01.eps&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ [width=4cm]poster-02-019-fig02.eps</td></tr></table></div>
+  <font size="-1">Support vector machine (SVM) regression is used to
+ predict the fold-change in susceptibility to each drug compared
+ with a wild type virus. Since these resistance factors scale
+ differently across drugs (Figure 1), we model their distribution as
+ a two component Gaussian mixture of wich one component accounts for
+ the susceptible and the other for the resistant subset and define
+ the activity of a drug against a viral strain as the conditional
+ class probability of a susceptible virus given the (predicted)
+ phenotype. Combinations with drugs targeting different molecules
+ benefit from a synergistic effect which is less pronounced for
+ inhibitors with the same drug target and mechanism of action,
+ because in this case inhibitors are competing. Since phenotypic
+ resistance test results are not available for combinations of more
+ than one drug, we model the activity of a combination therapy as
+ the sum over all drug classes of the maximum of activities of drugs
+ in the combination from that class. Since the viral population has
+ a quasi-species structure consisting of a dominant strain and many
+ closely related variants and because we expect new mutants to
+ emerge under therapy, we estimate activity not only on the dominant
+ strain, but also on nearby mutants. We use a heuristic beam search
+ strategy to explore the mutational neighborhood of a sequence.
+ Activity scores are generated in each search depth, i.e. for each
+ number of point substitutions, up to a certain maximal
+ depth.</font> 
+ <h1><a name="SECTION00030000000000000000"><font size=
+ "+1">Evaluation on clinical data</font></a></h1>
+  <font size="-1">To illustrate the utility of these activity
+ scores, we analyze a clinical data set of 96 viral sequences and
+ therapies labeled as either succesful therapy changes or failures.
+ Linear decision models were constructed from activity scores up to
+ search depth ten. The expected prediction error decreased
+ significantly for search depth greater or equal to one stressing
+ the utility of searching sequence space. Different estimates for
+ the expected prediction error argue for an optimal search depth of
+ three for this data set.</font>  
+ <h2><a name="SECTION00040000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="shafer00">1</a></dt>
+ <dd>Shafer, R.&nbsp;W., Kantor, R., Gonzales, M.&nbsp;J. 2000. The
+ genetic basis of HIV-1 resistance to reverse transcriptase and
+ protease inhibitors. <em>AIDS Reviews</em> 2:211-228.</dd>
+ <dt><a name="vandamme99">2</a></dt>
+ <dd>Vandamme, A.&nbsp;M., Van&nbsp;Laethem, K. and De&nbsp;Clerq,
+ E. 1999. Managing resistance to anti-HIV drugs: an important
+ consideration for effective disease management. <em>Drugs</em>
+ 57:337-361.</dd>
+ <dt><a name="walter99">3</a></dt>
+ <dd>Walter, H., Schmidt, B., Korn, K., Vandamme, A.&nbsp;M.,
+ Harrer, T. and &Uuml;berla, K. 1999. Rapid, phenotypic HIV-1 drug
+ sensitivity assay for protease and reverse transcriptase
+ inhibitors. <em>J. Clin. Virol.</em> 13:71-80.</dd>
+ <dt><a name="beerenwinkel01">4</a></dt>
+ <dd>Beerenwinkel, N., Schmidt, B., Walter, H., Kaiser, R.,
+ Lengauer, T., Hoffmann, D., Korn, K. and Selbig, J. 2001.
+ Geno2pheno: Interpreting genotypic HIV drug resistance tests.
+ <em>IEEE Intelligent Systems</em> 16:35-41.</dd>
+ <dt><a name="beerenwinkel02">5</a></dt>
+ <dd>Beerenwinkel, N., Schmidt, B., Walter, H., Kaiser, R.,
+ Lengauer, T., Hoffmann, D., Korn, K. and Selbig, J. 2002. Diversity
+ and complexity of HIV-1 drug resistance: A bioinformatics approach
+ to predicting phenotype from genotype. <em>Proc. Natl. Acad.
+ Sci.</em> 99:8271-8276.</dd></dl>
+ <br>
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot61">... Lengauer,</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Max Planck Institute for Informatics, Stuhlsatzenhausweg 85,
+ 66123 Saarbr&uuml;cken, Germany. E-mail: <tt>{beerenwinkel,
+ lengauer}@mpi-sb.mpg.de</tt></dd>
+ <dt><a name="foot62">... Kaiser,</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>Institute of Virology, University of Cologne,
+ F&uuml;rst-P&uuml;ckler-Str. 56, 50935 K&ouml;ln, Germany. E-mail:
+ <tt>{martin.daeumer, rolf.kaiser}@medizin.uni-koeln.de</tt></dd>
+ <dt><a name="foot63">... Korn,</a><a href=
+ "#tex2html3"><sup>3</sup></a></dt>
+ <dd>Institute of Clinical and Molecular Virology, German National
+ Reference Center for Retroviruses, University of
+ Erlangen-N&uuml;rnberg, Schlo&szlig;garten 4, 91054 Erlangen,
+ Germany. E-mail: <tt>{hauke.walter,
+ klaus.korn}@viro.med.uni-erlangen.de</tt></dd>
+ <dt><a name="foot64">... Hoffmann,</a><a href=
+ "#tex2html4"><sup>4</sup></a></dt>
+ <dd>Center of Advanced European Studies and Research, Friedensplatz
+ 16, 53111 Bonn, Germany. E-mail:
+ <tt>daniel.hoffmann@caesar.de</tt></dd>
+ <dt><a name="foot65">... Selbig</a><a href=
+ "#tex2html5"><sup>5</sup></a></dt>
+ <dd>Max Planck Institute of Molecular Plant Physiology, Am
+ M&uuml;hlenberg 1, 14476 Golm, Germany. E-mail:
+ <tt>selbig@mpimp-golm.mpg.de</tt></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

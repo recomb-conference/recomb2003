@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>129. Design of a clinical microarray chip</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category05.html'>&lt;&lt;</a> <a href='/recombdb/category06.html'><b>Gene Expression</b> Overview</a> <a href='/recombdb/category07.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-06-128/'>&lt;&lt;</a> Poster 129 [ <a href='poster-06-129.pdf'>PDF</a> | <a href='poster-06-129.tgz'>TeX</a> | <a href='poster-06-129.ps'>PostScript</a> ] <a href='/recombdb/poster-06-130/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>129. Design of a clinical
+ microarray chip<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Jochen J&auml;ger<a name="tex2html1"
+    href="#foot42"><sup>1</sup></a> and Rainer Spang<img width="11"
+    height="18" align="bottom" border="0" src="img1.png" alt=
+    "$^1$"></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> microarray, medical
+ diagnostics, chip design, clinical trials, sequential
+ methods</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+ <p><font size="-1">For microarray based diagnosis only a small
+ number of genes is really substantial. In a preprocessing step the
+ majority of the spots can be filtered out and not used any more. If
+ it were possible to identify the informative spots early in a
+ study, one could save a lot of effort and expenses. We study the
+ problem of how many samples should be analyzed before moving from a
+ full genome chip approach to a smaller and therefore more cost
+ efficient custom diagnostic chip.</font></p>
+ <h1><a name="SECTION00020000000000000000"><font size=
+ "+1">Microarray Studies</font></a></h1>
+ <p><font size="-1">Currently most clinical microarray studies use
+ the following design approach. Since only few disease genes are
+ known and the study should be as comprehensive as possible the
+ microarray covers as much of the genome as possible. After the
+ initial study is complete the data is analyzed and the most
+ discriminative genes are respotted on a new custom chip that is
+ more cost efficient and can be used for further diagnostic
+ analysis. For studies where the data accumulates steadily over a
+ longer period of time it makes sense to monitor the results as they
+ occur and shrink the chip or even terminate the study either
+ because the discriminative power is already sufficient or the goal
+ cannot be achieved. In the statistical literature this is known as
+ sequential methods [<a href="#Wald">3</a>]. (or
+ group sequential methods [<a href=
+ "#Turnbull">1</a>] if the data is grouped in
+ blocks and analyzed at certain intervals). The problem addressed
+ here is not concerend with variable selection as it is known from
+ the classification literature. Although on first glance we also
+ select a subset of genes, we do this in order to cover as many of
+ the potential candidates as necessary for a consistent and reliable
+ future class prediction. The genes selected do not necessarily have
+ to be the most discriminant ones, they should rather represent a
+ reliable subset on which further feature selection can be applied
+ to. So chip design does not yet select genes for diagnostic
+ signatures, but limits further feature selection to a subset of
+ genes to choose from.</font></p>
+ <h1><a name="SECTION00030000000000000000"><font size=
+ "+1">Methods</font></a></h1>
+ <p><font size="-1">In order to study the effects of a new chip
+ design during a clinical trial we used a large dataset from
+ leukemia patients (acute lymphoblastic leukemia) [<a href=
+ "#Yeoh02">2</a>] and simulated chip design with
+ this dataset. Assume that the final study provides <img width="13"
+ height="14" align="bottom" border="0" src="img2.png" alt="$k$">
+ chips for a specific disease variant and <img width="9" height="14"
+      align="bottom" border="0" src="img3.png" alt="$l$"> chips of
+      another. The goal is to identify a subset of genes that can
+      form a discriminative classifier between these two variants.
+      We would like to compare this classifier with one that only
+      had a fraction of the final chips or not all genes to choose
+      from. Therefore we randomly chose <img width="11" height="13"
+      align="bottom" border="0" src="img4.png" alt="$c$">
+      (<img width="94" height="32" align="middle" border="0" src=
+      "img5.png" alt="$c &lt; min(k,l)$">) chips several times. From
+      these chips we extracted the genes that are most
+      discriminative and used these to redesign a new virtual chip.
+      This can be seen as a subset projection of the whole geneset
+      on the original chip. This projection was then applied to all
+      chips so that we had now <img width="37" height="30" align=
+      "middle" border="0" src="img6.png" alt="$k+l$"> new "virtual"
+      diagnostic chips. For these diagnostic chips we applied
+      feature selection to extract the most discriminative genes and
+      built a classifier. The performance of this classifier gives a
+      hint on the performance of the new chip design. During the
+      simulation <img width="11" height="13" align="bottom" border=
+      "0" src="img4.png" alt="$c$"> was varied from 2 to <img width=
+      "66" height="32" align="middle" border="0" src="img7.png" alt=
+      "$min(k,l)$"> and different feature selection schemes were
+      probed.</font></p>
+ <h1><a name="SECTION00040000000000000000"><font size="+1">First
+ results</font></a></h1>
+ <div align="center"><a name="fig:rna-hmm"></a><a name="29"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure 1:</strong> Classification
+ performance of a simulated diagnostic chip with varying number of
+ "full" genome chips before we switched to the diagnostic chip
+ design</caption>
+ <tr>
+ <td>
+ <div align="center"><img width="388" height="318" align="bottom"
+ border="0" src="img8.png" alt=
+ "\includegraphics[height=7cm]{poster-06-129-fig01.eps}"></div></td></tr></table></div>
+ <p><font size="-1">The box plots show the distribution of 20
+ repeats of randomly picking <img width="11" height="13" align=
+ "bottom" border="0" src="img4.png" alt="$c$"> chips from each group
+ and building a diagnostic chip based on this information. On this
+ leukemia dataset we can see that the classification performance
+ reaches a plateau when using four or more samples for our chip
+ design. The chip was designed using only 100 out of 12600 genes and
+ the classifier was trained using an additional feature selection
+ scheme that chose the best 33 discriminative genes from the
+ 100.</font></p>
+ <p></p>
+ <h2><a name="SECTION00050000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="Turnbull">1</a></dt>
+ <dd>C.&nbsp;Jennison &amp; B.&nbsp;Turnbull.<br>
+ <em>Group Sequential Methods with Applications to Clinical
+ Trials</em>.<br>
+ Chapman &amp; Hall/CRC, 2000.</dd>
+ <dt><a name="Yeoh02">2</a></dt>
+ <dd>E.-J. Yeoh, M.&nbsp;E. Ross et&nbsp;al.<br>
+ Classification, subtype discovery, and prediction of outcome in
+ pediatric acute lymphoblastic leukemia by gene expression
+ profiling.<br>
+ <em>Cancer Cell</em>, 1:133-145, March 2002.</dd>
+ <dt><a name="Wald">3</a></dt>
+ <dd>A.&nbsp;Wald.<br>
+ <em>Sequential analysis</em><br>
+ Wiley, New York, 1947.</dd></dl>
+ <br>
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot42">... J\"ager</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Max-Planck-Institute for Molecular Genetics, Ihnestr. 73,
+ D-14195 Berlin (Germany) . E-mail: 
+ <div align="center"><b><tt>Jochen.Jaeger@molgen.mpg.de,
+ Rainer.Spang@molgen.mpg.de</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

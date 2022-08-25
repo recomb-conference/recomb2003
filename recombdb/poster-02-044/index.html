@@ -1,0 +1,304 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>44. Contextual Multiple Sequence Alignment</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-043/'>&lt;&lt;</a> Poster 044 [ <a href='poster-02-044.pdf'>PDF</a> | <a href='poster-02-044.tgz'>TeX</a> | <a href='poster-02-044.ps'>PostScript</a> ] <a href='/recombdb/poster-02-045/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>44. Contextual Multiple
+ Sequence Alignment<br>
+  (Context helps in aligning orphan genes)<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Rafa<img width="5" height="14" align=
+ "bottom" border="0" src="img1.png" alt="\l"> Otto,<a name=
+ "tex2html1" href="#foot71"><sup>1</sup></a> Anna Gambin<a name=
+ "tex2html2" href="#foot72"><sup>2</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> context dependency, multiple
+ alignment, orphan genes, amino acids substitution tables,
+ BAliBASE</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+   
+ <p><font size="-1">The multiple alignment of biological sequences
+ has become an essential tool in molecular biology. It is used to
+ find conserved regions and motifs in protein families, to detect
+ the homology between new sequences and groups of sequences having
+ already known function and in a preliminary phase of protein
+ structure prediction. Multiple alignment is also extensively used
+ in molecular evolutionary analysis.</font></p>
+ <p><font size="-1">The various genome projects have provided the
+ biologist with a great number of new protein sequences, and the
+ rate of appearance of these data is steadily increasing. The
+ development of accurate and reliable multiple alignment program
+ which is capable to handling many (often very divergent) sequences
+ simultaneously is still of major importance.</font></p>
+ <p><font size="-1">The complexity of the problem do not allow to
+ find the exact solution in the reasonable computational
+ time&nbsp;[<a href="#DKM98">1</a>].
+ Traditionally, the most popular heuristic approach has been the
+ progressive alignment method.</font></p>
+ <p><font size="-1">We propose to explore new model for sequence
+ alignment, in which the score for the substitution depends on its
+ neighborhood in the sequence, too. Such a <em>contextual alignment
+ model</em> has been proposed recently in&nbsp;[<a href=
+ "#GLSTT">2</a>] for the pairwise alignment
+ problem. To use the notion of context while considering multiple
+ alignment we have decided to relax slightly this model. However, we
+ still need the family of contextual amino acid substitution
+ matrices. The novel approach to construct such a tables have been
+ developed. We present preliminary experimental results that
+ illustrate the advantage of using contextual approach in
+ progressive alignment algorithm. It turned to be particularly
+ useful in aligning the family of sequences containing several
+ <em>orphans</em> (i.e.&nbsp;distantly related sequences, sometimes
+ sharing the common fold).</font></p>
+ <p><font size="-1">It should be clear that the existence of orphan
+ genes is unavoidable. Despite of the accumulation of genetic
+ information, newly sequenced genomes continue to reveal a high
+ proportion (even to <img width="33" height="32" align="middle"
+ border="0" src="img2.png" alt="$50\%$">) of uncharacterized genes.
+ Among them there is a significant number of strictly orphan genes
+ without any resemblance to previously determined protein sequences.
+ Moreover, most genes found in databases have only be predicted by
+ computer methods and have never been experimentally validated.
+ Hence, for the alignment method it is important to tolerate orphans
+ (some existing programs exclude the divergent orphans as unrelated
+ or unalignable sequences) and to keep the stability of the family
+ alignment when orphans are introduced into the sequence
+ set.</font></p>
+ <h1><a name="SECTION00020000000000000000"><font size=
+ "+1">Results</font></a></h1>
+  <font size="-1">Contextual alignment model considered
+ in&nbsp;[<a href="#GLSTT">2</a>] cannot be
+ directly applied for the problem of multiple alignment. In this
+ model the score of an alignment depends on the order of operations
+ (substitutions and indels) performed, as a substitution at one
+ position can change the context for neighboring sites. The optimal
+ alignment for the pair of sequences was defined as the alignment
+ having the maximal score, when we maximize over all possible
+ chronologies of evolutionary changes.</font> 
+ <p><font size="-1">To deal with several sequences simultaneously
+ and to keep the context-dependency, we propose relaxed contextual
+ model. In this model we penalize substitution also considering two
+ surrounding letters but we do not care about the relative order of
+ operations. We consider all possible contexts (maximum
+      <img width="12" height="13" align="bottom" border="0" src=
+      "img3.png" alt="$9$"> if the substitution is surrounded by two
+      indels) for the substitution and take an average of the
+      contextual scores. Notice, that standard non-contextual e.g.
+      Blosum matrix entry can be viewed as an average over all
+      <img width="28" height="13" align="bottom" border="0" src=
+      "img4.png" alt="$400$"> possible pairs of context.</font></p>
+ <p><font size="-1">Our contextual multiple alignment algorithm can
+ be viewed as a contextual extension of popular ClustalW
+ algorithm&nbsp;[<a href="#clustal">3</a>], which
+ belongs to the family of progressive alignment
+ algorithms.</font></p>
+ <p><font size="-1">The BAliBASE (Benchmark Alignments dataBASE) is
+ a database of manually-refined multiple sequence alignments. It is
+ specifically designed for the evaluation and comparison of multiple
+ sequence alignment programs.</font></p>
+ <p><font size="-1">In our experiment the multiple alignments are
+ calculated for all reference sets in two settings: contextual and
+ non-contextual. Then, the results obtained were compared with the
+ reference alignments from the database. For this comparison the
+ measure <em>sum-of-pairs score</em> from&nbsp;[<a href=
+ "#TPP99">4</a>] has been used. It is the
+ frequency of properly aligned pairs of residues w.r.t.&nbsp;the
+ reference alignment. In the Table below we present several
+ families, for which the contextual approach yields much better
+ results.</font></p>
+ <div align="center"><a name="73"></a> 
+ <table>
+ <caption><strong>Table 1:</strong> The influence of
+ context-dependency to the quality of the alignment.</caption>
+ <tr>
+ <td>
+ <div align="center">
+ <table cellpadding="3" border="1" align="center">
+ <tr>
+ <th align="left"><font size="-1"><b>protein family</b></font></th>
+ <th align="right"><font size="-1"><b># of seq.</b></font></th>
+ <th align="right"><font size="-1"><b>context</b></font></th>
+ <th align="right"><font size="-1"><b>non-context</b></font></th>
+ <th align="right"><font size="-1"><b>% of
+ improvement</b></font></th></tr>
+ <tr>
+ <th align="left"><font size="-1"><b>1ycc: cytochrome
+ e</b></font></th>
+ <td align="right"><font size="-1"><img width="12" height="13"
+      align="bottom" border="0" src="img5.png" alt=
+      "$4$"></font></td>
+ <td align="right"><font size="-1"><img width="43" height="29"
+      align="middle" border="0" src="img6.png" alt=
+      "$0,765$"></font></td>
+ <td align="right"><font size="-1"><img width="43" height="29"
+      align="middle" border="0" src="img7.png" alt=
+      "$0,665$"></font></td>
+ <td align="right"><font size="-1"><img width="43" height="29"
+      align="middle" border="0" src="img8.png" alt=
+      "$15,04$"></font></td></tr>
+ <tr>
+ <th align="left"><font size="-1"><b>2trx:
+ thioredoxin</b></font></th>
+ <td align="right"><font size="-1"><img width="12" height="13"
+      align="bottom" border="0" src="img5.png" alt=
+      "$4$"></font></td>
+ <td align="right"><font size="-1"><img width="43" height="29"
+      align="middle" border="0" src="img9.png" alt=
+      "$0,671$"></font></td>
+ <td align="right"><font size="-1"><img width="43" height="29"
+      align="middle" border="0" src="img10.png" alt=
+      "$0,468$"></font></td>
+ <td align="right"><font size="-1"><img width="43" height="29"
+      align="middle" border="0" src="img11.png" alt=
+      "$43,38$"></font></td></tr>
+ <tr>
+ <th align="left"><font size="-1"><b>1aboA: sh3</b></font></th>
+ <td align="right"><font size="-1"><img width="20" height="13"
+      align="bottom" border="0" src="img12.png" alt=
+      "$15$"></font></td>
+ <td align="right"><font size="-1"><img width="43" height="29"
+      align="middle" border="0" src="img13.png" alt=
+      "$0,683$"></font></td>
+ <td align="right"><font size="-1"><img width="43" height="29"
+      align="middle" border="0" src="img14.png" alt=
+      "$0,580$"></font></td>
+ <td align="right"><font size="-1"><img width="43" height="29"
+      align="middle" border="0" src="img15.png" alt=
+      "$17,76$"></font></td></tr>
+ <tr>
+ <th align="left"><font size="-1"><b>1uky: uridyl
+ kin</b></font></th>
+ <td align="right"><font size="-1"><img width="20" height="13"
+      align="bottom" border="0" src="img16.png" alt=
+      "$24$"></font></td>
+ <td align="right"><font size="-1"><img width="43" height="29"
+      align="middle" border="0" src="img17.png" alt=
+      "$0,541$"></font></td>
+ <td align="right"><font size="-1"><img width="43" height="29"
+      align="middle" border="0" src="img18.png" alt=
+      "$0,464$"></font></td>
+ <td align="right"><font size="-1"><img width="43" height="29"
+      align="middle" border="0" src="img19.png" alt=
+      "$20,91$"></font></td></tr>
+ <tr>
+ <th align="left"><font size="-1"><b>sh3-2-ref6: sh3</b></font></th>
+ <td align="right"><font size="-1"><img width="12" height="13"
+      align="bottom" border="0" src="img20.png" alt=
+      "$6$"></font></td>
+ <td align="right"><font size="-1"><img width="43" height="29"
+      align="middle" border="0" src="img21.png" alt=
+      "$0,553$"></font></td>
+ <td align="right"><font size="-1"><img width="43" height="29"
+      align="middle" border="0" src="img22.png" alt=
+      "$0,454$"></font></td>
+ <td align="right"><font size="-1"><img width="43" height="29"
+      align="middle" border="0" src="img23.png" alt=
+      "$21,81$"></font></td></tr>
+ <tr>
+ <th align="left"><font size="-1"><b>sh3-3-ref6: sh3</b></font></th>
+ <td align="right"><font size="-1"><img width="12" height="13"
+      align="bottom" border="0" src="img24.png" alt=
+      "$5$"></font></td>
+ <td align="right"><font size="-1"><img width="43" height="29"
+      align="middle" border="0" src="img25.png" alt=
+      "$0,430$"></font></td>
+ <td align="right"><font size="-1"><img width="43" height="29"
+      align="middle" border="0" src="img26.png" alt=
+      "$0,214$"></font></td>
+ <td align="right"><font size="-1"><img width="51" height="29"
+      align="middle" border="0" src="img27.png" alt=
+      "$100,93$"></font></td></tr>
+ <tr>
+ <th align="left"><font size="-1"><b>AVG</b></font></th>
+ <td align="right"></td>
+ <td align="right"><font size="-1"><b>0,606</b></font></td>
+ <td align="right"><font size="-1"><b>0,474</b></font></td>
+ <td align="right"><font size=
+ "-1"><b>29,11</b></font></td></tr></table>
+  </div></td></tr></table></div>
+ <br>
+    
+ <h2><a name="SECTION00030000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="DKM98">1</a></dt>
+ <dd>Durbin, R., Eddy, S., Krogh, A. and Mitchison, G.
+ <em>Biological sequence analysis. Probabilistic models of proteins
+ and nucleic acids</em>, Cambridge University Press, 1998.</dd>
+ <dt><a name="GLSTT">2</a></dt>
+ <dd>Gambin, A., Lasota, S., Szklarczyk, R., Tiuryn, J. and
+ Tyszkiewicz, J. Contextual Alignment of Biological Sequences, In:
+ <em>Proc. of European Conference on Computational Biology ECCB,
+ Saarbr&uuml;cken, Germany</em> Bioinformatics, vol. <b>18 (2)</b>,
+ 2002, pp. 116-127.</dd>
+ <dt><a name="clustal">3</a></dt>
+ <dd>Thompson, J.D., Higgins, D.G. and Gibson, T.J. ClustalW:
+ improving the sensitivity of progressive multiple sequence
+ alignment through sequence weighting, positions-specific gap
+ penalties and weight matrix choice, <em>Nucleic Acids
+ Research</em>, vol. <b>22</b>, 1994, pp. 4673-4680.</dd>
+ <dt><a name="TPP99">4</a></dt>
+ <dd>Thompson, J.D., Plewniak, F. and Poch, O. A comprehensive
+ comparison of multiple sequence alignment programs, <em>Nucleic
+ Acids Research</em>,1999, vol. <b>27</b>, pp. 2682-2690.</dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot71">... Otto,</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Warsaw School of Economics, ul. Rakowiecka 24, 02-554 Warsaw,
+ Poland.<br>
+  E-mail:&nbsp;
+ <div align="center"><b><tt>rafal@rafalotto.com</tt></b></div></dd>
+ <dt><a name="foot72">... Gambin</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>Institute of Informatics, Warsaw University, ul. Banacha 2, 02
+ 097, Warsaw, Poland.<br>
+ E-mail:&nbsp;
+ <div align="center">
+ <b><tt>aniag@mimuw.edu.pl</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

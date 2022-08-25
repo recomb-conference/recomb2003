@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>6. A New Model for Sequencing by Hybridization</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center">  <a href='/recombdb/category01.html'><b>Genomics</b> Overview</a> <a href='/recombdb/category02.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-01-005/'>&lt;&lt;</a> Poster 006 [ <a href='poster-01-006.pdf'>PDF</a> | <a href='poster-01-006.tgz'>TeX</a> | <a href='poster-01-006.ps'>PostScript</a> ] <a href='/recombdb/poster-01-007/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>6. A New Model for
+ Sequencing by Hybridization<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Fr&eacute;d&eacute;ric Guinand, <a name=
+ "tex2html1" href="#foot62"><sup>1</sup></a> Laurent Mouchard,
+ <a name="tex2html2" href="#foot63"><sup>2</sup></a> Aurelia Rabia
+ <a name="tex2html3" href="#foot64"><sup>3</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> Sequencing, SBH, models,
+ SBH-graph, errors, repetitions.<br>
+ <br></font></p>
+ <p><font size="-1">One of the most important problems in
+ bioinformatics is the DNA-sequencing, that consists in determining
+ the sequence of nucleotides of a given target piece of DNA. Several
+ methods exist, mainly gel-based technologies, but a new method was
+ developed at the end of the eighties, called sequencing by
+ hybridization (SBH). This method produces a spectrum that is a set
+ of oligonucleotides of the same length that are contained into the
+ original sequence. But this set may contain different kinds of
+ errors. Positive errors are oligonucleotides that are present in
+ the spectrum but not in the original sequence. Conversely,
+ oligonucleotides which are negative errors are not present in the
+ spectrum but present in the original sequence. Finally if the
+ sequence contains repetitions, any oligonucleotides present more
+ than once in the original sequence will appear only once in the
+ spectrum. For more than ten years, many studies have been dedicated
+ to the classical problem which consists in rebuilding the original
+ sequence from the erroneous spectrum. Usually, in these studies,
+ the phases of modeling and rebuilding were not clearly
+ distinguished. All used models correspond to different graph
+ formulations according to kinds of errors that have been taken into
+ account: no error [<a href=
+    "#LFK88">5</a>,<a href="#Pev89">
+ 6</a>], only repetitions [<a href=
+ "#Gue92">4</a>], exclusively both positive and
+ negative errors [<a href="#BFK99">2</a>]. But
+ none of these models consider positive errors, negative errors and
+ repetitions together. The first attempt to take all kinds of errors
+ into account was a heuristic presented in [<a href=
+ "#BFG02">3</a>], but the considered model was not
+ suitable to this situation.</font></p>
+ <p><font size="-1">The problem we address is uphill from the
+ reconstruction itself, we study the graph formulation. We show
+ first that the solution spaces associated to the previous models
+ were not consistent for handling simultaneously all kinds of
+ errors. We propose two algorithms to build a new type of graph,
+ called SBH-graph, in which in addition to the elements of the
+ spectrum new vertices that are associated to potential negative
+ errors are added. The number of vertices to add is limited by
+ <img width="44" height="34" align="middle" border="0" src=
+ "img1.png" alt="$O(s^{2})$"> if the number of oligonucleotides of
+ the spectrum is <img width="11" height="13" align="bottom"
+      border="0" src="img2.png" alt="$s$">. As soon as the original
+      sequence is covered (in the fragment assembly formulation ) by
+      the elements of the spectrum, we prove that SBH-graphs contain
+      a path corresponding to the original sequence. This is also
+      true when the spectrum presents hidden repetitions (lost
+      repeated patterns).</font></p>
+ <p><font size="-1">The first algorithm consists in building a
+ multi-graph from the information coming from the overlapping
+ between the elements of the spectrum. Each vertex within this graph
+ corresponds to an element of the spectrum and the graph contains
+ the arc <img width="39" height="32" align="middle" border="0"
+      src="img3.png" alt="$(a,b)$"> valuated by <img width="13"
+      height="14" align="bottom" border="0" src="img4.png" alt=
+      "$k$"> if oligonucleotide <img width="12" height="13" align=
+      "bottom" border="0" src="img5.png" alt="$a$"> overlaps
+      oligonucleotide <img width="11" height="14" align="bottom"
+      border="0" src="img6.png" alt="$b$"> by <img width="13"
+      height="14" align="bottom" border="0" src="img4.png" alt=
+      "$k$"> bases and if there is no existing path of length
+      <img width="13" height="14" align="bottom" border="0" src=
+      "img4.png" alt="$k$"> from <img width="12" height="13" align=
+      "bottom" border="0" src="img5.png" alt="$a$"> to <img width=
+      "11" height="14" align="bottom" border="0" src="img6.png" alt=
+      "$b$">. The second algorithm tranforms the previous
+      multi-graph by removing arcs with values greater than
+      <img width="12" height="13" align="bottom" border="0" src=
+      "img7.png" alt="$0$">. Such arcs are replaced by hypothetical
+      paths consisting of new arcs valuated by <img width="12"
+      height="13" align="bottom" border="0" src="img7.png" alt=
+      "$0$"> and by new vertices corresponding to potential missing
+      oligonucleotides. When all arcs have a value equal to
+      <img width="12" height="13" align="bottom" border="0" src=
+      "img7.png" alt="$0$"> the resulting graph is a SBH-graph.
+      Experimental results show that the number of vertices in the
+      SBH-graph increases a lot. Indeed for sequences of a length of
+      <img width="43" height="30" align="middle" border="0" src=
+      "img8.png" alt="$200 bp$">, with oligonucleotides of length
+      <img width="12" height="13" align="bottom" border="0" src=
+      "img9.png" alt="$7$">, the size of the spectrum is about
+      <img width="28" height="13" align="bottom" border="0" src=
+      "img10.png" alt="$171$"> oligonucleotides with the original
+      sequences containing about thirty repeated oligonucleotides.
+      The size of the SBH-graphs is about <img width="36" height=
+      "13" align="bottom" border="0" src="img11.png" alt="$5270$">
+      vertices. We are currently investigating three distincts
+      directions for the sequence reconstruction phase. The first,
+      ``brute force'' strategy, is to apply to the SBH-graph a
+      distributed heuristic based on ant algorithm [<a href=
+      "#BDG02">1</a>]. The second consists in
+      reducing the size of SBH-graphs by the addition of new
+      constraints like information about the position of some
+      oligonucleotides within the sequence (as it is already done in
+      Positional SBH). Finally, the last investigated direction
+      consists in building the SBH-graph while rebuilding the
+      sequence.</font></p>
+ <p></p>
+ <h2><a name="SECTION00010000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="BDG02">1</a></dt>
+ <dd>C.&nbsp;Bertelle, A.&nbsp;Dutot, F.&nbsp;Guinand, and
+ D.&nbsp;Olivier.<br>
+ DNA-Sequencing by Hybridization based on a Multi-Castes Ant
+ System.<br>
+ In <em>Proceedings of NETTAB'02 ("Agents in Bioinformatics")</em>,
+ pages 1-7, Bologna (Italy), July, 12th-14th 2002.</dd>
+ <dt><a name="BFK99">2</a></dt>
+ <dd>J.&nbsp;B<img width="5" height="14" align="bottom" border="0"
+ src="img12.png" alt="\l">azewicz, P.&nbsp;Formanowicz,
+ M.&nbsp;Kasprzak, W.&nbsp;T. Markiewicz, and J.&nbsp;Weglarz.<br>
+ DNA sequencing with positive and negative errors.<br>
+ <em>Journal of Computational Biology</em>, 6:113-123, 1999.</dd>
+ <dt><a name="BFG02">3</a></dt>
+ <dd>J.&nbsp;B<img width="5" height="14" align="bottom" border="0"
+ src="img12.png" alt="\l">azewicz, P.&nbsp;Formanowicz&nbsp;F.
+ Guinand, and M.&nbsp;Kasprzak.<br>
+ Heuristic managing errors for <small>DNA</small>-sequencing.<br>
+ <em>Bioinformatics</em>, 18:652-660, 2002.</dd>
+ <dt><a name="Gue92">4</a></dt>
+ <dd>A.&nbsp;Gu&eacute;noche.<br>
+ Can we recover a sequence, just knowing all its subsequences of
+ given length?<br>
+ <em>Computer Applications in the Biosciences (CABIOS)</em>,
+ 8:569-574, 1992.</dd>
+ <dt><a name="LFK88">5</a></dt>
+ <dd>Lysov, P.&nbsp;Yu, V.&nbsp;L. Florentiev, A.&nbsp;A. Khorlin,
+ K.&nbsp;R. Khrapko, V.&nbsp;V. Shik, and A.&nbsp;D. Mirzabekov.<br>
+ Determination of the nucleotide sequence of DNA using hybridization
+ with oligonucleotides.<br>
+ <em>Doklady Akademii Nauk SSSR</em>, 303:1508-1511, 1988.</dd>
+ <dt><a name="Pev89">6</a></dt>
+ <dd>P.A. Pevzner.<br>
+ l-tuple DNA sequencing: computer analysis.<br>
+ <em>Journal of Biomolecular Structure and Dynamics</em>, 7:63-73,
+ 1989.</dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot62">... Guinand,</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Laboratoire d'Informatique du Havre, Le Havre, France.  
+ <div align="center"><b>E-mail:</b></div>
+ <div align="center">
+ <b><tt>frederic.guinand@univ-lehavre.fr</tt></b></div></dd>
+ <dt><a name="foot63">... Mouchard,</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>Laboratoire de Physiologie V&eacute;g&eacute;tale - ABISS,
+ Rouen, France.  
+ <div align="center"><b>E-mail:</b></div>
+ <div align="center">
+ <b><tt>Laurent.Mouchard@univ-rouen.fr,laurent@dcs.kcl.ac.uk</tt></b></div></dd>
+ <dt><a name="foot64">... Rabia</a><a href=
+ "#tex2html3"><sup>3</sup></a></dt>
+ <dd>Laboratoire d'Informatique du Havre, Le Havre, France.  
+ <div align="center"><b>E-mail:</b></div>
+ <div align="center">
+ <b><tt>aurelia.rabia@univ-lehavre.fr</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

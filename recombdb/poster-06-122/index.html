@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>122. Testing sets of genes defined by gene ontologies for differential expression in microarray experiments</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category05.html'>&lt;&lt;</a> <a href='/recombdb/category06.html'><b>Gene Expression</b> Overview</a> <a href='/recombdb/category07.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-06-121/'>&lt;&lt;</a> Poster 122 [ <a href='poster-06-122.pdf'>PDF</a> | <a href='poster-06-122.tgz'>TeX</a> | <a href='poster-06-122.ps'>PostScript</a> ] <a href='/recombdb/poster-06-123/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>122. Testing sets of genes
+ defined by gene ontologies for differential expression in
+ microarray experiments<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Stefan Bentink<a name="tex2html1" href=
+ "#foot30"><sup>1</sup></a> and Rainer Spang<img width="11"
+      height="18" align="bottom" border="0" src="img1.png" alt=
+      "$^1$"></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> gene ontology, microarray,
+ class scoring, breast cancer</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+ <p><font size="-1">Technologies like micro- or macroarrays allow
+ insights into the regulation of several thousand genes at the same
+ time. But the power of this new methods is also the source of
+ problems concerning analysis and evaluation of the datasets
+ obtained. On the one hand there is the difficulty in considering
+ genes as significant in a multiple-testing background. On the other
+ hand micorarray- experiments can produce confusing lists of
+ hundreds of apparently deregulated genes.</font></p>
+ <p><font size="-1">In the present work a functional grid is laid on
+ the expression-data. This functional classification is provided by
+ the Gene Ontology (GO) database [#!go:2000!#]. Two different tests
+ are proposed to find on the one hand an accumulation of induced
+ genes in a GO-category (accumulation test) and on the other hand a
+ contamination of the GO-category with a few genes that display
+ moderately increased or decreased expression levels (contamination
+ test).</font></p>
+ <h1><a name="SECTION00020000000000000000"><font size="+1">Scoring
+ of Gene Ontology categories</font></a></h1>
+ <p><font size="-1">The first step to calculate GO-scores is a
+ gene-wise two-sample t-test. The negative sum of
+      log-<img width="12" height="29" align="middle" border="0" src=
+      "img2.png" alt="$p$">-values falling in a defined GO-category
+      is taken as score. Apart from this method, which is well
+      established in the literature
+      [#!pavalidis:2002!#][#!zien:2000!#], a second score is
+      introduced. It is based on the statistical test of Kolmogorov
+      and Smirnov applied to the distribution of <img width="12"
+      height="29" align="middle" border="0" src="img2.png" alt=
+      "$p$">-values in a GO-category, and is similar to Tuckey's
+      higher criticism score. The significance of scores is assessed
+      by two permutation based tests. The null hypothesis of the
+      first tests assumes that there are deregulated genes, which
+      are however uniformly distributed over the Gene Ontology
+      graph. The alternative is hence an accumulation of deregulated
+      genes in a GO-category. The null hypothesis of the second test
+      assumes that there are no deregulated genes in a GO-category
+      at all. In this case we test for subtle changes of expression
+      levels for the genes in a GO-category as a whole.</font></p>
+ <h1><a name="SECTION00030000000000000000"><font size="+1">First
+ results and experiences</font></a></h1>
+ <p><font size="-1">To test the Gene Ontology approach,
+ microarray-datasets from two different subtypes of human breast
+ cancer are compared. The first dataset was obtained from Estrogen
+ receptor positive samples, the second one came from Estrogen
+ receptor negative tumor cells [#!west:2001!#]. The most important
+ finding is, that our method provides insight, that can not be found
+ by gene-wise screens, since the GO-scores are mainly driven by
+ <img width="12" height="29" align="middle" border="0" src=
+ "img2.png" alt="$p$">-values which do not indicate statistical
+ significance in a gene-wise multiple testing context. This is
+ proven by a set of genes found only in the functional context but
+ not in a classical single gene approach. One interesting group is
+ the GO-term mitosis. The differential expression of the genes in
+ this group reflects the differences in the proliferative potential
+ of the breast cancer types [#!gross:2002!#]. To enlarge the
+ practical use, a graphical user-interface has been implemented
+ which allows the molecular biologist for browsing and structuring
+ results of microarray experiments.</font></p>
+ <h2>No References!</h2>
+ <br>
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot30">... Bentink</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Max-Planck-Institute for Molecular Genetics, Ihnestr. 73,
+ D-14195 Berlin (Germany). E-mail: 
+ <div align="center">
+ <b><tt>Stefan.Bentink|Rainer.Spang@molgen.mpg.de</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

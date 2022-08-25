@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>51. A New Method for Predicting Haplotype Pairs for Genotypes</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-049/'>&lt;&lt;</a> Poster 051 [ <a href='poster-02-051.pdf'>PDF</a> | <a href='poster-02-051.doc'>MSWORD</a> ] <a href='/recombdb/poster-02-052/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>51.&nbsp; A New Method for Predicting Haplotype Pairs for
+ Genotypes</h2>
+ <p align="center"><b>Werner Terhalle</b><a href="#_ftn1" name=
+ "_ftnref1" title=""><b>[1]</b></a><b>, Willi Schmidt</b><a href=
+ "#_ftn2" name="_ftnref2" title=""><b>[2]</b></a><b>, Karla
+ K&ouml;pke</b><a href="#_ftn3" name="_ftnref3" title=
+ ""><b>[3]</b></a></p>
+ <p><b>Keywords:</b> haplotype predicition, genotype-phenotype
+ relationship</p>
+ <p><b>1&nbsp; Introduction</b></p>
+ <p>Now high throughput methods are given for screening DNA sequence
+ variation in human populations to analyse interindividual
+ differences in disease risk and treatment response. Up to date more
+ than 1.4 million single nucleotide polymorphisms (SNPs) were found;
+ most genes contain multiple SNPs. Haplotypes as combinations of
+ specific SNPs on one chromosome rather than single SNPs should be
+ analysed to study the consequences of sequence variability for the
+ individual phenotype. Because molecular haplotyping of genomic DNA
+ is a laborious process, in silico methods for prediction of the
+ haplotype pair underlying an individual genotype is a relevant step
+ in analysing genotype-phenotype relationships.</p>
+ <p><b>2&nbsp; Common methods</b></p>
+ <p>There are several methods for predicting haplotypes known in the
+ literature. Each of these methods is based either on a parsimony
+ principle that searches for a minimum set of haplotypes explaining
+ a given sample of genotypes, or on a maximum-likelihood principle
+ that tries to find frequencies for all possible haplotypes that
+ maximize the likelihood of a given genotype sample.</p>
+ <p>Given a sample of genotypes, Clark's well-known algorithm [1]
+ starts by resolving all unambiguous genotypes containing at most
+ one heterozygous state, and then enlarges this set of haplotypes
+ iteratively by subtracting haplotypes already known to be present
+ in the population from genotypes not resolved so far. This
+ algorithm has the disadvantages, that in some cases it does not
+ explain&nbsp; all genotypes (or it even can not start), and,
+ furthermore, it is depending on the order of genotypes. The PHASE
+ algorithm by Stephens et al. [2] improves this algorithm by
+ inferring a statistical method for allowing mutations in the
+ haplotypes added in the iteration step to avoid the problem of
+ getting stuck.</p>
+ <p>Excoffier and Slatkin [3] have published an
+ expectation-maximization (EM) algorithm to maximize the likelihood
+ of the given sample of genotypes. Several algorithms exist refining
+ this maximum-likelihood approach: Niu et al. [4] extended this
+ algorithm by a divide-and-conquer approach to allow longer
+ genotypes to be considered, and Rohde and Fuerst [5] include
+ nuclear family information. While the maximum-likelihood methods
+ are rather good for the estimation of haplotype frequencies in a
+ population they are often weak in assigning haplotype pairs to
+ individuals (although Rohdes and Fuersts algorithm is helpful for
+ this); furthermore, they are based on the assumption of fulfilled
+ Hardy-Weinberg equilibrium (HWE).</p>
+ <b><br clear="all"></b> 
+ <p><b>3&nbsp; A new method</b></p>
+ <p>Especially in selected samples which contain diseased
+ individuals a violation of HWE is likely. Therefore, we propose an
+ algorithm that is independent of the assumption of HWE. Our method
+ does not rely on parsimony nor on maximum likelihood principles. We
+ assign a value to each possible haplotype which measures the
+ importance of this particular haplotype in explaining the genotypes
+ considered in the sample - a value which may be interpreted as the
+ likelihood of this haplotype. Then, to each haplotype pair we
+ simply assign the product of the two respective numbers resulting
+ in a list of haplotype pairs for each genotype weighted according
+ to their likelihood of being the pair underlying the particular
+ genotype.</p>
+ <p>This new method</p>
+ <p>- is applicable for every sample of genotypes,</p>
+ <p>- does not assume Hardy-Weinberg equilibrium,</p>
+ <p>- lists for each genotype all possible haplotype pairs and a
+ score for their plausibility</p>
+ <p>- is very fast.</p>
+ <p>&nbsp;</p>
+ <h1>References</h1>
+ <p>[1] Clark, A.G. 1990. Inference of haplotypes from PCR-amplified
+ samples of diploid populations. <i>Mol. Biol.</i>
+ &nbsp;7:111-122.</p>
+ <p>[2] Stephens, M., Smith, N.J. and Donnelly, P. 2001. A New
+ Statistical Method for Haplotype Reconstruction from Population
+ Data. <i>Am. J. Hum. Genet.</i> 68:978-989.</p>
+ <p>[3] Excoffier, L. and Slatkin, M. 1995. Maximum-Likelihood
+ Estimation of Molecular Haplotype Frequencies in a Diploid
+ Population. <i>Mol. Biol. Evol.</i> 12(5):921-927.</p>
+ <p>[4] Niu, T, Qin, Z. S., Xu, X. and Liu, J. S. 2002. Bayesian
+ Haplotype Inference for Multiple Linked Single-Nucleotide
+ Polymorphisms . <i>Am. J. Hum.</i> <i>Genet.</i> 70:157-169.</p>
+ <p>[5] Rohde, K. and Fuerst, R. 2001. Haplotyping and Estimation of
+ Haplotype Frequencies for Closely Linked Biallelic Multilocus
+ Genetic Phenotypes Including Nuclear Family Information. <i>Human
+ Mutation</i> 17:289-295.</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a> Institut
+ f&uuml;r Klinische Pharmakologie, Universit&auml;tsklinikum
+ Charit&eacute;, Humboldt-Universit&auml;t zu Berlin, Schumannstr.
+ 20/21, D-10098 Berlin, Germany. E&#8209;mail:
+ werner.terhalle@charite.de</p></div>
+ <div id="ftn2">
+ <p><a href="#_ftnref2" name="_ftn2" title="">[2]</a>
+ Bioinformatics, Max-Delbr&uuml;ck-Center for Molecular Medicine,
+ Robert-R&ouml;ssle-Str. 10, D-13092 Berlin, Germany. E-mail:
+ wschmidt@mdc-berlin.de</p></div>
+ <div id="ftn3">
+ <p><a href="#_ftnref3" name="_ftn3" title="">[3]</a> Institut
+ f&uuml;r Klinische Pharmakologie, Universit&auml;tsklinikum
+ Charit&eacute;, Humboldt-Universit&auml;t zu Berlin, Schumannstr.
+ 20/21, D-10098 Berlin, Germany. E-mail:
+ karla.koepke@charite.de</p></div></div>
+ </body>
+ </html>

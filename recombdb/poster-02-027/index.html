@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>27. A Large Version of the Small Parsimony Problem</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-026/'>&lt;&lt;</a> Poster 027 [ <a href='poster-02-027.pdf'>PDF</a> | <a href='poster-02-027.tgz'>TeX</a> | <a href='poster-02-027.ps'>PostScript</a> ] <a href='/recombdb/poster-02-028/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>27. A Large Version of the
+ Small Parsimony Problem<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Jakob Fredslund, <a name="tex2html1"
+    href="#foot210"><sup>1</sup></a> Jotun Hein, <a name="tex2html2"
+    href="#foot211"><sup>2</sup></a> Tejs Scharling, <img width="11"
+    height="18" align="bottom" border="0" src="img2.png" alt=
+    "$^1$"></b></div>
+ <p><font size="-1"><br></font></p>
+ <p><font size="-1"><b>Keywords:</b> Reconstruction of ancestral
+ sequences, multiple alignment, phylogeny, affine gap cost
+ function</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Abstract</font></a></h1>
+  <font size="-1">In an unrooted evolutionary tree relating a set of
+ biological sequences such as proteins or DNA, the leaves represent
+ sequences from the present while the internal nodes represent
+ ancestral sequences. The internal nodes of the tree have to be
+ reconstructed. Usually the principle of parsimony is invoked:
+ Choose the ancestral sequences such that the involved ``amount of
+ evolution'' is minimized with regard to some cost function.
+ Application of the parsimony principle falls into two categories,
+ depending on whether the phylogeny is known or not. If the
+ phylogeny is known it is the small parsimony problem, otherwise it
+ is the large parsimony problem. Since we consider complete
+ sequences, we address a hard version of the small parsimony
+ problem.<br></font> 
+ <p><font size="-1">Given a multiple alignment of complete
+ sequences, a phylogeny relating the sequences, and an affine gap
+ cost function, we study how to interpret gap symbols in terms of
+ indels. Taking a graph theoretical approach we present and formally
+ prove an algorithm which optimally solves the problem with respect
+ to the given gap cost function. As far as we know, our algorithm is
+ the first feasible solution to this problem, while many other
+ researchers have considered related problems. E.g., Altschul showed
+ that a so-called generalized affine gap cost function may perform
+ better than a normal affine function when used for determining
+ biological relationships between sequences [<a href=
+ "#altschul98">2</a>]. Stoye gave a
+ divide-and-conquer algorithm which efficiently finds a near-optimal
+ multiple alignment of a number of sequences, with an arbitrary gap
+ cost function. Recently, Althaus et al. devised an algorithm based
+ on integer linear programming which can find the optimal multiple
+ alignment of <em>k</em> sequences given an arbitrary gap cost
+ function, if the sequences are of moderate length [<a href=
+ "#Althaus02">1</a>].</font></p>
+ <p><font size="-1">If only indels of length one are allowed, no
+ indels have had an effect across columns in the alignment; i.e. the
+ gaps in one column appeared independently from gaps in other
+ columns. Hence each column can be treated independently and we can
+ place the gaps ``as high as possible'' in the tree, hereby assuming
+ that indels have happened as early as possible in the evolution
+ with respect to the given phylogeny. This follows the parsimony
+ principle: When all indels have the same length (namely 1) the only
+ parameter to minimize is the <em>number</em> of indels; i.e. fewer
+ indels are always cheaper than many indels. However, real
+ biological sequences are also subject to longer indels. When longer
+ indels are allowed the problem becomes non-trivial as can be seen
+ from Figure&nbsp;<a href="#fig:gotoh_fails">1</a>: There are gap
+ symbols in sequences <img width="19" height="29" align="middle"
+ border="0" src="img3.png" alt="$s_2$"> and <img width="19"
+      height="29" align="middle" border="0" src="img4.png" alt=
+      "$s_3$">. The gaps partly overlap and they can be explained in
+      two ways: Either (1) Two long indels have occurred -- one
+      somewhere on the evolutionary path between <img width="12"
+      height="13" align="bottom" border="0" src="img1.png" alt=
+      "$a$"> and <img width="19" height="29" align="middle" border=
+      "0" src="img3.png" alt="$s_2$">, and one on the path between
+      <img width="12" height="13" align="bottom" border="0" src=
+      "img1.png" alt="$a$"> and <img width="19" height="29" align=
+      "middle" border="0" src="img4.png" alt="$s_3$"> -- and so
+      <img width="12" height="13" align="bottom" border="0" src=
+      "img1.png" alt="$a$">, the closest common relative of
+      <img width="19" height="29" align="middle" border="0" src=
+      "img3.png" alt="$s_2$"> and <img width="19" height="29" align=
+      "middle" border="0" src="img4.png" alt="$s_3$">, has no gaps;
+      or (2) Three short indels have occurred: one on the path
+      between <img width="19" height="29" align="middle" border="0"
+      src="img5.png" alt="$s_1$"> and <img width="12" height="13"
+      align="bottom" border="0" src="img1.png" alt="$a$"> so that
+      <img width="12" height="13" align="bottom" border="0" src=
+      "img1.png" alt="$a$"> has gap symbols in the overlap interval
+      where both <img width="19" height="29" align="middle" border=
+      "0" src="img3.png" alt="$s_2$"> and <img width="19" height=
+      "29" align="middle" border="0" src="img4.png" alt="$s_3$">
+      also have gaps, one between <img width="12" height="13" align=
+      "bottom" border="0" src="img1.png" alt="$a$"> and <img width=
+      "19" height="29" align="middle" border="0" src="img3.png" alt=
+      "$s_2$"> accounting for the rest of <img width="19" height=
+      "29" align="middle" border="0" src="img3.png" alt="$s_2$">'s
+      gaps, and one between <img width="12" height="13" align=
+      "bottom" border="0" src="img1.png" alt="$a$"> and <img width=
+      "19" height="29" align="middle" border="0" src="img4.png" alt=
+      "$s_3$"> accounting for the rest of <img width="19" height=
+      "29" align="middle" border="0" src="img4.png" alt="$s_3$">'s
+      gaps.</font></p>
+ <div align="center"><a name="nielsolefemtec"></a><a name=
+ "fig:gotoh_fails"></a><a name="481"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure:</strong> <font size=
+ "-1">Phylogenetic relationship between three sequences. Thick lines
+ indicate gap symbols, while thin lines are
+ nucleotides.</font></caption>
+ <tr>
+ <td><img width="380" height="217" border="0" src="img6.png"
+      alt="\begin{figure} \centering \subfigure[Tree]{ \parbox[c][0.13\textwidth]{0.... ...x]{3em}{0.2ex} \\ [.5ex] \end{tabular}} } \vspace{-4mm} \end{figure}">
+ </td></tr></table></div>
+ <p><font size="-1">If we solved the problem the same way as when
+ indels have length one (using a variant of the
+ Fitch-Hartigan-Sankoff algorithm) we would place the indels as high
+ (i.e., as far from the leaves) as possible in the tree, and so we
+ would choose explanation 2 in Figure&nbsp;<a href=
+ "#nielsolefemtec">1(c)</a> -- but that means that three indels have
+ occurred whereas choosing explanation 1 means only two. On the
+ other hand, since now both the <em>number</em> and <em>length</em>
+ of the indels may vary between possible explanations, it is no
+ longer obvious that the most parsimonious explanation is simply the
+ one with the fewest indels. Whether two long indels are cheaper
+ than three short ones depends on the chosen gap penalty
+ function.</font></p>
+ <p><font size="-1">We propose a framework in which we represent the
+ gaps in the multiple alignment in a so-called <em>gap graph</em>. A
+ gap graph vertex consists of a subtree of the phylogeny and an
+ interval of the alignment, such that all leaf sequences in the
+ subtree have gaps in the corresponding interval. There is an edge
+ between two vertices in the gap graph if their intervals are
+ consecutive and their subtrees are not disjoint. Different edges
+ are used depending on the intersection of the vertex subtrees. In
+ other words, if two vertices share an edge, an indel <em>may</em>
+ have stretched across the associated intervals to cause gaps in the
+ two associated subtrees.</font></p>
+ <p><font size="-1">We go on to formally prove some important
+ properties of gap graphs. Characterizing vertices by the type of
+ their incident edges, we show that some types of vertices
+ correspond directly to (optimal) indels. We also use the gap graph
+ properties to show which indels can be optimal at all. We then
+ present an algorithm, grounded in these theoretical results, that
+ finds the most parsimonious explanation of the gaps in terms of
+ indels. We are currently implementing the algorithm; its worst-case
+ running time is exponential in the length of the alignment, but our
+ theoretical results prune the set of possible explanations greatly,
+ and further we expect real alignments to be of such a nature that
+ the running time will be feasible. Our algorithm could also be
+ coupled with various optimization techniques (dynamic programming,
+ simulated annealing, or genetic algorithms) to <em>find</em> a good
+ multiple alignment since the algorithm in effect ranks the
+ alignment using the gap cost function as object
+ function.</font></p>
+ <p></p>
+ <h2><a name="SECTION00020000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="Althaus02">1</a></dt>
+ <dd>Ernst Althaus, Alberto Caprara, Hans-Peter Lenhof, Knut
+ Reinert: Multiple sequence alignment with arbitrary gap costs:
+ Computing an optimal solution using polyhedral combinatorics. ECCB
+ 2002: 4-16.</dd>
+ <dt><a name="altschul98">2</a></dt>
+ <dd>Stephen F. Altschul: Generalized affine gap costs for protein
+ sequence alignment. Proteins, 32(1), 88-96, 1998.</dd>
+ <dt><a name="stoye98">3</a></dt>
+ <dd>Jens Stoye: Multiple sequence alignment with the
+ divide-and-conquer method. Gene 211 (2), GC45-GC56, 1998.</dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot210">... Fredslund,</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Bioinformatics Research Center, Department of Computer Science,
+ University of Aarhus, Denmark. E-mail: 
+ <div align="center"><b><tt>jakobf@birc.dk</tt> /</b></div>
+ <div align="center"><b><tt>tejs@birc.dk</tt></b></div></dd>
+ <dt><a name="foot211">... Hein,</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>Department of Statistics, University of Oxford, United Kingdom.
+ E-mail: 
+ <div align="center">
+ <b><tt>hein@stats.ox.ac.uk</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>133. Singular Value Decomposition for Feature Selection in cDNA Arrays</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category05.html'>&lt;&lt;</a> <a href='/recombdb/category06.html'><b>Gene Expression</b> Overview</a> <a href='/recombdb/category07.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-06-132/'>&lt;&lt;</a> Poster 133 [ <a href='poster-06-133.pdf'>PDF</a> | <a href='poster-06-133.tgz'>TeX</a> | <a href='poster-06-133.ps'>PostScript</a> ] <a href='/recombdb/poster-06-134/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ documentclass[twoside]article setlengthoddsidemargin0in
+ setlengthevensidemargin0in setlengthtextwidth13.0cm
+ setlengthtextheight19.5cm pagestylemyheadings par newedcommandlqq``
+ newedcommandrqq'' usepackageepsfig par begindocument pagestyleempty
+ begincenter Large bf 133. Singular Value Decomposition for Feature
+ Selection in cDNA Arrays <br>
+  par vspace.5cmnormalsize par D. KlingbielfootnoteMax-Planck
+ Institute for Molecular Genetics, Berlin, Germany. E-mail: tt
+ {klingb, witt, ruiz}@molgen.mpg.de, H. Wittfootnotemark[1], B.
+ IvandicfootnoteUniverstit&auml;tsklinikum Heidelberg, Medizinische
+ Klinik III, Heidelberg, Germany. E-mail: tt {Boris_Ivandic,
+ Sekretariat_Katus}@med.uni-heidelberg.de, H.A.
+ Katusfootnotemark[2], P. Ruizfootnotemark[1], L.
+ D&uuml;mbgenfootnoteUniversity of Berne, Institute of Mathematical
+ Statistics and Actuarial Science, Berne, Switzerland. E-mail: tt
+ duembgen@stat.unibe.ch endcenter par small par vspace.3cm par
+ noindentbf Keywords: feature selection, cDNA arrays, singular value
+ decomposition par sectionlarge Introduction Singular value
+ decomposition (SVD) citeABB00 and principal component analysis
+ (PCA) citeHT00 have been used to identify clusters of genes in an
+ unsupervised manner and using a single principle component at a
+ time--in case of PCA always the first one. par We apply SVD to gene
+ expression data for supervised feature selection, i.e. to identify
+ deregulated genes and use linear combinations of the singular
+ components instead of looking at only one singular component.
+ Classical statistical approaches (e.g. p-values from Student's
+ t-test) to this problem suffer from the dimensionality (lqqrqq),
+ which is inherent to gene expression data and implies small group
+ sizes and a multiple testing situation. We show that our method is
+ more specific than the t-test under these circumstances. Moreover,
+ it can be applied to experiments, which comprise more than two
+ groups. par sectionlarge Methods We presume that the expression
+ data has been normalized using any suitable method and is given in
+ matrix form (<img width="36" height="19" align="middle" border="0"
+      src="img2.png" alt="$p$"> rows representing the genes and
+      <img width="11" height="19" align="bottom" border="0" src=
+      "img3.png" alt="$n$"> columns representing the arrays).
+      Furthermore, there are <img width="11" height="11" align=
+      "bottom" border="0" src="img4.png" alt="$L$"> mutually
+      exclusive groups. The algorithm works as follows: par
+      renewedcommandtheenumiromanenumi
+      renewedcommandlabelenumi(theenumi ) beginenumerate item
+      Transform the rows of the data matrix to have a mean of zero
+      and perform SVD to the centered matrix. item Define a base
+      vector of length <img width="11" height="19" align="bottom"
+      border="0" src="img3.png" alt="$n$"> for each of the
+      <img width="11" height="11" align="bottom" border="0" src=
+      "img4.png" alt="$L$"> groups (or any set of groups), using a
+      centered indicator function. item For each base vector find a
+      linear combination of the first <img width="12" height="15"
+      align="bottom" border="0" src="img5.png" alt="$k$"> right
+      singular vectors (emphright linear combination, RLC), so that
+      the angle between this linear combination and the base vector
+      becomes minimal. item Use the same coefficients to evaluate
+      the linear combination of the first <img width="12" height=
+      "15" align="bottom" border="0" src="img5.png" alt="$k$"> left
+      singular vectors (emphleft linear combination, LLC).
+      endenumerate par Usually, a single (especially the first)
+      component is not sufficient. That is why we use a linear
+      combination of the first <img width="12" height="15" align=
+      "bottom" border="0" src="img5.png" alt="$k$"> components.
+      Whether <img width="12" height="15" align="bottom" border="0"
+      src="img5.png" alt="$k$"> is large enough, can be controlled
+      by looking at the correlation between the RLC and the
+      according base vector. Table reftab:k shows this correlations
+      for two similar cDNA nylon array experiments with <img width=
+      "10" height="15" align="bottom" border="0" src="img6.png" alt=
+      "$n = 8$"> and <img width="40" height="15" align="bottom"
+      border="0" src="img7.png" alt="$L = 2$"> (equal group sizes of
+      <img width="42" height="15" align="bottom" border="0" src=
+      "img8.png" alt="$4$">). We can see, that for the first
+      experiment the second right singular component alone is very
+      dominant--indeed, it is sufficient to discriminate between the
+      groups. But for the second experiment things look different.
+      Although the setup is identical, it takes at least five
+      components for a satisfactory correlation. par begintable[ht]
+      begincenter footnotesize begintabular|c|cccccccc| hline k
+      &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp; 7 &amp;
+      8 <br>
+ hline experiment 1 &amp; 0.11 &amp; 0.94 &amp; 0.95 &amp; 0.98
+ &amp; 0.99 &amp; 0.99 &amp; 1.00 &amp; 1.00 <br>
+ experiment 2 &amp; 0.25 &amp; 0.39 &amp; 0.56 &amp; 0.62 &amp; 0.90
+ &amp; 0.99 &amp; 1.00 &amp; 1.00 <br>
+ hline endtabular endcenter captionfootnotesize The influence of
+ <img width="12" height="15" align="bottom" border="0" src=
+ "img5.png" alt="$k$"> on the correlation between the RLC and the
+ first base vector. labeltab:k endtable par In order to compare the
+ performance of our method to the t-test a dataset with the
+ following parameters was simulated: 
+ <img width="9" height="15" align="middle" border="0" src="img9.png"
+ alt="$p = 1000, n = 16, L = 2$"> (equal group sizes). Ten genes
+ were artificially upregulated in the second group, the other genes
+ spread according to a normal distribution. When looking at figure
+ reffig:hist we see that the lqq upregulated genesrqq (marked in
+ black) get very low values for the first LLC and the majority of
+ them can clearly be distinguished from the lqq noisyrqq genes. We
+ also see that the p-values from the t-test provide a hopeless
+ amount of false positives. The p-values could be adjusted, but that
+ often leaves you nearly no significant p-values. par
+ beginfigure[ht] begincenter epsfigfile=poster-06-133-fig01.eps,
+ height = 2in, width = 4in endcenter captionfootnotesize Histograms
+ of the LLC and (non-adjusted) p-values from a simulation
+ experiment. labelfig:hist endfigure par sectionlarge Conclusions
+ beginitemize item SVD can be used for feature detection--for more
+ than two groups and sets of groups. item The number of necessary
+ singular components can be determined from the data. item The
+ method may detect (at least partially) groups of correlated and
+ relevant genes, even if each of them is only weakly deregulated.
+ enditemize par footnotesize beginthebibliography99 par bibitemABB00
+ Alter, O., Braun, P.&nbsp;O. and Botstein, D. 2000. Singular value
+ decomposition for genome-wide expression data processing and
+ modeling. em PNAS 97: 10101-10106 par bibitemHT00 Hastie, T. et al.
+ 2000. `Gene shaving' as a method for identifying distinct sets of
+ genes with similar expression patterns. em Genome Biology:
+ research0003.1-0003.21 par endthebibliography par enddocument <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

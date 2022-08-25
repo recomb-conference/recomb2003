@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>46. Introducing Consistency-Based Hyperspace Alignments</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-045/'>&lt;&lt;</a> Poster 046 [ <a href='poster-02-046.pdf'>PDF</a> | <a href='poster-02-046.tgz'>TeX</a> | <a href='poster-02-046.ps'>PostScript</a> ] <a href='/recombdb/poster-02-047/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>46. Introducing
+ Consistency-Based Hyperspace Alignments<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Michael Sammeth, <a name="tex2html1"
+    href="#foot68"><sup>1</sup></a> Burkhard Morgenstern, <a name=
+    "tex2html2" href="#foot69"><sup>2</sup></a> Jens Stoye</b></div>
+ <p><font size="-1"><br></font></p>
+ <p><font size="-1"><b>Keywords:</b> multiple alignment,
+ simultaneous alignment, consistency-based alignment, MSA, DCA,
+ DIALIGN</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+  <font size="-1">Synchronising all information of the input in a
+ hyperspace lattice makes it possible to create multiple alignments
+ finding the exact solution to the sum-of-pairs (SP) scoring
+ function. Since this basic approach of simultaneous alignment is NP
+ complete, it is not feasible for problems of realistic sizes.
+ However, there exist some high quality heuristics for hyperspace
+ alignments [<a href="#Gup95">1</a>,<a href=
+ "#Ton96">2</a>] that deliver solutions usually
+ very close to optimality and thus still are treated as exact
+ algorithms. But for SP-scoring strategy used, the algorithm fails
+ to find good multiple alignments if global similarity is too weak
+ [<a href="#Tho99">3</a>,<a href=
+ "#Las02">4</a>].</font> 
+ <p><font size="-1">To cope with more locally related sequence sets,
+ several alternative approaches have been proposed [<a href=
+ "#Mor99">5</a>,<a href=
+ "#Not00">6</a>,<a href=
+ "#Vin91">7</a>]. These consistency-based methods
+ assemle a global alignment from locally aligned segments and have
+ shown promising results for problems where traditional strategies
+ failed [<a href="#Las02">4</a>]. Furthermore, it
+ has been shown that local fragments can be used to make the fast
+ progressive alignments more robust [<a href=
+ "#Not00">6</a>]. But problems arise for this
+ protocol, whenever local similarities are too low in a certain
+ region of the input set. Herein, we will outline a novel approach
+ to multiple sequence alignment that combines the strengths of
+ segment-based and simultaneous multiple alignments.</font></p>
+ <h1><a name="SECTION00020000000000000000"><font size=
+ "+1">Methods</font></a></h1>
+ <font size="-1">The segment-to-segment comparison used in the
+ protocol of DIALIGN [<a href="#Mor99">5</a>]
+ collects pairwise matching fragments for all input sequences. These
+ local segments are weighted according to their matching grade and
+ the qualities of other segments they are incompatible with. By
+ considering alignments as consistent equivalence relations, the
+ final alignment is created by defining the optimal path running
+ from the source to the sink according to the highest scoring
+ fragments assembled [<a href=
+ "#Mor96">8</a>].</font> 
+ <p><font size="-1">Afterwards, the consistent segments found are
+ fed to the main alignment creation process in hyperspace. A stable
+ re-implementation of the MSA software [<a href=
+ "#Gup95">1</a>] was adapted to accept the
+ pairwise fragments. Additionally to the Carillo-Lipman and the
+ A*-like homing cost heuristics, conditions derived from selected
+ pairwise fragments were applied to reduce the hyperspace. In order
+ to align longer sequences, the efficient divide-and-conquer
+ strategy for multiple sequence alignment as implemented in the
+ program DCA [<a href="#Sto97">9</a>] was adapted
+ to accept the consistency conditions. The whole procedure is
+ depicted in Fig. <a href="#cbDCA">1</a>.</font></p>
+ <p><font size="-1">Speed-up and quality of the resulting
+ consistency-based hyperspace alignment algorithm is benchmarked and
+ compared to other alignment methods. The algorithm is also included
+ in the new version of QAlign (see
+ <tt>http://www.ridom.de/qalign</tt>), a graphical tool for
+ constructing multiple alignments [<a href=
+ "#Sam02">10</a>].</font></p>
+ <div align="center"><a name="cbDCA"></a><a name="41"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure:</strong> <font size="-1">A
+ schematic view of the algorithm used to construct consistency-based
+ simultaneous alignments. Note that consistent fragments are bewared
+ in both parts of the algorithm - the dividing steps and the the
+ simultaneous alignment.</font></caption>
+ <tr>
+ <td>
+ <div align="center"><font size="-1"><img width="295" height="320"
+ align="bottom" border="0" src="img1.png" alt=
+ "\includegraphics{poster-02-046-fig01.eps}"></font></div></td></tr></table></div>
+   
+ <p></p>
+ <h2><a name="SECTION00030000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="Gup95">1</a></dt>
+ <dd>Gupta, S.&nbsp;K., Kececioglu, J.&nbsp;D. and Sch&auml;ffer,
+ A.&nbsp;A. 1995. Improving the practical space and time efficiency
+ of the shortest-paths approach to sum-of-pairs multiple sequence
+ alignment. <em>J Comput Biol</em> 2:459-472.</dd>
+ <dt><a name="Ton96">2</a></dt>
+ <dd>T&ouml;nges, U., Perrey, S.&nbsp;W., Stoye, J. and Dress, A.W.
+ 1996. A general method for fast multiple sequence alignment.
+ <em>Gene</em> 172:GC33-41.</dd>
+ <dt><a name="Tho99">3</a></dt>
+ <dd>Thompson, J.&nbsp;D., Plewniak, F. and Poch, E.&nbsp;L. 1999. A
+ comprehensive comparison of multiple sequence alignment programs.
+ <em>Nucl. Acids Res.</em> 27:2682-2690.</dd>
+ <dt><a name="Las02">4</a></dt>
+ <dd>Lassmann, T. and Sonnhammer, E.&nbsp;L. 2002. Quality
+ assessment of multiple alignment programs. <em>FEBS Lett</em>
+ 529:126-130.</dd>
+ <dt><a name="Mor99">5</a></dt>
+ <dd>Morgenstern, B. 1999. DIALIGN 2: improvement of the
+ segment-to-segment approach to multiple sequence alignment.
+ <em>Bioinformatics</em> 15:211-218.</dd>
+ <dt><a name="Not00">6</a></dt>
+ <dd>Notredame, C., Higgins, D. and Heringa, J. 2000. T-Coffee: a
+ novel method for fast and accurate multiple sequence alignment.
+ <em>J Mol Biol</em> 302:205-217.</dd>
+ <dt><a name="Vin91">7</a></dt>
+ <dd>Vingron, M. and Argos, P. 1991. Motif recognition and alignment
+ for many sequences by comparison of dot-matrices. <em>J Mol
+ Biol</em> 218:33-43.</dd>
+ <dt><a name="Mor96">8</a></dt>
+ <dd>Morgenstern, B., Dress, A.&nbsp;W. and Werner, T. 1996.
+ Multiple DNA and protein sequence alignment based on
+ segment-to-segment comparison. <em>Proc Natl Acad Sci USA</em>
+ 93:12098-12103.</dd>
+ <dt><a name="Sto97">9</a></dt>
+ <dd>Stoye, J., Moulton, V. and Dress, A.&nbsp;W. 1997. DCA: an
+ efficient implementation of the divide-and-conquer approach to
+ simultaneous multiple sequence alignment. <em>Comput Appl
+ Biosci</em> 13:625-626.</dd>
+ <dt><a name="Sam02">10</a></dt>
+ <dd>Sammeth, M., Rothg&auml;nger, J., Esser, W., Albert, J., Stoye,
+ J. and Harmsen, D. 2002. QAlign: quality-based multiple alignments
+ with dynamic phylogenetic analysis. submitted to
+ <em>Bioinformatics</em>.</dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot68">... Sammeth,</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd><a name="genominformatik"></a>Genome Informatics, Department of
+ Technology, Bielefeld University. Germany. E-mail: 
+ <div align="center"><b><tt>micha@sammeth.net</tt>,</b></div>
+ <div align="center">
+ <b><tt>stoye@techfak.uni-bielefeld.de</tt></b></div></dd>
+ <dt><a name="foot69">... Morgenstern,</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>Institute of Microbiology and Genetics, Department of
+ Bioinformatics, Georg-August-University Goettingen. Germany.
+ E-mail: 
+ <div align="center"><b><tt>bmorgen@gwdg.de</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>56. AnCoRe: Analysis of Complementary Residues</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-055/'>&lt;&lt;</a> Poster 056 [ <a href='poster-02-056.pdf'>PDF</a> | <a href='poster-02-056.doc'>MSWORD</a> ] <a href='/recombdb/poster-02-057/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>56. AnCoRe: Analysis of Complementary Residues</h2>
+ <p align="center"><b>Urs Wiedemann</b><a href="#_ftn1" name=
+ "_ftnref1" title=""><b>[1]</b></a><b>,&nbsp; Dirk
+ Labudde</b><a href="#_ftn2" name="_ftnref2" title=
+ ""><b>[2]</b></a><b>,&nbsp; Gunnar Kleinau</b><a href="#_ftn3"
+    name="_ftnref3" title=""><b>[3]</b></a><b>,&nbsp; Gerd
+    Krause</b><a href="#_ftn4" name="_ftnref4" title=
+    ""><b>[4]</b></a></p>
+ <p><b>Keywords:</b> interaction prediction, complementary residues,
+ amino acid properties</p>
+ <p><b>1&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Introduction</b></p>
+ <p>Most cellular processes depend largely on specific inter- and
+ intra-protein interactions. However, classical experimental
+ analyses of these interactions are unfortunately expensive and time
+ consuming. To reduce the number of wet lab experiments necessary,
+ good working hypotheses are needed. Such working hypotheses can in
+ many cases nowadays be obtained by deciphering the hidden
+ information within the vast amount of sequence information
+ available. Especially alignments of homologous proteins sharing a
+ common fold contain information of great value, which are utilized
+ in the approach presented here.</p>
+ <p>The specificity of protein-protein interactions is mediated for
+ the most part by the properties of the amino acid side chains. Only
+ complementary properties, suitable for the interaction between
+ amino acid side chains, will allow for binding of the respective
+ poly-peptide chains. For the interaction to remain throughout the
+ course of evolution, a change in the property of one of the
+ interacting partners has to be compensated by a corresponding
+ change of the other partner. These complementary mutations can be
+ spotted in multiple-sequence alignments and permit the
+ identification of potentially interacting residues.</p>
+ <p>Correlated mutation analysis (CMA) was established by Goebel et
+ al. in 1994 [2] as one method to identify such potentially
+ interacting residues and has already been successfully applied to
+ many different problems, exemplified by Horn et al. [3]. In CMA two
+ residue positions of a multiple sequence alignment are evaluated
+ for the similarity of the amino acid change pattern. Goebel et al.
+ found a relationship between the correlation coefficient of two
+ residue positions and the chance that the two residues are in
+ contact with each other. However, the correlation coefficient does
+ not directly take the properties of the respective amino acids into
+ account. Here we propose a different approach which specifically
+ factors in the amino acid property complementarity.</p>
+ <p><b>2&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Objectives</b></p>
+ <p><b>AnCoRe</b> is used to analyze multiple-sequence alignments of
+ homologous proteins, which share a common fold, for potentially
+ interacting residues. To find these residue positions, the
+ complementarity of the amino acids is evaluated by comparing the
+ properties of the participating amino acids. <b>AnCoRe</b> can be
+ used to predict residue interactions within one protein (single
+ multiple-sequence alignment), as well as interacting residues for
+ protein-protein interactions sharing a conserved binding mechanism
+ (two corresponding multiple-sequence alignments, each for one of
+ the interacting partners).</p>
+ <b><br clear="all"></b> 
+ <p><b>3&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Principle</b></p>
+ <p>The complementarity of two residue positions in one
+ multiple-sequence alignment (intra-protein) or two corresponding
+ multiple-sequence alignments (inter-protein) is evaluated by
+ <b>AnCoRe</b> using three scores:</p>
+ <p>
+ 1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ CIS &ndash; the amino acid class interaction score: Amino acids are
+ grouped into classes corresponding to similar amino acid
+ properties. The complementarity on the amino acid class level of
+ two residue positions is then quantified by CIS. CIS is the mean
+ score of all class pairs at the two residue positions.</p>
+ <p>In addition to predefined class definitions [4], the user can
+ supply customized ones. The class interaction matrix [1], defining
+ the corresponding interaction scores, is also user customizable.
+ This enables the user to search for specific interaction types only
+ (e.g. charged interactions, aromatic interactions, etc.) while
+ suppressing unwanted less specific potential interactions.</p>
+ <p>
+ 2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ AIS &ndash; the amino acid interaction score: AIS is the mean score
+ of all amino acid pairs at two residue positions taken from an
+ amino acid interaction matrix [1]. The amino acid interaction
+ matrix is also user supplied, to enable the use of different
+ matrices. By additionally calculating the AIS the coarse grained
+ results from evaluating the CIS can be refined while retaining its
+ capability to filter out less likely interactions.</p>
+ <p>
+ 3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ CBS &ndash; the class break similarity score: The class breaks
+ pattern is obtained by evaluating the changes of amino acid classes
+ from sequence to sequence at a given homologous residue position.
+ The comparison of two patterns for two residue positions for
+ similarity yields the CBS. The CBS emphasizes the simultaneity of
+ property changes at the two residue positions.</p>
+ <p>The three scores are combined into a composite RIR score, which
+ is used to rank the potentially interacting residue pairs.
+ Additionally it is possible to analyze each score individually to
+ focus only on a specific aspect.</p>
+ <p><b>4&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Applications</b></p>
+ <p><b>AnCoRe</b> is a fast and easy to use tool which aids the user
+ in analyzing multiple-sequence alignments for potentially
+ interacting residues if no other prior knowledge is available. It
+ can be applied to intra-protein interactions for evaluation of the
+ protein fold, especially in homology modeling applications. It can
+ also be applied to inter-protein interactions, by analyzing two
+ corresponding sequence alignments, to identify residues potentially
+ responsible for the interaction of the two respective sets of
+ proteins.</p>
+ <h1>References</h1>
+ <p>[1] Betancourt, M.R. and Thirumalai, D. 1999. Pair potentials
+ for protein folding: Choice of reference states and sensitivity of
+ predicted native states to variations in the interaction schemes.
+ <i>Protein Science</i>&nbsp; 8:361-369.</p>
+ <p>[2] Goebel, U., Sander, C., Schneider, R. and Valencia, A. 1994.
+ Correlated mutations and residue contacts in proteins.
+ <i>PROTEINS</i>&nbsp; 18:309-317.</p>
+ <p>[3] Horn, F., Bywater, R., Krause, G., Kuipers, W., Oliveira,
+ L., Paiva, A.C., Sander, C. and Vriend, G. 1998. The interaction of
+ class B G protein-coupled receptors with their hormones.
+ <i>Receptors Channels</i>&nbsp; 5:305-314.</p>
+ <p>[4] Murphy, L.R., Wallqvist, A. and Levy, R.M. 2000. Simplified
+ amino acid alphabets for protein fold recognition and implications
+ for folding. <i>Protein Engineering</i>&nbsp; 13:149-152</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a>
+ Forschungsinstitut f&uuml;r Molekulare Pharmakologie, Campus
+ Berlin-Buch, Robert-R&ouml;ssle-Str. 10, 13125 Berlin, Germany.
+ E-mail: wiedemann@fmp-berlin.de</p></div>
+ <div id="ftn2">
+ <p><a href="#_ftnref2" name="_ftn2" title="">[2]</a>
+ Forschungsinstitut f&uuml;r Molekulare Pharmakologie, Campus
+ Berlin-Buch, Robert-R&ouml;ssle-Str. 10, 13125 Berlin, Germany.
+ E-mail: labudde@fmp-berlin.de</p></div>
+ <div id="ftn3">
+ <p><a href="#_ftnref3" name="_ftn3" title="">[3]</a>
+ Forschungsinstitut f&uuml;r Molekulare Pharmakologie, Campus
+ Berlin-Buch, Robert-R&ouml;ssle-Str. 10, 13125 Berlin, Germany.
+ E-mail: kleinau@fmp-berlin.de</p></div>
+ <div id="ftn4">
+ <p><a href="#_ftnref4" name="_ftn4" title="">[4]</a>
+ Forschungsinstitut f&uuml;r Molekulare Pharmakologie, Campus
+ Berlin-Buch, Robert-R&ouml;ssle-Str. 10, 13125 Berlin, Germany.
+ E-mail: gkrause@fmp-berlin.de</p></div></div>
+ </body>
+ </html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>10. Development of a Web-based Genome Annotation System</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center">  <a href='/recombdb/category01.html'><b>Genomics</b> Overview</a> <a href='/recombdb/category02.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-01-009/'>&lt;&lt;</a> Poster 010 [ <a href='poster-01-010.pdf'>PDF</a> | <a href='poster-01-010.doc'>MSWORD</a> ] <a href='/recombdb/poster-01-011/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>10.&nbsp; Development of a Web-based Genome Annotation
+ System</h2>
+ <p align="center"><b>Daesang Lee<a href="#_ftn1" name="_ftnref1"
+ title="">[1]</a><sup>,<a href="#_ftn2" name="_ftnref2" title=
+ "">[2]</a></sup>, Hwajung Seo<sup>1</sup>, Hongseok
+ Tae<sup>1</sup>, Hyeweon Nam<sup>1</sup>, Kiejung
+ Park<sup>1</sup></b></p>
+ <p><b>Keywords:</b> annotation, genome, promoter, motif, ontology,
+ database</p>
+ <p><b>1&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Introduction</b></p>
+ <p>As the genome projects have produced tremendous bioinformatic
+ data, annotation is considered as an essential part of genome
+ sequencing projects to elucidate the value of the sequence[1].
+ Through annotation systems, molecular biologists could deal with
+ genome data easily and all related information could be accessed,
+ edited, or updated without additional efforts. To satisfy these
+ needs, we have developed a web-based genome annotation system. This
+ system includes the following major modules such as gene
+ prediction, homology search, promoter analysis, motif analysis,
+ gene ontology analysis, annotation databases, and a genome browser
+ which shows the entire information of a genome.</p>
+ <p><b>2&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Methods</b></p>
+ <p>The major data in annotation database covers from contig data to
+ the functional analysis data of the final gene set. The database
+ saves the data obtained from each analysis module and the primary
+ keys indicating the relationship between data. For the users'
+ convenience, the database schemas are different for prokaryote and
+ eukaryote genomes.</p>
+ <p>Gene prediction in genome project is the first step of
+ annotation. General methods for gene prediction are applied in this
+ system. We implemented and applied the ScanPromW[2] and
+ Dependency-Reflecting Decomposition Model[3] for the prokaryotes
+ and eukaryotes promoter analysis, respectively.</p>
+ <p>In motif analysis, the Prosite DB patterns are searched for
+ against protein sequences which were generated from the gene
+ prediction. New algorithms are adopted to accomplish fast search
+ for motif patterns of regular expression. The analysis
+ progress/status of promoter and motif search can be monitored
+ through web interface.</p>
+ <p>For homology analysis of genomic sequence data, we employed the
+ NCBI BLAST tool and used the COGs(Clusters of Orthologous Groups of
+ protein) and GO(Gene Ontology) databases to classify the homology
+ search result[4].</p>
+ <p>The genome browser module, which searches for the annotation
+ results of an in-progress or finished genome project, visualizes
+ the stored annotation data using the web-based graphical view. It
+ also provides content search and the search results are shown as a
+ list. More detailed information of each gene can be browsed by a
+ further clicking.</p>
+ <b><br clear="all"></b> 
+ <p><b>3&nbsp; Results and Discussions</b></p>
+ <p>This web-based genome annotation system in the present work has
+ stepwise and intuitive interface as shown in Figure 1. We have
+ tested several experiments with a few microbial genomes and human
+ chromosomes.</p>
+ <p align="center"><img width="422" height="305" src=
+ "image002.jpg"></p>
+ <p align="center">Figure 1: Overview of web-based genome annotation
+ system</p>
+ <p>The system described in this article would be very helpful for
+ genome projects and could accelerate genome researches.</p>
+ <p><b>4&nbsp; References</b></p>
+ <p><b>&nbsp;</b></p>
+ <p>[1] Kim, K.-B., Seo, H., Nam, H., Tae, H., Kim, P.-G., Lee, D.,
+ Jeong, H., and Park, K. 2001. An Integrated Sequence Data
+ Management and Annotation System For Microbial Genome Projects<i>.
+ Intelligence system for Molecular Biology (ISMB 2001)</i>.</p>
+ <p>[2] Lee, D., Park, C., and Park, K. 2002. ScanPromW: A windows
+ program searching for promoter patterns against a genome sequence.
+ <i>Intelligence system for Molecular Biology (ISMB 2002)</i></p>
+ <p>[3] Kim, K.-B., and Park, K. 2002. Prediction of Transcrtiption
+ regulatory sites with Dependency-Reflecting Decomposition Model.
+ <i>Intelligence system for Molecular Biology (ISMB 2002)</i></p>
+ <p>[4] Seo, H., Kim, K.-B., Tae, H., Park, W., and Park, K. 2002,
+ Development of gene ontology analysis and classification tools for
+ microbial genome annotation. <i>Currents in Computational Molecular
+ Biology (RECOMB 2002)</i> Washington&nbsp; pp.165.</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a> Information
+ and Technology Institute, SmallSoft Co., Ltd. Jeonmin-dong 461-6,
+ Yusung-gu, Daejeon, 305-811,&nbsp; South Korea. E-mail: {dslee,
+ hjseo, hstae, hwnam, kjpark}@smallsoft.co.kr</p></div>
+ <div id="ftn2">
+ <p><a href="#_ftnref2" name="_ftn2" title="">[2]</a> Dept. of
+ Biological Science, KAIST, Kusung-dong, Yusung-gu, Daejeon,
+ 305-701,&nbsp; South Korea.<br>
+  E-mail: dslee@bioneer.kaist.ac.kr</p></div></div>
+ </body>
+ </html>

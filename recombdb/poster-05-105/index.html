@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>105. Rules generator for prediction of protein secondary structures</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category04.html'>&lt;&lt;</a> <a href='/recombdb/category05.html'><b>Protein Structure</b> Overview</a> <a href='/recombdb/category06.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-05-104/'>&lt;&lt;</a> Poster 105 [ <a href='poster-05-105.pdf'>PDF</a> | <a href='poster-05-105.doc'>MSWORD</a> ] <a href='/recombdb/poster-05-106/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>105. Rules generator for prediction of<br>
+  protein secondary structures</h2>
+ <p align="center"><b>Piotr &#321;ukasiak<a href="#_ftn1" name=
+ "_ftnref1" title="">[1]</a>, Peter L. Hammer<a href="#_ftn2"
+    name="_ftnref2" title="">[2]</a>, Jacek
+    B&#322;a&#380;ewicz<a href="#_ftn3" name="_ftnref3" title=
+    "">[3]</a>,</b></p>
+ <p><b>Keywords:</b> protein prediction, machine learning, secondary
+ structure prediction, LAD</p>
+ <p><b>1&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Introduction</b></p>
+ <p>Protein sequences are encoded in DNA, the holder of the genetic
+ information. In principle, it should be possible to translate a
+ gene (DNA) sequence into an amino acid sequence, and to predict the
+ three-dimensional structure of the resulting chain from this amino
+ acid sequence. The different physical and chemical properties of
+ the side-chains determine both the local and global conformations
+ adopted by polypeptide chains. While peptides do not always exhibit
+ ordered three-dimensional structure, most proteins consistently
+ fold into the same configuration. The goal of the analysis
+ presented here is to create a system which allows to receive as the
+ output the protein secondary structure, based on its primary
+ structure being an input. Another goal is to find rules responsible
+ for this effect. As compared with others, the approach presented
+ gives satisfactory results (PHD [4][5], MODLEM [6]).</p>
+ <p><b>2&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Method</b></p>
+ <p>The Logical Analysis of Data (LAD) [1] method was used to solve
+ the above problem.</p>
+ <p align="center"><img width="354" height="222" src=
+ "image002.jpg"></p>
+ <p align="center">Figure 1: Modified Logical Analysis of Data
+ method&rsquo;s stages and phases.</p>
+ <br clear="all">
+  
+ <p>Secondary structures were reduced into three main classes:
+ &alpha;-helix (H), &szlig;-strand (E) and the rest (X). Making a
+ transformation from a protein sequence to the set of observations a
+ concept of windows [3] of length equal to 7 was used. A window of
+ length 7 generates an observation with 7 attributes
+ (<i>a</i><sub>-3</sub><i>, a</i><sub>-2</sub><i>,
+ a</i><sub>-1</sub><i>, a</i><sub>0</sub><i>, a</i><sub>+1</sub><i>,
+ a</i><sub>+2</sub><i>, a</i><sub>+3</sub>) representing a secondary
+ structure corresponding to the amino acid located in place
+ <i>a</i><sub>0</sub>. During experiment 54 physical and chemical
+ properties of the amino acids&rsquo; residues offered by ProtScale
+ have been taken into account. Examples were obtained from the
+ Dictionary of Secondary Structures of Proteins (DSSP) [2].
+ Originally LAD approach is designed for two classes, so one had to
+ introduce some modifications (c.f. Figure 1), which allowed to
+ classify into three classes in the classification scheme.</p>
+ <p><b>3&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Experiments and
+ results</b></p>
+ <p>During experiments 85 protein chains have been chosen into
+ consideration (20 000 observations have been created]). The first
+ part of experiments has been made for each property separately, it
+ means that at a time, each observation consisted of 7 attributes
+ &ndash; each of them was derived from the same property. Average
+ accuracy for the best property for classes H and E were over 55%.
+ During the second part of experiments observation consisted of 14
+ attributes, where the first 7 corresponded to one property, and the
+ last seven corresponded to another property. Average accuracies for
+ class H and E was over 75%. Rules obtained during experiments are
+ easy to interpret by domain experts (c.f. Table 1).</p>
+ <div align="center">
+ <table border="1" cellspacing="0" cellpadding="0" width="101%">
+ <tr>
+ <td width="4%">
+ <p align="center">#</p></td>
+ <td width="13%">
+ <p align="center"><b>a<sub>-3</sub></b></p></td>
+ <td width="13%">
+ <p align="center"><b>a<sub>-2</sub></b></p></td>
+ <td width="13%">
+ <p align="center"><b>a<sub>-1</sub></b></p></td>
+ <td width="13%">
+ <p align="center"><b>a<sub>0</sub></b></p></td>
+ <td width="13%">
+ <p align="center"><b>a<sub>+1</sub></b></p></td>
+ <td width="13%">
+ <p align="center"><b>a<sub>+2</sub></b></p></td>
+ <td width="14%">
+ <p align="center"><b>a<sub>+3</sub></b></p></td></tr>
+ <tr>
+ <td width="4%">
+ <p align="center"><b>1</b></p></td>
+ <td width="13%">
+ <p align="center">&mdash;&mdash;&mdash;</p></td>
+ <td width="13%">
+ <p align="center">&mdash;&mdash;&mdash;</p></td>
+ <td width="13%">
+ <p align="center">&lt; 11,705</p></td>
+ <td width="13%">
+ <p align="center">&gt; 14,195</p></td>
+ <td width="13%">
+ <p align="center">&lt; 11,365</p></td>
+ <td width="13%">
+ <p align="center">&gt; 14,765</p></td>
+ <td width="14%">
+ <p align="center">&lt;11,295</p></td></tr>
+ <tr>
+ <td width="4%">
+ <p align="center"><b>2</b></p></td>
+ <td width="13%">
+ <p align="center">&gt; 15,285</p></td>
+ <td width="13%">
+ <p align="center">&mdash;&mdash;&mdash;</p></td>
+ <td width="13%">
+ <p align="center">&gt; 12,700</p></td>
+ <td width="13%">
+ <p align="center">&gt; 12,295</p></td>
+ <td width="13%">
+ <p align="center">&mdash;&mdash;&mdash;</p></td>
+ <td width="13%">
+ <p align="center">&lt; 11,705</p></td>
+ <td width="14%">
+ <p align="center">&mdash;&mdash;&mdash;</p></td></tr>
+ <tr>
+ <td width="4%">
+ <p align="center"><b>3</b></p></td>
+ <td width="13%">
+ <p align="center">&gt; 15,690</p></td>
+ <td width="13%">
+ <p align="center">&lt; 11,395</p></td>
+ <td width="13%">
+ <p align="center">&mdash;&mdash;&mdash;</p></td>
+ <td width="13%">
+ <p align="center">&lt; 13,195</p></td>
+ <td width="13%">
+ <p align="center">&gt; 15,285</p></td>
+ <td width="13%">
+ <p align="center">&mdash;&mdash;&mdash;</p></td>
+ <td width="14%">
+ <p align="center">&mdash;&mdash;&mdash;</p></td></tr></table></div>
+ <p align="center">Table 1:&nbsp; Example of rules for class E
+ (property: Average surrounding. Hydrophobicity)</p>
+ <p><b>4&nbsp; Conclusions</b></p>
+ <p>In the context of machine learning algorithms modified LAD gave
+ results similar to the best standing alone methods used for protein
+ prediction problem. In the molecular biology context LAD passed the
+ boundary of 70% of accuracy prediction. It has been shown that not
+ only certain global features, such as the presence of helix or
+ strand structure can be predicted with a usable accuracy and
+ reliability using the LAD method, but also rules of the secondary
+ structure creation were constructed.</p>
+ <p>&nbsp;</p>
+ <h1>References</h1>
+ <p>[1] Boros,E., Hammer,P.L., Ibaraki,T., Kogan,A., Mayoraz,E.,
+ Muchnik,I. 1996. <i>An implementation of logical analysis of
+ data</i>, Rutcor Research Report&nbsp; 22-96</p>
+ <p>[2] Kabsch,W., Sander,C. 1983. <i>Dictionary of protein
+ secondary structure: pattern recognition of hydrogen bonded and
+ geometrical features</i>, Biopolymers, vol. 22, 2577-2637.</p>
+ <p>[3] King,R.D., Sternberg,M.J.E. (1990) Machine learning approach
+ for the prediction of protein secondary structure, <i>J. Mol.
+ Biol</i> 216, 441-457.</p>
+ <p>[4] Rost,B., Sander,C. 1993. <i>Prediction of protein secondary
+ structure at better than 70&nbsp;% accuracy</i>, JMB 232,
+ 584-599</p>
+ <p>[5] Rost,B. (1996) PHD: predicting one-dimensional protein
+ structure by pro le based neural networks. Meth. Enzymol.,
+ 266:525-539</p>
+ <p>[6] Grzyma&#322;a,J.W., Stefanowski,J. (2001) Three
+ discretization methods for rule induction, <i>International Journal
+ of Intelligent Systems,</i> January.</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a> Institute of
+ Computing Sciences, Poznan University of Technology, Poland &amp;
+ Institute of Bioorganic Chemistry, Pozna&#324;, Poland,
+ E&#8209;mail: Piotr.Lukasiak@cs.put.poznan.pl</p></div>
+ <div id="ftn2">
+ <p><a href="#_ftnref2" name="_ftn2" title="">[2]</a> Rutgers Center
+ for Operations Research, Rutgers University, New Jersey, North
+ America, Email:&nbsp; hammer@rutcor.rutgers.edu</p></div>
+ <div id="ftn3">
+ <p><a href="#_ftnref3" name="_ftn3" title="">[3]</a> Institute of
+ Computing Sciences, Poznan University of Technology, Poland &amp;
+ Institute of Bioorganic Chemistry, Pozna&#324;, Poland,
+ E&#8209;mail: <a href=
+ "mailto:blazewic@sol.put.poznan.pl">blazewic@sol.put.poznan.pl</a></p>
+ <p><sup>4</sup> Partially sponsored by KBN grant nr
+ 7T11F02621</p></div></div>
+ </body>
+ </html>

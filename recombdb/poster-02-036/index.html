@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>36. Noise decomposition and search of the latent periodicity in protein active sites</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-035/'>&lt;&lt;</a> Poster 036 [ <a href='poster-02-036.pdf'>PDF</a> | <a href='poster-02-036.doc'>MSWORD</a> ] <a href='/recombdb/poster-02-037/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>36. Noise decomposition and search of the latent periodicity in
+ protein active sites</h2>
+ <p align="center"><b>Andrew Laskin<a href="#_ftn1" name="_ftnref1"
+ title="">[1]</a>, Eugene Korotkov<a href="#_ftn2" name="_ftnref2"
+ title="">[2]</a>,&nbsp; Nikolai Kudryashov<a href="#_ftn3" name=
+ "_ftnref3" title="">[3]</a></b></p>
+ <p><b>Keywords:</b> periodicity, alignment, profile analysis,
+ protein kinase, repeat</p>
+ <p><b>1&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Introduction</b></p>
+ <p>The periodicity investigation has reasonable biological meaning
+ because multiple duplications of DNA sequence fragments with
+ subsequent substitutions, insertions and deletions of symbols could
+ serve as the ground for evolution of genes and genomes. The
+ discovery of periodicity in active sites of enzymes could witness
+ that in the past genes could be built up by simple repeating of
+ certain relatively short DNA fragments. We may also suppose that
+ such structure of active sites of proteins could mean possible
+ participation of latent periodicity of amino acid sequences in
+ choice and stabilization of the proper conformation of
+ protein&rsquo;s globule.</p>
+ <p>Symbolic sequences may contain so called latent periodicity
+ [1-5], where significant homology between periods is not observed
+ and periodicity can be only revealed as a property of a certain set
+ of periods. These types of periodicity, previously found in many
+ DNA and protein sequences, can be extensively omitted when using
+ dynamic programming-based techniques.</p>
+ <p><b>2&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Methods</b></p>
+ <p>Previously [4,5] we identified latent periodicity in nearly
+ 10000 known amino acid sequences. Then these identified
+ periodicities provided the initial data for searching for given
+ periodicities with the possibility of insertions and deletions.
+ Namely, we transformed frequencies of occurrence of different amino
+ acids at different positions in a period (repeat) into
+ position-specific scores with log-odds formula. Then obtained
+ &ldquo;repeat profiles&rdquo; were used in Swiss-Prot search for
+ similar nearly-periodic subsequences using the cyclic alignment
+ technique [6]. Search results were used to create a new profile, in
+ which additional information about occurrences of amino acids in a
+ class of sequences is incorporated. This was done using the noise
+ decomposition technique.</p>
+ <p>Noise decomposition is a technique used to distinguish between
+ similar sequence motifs. It is applicable when search results come
+ out in the form of mixture of sequences with different relative
+ functions. For example, using the search pattern
+ &ldquo;...-A-[XY]-B-...&rdquo; for some site we can obtain a set of
+ subsequences &ldquo;...AXB...&rdquo; and &ldquo;...AYB...&rdquo;.
+ If we remodel this site from this set, using simple probabilistic
+ model of protein sequences, we will get the same pattern
+ &ldquo;...-A-[XY]-B-...&rdquo;, i.e. we are not gaining additional
+ information about the site.</p>
+ <p>Noise decomposition changes the probabilistic representation of
+ sequence data bank as follows. Let us represent it as a mixture of
+ &ldquo;uncorrelated noise&rdquo;, composed of sequences, having no
+ homology to the sites under investigation and characterized by
+ &ldquo;background&rdquo; symbol probabilities <i>f<sub>i</sub></i>,
+ and &ldquo;correlated noise&rdquo;, composed of sequences,
+ generally unwanted but having sufficient level of homology to be
+ found with profile analysis together with the desired sequences.
+ The main difference of correlated noise for us is that the
+ distribution of amino acid occurrences over different positions of
+ profile alignment is not casual, because we propose the existence
+ of a pattern (or patterns) of these false positives. The resulting
+ noise will apparently be position-specific, let&rsquo;s denote its
+ distribution <i>p</i><i><sub>i.j</sub></i>.</p>
+ <p>The main idea is that log-odds formula for position-specific
+ score determination is changed to:</p>
+ <p><sub><img width="252" height="35" src="image002.gif"></sub></p>
+ <p>Here <i>q<sup>k</sup><sub>i,j</sub></i> are frequencies of
+ occurrence of amino acids and <i>c<sup>k</sup></i> are mixing
+ parameters for different types of correlated noise; p<sub>i,j</sub>
+ are amino acid frequencies for useful signals. They can be
+ estimated from search results divided into subgroups by keyword
+ analysis (in annotated data banks) or clustering.</p>
+ <p><b>3&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Results</b></p>
+ <p>We applied the cyclic alignment and noise decomposition
+ techniques to latent periodicity of length 18 amino acids,
+ previously found in protein kinases using information
+ decomposition, without insertions and deletions. The periodicity
+ was located in the protein kinase catalytic domains, so we
+ suggested that the periodicity of 18 amino acids is a
+ characteristic property of protein kinase active sites. Swiss-Prot
+ search with this cyclic profile provided about 100 results from
+ serine-threonine and tyrosine kinase superfamilies.</p>
+ <p>We used noise decomposition to distinguish between
+ serine-threonine and tyrosine kinase motifs. For one case, we
+ considered serine-threonine kinases as expected result and tyrosine
+ kinases as a type of correlated noise, and vice versa for another
+ case. This resulted in two cyclic position-weight matrices (new
+ cyclic profiles), one being specific for periodicity in
+ serine-threonine kinases and another for periodicity in tyrosine
+ kinases. Subsequent iterative refinements of these matrices [6]
+ allowed us to find latent periodicity in total 774 serine-threonine
+ protein kinases (out of 963) and 301 tyrosine protein kinases (out
+ of 369) (results are obtained using Swiss-Prot release 40 and the
+ appropriate cyclic profile). The profiles identify only 8 proteins,
+ which are not protein kinases of either type; 52 kinases were
+ identified with both profiles. We could not achieve such results
+ without noise decomposition (i.e. using training sets only). The
+ position-specific matrices and reports on search results may be
+ found at <a href=
+ "http://periodicity.fromru.com/">http://periodicity.fromru.com</a>.</p>
+ <p>Protein kinases turned out to be another important enzyme type
+ with latent periodicity-based catalytic center. More information
+ about feebly marked repeats (latent periods) and their structural
+ and functional significance may be found at <a href=
+ "http://periodicity.fromru.com/">http://periodicity.fromru.com</a>.</p>
+ <p><b>&nbsp;</b></p>
+ <p><b>4&nbsp; References</b></p>
+ <p>[1] Korotkov, E.V. and Korotkova, M.A. 1995. DNA regions with
+ latent periodicity in some human clones. <i>DNA Seq</i>., 5,
+ 353-358.</p>
+ <p>[2] Korotkov, E.V., Korotkova, M.A., Tulko, J.S. 1997. Latent
+ sequence periodicity of some oncogenes and DNA-binding protein
+ genes. <i>CABIOS</i>, 13:37-44.</p>
+ <p>[3] Chaley, M.B., Korotkov, E.V. and Skryabin, K.G. 1999. Method
+ revealing latent periodicity of the nucleotide sequences for a case
+ of small samples. <i>DNA Res.,</i> 6, 153-163.</p>
+ <p>[4] Korotkov, E.V., Korotkova, M.A., Rudenko, V.M. and Skryabin,
+ K.G. 1999. Latent periodicity regions in amino acid sequences.
+ <i>Mol. Biol.,</i> 33, 611-617.</p>
+ <p>[5] Korotkova, M.A., Korotkov, E.V. and Rudenko, V.M. 1999.
+ Latent periodicity of protein sequences. <i>J. Mol. Model.,</i> 5,
+ 103-115.</p>
+ <p>[6] Laskin A.A., Korotkov E.V., Chaley M.B., Kudryashov N.A.
+ Locally optimal method of cyclic alignment for detection of latent
+ periodicity in genetic sequences and its application to
+ identification of the NAD-binding sites in proteins. <i>Mol
+ Biol,(Russian) 2003,</i> in press.</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a> Moscow
+ Physical Engineering Institute, Kashirskoe shosse 31, 115409,
+ Moscow, Russia; Bioengineering Center of Russian Academy of
+ Sciences, Prospect 60-tya Oktyabrya, 7/1, 117312, Moscow,
+ Russia.</p></div>
+ <div id="ftn2">
+ <p><a href="#_ftnref2" name="_ftn2" title="">[2]</a> Moscow
+ Physical Engineering Institute, Kashirskoe shosse 31, 115409,
+ Moscow, Russia; Bioengineering Center of Russian Academy of
+ Sciences, Prospect 60-tya Oktyabrya, 7/1, 117312, Moscow, Russia.
+ E-mail: katrin2@biengi.ac.ru</p></div>
+ <div id="ftn3">
+ <p><a href="#_ftnref3" name="_ftn3" title="">[3]</a> Moscow
+ Physical Engineering Institute, Kashirskoe shosse 31, 115409,
+ Moscow, Russia.</p></div></div>
+ </body>
+ </html>

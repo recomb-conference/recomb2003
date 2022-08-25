@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>75. New algorithm for improving reticulated networks</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category03.html'>&lt;&lt;</a> <a href='/recombdb/category04.html'><b>Molecular Evolution</b> Overview</a> <a href='/recombdb/category05.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-04-074/'>&lt;&lt;</a> Poster 075 [ <a href='poster-04-075.pdf'>PDF</a> | <a href='poster-04-075.doc'>MSWORD</a> ] <a href='/recombdb/poster-04-076/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>75. New algorithm for improving<br>
+  reticulated networks</h2>
+ <p align="center"><b>Alix Boc<a href="#_ftn1" name="_ftnref1"
+    title="">[1]</a>,&nbsp; Abdoulaye Banire Diallo<a href="#_ftn2"
+    name="_ftnref2" title="">[2]</a>,&nbsp; Vladimir
+    Makarenkov<a href="#_ftn3" name="_ftnref3" title=
+    "">[3]</a></b></p>
+ <p><b>Keywords:</b> phylogenetic tree, reticulated network,
+ distance matrix, least-squares criterion</p>
+ <p>&nbsp;</p>
+ <p><b>1&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Introduction</b></p>
+ <p>Species evolution has long been assumed to be a branching
+ process uniquely representable by a tree topology. In such a
+ topology, each species can only be linked to its closest ancestor;
+ interspecies relationships are not allowed. A reticulate model can
+ adequately describe such complicated mechanisms as species
+ hybridization or lateral gene transfer in bacteria (see Legendre
+ and Makarenkov 2002). A method and a corresponding software for
+ inferring reticulated networks representing evolutionary
+ relationships among a group of species have been described in
+ Makarenkov (2001) and Makarenkov and Legendre (2002).</p>
+ <p>In this paper, we present a least-square algorithm for improving
+ the topology of a given reticulated network. The new algorithm
+ includes two main steps. First, it proceeds by addition of new
+ branches to the topology of a classical phylogenetic tree to
+ provide a reticulated network (for more details see, Legendre and
+ Makarenkov 2002). Second, it allows to rearrange the network
+ topology by removing or substituting some of its branches according
+ to the OLS or WLS models.</p>
+ <p><b>2&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Algorithm</b></p>
+ <p>Assume that we have already a reticulated network constructed
+ from a distance matrix between taxa (e.g. species) using the method
+ from Legendre and Makarenkov (2002). The algorithm we describe here
+ introduces several new operations designed to improve the
+ least-squares (LS) approximation of a given distance matrix by a
+ reticulated network. The new algorithm proceeds by local
+ rearrangements of a network topology improving at each step the
+ value of the LS or WLS coefficients.</p>
+ <p>First,&nbsp; the LS coefficient can be <i>improved by
+ removing</i> an existing branch and adding a new one. All branches
+ in the reticulated network, including those of the original
+ phylogenetic tree, are considered as candidates for removal. The
+ only restriction for this operation is that the resulting network
+ have to remain connected. For a particular branch <i>ab</i> of
+ length <i>l<sub>ab</sub></i> considered for removal from a
+ reticulated network <i>R</i>, we have to find all pairs of taxa
+ that will be affected by this deletion. This means that for any
+ pair of taxa <i>ij</i> such that either <i>dist</i>(<i>ia</i>) +
+ <i>l<sub>ab</sub></i> + <i>dist</i>(<i>bj</i>) =
+ <i>dist</i>(<i>ij</i>) or <i>dist</i>(<i>ja</i>) +
+ <i>l<sub>ab</sub></i> + <i>dist</i>(<i>bi</i>) =
+ <i>dist</i>(<i>ij</i>), we have to recompute the value
+ <i>dist</i>(<i>ij</i>) assuming that the branch <i>ab</i> is no
+ longer in <i>R</i>.</p>
+ <p>Second, a branch-removing operation can be followed by a
+ branch-addition operation, what will consist in a
+ <i>branch-substitution operation</i>. The pair of branches (removed
+ and added) corresponding to the lowest value of the LS or WLS
+ coefficient can be selected for substitution. These operations may
+ significantly redesign the topology of the initial reticulated
+ network. The time complexity of the a branch-substitution operation
+ is <i>O</i>(<i>mn</i><sup>4</sup>), where <i>m</i> is the number of
+ branches in the reticulated network and <i>n</i> is the number of
+ taxa. If only the branch removal operation is considered, we simply
+ have to recompute the value of the LS or WLS criterion and make the
+ decision about the potential branch deletion.</p>
+ <p>In addition, the new algorithm also proceeds by reassessment of
+ branch length estimates of a reticulated network with a fixed
+ topology. The reassessment loop may be repeated several times to
+ reach the minimum value of the LS or WLS criteria. As this is
+ usually the case, improvement in fit causes increase in time
+ complexity. Thus, if the reassessment procedure is incorporated
+ into the algorithm, the time complexity of each iteration will
+ increase up to <i>O</i>(<i>pmn</i><sup>4</sup>), where <i>p</i> is
+ the number of reassessment loops performed over all <i>m</i>
+ branches.</p>
+ <table cellpadding="0" cellspacing="0">
+ <tr>
+ <td width="44" height="33" align="left" valign="top" bgcolor=
+ "white">
+ <table cellpadding="0" cellspacing="0" width="100%">
+ <tr>
+ <td>
+ <div v:shape="_x0000_s1044">
+ <p><b>(a)</b></p></div></td></tr></table>
+ &nbsp;</td></tr></table>
+ <img width="284" height="150" src="image002.jpg"><br>
+ <br>
+  
+ <table cellpadding="0" cellspacing="0">
+ <tr>
+ <td width="44" height="34" align="left" valign="top" bgcolor=
+ "white">
+ <table cellpadding="0" cellspacing="0" width="100%">
+ <tr>
+ <td>
+ <div v:shape="_x0000_s1045">
+ <p><b>(b)</b></p></div></td></tr></table>
+ &nbsp;</td></tr></table>
+ <img width="284" height="150" src="image004.jpg"><br>
+ <br>
+  
+ <p>Figure 1: Reticulated network representing phylogenetic
+ relationships among six vertebrate organisms (for details on the
+ vertebrate morphological dataset, see <i>MacClade</i> 4.0 manual by
+ D. R. Maddison and W. P. Maddison).</p>
+ <p>(<b>a</b>) First, a phylogenetic tree (full lines) were inferred
+ from a distance matrix among vertebrates using the NJ method by
+ Saitou and Nei (1987); then, three reticulation branches (dashed
+ lines) were added to the phylogenetic tree to create a reticulated
+ network. The reticulation branches linking <i>lizard</i> and
+ <i>crocodile</i>, <i>lizard</i> and <i>salamander</i>, and
+ <i>mammal</i> and <i>bird</i> show that these species are more
+ closely related to one another than it is illustrated by the NJ
+ phylogenetic tree. (<b>b</b>) The branch-substitution procedure ran
+ on these data totally redesigned the network topology leading to
+ the following reticulated network.</p>
+ <h1>3 References</h1>
+ <p>[1] Legendre, P. and Makarenkov, V. 2002. Reconstruction of
+ biogeographic and evolutionary networks using reticulograms,
+ <i>Systematic Biology</i> 51:199-216.</p>
+ <p>[2] Makarenkov, V. 2001. T-Rex: reconstructing and visualizing
+ phylogenetic trees and reticulation networks, <i>Bioinformatics</i>
+ 17:664-668.</p>
+ <p>[3] Saitou, N. and M. Nei. 1987. The neighbor-joining method: A
+ new method for reconstructing phylogenetic trees. <i>Mol. Biol. and
+ Evol</i>. 4:406-425.</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a> Department of
+ Informatics, Universit&eacute; du Qu&eacute;bec &agrave;
+ Montr&eacute;al, C.P. 8888, Succ. Centre-Ville, Montr&eacute;al
+ (Qu&eacute;bec), Canada, H3C 3P8. e-mail: <a href=
+ "mailto:makarenkov.vladimir@uqam.ca"><i>boc.alix@courrier.uqam.ca</i></a></p></div>
+ <div id="ftn2">
+ <p><a href="#_ftnref2" name="_ftn2" title="">[2]</a> Department of
+ Informatics, Universit&eacute; du Qu&eacute;bec &agrave;
+ Montr&eacute;al, C.P. 8888, Succ. Centre-Ville, Montr&eacute;al
+ (Qu&eacute;bec), Canada, H3C 3P8. e-mail: <a href=
+ "mailto:diallo.abdoulaye_banire@courrier.uqam.ca">diallo.abdoulaye_banire@courrier.uqam.ca</a></p></div>
+ <div id="ftn3">
+ <p><a href="#_ftnref3" name="_ftn3" title="">[3]</a> Department of
+ Informatics, Universit&eacute; du Qu&eacute;bec &agrave;
+ Montr&eacute;al, C.P. 8888, Succ. Centre-Ville, Montr&eacute;al
+ (Qu&eacute;bec), Canada, H3C 3P8. e-mail: <a href=
+ "mailto:makarenkov.vladimir@uqam.ca"><i>makarenkov.vladimir@uqam.ca</i></a></p></div></div>
+ </body>
+ </html>

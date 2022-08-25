@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>40. Sequence Analysis Tools and a Windows-based Integrated Workbench</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-039/'>&lt;&lt;</a> Poster 040 [ <a href='poster-02-040.pdf'>PDF</a> | <a href='poster-02-040.doc'>MSWORD</a> ] <a href='/recombdb/poster-02-041/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>40. Sequence Analysis Tools and a Windows-based Integrated
+ Workbench</h2>
+ <p align="center"><b>Hyeweon Nam<a href="#_ftn1" name="_ftnref1"
+ title="">[1]</a>,&nbsp; Daesang Lee<sup>1,<a href="#_ftn2" name=
+ "_ftnref2" title="">[2]</a></sup>, &nbsp;Hongseok
+ Tae<sup>1</sup>,&nbsp; Kiejung Park<sup>1</sup></b></p>
+ <p><b>Keywords:</b> workbench, sequence analysis, multialignment,
+ phylogeny, database</p>
+ <p><b>1&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Introduction</b></p>
+ <p>As tremendous progress has been achieved in recent genomics and
+ proteomics projects, a lot of bioinformatics tools have been
+ developed to treat a vast amount of sequence data and information
+ especially for sequence analysis. While a lot of commercial
+ packages have been produced on various execution platforms, module
+ tools should be still re-implemented without utilizing already
+ developed versions, which results in duplication of time and
+ efforts. A few approaches for standardization of sequence analysis
+ modules have been done, including the very ambitious projects of
+ NCBI&rsquo;s Toolkit development, BioPerl libraries, and XML based
+ works.</p>
+ <p>We have developed a few module tools suggested by a Korean MOST
+ project while each module is composed of a few objects, for
+ reusability. For developing a practical and useful program,
+ database features are added to manage sequence and annotation data
+ and information created both from input and from analysis modules.
+ The program (ISAWB:Integrated Sequence Analysis WorkBench) is a
+ small workbench on Windows system for managing sequence data and
+ analyzing them to get processed information with Windows GUI.</p>
+ <p><b>2&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Methods and System
+ Structure</b></p>
+ <p>Eleven features (Table 1) were suggested from the MOST project
+ and currently 6 features are implemented in the program. Each
+ module has an independent function while a few modules are related
+ with each other in usage. Firstly, the modules were implemented to
+ a C++ classes with standard C++ codes with VisualC++ 6.0 and
+ archived into DLL files. As the function of each module (Table 1)
+ needs user interface, each GUI was also implemented with VisualC++
+ 6.0 specific features, which are not sharable in other programs
+ utilizing the module classes.</p>
+ <p>Database schema contains tables not only for input sequence and
+ related annotation data but also for analysis results generated
+ from the analysis modules. AccessDB was used as a DB engine and
+ database management was implemented with VisualC++ functions. Among
+ the implemented features, BLAST[1] is called externally instead of
+ integrating BLAST codes into ISAWB for flexibility and
+ implementation efficiency because BLAST is a well-known program and
+ its interface is also known very well. Other module functions were
+ implemented without utilizing any other source codes.</p>
+ <p>ISAWB has more analysis features which will be added from
+ another project, where multialignment and phylogenetic analysis[2]
+ features are to be implemented (Fig. 1). For integration of the
+ additional features, ISAWB has additional tables and attributes in
+ its database and data exchange functions. Data import/export
+ from/to the additional features will be done XML for flexibility
+ between two independent projects.</p>
+ <table border="1" cellspacing="0" cellpadding="0">
+ <tr>
+ <td width="75" valign="top">
+ <p align="center">module name</p></td>
+ <td width="340" valign="top">
+ <p align="center">function</p></td>
+ <td width="85" valign="top">
+ <p align="center">implemented</p></td></tr>
+ <tr>
+ <td width="75" valign="top">
+ <p>resitemap</p></td>
+ <td width="340" valign="top">
+ <p>Search restriction enzyme recognition sites and display the
+ statistics with a simple map</p></td>
+ <td width="85" valign="top">
+ <p align="center">yes</p></td></tr>
+ <tr>
+ <td width="75" valign="top">
+ <p>vecscreen</p></td>
+ <td width="340" valign="top">
+ <p>Search for vector sequences and generate a masked
+ sequence</p></td>
+ <td width="85" valign="top">
+ <p align="center">yes</p></td></tr>
+ <tr>
+ <td width="75" valign="top">
+ <p>transseq</p></td>
+ <td width="340" valign="top">
+ <p>Translate a DNA sequence for 6 frames with translation
+ options</p></td>
+ <td width="85" valign="top">
+ <p align="center">yes</p></td></tr>
+ <tr>
+ <td width="75" valign="top">
+ <p>dotplot</p></td>
+ <td width="340" valign="top">
+ <p>Display pairwise sequence comparison with dot plot to show
+ homology relation</p></td>
+ <td width="85" valign="top">
+ <p align="center">yes</p></td></tr>
+ <tr>
+ <td width="75" valign="top">
+ <p>compseq</p></td>
+ <td width="340" valign="top">
+ <p>Convert a sequence to generate a reverse complementary
+ sequence</p></td>
+ <td width="85" valign="top">
+ <p align="center">yes</p></td></tr>
+ <tr>
+ <td width="75" valign="top">
+ <p>BLAST</p></td>
+ <td width="340" valign="top">
+ <p>Call BLAST and format result for homology search</p></td>
+ <td width="85" valign="top">
+ <p align="center">yes</p></td></tr>
+ <tr>
+ <td width="75" valign="top">
+ <p>gcanal</p></td>
+ <td width="340" valign="top">
+ <p>Calculate GC content and predict CpG islands</p></td>
+ <td width="85" valign="top">
+ <p align="center">no</p></td></tr>
+ <tr>
+ <td width="75" valign="top">
+ <p>codusage</p></td>
+ <td width="340" valign="top">
+ <p>Calculate/predict codon usage</p></td>
+ <td width="85" valign="top">
+ <p align="center">no</p></td></tr>
+ <tr>
+ <td width="75" valign="top">
+ <p>primer</p></td>
+ <td width="340" valign="top">
+ <p>Design and generate primer(s) with DNA sequence(s) and
+ conditions</p></td>
+ <td width="85" valign="top">
+ <p align="center">no</p></td></tr>
+ <tr>
+ <td width="75" valign="top">
+ <p>hydropho</p></td>
+ <td width="340" valign="top">
+ <p>Calculate hydrophobicity of a protein with statistical
+ parameters</p></td>
+ <td width="85" valign="top">
+ <p align="center">no</p></td></tr>
+ <tr>
+ <td width="75" valign="top">
+ <p>proteolsite</p></td>
+ <td width="340" valign="top">
+ <p>Calculate/search proteolytic enzyme cutting sites</p></td>
+ <td width="85" valign="top">
+ <p align="center">no</p></td></tr></table>
+ <p align="center">Table 1:&nbsp; Analysis modules of the integrated
+ system ISAWB.</p>
+ <p>Currently, six analysis modules are implemented whose
+ requirements are taken from the suggestion of the MOST project.
+ Five more analysis modules will be implemented and added to the
+ integrated program. All modules will be modularized as a VisualC++
+ class library and be available to developers as DLL files</p>
+ <p><img width="493" height="259" src="image001.gif"></p>
+ <p align="center">Figure 1: System structure of ISAWB including
+ multialignment/phylogeneny features</p>
+ <p><b>3&nbsp; References</b></p>
+ <p>[1] Altschul, S.F., Madden, T.L., Schaffer, A.A., Zhang, J.,
+ Zhang, Z., Miller, W. and Lipman, D.J. 1997. Gapped BLAST and
+ PSI-BLAST: a new generation of protein database search programs
+ genome evolution. <i>Nucleic Acids Research</i> 25:3389-3402.</p>
+ <p>[2] Choi, J.-H., Jung, H.-Y., Kim, H.-S. and Cho, H.-G. 2000.
+ PhyloDraw: a phylogenetic tree drawing system.
+ <i>Bioinformatics</i> 16:1056-1058.</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a> Information
+ Technology Institute, SmallSoft Co., Ltd. Jeonmin-dong 461-6,
+ Yusung-gu, Daejeon, 305-811, South Korea. E-mail: {hwnam, dslee,
+ hstae, kjpark}@smallsoft.co.kr</p></div>
+ <div id="ftn2">
+ <p><a href="#_ftnref2" name="_ftn2" title="">[2]</a> Dept. of
+ Biological Science, KAIST, Kusung-dong, Yusung-gu, Daejeon,
+ 305-701, South Korea. E&#8209;mail:
+ dslee@smallsoft.co.kr</p></div></div>
+ </body>
+ </html>

@@ -1,0 +1,392 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>22. An iterative approach to the longest common subsequence problem</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-021/'>&lt;&lt;</a> Poster 022 [ <a href='poster-02-022.pdf'>PDF</a> | <a href='poster-02-022.tgz'>TeX</a> | <a href='poster-02-022.ps'>PostScript</a> ] <a href='/recombdb/poster-02-023/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>22. An iterative approach to
+ the longest common subsequence problem<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Hilary S Booth<a name="footfnm1" href=
+ "#fnm1"><sup>1</sup></a><a name="footfnm2" href=
+ "#fnm2"><sup>2</sup></a><a name="footfnm3" href=
+ "#fnm3"><sup>3</sup></a>, Shevarl F MacNamara<a name="tex2html1"
+ href="#footfnm1"><sup>1</sup></a><a name="tex2html2" href=
+ "#footfnm3"><sup>3</sup></a>, Ole M Nielsen<a name="tex2html3"
+    href="#footfnm3"><sup>3</sup></a><a name="footfnm4" href=
+    "#fnm4"><sup>4</sup></a>, Susan R Wilson<a name="tex2html4"
+    href="#footfnm1"><sup>1</sup></a><a name="tex2html5" href=
+    "#footfnm3"><sup>3</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> sequence alignment, statistical
+ significance</font></p>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1">One of the oustanding open problems at the heart
+ of gapped sequence alignment is the longest common subsequence
+ (LCS) problem i.e. given two random sequences of length
+      <img width="19" height="14" align="bottom" border="0" src=
+      "img8.png" alt="$N$"> (in a finite alphabet), what is the
+      longest common subsequence shared by the two sequences? The
+      expected value is known to lie within certain limits. In the
+      simplest version of the problem, the sequences are chosen
+      randomly from a binary alphabet. The distributions generated
+      in the binary case can be generalized to other finite (DNA and
+      protein) alphabets.</font></p>
+ <p><font size="-1">We describe an iterative approach that
+ determines the pairs of sequences whose scores increased by one
+ upon the addition of one letter to each sequence. Those sequence
+ pairs whose score did increase are indicated in black on an
+ all-against-all array. An interesting mathematical feature of this
+ array is its fractal-like structure. As the sequence length
+ increases, the area of the black approaches the
+ Chv&aacute;tal-Sankoff constant <img width="19" height="29"
+      align="middle" border="0" src="img5.png" alt="$a_c$"> (the
+      proportionality constant for the linear growth of <img width=
+      "44" height="32" align="middle" border="0" src="img9.png" alt=
+      "$E(N)$">, the expected length of the LCS with sequence
+      length). We show that the area in fact converges more rapidly
+      to <img width="19" height="29" align="middle" border="0" src=
+      "img5.png" alt="$a_c$"> than 
+ <img width="39" height="40" align="middle" border="0" src=
+ "img10.png" alt="$\frac{E(N)}{N}$">.</font></p>
+ <p><font size="-1">In the setting of computational biology, the
+ question of the LCS of two random sequences (from an alphabet of
+ <img width="11" height="13" align="bottom" border="0" src=
+ "img11.png" alt="$c$"> letters) was raised initially in
+    [<a href="#chv1">1</a>]. Exact calculations of
+    the expected length of the LCS were made in the binary case for
+    sequences of length <img width="56" height="30" align="middle"
+    border="0" src="img12.png" alt="$N \le 10$"> as well as
+    Monte-Carlo simulations for higher values of <img width="19"
+    height="14" align="bottom" border="0" src="img8.png" alt="$N$">.
+    In [<a href="#wat4">2</a>] it is noted that
+    (for zero or low gap penalties) the expected length of the LCS,
+    <img width="44" height="32" align="middle" border="0" src=
+    "img9.png" alt="$E(N)$"> increases linearly with <img width="19"
+    height="14" align="bottom" border="0" src="img8.png" alt="$N$">
+    i.e. 
+ <img width="137" height="40" align="middle" border="0" src=
+ "img13.png" alt=
+ "$\lim_{N \rightarrow \infty} \frac{E(N)}{N} = a_c$">, the
+ Ch&aacute;vtal-Sankoff constant.</font></p>
+ <p><font size="-1">Since 1975, tight bounds have been established
+ on <img width="19" height="29" align="middle" border="0" src=
+ "img5.png" alt="$a_c$"> for large values of <img width="19"
+      height="14" align="bottom" border="0" src="img8.png" alt=
+      "$N$">&nbsp;[<a href="#ale1">3</a>] [<a href=
+      "#jia1">4</a>] [<a href=
+      "#bun4">5</a>]. Here we consider all
+      possible sequence pairs for any value of <img width="19"
+      height="14" align="bottom" border="0" src="img8.png" alt=
+      "$N$"> and we define <img width="43" height="32" align=
+      "middle" border="0" src="img3.png" alt="$R(N)$"> as the
+      proportion of sequence pairs whose score increased by one when
+      a new letter was added to the sequence. It can be proven that
+      <img width="43" height="32" align="middle" border="0" src=
+      "img3.png" alt="$R(N)$"> converges more rapidly towards
+      <img width="19" height="29" align="middle" border="0" src=
+      "img5.png" alt="$a_c$"> than 
+ <img width="39" height="40" align="middle" border="0" src=
+ "img10.png" alt="$\frac{E(N)}{N}$"> as outlined below.</font></p>
+ <p><font size="-1">Let 
+ <img width="40" height="18" align="bottom" border="0" src=
+ "img14.png" alt="$\mbox{\boldmath$A$}^{(N)}$"> be the 
+ <img width="64" height="35" align="middle" border="0" src=
+ "img15.png" alt="$2^N \times 2^N$"> matrix of scores arising from
+ the pairwise matching all binary sequences of length
+      <img width="19" height="14" align="bottom" border="0" src=
+      "img8.png" alt="$N$">. The score at the <img width="17"
+      height="29" align="middle" border="0" src="img16.png" alt=
+      "$ij$">th (
+ <img width="94" height="35" align="middle" border="0" src=
+ "img17.png" alt="$0 \le i, j \le 2^N$">) position of the matrix is
+ the length of the LCS between the two binary sequences of length
+ <img width="19" height="14" align="bottom" border="0" src=
+ "img8.png" alt="$N$"> such that the first sequence is the binary
+ representation of <img width="10" height="14" align="bottom"
+      border="0" src="img18.png" alt="$i$"> and the second is the
+      binary representation of <img width="11" height="29" align=
+      "middle" border="0" src="img19.png" alt="$j$">. For example,
+      with <img width="48" height="14" align="bottom" border="0"
+      src="img20.png" alt="$N=8$">, the first, second, third and
+      last rows (and correspondingly the columns) of this matrix
+      represent the positions of the following sequences: 
+ <img width="308" height="29" align="middle" border="0" src=
+ "img21.png" alt=
+ "$00000000,00000001,00000010, \ldots, 11111111$">.</font></p>
+ <p><font size="-1">Now we construct a matrix 
+ <img width="56" height="17" align="bottom" border="0" src=
+ "img22.png" alt="$\bf {B}^{(N-1)}$"> consisting of four copies of 
+ 
+ <img width="56" height="18" align="bottom" border="0" src=
+ "img23.png" alt="$\mbox{\boldmath$A$}^{(N-1)}$">.</font></p>
+ <div align="center">
+ <img width="224" height="54" border="0" src="img24.png" alt=
+ "\begin{displaymath} \bf {B}^{(N-1)} = \left[ \begin{array}{c\vert c} \mb... ...(N-1)} &amp; \mbox{\boldmath$A$}^{(N-1)} \end{array} \right] \end{displaymath}">
+ </div>
+ <br clear="all">
+  <font size="-1">We can then define a <i>difference matrix</i> as 
+ 
+ <img width="220" height="39" align="middle" border="0" src=
+ "img25.png" alt=
+ "$\mbox{\boldmath$D$}^{(N)} = \left[d_{ij}\right]= \mbox{\boldmath$A$}^{(N)} -\bf {B}^{(N-1)}$">
+  where 
+ <img width="82" height="32" align="middle" border="0" src=
+ "img26.png" alt="$d_{ij} \in \{0,1\}$"> is the increase in the LCS
+ of sequence <img width="10" height="14" align="bottom" border="0"
+ src="img18.png" alt="$i$"> aligned with sequence <img width="11"
+ height="29" align="middle" border="0" src="img19.png" alt="$j$">
+ due to the addition of the <img width="19" height="14" align=
+ "bottom" border="0" src="img8.png" alt="$N$">th letter (which in
+ the binary case is <img width="12" height="13" align="bottom"
+ border="0" src="img27.png" alt="$0$"> or <img width="12"
+      height="13" align="bottom" border="0" src="img28.png" alt=
+      "$1$"> depending upon the position). The construction of 
+      
+ <img width="37" height="18" align="bottom" border="0" src=
+ "img29.png" alt="$\mbox{\boldmath$D$}^{(2)}$"> is illustrated in
+ Figure 1. In Figure 2, 
+ <img width="41" height="18" align="bottom" border="0" src=
+ "img30.png" alt="$\mbox{\boldmath$D$}^{(N)}$"> is shown for
+ <img width="48" height="14" align="bottom" border="0" src=
+ "img1.png" alt="$N=1$"> to <img width="48" height="14" align=
+ "bottom" border="0" src="img20.png" alt="$N=8$">. The proportion of
+ black in each of these pictures, <img width="43" height="32"
+      align="middle" border="0" src="img3.png" alt="$R(N)$">,
+      represents the proportion of all sequence pairs whose LCS
+      increased by one by the addition of one letter to the previous
+      sequence. We can now summarize the proof that <img width="43"
+      height="32" align="middle" border="0" src="img3.png" alt=
+      "$R(N)$"> converges more rapidly than 
+ <img width="39" height="40" align="middle" border="0" src=
+ "img10.png" alt="$\frac{E(N)}{N}$"> towards <img width="19"
+      height="29" align="middle" border="0" src="img5.png" alt=
+      "$a_c$"> which is close to <img width="24" height="13" align=
+      "bottom" border="0" src="img31.png" alt="$.82$"> [<a href=
+      "#bun4">5</a>]. (See Table 1.)</font> 
+ <p><font size="-1">Let <img width="44" height="32" align="middle"
+ border="0" src="img9.png" alt="$E(N)$"> denote the expected length
+ of the LCS of two random binary sequences of length <img width="19"
+      height="14" align="bottom" border="0" src="img8.png" alt=
+      "$N$">. We know that 
+ <img width="39" height="40" align="middle" border="0" src=
+ "img10.png" alt="$\frac{E(N)}{N}$"> is monotonically increasing
+ with <img width="19" height="14" align="bottom" border="0"
+      src="img8.png" alt="$N$"> and 
+ <img width="134" height="40" align="middle" border="0" src=
+ "img32.png" alt=
+ "$\lim_{n \rightarrow \infty} \frac{E(N)}{N} = a_c $">, so 
+ 
+ <img width="133" height="40" align="middle" border="0" src=
+ "img33.png" alt=
+ "$\frac{E(N+1)}{N+1} \;\; &gt; \;\; \frac{E(N)}{N}.$"> It is
+ straightforward to show that 
+ <img width="218" height="32" align="middle" border="0" src=
+ "img34.png" alt="$R(N+1)=E(N+1) - E(N)$">, and using the identity 
+ 
+ <img width="115" height="36" align="middle" border="0" src=
+ "img35.png" alt="$\frac{N}{N+1} = 1 - \frac{1}{N+1}$"> it follows
+ that 
+ <img width="365" height="40" align="middle" border="0" src=
+ "img36.png" alt=
+ "$R(N+1) \;\;\;\;= \;\;\;\; E(N+1) - E(N) \;\;\;\; &gt; \;\;\;\; \frac{E(N+1)}{(N+1)}.$">
+  We know that 
+ <img width="55" height="40" align="middle" border="0" src=
+ "img37.png" alt="$\frac{E(N+1)}{N+1}$"> converges to the
+ Chv&aacute;tal-Sankoff constant <img width="19" height="29"
+      align="middle" border="0" src="img5.png" alt="$a_c$">. It is
+      straightforward to show that <img width="71" height="32"
+      align="middle" border="0" src="img38.png" alt="$R(N+1)$"> also
+      converges to <img width="19" height="29" align="middle"
+      border="0" src="img5.png" alt="$a_c$"> and the above
+      inequality shows that it converges more rapidly.</font></p>
+ <div align="center"><a name="125"></a> 
+ <table>
+ <caption><strong>Table:</strong> <font size="-1">Exact calculations
+ for <img width="48" height="14" align="bottom" border="0" src=
+ "img1.png" alt="$N=1$"> to <img width="56" height="14" align=
+ "bottom" border="0" src="img2.png" alt="$N=12$">. Note that
+ <img width="43" height="32" align="middle" border="0" src=
+ "img3.png" alt="$R(N)$"> (Column <img width="12" height="13"
+      align="bottom" border="0" src="img4.png" alt="$4$">) converges
+      towards <img width="19" height="29" align="middle" border="0"
+      src="img5.png" alt="$a_c$"> faster than 
+ <img width="39" height="40" align="middle" border="0" src=
+ "img10.png" alt="$\frac{E(N)}{N}$"> (Column <img width="12"
+      height="13" align="bottom" border="0" src="img7.png" alt=
+      "$5$">)</font></caption>
+ <tr>
+ <td>
+ <div align="center">
+ <table cellpadding="3" border="1" align="center">
+ <tr>
+ <td align="right">N</td>
+ <td align="right">Total Area(<img width="30" height="16"
+      align="bottom" border="0" src="img39.png" alt=
+      "$2^{2N}$">)</td>
+ <td align="right">Area of Black</td>
+ <td align="right">Ratio of Black <img width="43" height="32"
+      align="middle" border="0" src="img3.png" alt="$R(N)$"></td>
+ <td align="right">
+ <img width="39" height="40" align="middle" border="0" src=
+ "img10.png" alt="$\frac{E(N)}{N}$"></td></tr>
+ <tr>
+ <td align="right">1</td>
+ <td align="right">4</td>
+ <td align="right">2</td>
+ <td align="right">0.50000</td>
+ <td align="right">0.50000</td></tr>
+ <tr>
+ <td align="right">2</td>
+ <td align="right">16</td>
+ <td align="right">10</td>
+ <td align="right">0.62500</td>
+ <td align="right">0.56250</td></tr>
+ <tr>
+ <td align="right">3</td>
+ <td align="right">64</td>
+ <td align="right">44</td>
+ <td align="right">0.68750</td>
+ <td align="right">0.60417</td></tr>
+ <tr>
+ <td align="right">4</td>
+ <td align="right">256</td>
+ <td align="right">182</td>
+ <td align="right">0.71094</td>
+ <td align="right">0.63086</td></tr>
+ <tr>
+ <td align="right">5</td>
+ <td align="right">1024</td>
+ <td align="right">740</td>
+ <td align="right">0.72266</td>
+ <td align="right">0.64922</td></tr>
+ <tr>
+ <td align="right">6</td>
+ <td align="right">4096</td>
+ <td align="right">3006</td>
+ <td align="right">0.73389</td>
+ <td align="right">0.66333</td></tr>
+ <tr>
+ <td align="right">7</td>
+ <td align="right">16384</td>
+ <td align="right">12148</td>
+ <td align="right">0.74146</td>
+ <td align="right">0.67449</td></tr>
+ <tr>
+ <td align="right">8</td>
+ <td align="right">65536</td>
+ <td align="right">49000</td>
+ <td align="right">0.74768</td>
+ <td align="right">0.68364</td></tr>
+ <tr>
+ <td align="right">9</td>
+ <td align="right">262144</td>
+ <td align="right">197292</td>
+ <td align="right">0.75261</td>
+ <td align="right">0.69130</td></tr>
+ <tr>
+ <td align="right">10</td>
+ <td align="right">1048576</td>
+ <td align="right">793472</td>
+ <td align="right">0.75671</td>
+ <td align="right">0.69784</td></tr>
+ <tr>
+ <td align="right">11</td>
+ <td align="right">4194304</td>
+ <td align="right">3188704</td>
+ <td align="right">0.76025</td>
+ <td align="right">0.70352</td></tr>
+ <tr>
+ <td align="right">12</td>
+ <td align="right">16777216</td>
+ <td align="right">12804968</td>
+ <td align="right">0.76324</td>
+ <td align="right">0.70849</td></tr></table></div>
+ .</td></tr></table></div>
+ <br>
+ <p></p>
+ <h2><a name="SECTION00010000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="chv1">1</a></dt>
+ <dd>Chv&aacute;tal, V. and Sankoff, D. 1975. Longest common
+ subsequences of two random sequences. <em>J. Appl. Probability</em>
+ 12: 306-315.</dd>
+ <dt><a name="wat4">2</a></dt>
+ <dd>Waterman, M.&nbsp;S. 1995. <em>Introduction to Computational
+ Biology</em> Chapman &amp; Hall.</dd>
+ <dt><a name="ale1">3</a></dt>
+ <dd>Alexander, K.&nbsp;S. 1994. The rate of convergence of the mean
+ length of the longest common subsequence. <em>Ann. Applied
+ Probab.</em> 4:1074-1082.</dd>
+ <dt><a name="jia1">4</a></dt>
+ <dd>Jiang, T. and Li, M. 1995. On the approximation of the shortest
+ common subsequences and longest common subsequences. <i>SIAM J.
+ Comput.</i> 24:1122-1139.</dd>
+ <dt><a name="bun4">5</a></dt>
+ <dd>Bundschuh, R. 2001. High Precision simulations of the longest
+ common subsequence. <em>Eur. Phys. J. B</em>, 22:
+ 533-541.</dd></dl>
+  
+ <p><br></p>
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="fnm1">... Booth</a><a href=
+ "#footfnm1"><sup>1</sup></a></dt>
+ <dd>Centre for Bioinformation Science (CBiS), Australian National
+ University (ANU) E-mail: 
+ <div align="center">
+ <b><tt>Hilary.Booth@anu.edu.au</tt></b></div></dd>
+ <dt><a name="fnm2">...1</a><a href=
+ "#footfnm2"><sup>2</sup></a></dt>
+ <dd>John Curtin School of Medical Research (JCSMR), ANU</dd>
+ <dt><a name="fnm3">...2</a><a href=
+ "#footfnm3"><sup>3</sup></a></dt>
+ <dd>Mathematical Sciences Institute (MSI), ANU</dd>
+ <dt><a name="fnm4">...3</a><a href=
+ "#footfnm4"><sup>4</sup></a></dt>
+ <dd>Australian Partnership for Advanced Computing (APAC)</dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>37. A taxonomical view on the SYSTERS protein family database</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-036/'>&lt;&lt;</a> Poster 037 [ <a href='poster-02-037.pdf'>PDF</a> | <a href='poster-02-037.tgz'>TeX</a> | <a href='poster-02-037.ps'>PostScript</a> ] <a href='/recombdb/poster-02-038/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>37. A taxonomical view on
+ the SYSTERS protein family database<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Thomas Meinel <a name="tex2html1" href=
+ "#foot66"><sup>1</sup></a>, Antje Krause <a name="tex2html2"
+    href="#foot67"><sup>2</sup></a>, Martin Vingron <a name=
+    "tex2html3" href="#foot68"><sup>3</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> protein family; taxonomy;
+ multiple alignment</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+  <font size="-1">The SYSTERS [<a href=
+ "#KSV00">1</a>] protein family database provides
+ an automatically generated classification of all publicly available
+ protein sequences into disjoint family and superfamily clusters.
+ The underlying sequence set contains all sequences including
+ alternatively spliced isoforms from the SWISS-PROT [<a href=
+ "#BA00">5</a>], TrEMBL, and PIR [<a href=
+ "#BGHHLMMOPVXYW01">6</a>] databases as well as
+ protein sequences of several completely sequenced organisms. For
+ each cluster an MView [<a href="#BLS98">2</a>]
+ output is generated and from the resulting partial multiple
+ alignment a majority consensus sequence is derived. All consensus
+ sequences together build a searchable sequence database. The
+ sequences in every cluster have been multiply aligned and annotated
+ with known domains from the Pfam database [<a href=
+ "#BBCDEEGHMS02">7</a>].</font> 
+ <h1><a name="SECTION00020000000000000000"><font size="+1">Taxonomy
+ interface</font></a></h1>
+  <font size="-1">Every protein sequence in the underlying sequence
+ set of the SYSTERS database belongs to one organism. In terms of
+ taxonomical classification, this is a species, a subspecies or a
+ strain. On the other hand, most protein family clusters contain
+ sequences from several different organisms. Thus, querying the
+ SYSTERS database, one is often interested in</font> 
+ <ul>
+ <li>the taxonomical complexity of such a protein family,</li>
+ <li>all protein families a specific taxon is represented in,</li>
+ <li>protein families specific for one taxon, or</li>
+ <li>protein families shared by several different taxa.</li></ul>
+  <font size="-1">Here, with taxon we do not only mean a selection
+ on the species level, but on any arbitrary taxonomical level as
+ given by the NCBI taxonomy [<a href=
+ "#WCLLMSTR00">4</a>]. To facilitate phylogenetic
+ studies, the SYSTERS web server now provides an interface to select
+ protein family clusters satisfying such a user defined set of
+ taxa.</font> 
+ <h1><a name="SECTION00030000000000000000"><font size=
+ "+1">Interactive multiple alignment</font></a></h1>
+  <font size="-1">To rely not only on preprocessed multiple
+ alignments of the sequences of one SYSTERS protein family cluster,
+ we extended the functionality of our interface to allow the user to
+ interactively select</font> 
+ <ul>
+ <li>particular sequences of one SYSTERS cluster (e.g.,
+ alternatively spliced isoforms, the consensus sequence, or species
+ specific sequences),</li>
+ <li>sequences from the same SYSTERS superfamily,</li>
+ <li>sequences from other SYSTERS clusters, or</li>
+ <li>own sequences.</li></ul>
+  <font size="-1">This new set of sequences is multiply aligned
+ using the DIALIGN2 program [<a href=
+ "#M99">3</a>]. The resulting alignment is
+ postprocessed by coloring optinally according to the DIALIGN
+ weighting scheme or to the physico-chemical properties of the amino
+ acids similar to the MView program [<a href=
+ "#BLS98">2</a>].</font> 
+ <h1><a name="SECTION00040000000000000000"><font size=
+ "+1">Access</font></a></h1>
+  <font size="-1">The SYSTERS protein family database is available
+ for browsing and querying at:</font> 
+ <div align="center"><font size=
+ "-1"><tt>http://systers.molgen.mpg.de</tt></font></div>
+  <font size="-1">It is possible to enter the hierarchy of protein
+ family clusters and superfamilies at any layer, e.g., by searching
+ for a keyword, choosing a certain taxonomic composition as
+ described above, or by selecting a known Pfam domain. A new protein
+ sequence can be searched against the database of consensus
+ sequences and subsequently multiply aligned together with a user
+ defined selection of sequences from the SYSTERS data set.</font> 
+ <p></p>
+ <h2><a name="SECTION00050000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="KSV00">1</a></dt>
+ <dd>Krause, A., Stoye, J., and Vingron, M. 2000. The SYSTERS
+ Protein Sequence Cluster Set. <em>Nucleic Acids Research</em>,
+ 28:270-272.</dd>
+ <dt><a name="BLS98">2</a></dt>
+ <dd>Brown, N.&nbsp;P., Leroy, C., and Sander, C. 1998. MView: a
+ web-compatible database search or multiple alignment viewer.
+ <em>Bioinformatics</em>, 14:380-381.</dd>
+ <dt><a name="M99">3</a></dt>
+ <dd>Morgenstern, B. 1999. DIALIGN2: improvement of the
+ segment-to-segment approach to multiple sequence alignment.
+ <em>Bioinformatics</em>, 15:211-218.</dd>
+ <dt><a name="WCLLMSTR00">4</a></dt>
+ <dd>Wheeler, D.&nbsp;L., Chappey, C., Lash, A.&nbsp;E., Leipe,
+ D.&nbsp;D., Madden, T.&nbsp;L., Schuler, G.&nbsp;D., Tatusova,
+ T.&nbsp;A., and Rapp B.&nbsp;A. 2000. Database resources of the
+ National Center for Biotechnology Information. <em>Nucleic Acids
+ Research</em>, 28:10-14.</dd>
+ <dt><a name="BA00">5</a></dt>
+ <dd>Bairoch, A. and Apweiler, R. 2000. The SWISS-PROT protein
+ sequence database and its supplement TrEMBL in 2000. <em>Nucleic
+ Acids Research</em>, 28:45-48.</dd>
+ <dt><a name="BGHHLMMOPVXYW01">6</a></dt>
+ <dd>Barker, W.&nbsp;C., Garavelli, J.&nbsp;S.,Hou, Z., Huang, H.,
+ Ledley, R.&nbsp;S., McGarvey, P.&nbsp;B., Mewes, H.-W., Orcutt,
+ B.&nbsp;C., Pfeiffer, F., Tsugita, A., Vinayaka, C.&nbsp;R., Xiao,
+ C., Yeh, L.-S.&nbsp;L., and Wu, C. 2001. Protein Information
+ Resource: a community resource for expert annotation of protein
+ data. <em>Nucleic Acids Research</em>, 29:29-32.</dd>
+ <dt><a name="BBCDEEGHMS02">7</a></dt>
+ <dd>Bateman, A., Birney, E., Cerruti, L., Durbin, R., Etwiller, L.,
+ Eddy, S.&nbsp;R., Griffiths-Jones, S., Howe, K.&nbsp;L., Marshall,
+ M., Sonnhammer E.&nbsp;L. 2002. The Pfam Protein Families Database.
+ <em>Nucleic Acids Research</em>, 30:276-280.</dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot66">... Meinel</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>MPI for Molecular Genetics, Computational Molecular Biology,
+ Ihnestr.&nbsp;73, D-14195 Berlin. E-mail: 
+ <div align="center">
+ <b><tt>Thomas.Meinel@molgen.mpg.de</tt></b></div></dd>
+ <dt><a name="foot67">... Krause</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>MPI for Molecular Genetics, Computational Molecular Biology,
+ Ihnestr.&nbsp;73, D-14195 Berlin. E-mail: 
+ <div align="center">
+ <b><tt>Antje.Krause@molgen.mpg.de</tt></b></div></dd>
+ <dt><a name="foot68">... Vingron</a><a href=
+ "#tex2html3"><sup>3</sup></a></dt>
+ <dd>MPI for Molecular Genetics, Computational Molecular Biology,
+ Ihnestr.&nbsp;73, D-14195 Berlin. E-mail: 
+ <div align="center">
+ <b><tt>Martin.Vingron@molgen.mpg.de</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

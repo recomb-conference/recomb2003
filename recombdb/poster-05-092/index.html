@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>92. Folding Pattern Recognition in Proteins using Spectral Analysis Methods</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category04.html'>&lt;&lt;</a> <a href='/recombdb/category05.html'><b>Protein Structure</b> Overview</a> <a href='/recombdb/category06.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-05-091/'>&lt;&lt;</a> Poster 092 [ <a href='poster-05-092.pdf'>PDF</a> | <a href='poster-05-092.doc'>MSWORD</a> ] <a href='/recombdb/poster-05-093/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>92. Folding Pattern Recognition in Proteins using Spectral
+ Analysis Methods</h2>
+ <p align="center"><b>Carlos A. Del Carpio-Mu&ntilde;oz<a href=
+ "#_ftn1" name="_ftnref1" title="">[1]</a>, Eiichiro
+    Ichiishi<a href="#_ftn2" name="_ftnref2" title="">[2]</a>, and
+    Toshikazu Yoshikawa<sup>2</sup></b></p>
+ <p><b>1.&nbsp;&nbsp;&nbsp; Introduction</b></p>
+ <p>Incompleteness in homolog coverage is the major factor
+ precluding total success of very well and long-established methods
+ for protein structure modeling based on sequence alignments[1] and
+ other methodologies; divergence in sequence through evolution being
+ the natural cause. The problems that still remain, particularly,
+ with broadly used sequence alignment techniques are those
+ associated with the length of the sequence of amino acids, the
+ unambiguous differentiation of domains within the sequence, the
+ increased number of gaps to optimize the matching residues and
+ other factors. These problems become conspicuously apparent in what
+ is called the twilight zone of protein structure prediction, in
+ which proteins of high degree of similarity in both structure and
+ biological function have poor similarity in amino acid sequence;
+ the homology among them generally ranging from about 20% to less
+ than 30% [15].</p>
+ <p>&nbsp;Recently, in contrast to those sequence alignment based
+ methodologies, a strategy based on periodicity analysis of the
+ physicochemical properties of the residues constituting the
+ sequences has been proposed by the authors[2] and has been applied
+ to protein secondary structure and function elucidation processes.
+ The common denominator to these methodologies is a spectral
+ analysis of the profiles of physicochemical properties of the
+ residues in sequences.&nbsp;&nbsp;</p>
+ <p>&nbsp;Here we describe this new methodology and present some
+ results obtained by the methodology and presented at the CASP4[3]
+ contest, and the undergoing CASP5[4] competitions, and discuss the
+ capabilities of the methodology as well as its potentiality as a
+ tool for genome-wide analysis and proteomics.</p>
+ <p>The underlying characteristic of the methodology is that it
+ relates the above mentioned intrinsic, though, subtle periodicity
+ of the physicochemical characteristics of the sequence of residues
+ with the folding characteristics of its three dimensional
+ structure. We utilize the classification of several protein primary
+ structures into families and super-families in the SCOP database.
+ We have found that common folding patterns exist for proteins
+ possessing similar spectral characteristics over a set of
+ physicochemical parameters that we have called the dominant
+ coefficients for a particular super-family.</p>
+ <p>The methodology is effective at recognizing folding
+ characteristics of protein structures in the twilight zone. Using
+ the sets of dominant coefficients for each type of folding,
+ automatic assignment of an unknown sequence to its putative class,
+ family, and super-family can be performed with high probability.
+ This constitutes the basis of a new fully automated system for
+ protein folding recognition, and a detailed description of the
+ methodology as well as the results obtained is discussed.</p>
+ <p><b>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Methodology</b></p>
+ <p>We adopted a well known technique of front-end processing in
+ robust automatic speech recognition (ASR) the objective of which is
+ to preserve critical linguistic information while suppressing
+ irrelevant information such as speaker-specific characteristics,
+ channel characteristics, and noise. This analysis-synthesis
+ technique is based on the transformation of a signal into its
+ cepstrum which is a measure of the periodic wiggliness of a
+ frequency response plot. The cepstrum is calculated as the
+ logarithm of the power spectrum of a signal and leads to a
+ logarithmic periodgram for which the spectral envelope is obtained
+ as a smooth curve depicted by connecting the main local peaks of
+ the minute structure of the frequency spectrum.</p>
+ <p>&nbsp; The technique applied to the analysis the profile of
+ physicochemical features of the protein sequence allows extraction
+ of information in the form of the spectral envelope which is used
+ to model the relationship between the primary and tertiary
+ structures of a protein.&nbsp;&nbsp;</p>
+ <p>Comparison of two sequences is then reduced to an alignment of
+ spectral envelopes representing the primary structures.</p>
+ <p><b>3.&nbsp;&nbsp;&nbsp; Results and discussion</b></p>
+ <p>Dominant physicochemical parameters for each class of proteins
+ are obtained by alignment of the spectra for all the pairs of
+ proteins constituting the class and using the 434 amino acid
+ indices. Five indices are selected as the dominant physicochemical
+ parameters for which the spectral alignment scores are the
+ highest.</p>
+ <p>Applying the procedure described in the former section to every
+ superfamily in the SCOP data base leads to the definition of the
+ dominant physicochemical parameters for each superfamily.</p>
+ <p>Protein folding prediction using the spectral methodology
+ proceeds by comparing the spectra for the unknown or target
+ sequence with the spectra of every member of a superfamily and for
+ all the superfamilies, using the five dominant parameters
+ calculated for each class. Spectral alignment scores for each of
+ the five spectra are calculated. The protein folding pattern
+ assigned to the target is that of the class for which the scores
+ are the highest in average; the representative folding being,
+ therefore, the one with the highest similarity to the target within
+ the group, both in spectral superimposition and number of amino
+ acid residues.</p>
+ <p>&nbsp; Since the number of amino acids in the sequences
+ constituting the group of proteins used in derivation of the
+ dominant parameters is, however, different to that of the target
+ molecule the spectral analysis methodology developed leads to
+ characterization of folding patterns rather than a structure that
+ can be superimposed to the target molecule. Consequently, the
+ structure derived by the spectral analysis performed consists in
+ assigning a set of folding characteristics to the target molecule
+ from which the tertiary structure can be built by threading or any
+ other similar protein three dimensional modeling method.</p>
+ <p>&nbsp;Since the system outputs a number of structures ranked by
+ spectral alignment and similarity score, the table reveals that the
+ parent structure output by the system is within the first five
+ folds that the system recognizes.</p>
+ <p><b>4.&nbsp;&nbsp;&nbsp; Acknowledgement</b></p>
+ <p>The present research was conducted under the auspices of the
+ Grant-in-Aid for Scientific Research No 14580672 in the area of
+ &ldquo;Biological Physics&rdquo; from the Ministry of Education,
+ Culture, Sports, Science and Technology of Japan.</p>
+ <p><b>5.&nbsp;&nbsp;&nbsp; References</b></p>
+ <p>Smith, T.F. and Waterman, M.S. (1981) Identification of common
+ molecular subsequences. J. Mol. Biol., 147, 195-197.</p>
+ <p>Del Carpio M. CA, Yoshimori A; Fully automated Protein Tertiary
+ Structure Prediction using Fourier Transform Spectral Methods.
+ Protein Structure Prediction. Bioinformatic Approach.. (IUL
+ Biotechnology Series, edited by Tsigelny I.G..) 171-200. 2002.</p>
+ <p>CASP4( <a href=
+ "http://predictioncenter.llnl.gov/casp5/Casp4.html">http://predictioncenter.llnl.gov/casp5/Casp4.html</a>
+ )</p>
+ <p>CASP5( <a href=
+ "http://predictioncenter.llnl.gov/casp5/Casp5.html">http://predictioncenter.llnl.gov/casp5/Casp5.html</a>
+ )</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a> Laboratory for
+ Bioinformatics Department of Ecological Engineering. Toyohashi
+ University of Technology. Tempaku. Toyohashi. 441-8580
+ Japan</p></div>
+ <div id="ftn2">
+ <h1 align="left"><a href="#_ftnref2" name="_ftn2" title="">[2]</a>
+ 1<sup>st</sup> Department of Medicine, Kyoto Prefectural University
+ of Medicine, 465 Kaji-cho, Kawaramachi-Hirokoji, Kamigyo&mdash;Ku,
+ Kyoto Japan.</h1></div></div>
+ </body>
+ </html>

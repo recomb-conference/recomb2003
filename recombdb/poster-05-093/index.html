@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>93. STACK: a toolkit for analysing b-helix proteins</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category04.html'>&lt;&lt;</a> <a href='/recombdb/category05.html'><b>Protein Structure</b> Overview</a> <a href='/recombdb/category06.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-05-092/'>&lt;&lt;</a> Poster 093 [ <a href='poster-05-093.pdf'>PDF</a> | <a href='poster-05-093.tgz'>TeX</a> | <a href='poster-05-093.ps'>PostScript</a> ] <a href='/recombdb/poster-05-094/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>93. STACK: a toolkit for
+ analysing <img width="14" height="30" align="middle" border="0"
+      src="img1.png" alt="$\beta$">-helix
+      proteins<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Lars Diestelhorst<a name="tex2html1"
+    href="#foot26"><sup>1</sup></a>, Salvatore Cappadona<a name=
+    "tex2html2" href="#foot27"><sup>2</sup></a>, Graham J.L.
+    Kemp<a name="tex2html3" href=
+    "#foot28"><sup>3</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> <img width="14" height="30"
+ align="middle" border="0" src="img1.png" alt="$\beta$">-coil,
+ <img width="14" height="30" align="middle" border="0" src=
+ "img1.png" alt="$\beta$">-helix, protein structure,
+ stack</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+  <font size="-1"><img width="14" height="30" align="middle"
+      border="0" src="img1.png" alt="$\beta$">-helix proteins
+      contain a solenoid domain of parallel <img width="14" height=
+      "30" align="middle" border="0" src="img1.png" alt=
+      "$\beta$">-strands folded into a large prism. The repeated
+      unit of the solenoid is called a <img width="14" height="30"
+      align="middle" border="0" src="img1.png" alt="$\beta$">-coil
+      and consists of a succession of a few (usually three)
+      <img width="14" height="30" align="middle" border="0" src=
+      "img1.png" alt="$\beta$">-strands. <img width="14" height="30"
+      align="middle" border="0" src="img1.png" alt=
+      "$\beta$">-strands from adjacent coils stack to form parallel
+      <img width="14" height="30" align="middle" border="0" src=
+      "img1.png" alt="$\beta$">-sheets that make up the faces of the
+      prism. These faces are linked by loop regions that protrude
+      from the helix and, in many cases, form the binding site of
+      the helix. The cross section of this prism is typically
+      L-shaped in right-handed parallel <img width="14" height="30"
+      align="middle" border="0" src="img1.png" alt=
+      "$\beta$">-helices and triangular in left-handed parallel
+      <img width="14" height="30" align="middle" border="0" src=
+      "img1.png" alt="$\beta$">-helices.</font> 
+ <p><font size="-1">The stability of the domain is mainly obtained
+ by the stacking of similar residues at equivalent positions of the
+ coils, both inside and outside the helix. The inward side chains
+ are mainly hydrophobic and, when not, maximal hydrogen bonding or
+ electrostatic interactions neutralise their polar or charged
+ groups.</font></p>
+ <p><font size="-1">Our goal is to formalise the intuitive notion of
+ a <img width="14" height="30" align="middle" border="0" src=
+ "img1.png" alt="$\beta$">-helix in a set of objective algorithms
+ that define basic structural features of these proteins. Consistent
+ with the literature, we identified stacks, <img width="14"
+      height="30" align="middle" border="0" src="img1.png" alt=
+      "$\beta$">-coils, core and <img width="14" height="30" align=
+      "middle" border="0" src="img1.png" alt="$\beta$">-helix as
+      essential attributes to be determined (the core is defined as
+      the helical domain of the protein, as distinguished from the
+      protruding loop regions).</font></p>
+ <h1><a name="SECTION00020000000000000000"><font size=
+ "+1">Methods</font></a></h1>
+  <font size="-1">Our algorithms have been implemented within STACK,
+ a toolkit for analysing <img width="14" height="30" align="middle"
+ border="0" src="img1.png" alt="$\beta$">-helix proteins. Our
+ approach is based on first identifying residues stacks -- linear
+ spatial arrangements of residues with similar conformations. STACK
+ identifies aromatic, aliphatic and amidic stacks, such as
+ asparagine ladders, and then combines these elementary patterns to
+ form <img width="14" height="30" align="middle" border="0"
+      src="img1.png" alt="$\beta$">-coils, core, and <img width="14"
+      height="30" align="middle" border="0" src="img1.png" alt=
+      "$\beta$">-helices.</font> 
+ <p><font size="-1">STACK also computes several other geometrical
+ features including the axis of the <img width="14" height="30"
+ align="middle" border="0" src="img1.png" alt="$\beta$">-helix, the
+ cross-sectional shape and area of a <img width="14" height="30"
+ align="middle" border="0" src="img1.png" alt="$\beta$">-coil, the
+ packing index of a <img width="14" height="30" align="middle"
+ border="0" src="img1.png" alt="$\beta$">-coil and the
+      <img width="14" height="30" align="middle" border="0" src=
+      "img1.png" alt="$\beta$">-coils' pitch and twist.</font></p>
+ <h1><a name="SECTION00030000000000000000"><font size=
+ "+1">Implementation</font></a></h1>
+  <font size="-1">STACK is implemented in Java and runs on Unix and
+ Windows. An interface between STACK and RasMol enables structural
+ features to be highlighted automatically. The geometric values
+ derived by STACK are stored in a relational database, and can be
+ queried by users to compare and tabulate geometric features of
+ different <img width="14" height="30" align="middle" border="0"
+      src="img1.png" alt="$\beta$">-helix structures.</font> 
+ <h1><a name="SECTION00040000000000000000"><font size=
+ "+1">Results</font></a></h1>
+  <font size="-1">We have used STACK to analyse over twenty
+ <img width="14" height="30" align="middle" border="0" src=
+ "img1.png" alt="$\beta$">-helix proteins taken from the Protein
+ Data Bank, including both left-handed and right-handed
+      <img width="14" height="30" align="middle" border="0" src=
+      "img1.png" alt="$\beta$">-helix structures. The results of
+      these studies will be presented.</font> 
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot26">... Diestelhorst</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Department of Computing Science, Chalmers University of
+ Technology, SE-412 96, G&ouml;teborg, Sweden. E-mail:  
+ <div align="center"><b><tt>diestelhorst@tuhh.de</tt></b></div></dd>
+ <dt><a name="foot27">... Cappadona</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>Department of Computing Science, Chalmers University of
+ Technology, SE-412 96, G&ouml;teborg, Sweden. E-mail:  
+ <div align="center"><b><tt>skdona@tiscalinet.it</tt></b></div></dd>
+ <dt><a name="foot28">... Kemp</a><a href=
+ "#tex2html3"><sup>3</sup></a></dt>
+ <dd>Department of Computing Science, Chalmers University of
+ Technology, SE-412 96, G&ouml;teborg, Sweden. E-mail:  
+ <div align="center">
+ <b><tt>kemp@cs.chalmers.se</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

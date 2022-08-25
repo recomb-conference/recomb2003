@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>13. A Service-Centric Computing Environment for Heterogeneous Biological Databases and Methods</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center">  <a href='/recombdb/category01.html'><b>Genomics</b> Overview</a> <a href='/recombdb/category02.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-01-012/'>&lt;&lt;</a> Poster 013 [ <a href='poster-01-013.pdf'>PDF</a> | <a href='poster-01-013.doc'>MSWORD</a> ] <a href='/recombdb/poster-01-014/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>13.&nbsp; A Service-Centric Computing Environment for
+ Heterogeneous Biological Databases and Methods</h2>
+ <p align="center"><b>Uwe Radetzki<a href="#_ftn1" name="_ftnref1"
+ title="">[1]</a>,&nbsp; Thomas Bode<sup>1</sup>,&nbsp; Gabriele
+ Witterstein<sup>1</sup>,<br>
+  &nbsp;Melanie Gnasa<sup>1</sup>,&nbsp; Armin B.
+ Cremers<sup>1</sup></b></p>
+ <p><b>Keywords:</b> web services, mediators, ontologies,
+ heterogeneity, service integration</p>
+ <p><b>1&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Introduction</b></p>
+ <p>On this poster we present new resources and concepts, and how we
+ apply them to build a service-centric computing environment
+ supporting life science applications. The main concepts used are
+ web services, mediators, and ontologies. Today, a large number of
+ different incompatible data sources and distributed methods are
+ available via the world wide web. But even if they contain similar
+ information or provide similar algorithms they differ in data
+ types, request semantics, formats, and structures. An example of
+ similar databases with different structures and formats include the
+ various protein signature databases which are developed to address
+ different aspects of functional classification of proteins [1].
+ Further, the rapid pace of change in this field &ndash; new
+ databases and algorithms emerge, new species are sequenced and
+ annotated, etc. &ndash; reduces the deployment of stable standards
+ and formats [3]. Thus, we have to answer a very heterogeneous and
+ dynamic situation.</p>
+ <p>A typical functional genomic analysis today can look like this:
+ formulating a request for a specialized genome database in order to
+ retrieve the gene which is unique to an expressed sequence tag
+ (EST). The output has to be converted by oneself to serve as new
+ input depending on the next tool. For instance, the user has to
+ formulate a BLAST-X query into one or more different protein
+ databases in order to get the homologous protein sequences. Based
+ on the best hits further information retrieval sessions start (e.g.
+ publication search), and so on. Remember, the whole process is
+ denoted by data and method sources which have different data
+ formats and service specifications that have to be taken into
+ account.</p>
+ <p>Thus, what we need is a flexible and adaptable software solution
+ which can keep up with these moving objectives. It has to provide
+ abilities to include new or changed data sources as well as
+ distributed methods simultaneously, and to combine them in a
+ meaningful manner. Further requirements are: supporting standards
+ as much as possible, uniform access to distributed data and method
+ services, easy to handle for users, supporting different user and
+ project demands, and automation of repeated analysis steps.</p>
+ <p><b>2&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>The IRIS Approach</b></p>
+ <p>In the IRIS platform (<b>I</b>nteroperability and
+ <b>R</b>eusability of <b>I</b>nternet <b>S</b>ervices) we are
+ applying recent concepts in the field of software technology in
+ order to build a flexible service-centric computing environment
+ [2]. These sophisticated concepts comprise web services,
+ ontologies, and mediators. An overriding goal of all aspects of
+ this project is that the user will be supported as much as possible
+ in building new service compositions. Here, we try to keep in mind
+ the level of computer training and knowledge of the most biologists
+ that will be using this software platform. In general, we are
+ convinced that in the near future every web-enabled data or method
+ service is accessible through standardized protocols based on XML
+ and HTTP [5], e.g. see the XEMBL service [4].</p>
+ <p>In IRIS the user can describe new service compositions in a
+ declarative manner. For that he will use a special XML-based
+ workflow language where the data and control flows have to be
+ defined. In this connection, an open question is the
+ incompatibility of data types and request semantics supported by
+ the different services. For this purpose we developed a specialized
+ mediator approach. A mediator supports a specific data conversion
+ which the user can incorporate into a given workflow. It is
+ possible to compose several mediators. This allows users to reuse
+ existing mediators. We assume that by-and-by the number of
+ available mediators grows, and the user not only has to develop new
+ mediators but also can download required mediators from the net. In
+ the later case, the mediator has only to be adapted adequately. In
+ order to find the required mediators we will use ontology-based
+ search mechanisms, but this is work in progress. Note, every
+ service aggregation defined in IRIS will be published as new web
+ service. In this way, IRIS supports a hierarchically composition
+ model. Figure 1 illustrates an example of a service aggregation in
+ IRIS.</p>
+ <p>Beyond, we are thinking of IRIS mediators which can query
+ well-known and widely accepted ontologies (e.g. GenOntology)
+ independently in order to allow semi-automatic customization of
+ supported data formats. Mediators involved in such negotiation
+ process have to use the same ontologies. In this context the main
+ objective will be to support the user with potential data
+ conversions which finally have to be reviewed by the user. This
+ smart mediation is future work.</p>
+ <p align="center"><img width="448" height="183" src=
+ "image002.gif"></p>
+ <br>
+ <p align="center">Figure 1: Example of a service aggregation in
+ IRIS (sketch).</p>
+ <h1>References</h1>
+ <p>[1] Kanapin, A.A., Fleischmann, W. and Apweiler, R. 2001.
+ Integration of Biological Databases: the Example of InterPro.
+ <i>Currents in Computational Molecular Biology (RECOMB 2001)</i>,
+ Montreal,&nbsp; pp. 227-228.</p>
+ <p>[2] Radetzki, U., Alda, S., Bode, T. and Cremers, A.B. 2002.
+ First Steps in the Development of a Web Service Framework for
+ Heterogeneous Environmental Information Systems. <i>Proceedings of
+ the 16<sup>th</sup> International Symposium Environmental
+ Informatics (EnviroInfo)</i>, Vienna,&nbsp; (1) pp. 384-391.</p>
+ <p>[3] Radetzki, U., Witterstein, G. and Cremers, A.B. 2002. An
+ Integration Platform for Heterogeneous Services in Life Science
+ Applications. <i>Proceedings of the Workshop on Bioinformatics
+ (ISMIS)</i>, Lyon, 2002.</p>
+ <p>[4] The XEMBL Project: the EMBL/GenBank/DDBJ databases in XML,
+ <i>http://www.ebi.ac.uk/xembl/</i></p>
+ <p>[5] World Wide Web Consortium 2000/2001. Simple Object Access
+ Protocol (SOAP) 1.1, Web Services Description Language (WSDL)
+ 1.1.</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a> Institute of
+ Applied Informatics, University of Bonn, Roemerstr. 164, D-53117
+ Bonn, NRW, Germany. E&#8209;mail:
+ ur@iai.uni-bonn.de</p></div></div>
+ </body>
+ </html>

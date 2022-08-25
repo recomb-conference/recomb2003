@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>82. JSplits: a frame-work for phylogenetic analysis using trees and networks</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category03.html'>&lt;&lt;</a> <a href='/recombdb/category04.html'><b>Molecular Evolution</b> Overview</a> <a href='/recombdb/category05.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-04-081/'>&lt;&lt;</a> Poster 082 [ <a href='poster-04-082.pdf'>PDF</a> | <a href='poster-04-082.tgz'>TeX</a> | <a href='poster-04-082.ps'>PostScript</a> ] <a href='/recombdb/poster-04-083/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>82. JSplits: a frame-work
+ for phylogenetic analysis using trees and
+ networks<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Daniel H.&nbsp;Huson <a name="tex2html1"
+ href="#foot54"><sup>1</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> phylogeny, trees, networks,
+ splits, quartets</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+ <p><font size="-1">The goal of phylogenetic analysis is to
+ determine the order and approximate timing of speciation events in
+ the evolution of a given set of species. This is usually done by
+ comparing sequence data for individual genes, and more recently, on
+ the level of whole genomes, and then building a tree (or trees)
+ inferred from the comparisons. However, although the stated goal is
+ often to obtain a tree, it is sometimes desirable to apply
+ phylogenetic reconstruction methods that do not force the given
+ data onto any particular tree but rather are allowed to produce a
+ more ``networked'' graph when this is the best representation for
+ the data at hand. Bandelt and Dress [<a href=
+ "#BandeltDress92">BD92</a>] suggested a number of
+ phylogenetic analysis methods, such as split-decomposition method
+ and parsimony splits, that produce phylogenetic networks. More
+ recently, Bryant and Moulton [<a href=
+ "#BryantMoulton2002">BM02</a>] described a new
+ method Neighbor-net, that brings together both split decomposition
+ and the well-known neighbor-joining method [<a href=
+ "#NJ">SN87</a>].</font></p>
+ <h1><a name="SECTION00020000000000000000"><font size=
+ "+1">Phylogenetic trees and phylogenetic networks</font></a></h1>
+ <p><font size="-1">There exist a number of packages for performing
+ phylogenetic analysis, e.g. [<a href=
+ "#PAUP">Swo00</a>,<a href=
+ "#Puzzle">SvH96</a>,<a href=
+ "#Mesquite">MM02</a>]. However, they are all use
+ trees as the fundamental data structure. In contrast, the
+ SplitsTree program [<a href=
+ "#SplitsTree">Hus98</a>] is based on so-called
+ splits and phylogenetic networks and is dedicated to methods such
+ as split decomposition.</font></p>
+ <p><font size="-1">Our new java package <tt>jSplits</tt> is aimed
+ at providing a frame-work for both tree- and network-oriented
+ phylogenetic analysis, including median networks [<a href=
+ "#MedianNetworks">BFSR95</a>]. Fundamental data
+ types supported by the program included unaligned- and aligned
+ sequences, distances, splits, trees, networks and quartets. The
+ package provides a number of the most commonly used distance-based
+ algorithms. A main feature of the program is a ``plug-and-play''
+ design for the incorperation of new methods.</font></p>
+ <p><font size="-1">Additionally, new rank-based methods as recently
+ proposed by Andreas Dress and Alex Grossman (personal
+ communication) will be implemented in the package. Finally, the
+ package will provide an implementation of the disk-covering method
+ for trees and networks [<a href=
+ "#DCM:Recomb1999">HNW99</a>].</font></p>
+ <p><font size="-1"><tt>JSplits</tt> will be released early 2003 as
+ Open Source.</font></p>
+ <p></p>
+ <h2><a name="SECTION00030000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="BandeltDress92">BD92</a></dt>
+ <dd>H.-J. Bandelt and A.&nbsp;W.&nbsp;M. Dress.<br>
+ A canonical decomposition theory for metrics on a finite set.<br>
+ <em>Advances in Mathematics</em>, 92:47-105, 1992.</dd>
+ <dt><a name="MedianNetworks">BFSR95</a></dt>
+ <dd>H.-J. Bandelt, P.&nbsp;Forster, B.C. Sykes, and M.B.
+ Richards.<br>
+ Mitochondrial portraits of human population using median
+ networks.<br>
+ <em>Genetics</em>, 141:743-753, 1995.</dd>
+ <dt><a name="BryantMoulton2002">BM02</a></dt>
+ <dd>D.&nbsp;Bryant and V.&nbsp;Moulton.<br>
+ Neighbornet: An agglomerative method for the construction of planar
+ phylogenetic networks.<br>
+ In R.&nbsp;Guig&oacute; and D.&nbsp;Gusfield, editors,
+ <em>Algorithms in Bioinformatics, WABI 2002</em>, volume LNCS 2452,
+ pages 375,391, 2002.</dd>
+ <dt><a name="DCM:Recomb1999">HNW99</a></dt>
+ <dd>D.&nbsp;Huson, S.&nbsp;Nettles, and T.&nbsp;Warnow.<br>
+ Obtaining highly accurate topology estimates of evolutionary trees
+ from very short sequences, 1999.<br>
+ Proceedings``RECOMB'99''.</dd>
+ <dt><a name="SplitsTree">Hus98</a></dt>
+ <dd>D.&nbsp;H. Huson.<br>
+ SplitsTree: A program for analyzing and visualizing evolutionary
+ data.<br>
+ <em>Bioinformatics</em>, 14(10):68-73, 1998.</dd>
+ <dt><a name="Mesquite">MM02</a></dt>
+ <dd>W.&nbsp;Maddison and D.&nbsp;Maddison.<br>
+ Mesquite- a modular system for evolutionary analysis.<br>
+ <tt>http://mesquite.biosci.arizona.edu/mesquite/mesquite.html</tt>,
+ 2002.</dd>
+ <dt><a name="NJ">SN87</a></dt>
+ <dd>N.&nbsp;Saitou and M.&nbsp;Nei.<br>
+ The Neighbor-Joining method: a new method for reconstructing
+ phylogenetic trees.<br>
+ <em>Molecular Biology and Evolution</em>, 4:406-425, 1987.</dd>
+ <dt><a name="Puzzle">SvH96</a></dt>
+ <dd>K.&nbsp;Strimmer and A.&nbsp;von Haeseler.<br>
+ Quartet puzzling: a quartet maximum likelihood method for
+ reconstructing tree topologies.<br>
+ <em>Molecular Biology and Evolution</em>, 13:964-969, 1996.</dd>
+ <dt><a name="PAUP">Swo00</a></dt>
+ <dd>D.&nbsp;L. Swofford.<br>
+ PAUP<img width="11" height="16" align="bottom" border="0" src=
+ "img1.png" alt="$^\ast$">: Phylogenetic analysis using parsimony
+ (<img width="12" height="13" align="bottom" border="0" src=
+ "img2.png" alt="$\ast$">: and other methods), version 4.2,
+ 2000.</dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot54">... H.&nbsp;Huson</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Center for Bioinformatics T&uuml;bingen (ZBIT), T&uuml;bingen
+ University, Sand 14, 72076 T&uuml;bingen, Germany. E-mail: 
+ <div align="center">
+ <b><tt>huson@informatik.uni-tuebingen.de</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

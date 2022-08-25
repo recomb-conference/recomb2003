@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>73. A new method for estimating amino acid replacement rate matrices</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category03.html'>&lt;&lt;</a> <a href='/recombdb/category04.html'><b>Molecular Evolution</b> Overview</a> <a href='/recombdb/category05.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-03-072/'>&lt;&lt;</a> Poster 073 [ <a href='poster-04-073.pdf'>PDF</a> | <a href='poster-04-073.tgz'>TeX</a> | <a href='poster-04-073.ps'>PostScript</a> ] <a href='/recombdb/poster-04-074/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>73. A new method for
+ estimating amino acid replacement rate
+ matrices<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Lars Arvestad <a name="tex2html1" href=
+ "#foot266"><sup>1</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+   
+ <p><font size="-1">Anyone performing a simple homology search does
+ not worry too much about deciding on a scoring matrix. The
+ community has chosen to standardize on the PAM and BLOSUM series of
+ matrices. With that perspective, estimating amino acid replacement
+ rate matrices is not very interesting. However, there is a recent
+ and growing literature [<a href=
+ "#KG95">1</a>,<a href=
+ "#Lio98">2</a>] where increasingly detailed
+ models of proteins are made, with replacement rates estimated
+ depending on local protein structure. It is well known that
+ depending on whether a site is in an <img width="14" height="13"
+ align="bottom" border="0" src="img4.png" alt="$\alpha$"> helix or
+ in a loop, whether it is buired or exposed, and so on, both the
+ residue distributions and replacement rates differ substantially.
+ Applications are for example in phylogenetics, ancestral sequence
+ reconstruction, and secondary structure prediction , and the
+ quality of replacement is very important. In particular, it is
+ important to do well with very little data.</font></p>
+ <h1><a name="SECTION00020000000000000000"><font size=
+ "+1">Results</font></a></h1>
+  <font size="-1">Recently, M&uuml;ller and
+    Vingron&nbsp;[<a href="#MV00">3</a>]
+    introduced the <i>resolvent method</i> (MVR) for estimating
+    replacement rate matrices, which they showed to perform better
+    than the original Dayhoff method and comparable to a maximum
+    likelihood method&nbsp;[<a href=
+    "#MSV02">4</a>].</font> 
+ <p><font size="-1">We propose two new methods and show that they
+ both give better results than MVR. The first method (denoted BW) is
+ using techniques for estimating DNA substitution matrices
+    [<a href="#AB">5</a>]. The second method (BR)
+    is a combination of BR and MVR. It is using an improved method
+    for estimating the resolvent matrix <img width="16" height="14"
+    align="bottom" border="0" src="img5.png" alt="$R$">.</font></p>
+ <p><font size="-1">Figure&nbsp;<a href="#fig:1">1</a> below shows
+ preliminary results comparing three estimation methods. For each
+ length 
+ <img width="119" height="30" align="middle" border="0" src=
+ "img6.png" alt="$L=100,\ldots, 600$">, 100 comparisons were made.
+ In each test, 30 synthetic alignments of length <img width="15"
+ height="14" align="bottom" border="0" src="img7.png" alt="$L$">
+ were generated on PAM distances 10 to 300 PAMs, and the BW, BR, and
+ MVR methods were applied. As can be seen, the new methods perform
+ substantially better than MVR, and the improvement becomes even
+ more apparent when the data provides a bad sample of the PAM
+ distances.</font></p>
+ <div align="center"><a name="fig:1"></a><a name="241"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure 1:</strong> Performance of
+ rate matrix estimation methods. <img width="12" height="14"
+      align="bottom" border="0" src="img1.png" alt="$d$"> is the
+      average Frobenius norm of the differences between rate matrix
+      estimate <img width="17" height="38" align="middle" border="0"
+      src="img8.png" alt="$\tilde Q$"> and true <img width="17"
+      height="30" align="middle" border="0" src="img3.png" alt=
+      "$Q$">.</caption>
+ <tr>
+ <td><img width="435" height="328" border="0" src="img9.png"
+      alt="\begin{figure} \begin{center} \par\setlength{\unitlength}{0.240900pt} \if... ...8pt}{\makebox(0,0){$\star$}}} \end{picture} \end{center}\par \end{figure}">
+ </td></tr></table></div>
+ <p></p>
+ <h2><a name="SECTION00030000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="KG95">1</a></dt>
+ <dd>Koshi, J.&nbsp;M. and R.&nbsp;A. Goldstein. 1995.
+ Context-dependent optimal substitution matrices. <em>Protein
+ Eng</em>&nbsp;<em>8</em>(7), 641-645.</dd>
+ <dt><a name="Lio98">2</a></dt>
+ <dd>Li&ograve;, P., N.&nbsp;Goldman, J.&nbsp;L. Thorne, and
+ D.&nbsp;T. Jones. 1998. PASSML: combining evolutionary inference
+ and protein secondary structure prediction.
+ <em>Bioinformatics</em>&nbsp;<em>14</em>(8), 726-733.</dd>
+ <dt><a name="MV00">3</a></dt>
+ <dd>M&uuml;ller, T. and M.&nbsp;Vingron. 2000. Modeling amino acid
+ replacement. <em>J Comput Biol</em>&nbsp;<em>7</em>(6),
+ 761-776.</dd>
+ <dt><a name="MSV02">4</a></dt>
+ <dd>M&uuml;ller, T., R.&nbsp;Spang, and M.&nbsp;Vingron. 2002.
+ Estimating amino acid substitution models: a comparison of
+ Dayhoff's estimator, the resolvent approach and a maximum
+ likelihood method. <em>Mol Bio Evol</em>&nbsp;<em>19</em>(1),
+ 8-13.</dd>
+ <dt><a name="AB">5</a></dt>
+ <dd>Arvestad, L., W.J.&nbsp;Bruno. 1997. Estimation of reversible
+ substitution matrices from multiple pairs of sequences. <em>J Mol
+ Evol</em>&nbsp;<em>45</em>(6), 696-703.</dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot266">... Arvestad</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Stockholm Bioinformatics Center and Dept.&nbsp;of Numerical
+ Analysis and Computing Science, Royal Institute of Technology
+ (KTH), Sweden. E-mail: <tt>arve@nada.kth.se</tt></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

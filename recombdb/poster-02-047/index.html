@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>47. An Efficient Method for Association Mapping in Phase-unknown Genotype Data</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-046/'>&lt;&lt;</a> Poster 047 [ <a href='poster-02-047.pdf'>PDF</a> | <a href='poster-02-047.doc'>MSWORD</a> ] <a href='/recombdb/poster-02-048/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>47. An Efficient Method for Association Mapping in
+ Phase-unknown Genotype Data</h2>
+ <p align="center"><b>Petteri Sevon</b><a href="#_ftn1" name=
+ "_ftnref1" title=""><b>[1]</b></a><b>,&nbsp; P&auml;ivi
+ Onkamo</b><a href="#_ftn2" name="_ftnref2" title=
+ ""><b>[2]</b></a><b>,&nbsp; Hannu Toivonen</b><a href="#_ftn3"
+    name="_ftnref3" title=""><b>[3]</b></a><b>, Heikki
+    Mannila</b><a href="#_ftn4" name="_ftnref4" title=
+    ""><b>[4]</b></a></p>
+ <p><b>Keywords:</b> association analysis, LD mapping, SNP, data
+ mining, genotype, phase-unknown</p>
+ <p><b>1&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Introduction</b></p>
+ <p>In genetic association analysis a researcher tries to find
+ shared alleles or haplotypes in a group of patients, which would be
+ much rarer in controls. The analysis is based on availability of
+ haplotype data, where phases (which alleles of an individual come
+ from mother, which from father) are known. However this type of
+ data is not always easy to obtain; it is required that either
+ 1)&nbsp;relatives of the probands are genotyped or 2) population
+ based haplotyping algorithms are used. The former is laborious and
+ expensive, the latter is currently restricted to rather simple
+ situations, due to restrictions of the algorithms for resolving
+ haplotypes from a sample of independent genotypes [1]. Using
+ phase-unknown genotypes directly for association mapping would have
+ two benefits compared to haplotyping trios: 50% larger sample in
+ terms of alleles can be obtained with equal genotyping cost, and no
+ relatives would have to be recruited.</p>
+ <p>We have previously introduced a non-parametric, data mining
+ inspired method Haplotype Pattern Mining (HPM) for gene mapping in
+ case-control haplotype data [2], [3], [4]. The method is
+ model-free, as it does not require any explicit assumptions to be
+ made about population or mode of inheritance. Here, we introduce
+ Haplotype Pattern Mining in Genotype data (HPM-G), which extends
+ the applicability of original HPM to phase-unknown genotype
+ data.</p>
+ <p><b>2&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Method</b></p>
+ <p>In the HPM-G method, shared haplotype patterns of nearby markers
+ that are strongly associated with the disease are searched for in
+ case-control genotype data. These patterns reflect preserved
+ fragments from common ancestral chromosomes, potentially bearing
+ the disease susceptibility mutation. The pattern-disease
+ association is measured with a 2&acute;2 contingency table for the
+ observed genotypes, the columns corresponding to matching or not
+ matching the pattern, and the rows to the case or control status.
+ We chose an optimistic matching strategy; a pattern matches an
+ individual, if it matches any of the possible configurations. A
+ pattern is considered strongly associated, if the
+ c<sup>2</sup>-test statistic calculated from the contingency table
+ exceeds a threshold value given as a parameter. The patterns are
+ allowed to contain gaps, which increases robustness with respect to
+ marker mutations and missing or erroneous data. The language of the
+ patterns is restricted by maximum length in markers, and number and
+ maximum length of gaps allowed in the patterns, also given as
+ parameters. Based on the qualified patterns, a score is then
+ calculated for each marker. The score for a marker is the number of
+ strongly associated patterns overlapping it.</p>
+ <p><b>3&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Results</b></p>
+ <p>In order to assess the performance of HPM-G, we generated 100
+ replicate data sets imitating small founder populations in various
+ settings. The disease model corresponds to a complex disorder with
+ high proportion of phenocopies (60-90%). In the baseline setting
+ the data consisted of 150 affected individuals and 150 controls,
+ there was one founder mutation, and the proportion of haplotypes on
+ the affected individuals bearing the disease-causing mutation
+ (denoted by A hereafter) was 10%. There were 5 alleles per each
+ marker. In each of the experiments we estimated the statistical
+ power of the method, or the empirical probability of covering the
+ predisposing mutation, as a function of the length of the region to
+ be investigated further. The experiments were carried out with the
+ following pattern parameters for both HPM and HPM-G: maximum
+ pattern length 7 (10 with SNP data), maximum number of gaps 1, and
+ maximum gap length 1. The c<sup>2</sup>-threshold was set
+ separately for each setting, following the rule of thumb that the
+ number of qualified patterns should be about 200 on the
+ average.&nbsp; We found that with the phenocopy rate and sample
+ sizes as defined in the test sets, the power to cover the correct
+ region harboring the disease mutation was high except the lowest
+ values of A (Fig. 1). Compared to original HPM using haplotype
+ data, the difference in power was nominal (data not shown), which
+ refers that not much from the information on association in the
+ data set is actually lost even though haplotyping step is
+ omitted.</p>
+ <p><img width="187" height="186" src="image002.jpg">&nbsp;
+ <img width="187" height="186" src="image004.jpg"></p>
+ <p>Figure 1. The effects of different population and sampling
+ parameters on the localization power of HPM-G. A) The effect of A
+ (proportion of mutation bearing chromosomes in affected
+ individuals). B) The effect of sample size.</p>
+ <p><b>4&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>References</b></p>
+ <p>[1] Stephens M., Smith N.J., Donnelly P. 2001. A new statistical
+ method for haplotype reconstruction from population data.
+ <i>American Journal of&nbsp; Human Genetics</i> 68:978-989.</p>
+ <p>[2] Toivonen H.T.T., Onkamo P., Vasko K., Ollikainen V., Sevon
+ P., Mannila H., Herr M., Kere J.&nbsp; 2000a. Data mining applied
+ to linkage disequilibrium mapping. <i>American Journal of&nbsp;
+ Human Genetics</i> 67:133-145.</p>
+ <p>[3] Toivonen H.T.T., Onkamo P., Vasko K., Ollikainen V., Sevon
+ P., Mannila H., Kere J. 2000b. Gene mapping by haplotype pattern
+ mining. In <i>IEEE International Symposium on</i>
+ <i>Bio-Informatics and Biomedical Engineering.</i> Arlington, VA,
+ November 8-10.</p>
+ <p>[4] Onkamo P., Ollikainen V., Sevon P., Toivonen H.T.T., Mannila
+ H., Kere J. 2002. Association analysis for quantitative traits by
+ data mining: QHPM. <i>Annals of Human Genetics</i>
+ 66:419-429.</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a> Department of
+ Computer Science, P.O.Box 26 (Teollisuuskatu 23) FIN-00014
+ University of Helsinki, Finland. E-mail:
+ petteri.sevon@cs.Helsinki.fi</p></div>
+ <div id="ftn2">
+ <p><a href="#_ftnref2" name="_ftn2" title="">[2]</a> Helsinki
+ Institute of Information Technology, Basic Research Unit,
+ Department of Computer Science, P.O.Box 26 (Teollisuuskatu 23)
+ FIN-00014 University of Helsinki, Finland. E-mail: <a href=
+ "mailto:paivi.onkamo@cs.helsinki.fi">paivi.onkamo@cs.helsinki.fi</a></p></div>
+ <div id="ftn3">
+ <p><a href="#_ftnref3" name="_ftn3" title="">[3]</a> Same as in 2.
+ E-mail: hannu.toivonen@cs.Helsinki.fi</p></div>
+ <div id="ftn4">
+ <p><a href="#_ftnref4" name="_ftn4" title="">[4]</a> Same as in 2.
+ E-mail: heikki.mannila@cs.Helsinki.fi</p></div></div>
+ </body>
+ </html>

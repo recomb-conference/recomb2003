@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>121. Integrative Gene Expression Data Analysis using the Optimal sub-vector method</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category05.html'>&lt;&lt;</a> <a href='/recombdb/category06.html'><b>Gene Expression</b> Overview</a> <a href='/recombdb/category07.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-05-120/'>&lt;&lt;</a> Poster 121 [ <a href='poster-06-121.pdf'>PDF</a> | <a href='poster-06-121.doc'>MSWORD</a> ] <a href='/recombdb/poster-06-122/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>121. Integrative Gene Expression Data Analysis using the
+ Optimal sub-vector method</h2>
+ <p align="center"><b>R.Balasubramaniyan <a href="#_ftn1" name=
+ "_ftnref1" title="">[1]</a>, J.Kaemper <sup>1</sup>, H.W.Mewes
+ <a href="#_ftn2" name="_ftnref2" title="">[2]</a> and S.Tornow
+ <sup>2</sup></b></p>
+ <p><b>1&nbsp;&nbsp;&nbsp; Summary</b></p>
+ <p>DNA chip technology enables the study of gene expression in
+ large scale. Up to now, one of the main challenges has been to
+ devise methods to group genes that show similar expression
+ profiles. Most methods developed so far use the data from entire
+ experimental conditions as a measure to determine the co-regulation
+ of genes. However to study the transcriptional network of the
+ genes, we should analyse the co-expressed genes from independent
+ experimental conditions <sup>(1)</sup>. Inspired by the latter we
+ have devised a method called optimal sub-vector method.</p>
+ <p>We have developed an algorithm that calculates the optimal
+ sub-vector between two gene vectors using the modification of the
+ Dynamic Programming algorithm. This sub-vector can be compared to
+ that of the method used in the BLAST algorithm to calculate the
+ Highest Scoring Pattern (HSP) between two DNA or Protein sequences.
+ We are now using the optimal sub-vector method to find the highest
+ scoring alignment between two gene vectors. Using this method we
+ could calculate precisely the time shifted direct relationships and
+ time shifted inverted relationships also. &nbsp;The output of the
+ algorithm enables us to calculate the number of co-regulated genes
+ under particular experimental conditions. This method
+ differentiates from Local alignment Method <sup>(2)</sup> by
+ predicting the optimal sub-vector between two gene vectors from all
+ experimental conditions.</p>
+ <p>Using this method we relate Protein-Protein Interaction to
+ Expression data under each experimental condition evaluating a
+ score for the co-expression of substructure of the Protein-Protein
+ Interaction network in each experimental condition.</p>
+ <p><b>2&nbsp;&nbsp;&nbsp; References</b></p>
+ <p>[1]&nbsp;&nbsp; Jan Ihmels,&nbsp; Gilgi Friedlander, Sven
+ Bergman, Ofer Sargig, Yaniv Ziv &amp; Namma Barkai (2002).
+ Revealing modular Organization in the yeast transcriptional
+ network. Nature Genetics, Volume 31, 370-377</p>
+ <p>[2]&nbsp;&nbsp; Jiang Qian, Marisa Dollef-Filhart, Jimmy Lin,
+ Haiyuan Yu and Mark Gerstein (2001) Beyond Synexpression
+ Relationships: Local clustering of time-shifted and Inverted Gene
+ Expression Profiles Identifies New, Biologically Relevant
+ Interactions. J.Mol.Biol, 314,1053-1066.</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a> Max-Planck
+ Institute for Terrestrial Microbiology, Karl-von-Frish Strasse,
+ D-35043 Marburg, Germany. Email: <a href=
+ "mailto:raji@mailer.uni-marburg.de">raji@mailer.uni-marburg.de</a></p></div>
+ <div id="ftn2">
+ <p><a href="#_ftnref2" name="_ftn2" title="">[2]</a> Institute for
+ Bioinformatics, German National Centre for Health and Environment
+ Ingolst&auml;dter Landstra&szlig;e 1, D-85764 Neuherberg, Munich,
+ Germany, Email: <a href=
+ "mailto:s.tornow@gsf.de">s.tornow@gsf.de</a></p></div></div>
+ </body>
+ </html>

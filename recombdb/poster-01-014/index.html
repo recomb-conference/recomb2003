@@ -1,0 +1,237 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>14. Exploring Interactions in Genomic Data Using Logic Regression</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center">  <a href='/recombdb/category01.html'><b>Genomics</b> Overview</a> <a href='/recombdb/category02.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-01-013/'>&lt;&lt;</a> Poster 014 [ <a href='poster-01-014.pdf'>PDF</a> | <a href='poster-01-014.tgz'>TeX</a> | <a href='poster-01-014.ps'>PostScript</a> ] <a href='/recombdb/poster-01-016/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>14. Exploring Interactions
+ in Genomic Data Using Logic Regression<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Ingo Ruczinski, <a name="tex2html1" href=
+ "#foot49"><sup>1</sup></a> Charles Kooperberg, <a name="tex2html2"
+ href="#foot50"><sup>2</sup></a> Michael LeBlanc, <a name=
+ "tex2html3" href="#foot51"><sup>3</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> adaptive model selection,
+ boolean logic, genomic data, interactions, simulated annealing,
+ SNPs.</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Abstract</font></a></h1>
+   
+ <p><font size="-1">Exploring higher order interactions is a
+ statistical challenge frequently occurring in the analysis of
+ genomic data. For example, interactions may be present between
+ single nucleotide polymorphisms or chromosomal deletions when
+ considering associations with disease or disease stages,
+ respectively. Logic regression is an adaptive regression
+ methodology that can be used to address the problem of detecting
+ such interactions, by constructing predictors as Boolean
+ combinations of binary covariates. The logic regression software is
+ freely available with the manual at
+ <tt>http://bear.fhcrc.org/<img width="16" height="15" align=
+ "bottom" border="0" src="img1.png" alt=
+ "$\sim$">ingor/logic/</tt>.</font></p>
+ <h1><a name="SECTION00020000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+   
+ <p><font size="-1">Interactions play a key role in the analysis of
+ genomic data. For example, the occurrences of diseases such as
+ cancer are often related to the interaction of multiple SNPs rather
+ than to single variation sites. This creates novel challenges in
+ the statistical analysis how SNPs relate to disease, since the
+ number of possible interactions between nucleotides (and therefore
+ the respective model search space) is immense. Statistical
+ techniques such as neural networks (Cheng and Titterington
+    [<a href="#CT">2</a>]) have been developed to
+    deal with high-dimensional search spaces. However, the
+    interpretation of the results and especially the rules, which
+    are of key interest, is almost impossible. Adaptive spline and
+    tree-based methods such as MARS (Friedman [<a href=
+    "#FJ">3</a>]) and CART (Breiman
+    et.&nbsp;al.&nbsp;[<a href="#BFO">1</a>])
+    generate rules that are much easier to interpret. MARS however
+    is efficient on data that has interactions in at most a few
+    variables, and CART for example only generates rules in
+    disjunctive normal form (DNF). There are many simple Boolean
+    expressions that have a rather complicated DNF, and hence CART
+    would likely not discover those rules. Both CART and MARS are
+    greedy type algorithms, and therefore do not necessarily find
+    the globally best rules. Further, it is often necessary to
+    implement and use very specific objective functions (for example
+    to account for dependencies in the data), which is not an option
+    in CART and MARS. Logic regression is an adaptive regression
+    methodology that addresses the above described problem by
+    constructing predictors as Boolean combinations of binary
+    covariates, using simulated annealing.</font></p>
+ <h1><a name="SECTION00030000000000000000"><font size=
+ "+1">Methodology</font></a></h1>
+   
+ <p><font size="-1">Logic regression was introduced by Ruczinski,
+ Kooperberg and LeBlanc [<a href="#RKL1">5</a>] to
+ address problems arising when data of mostly binary covariates are
+ analyzed, and the interactions between those predictors is of main
+ interest. Given a set of binary predictors <img width="18"
+      height="14" align="bottom" border="0" src="img2.png" alt=
+      "$X$"> (such as indicator variables in SNP data whether a
+      variation at a particular site is present), we try to create
+      new, better predictors for the response by considering
+      combinations of those binary predictors. For example, if the
+      response is binary as well (which is not required in general),
+      we attempt to find decision rules such as ``if 
+ <img width="79" height="30" align="middle" border="0" src=
+ "img3.png" alt="$X_1, X_2, X_3$"> and <img width="24" height="30"
+ align="middle" border="0" src="img4.png" alt="$X_4$"> are true'',
+ or ``<img width="24" height="30" align="middle" border="0"
+      src="img5.png" alt="$X_5$"> or <img width="24" height="30"
+      align="middle" border="0" src="img6.png" alt="$X_6$"> but not
+      <img width="24" height="30" align="middle" border="0" src=
+      "img7.png" alt="$X_7$"> are true'', then ``the response is
+      more likely to be in class 0''. In other words, we try to find
+      Boolean statements involving the binary predictors that
+      enhance the prediction for the response. In more specific
+      terms: Let <img width="73" height="30" align="middle" border=
+      "0" src="img8.png" alt="$X_1,...,X_k$"> be binary predictors,
+      and let <img width="17" height="14" align="bottom" border="0"
+      src="img9.png" alt="$Y$"> be a response variable. We try to
+      fit regression models of the form 
+ <img width="233" height="32" align="middle" border="0" src=
+ "img10.png" alt="$g(E[Y]) = b_0 + b_1L_1 + ...+ b_nL_n$">, where
+ <img width="22" height="30" align="middle" border="0" src=
+ "img11.png" alt="$L_j$"> is a Boolean expression of the predictors
+ <img width="18" height="14" align="bottom" border="0" src=
+ "img2.png" alt="$X$">, such as 
+ <img width="173" height="32" align="middle" border="0" src=
+ "img12.png" alt="$L_j=[(X2 \wedge X4^c) \vee X7]$">. The above
+ framework includes many forms of regression, such as linear
+ regression 
+ <img width="127" height="32" align="middle" border="0" src=
+ "img13.png" alt="$(g(E[Y])=E[Y])$"> and logistic regression 
+ 
+ <img width="242" height="32" align="middle" border="0" src=
+ "img14.png" alt="$(g(E[Y])=\log(E[Y]/(1-E[Y])))$">. For every model
+ type, we define a score function that reflects the ``quality'' of
+ the model under consideration (for example, the residual sum of
+ squares for linear regression and for the deviance logistic
+ regression). We try to find the Boolean expressions in the
+ regression model that minimize the scoring function associated with
+ this model type, estimating the parameters <img width="18"
+      height="30" align="middle" border="0" src="img15.png" alt=
+      "$b_j$"> simultaneously with the Boolean terms <img width="22"
+      height="30" align="middle" border="0" src="img11.png" alt=
+      "$L_j$">. In general, any type of model can be considered, as
+      long as a scoring function can be defined. For example, we
+      also implemented the Cox proportional hazards model, using the
+      partial likelihood as the score. A detailed introduction to
+      logic regression is available in Ruczinski
+      et.&nbsp;al.&nbsp;[<a href="#RKL1">5</a>];
+      for an application to SNP data see Kooperberg
+      et.&nbsp;al.&nbsp;[<a href=
+      "#KRL">4</a>].</font></p>
+ <h1><a name="SECTION00040000000000000000"><font size=
+ "+1">Software</font></a></h1>
+   
+ <p><font size="-1">The logic regression software is currently a
+ stand-alone program written in Fortran 90 that can be downloaded at
+ http://bear.fhcrc.org/<img width="16" height="15" align="bottom"
+ border="0" src="img1.png" alt="$\sim$">ingor/logic/. A beta version
+ as an R/Splus package is also available. The results generated by
+ the executable can be directly fed into standard statistical
+ software packages to generate graphical representations of the
+ output. A feature of the logic regression methodology is that it is
+ easy to include and use ones own scoring function if that is
+ desired. Online help for all these issues can be found by clicking
+ through the menu of the logic regression webpage (see also
+ Ruczinski et.&nbsp;al.&nbsp;[<a href=
+ "#RKL2">6</a>]).</font></p>
+ <p></p>
+ <h2><a name="SECTION00050000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="BFO">1</a></dt>
+ <dd>Breiman, L., Friedman, J. H., Olshen, R. A., and Stone, C.J.
+ 1984. <em>Classification and Regression Trees.</em> Belmont, CA:
+ Wadsworth.</dd>
+ <dt><a name="CT">2</a></dt>
+ <dd>Cheng, B. and Titterington, D.M. 1994. Neural Networks: A
+ Review from a Statistical Perspective. <em>Statistical
+ Science</em>, 9:2-75 (with discussion).</dd>
+ <dt><a name="FJ">3</a></dt>
+ <dd>Friedman, J. H. 1991. Multivariate Adaptive Regression Splines
+ (with discussion). <em>Annals of Statistics</em>, 19:1-141.</dd>
+ <dt><a name="KRL">4</a></dt>
+ <dd>Kooperberg, C., Ruczinski, I., LeBlanc, M., and Hsu, L. 2001.
+ Sequence Analysis using Logic Regression. <em>Genetic
+ Epidemiology</em> 21 (S1), 626-631.</dd>
+ <dt><a name="RKL1">5</a></dt>
+ <dd>Ruczinski, I., Kooperberg, C., and LeBlanc, M. 2002. Logic
+ Regression. <em>Journal of Computational and Graphical
+ Statistics</em>, to appear.</dd>
+ <dt><a name="RKL2">6</a></dt>
+ <dd>Ruczinski, I., Kooperberg, C., and LeBlanc, M. 2002. Logic
+ Regression - Methods and Software. In: <em>Proceedings of the MSRI
+ workshop on Nonlinear Estimation and Classification (Eds: D.
+ Denison, C. Holmes, M. Hansen, B. Mallick, B. Yu),</em> Springer.
+ pp. 333-344.</dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot49">... Ruczinski,</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Department of Biostatistics, Johns Hopkins University, 615 N
+ Wolfe St, Baltimore, MD 21205, USA. E-mail: 
+ <div align="center"><b><tt>ingo@jhu.edu</tt></b></div></dd>
+ <dt><a name="foot50">... Kooperberg,</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>Division of Public Health Sciences, Fred Hutchinson Cancer
+ Research Center, 1100 Fairview Ave, MP 1002, Seattle, WA 98109,
+ USA. E-mail: 
+ <div align="center"><b><tt>clk@fhcrc.org</tt></b></div></dd>
+ <dt><a name="foot51">... LeBlanc,</a><a href=
+ "#tex2html3"><sup>3</sup></a></dt>
+ <dd>Division of Public Health Sciences, Fred Hutchinson Cancer
+ Research Center, 1100 Fairview Ave, MP 557, Seattle, WA 98109, USA.
+ E-mail: 
+ <div align="center"><b><tt>mikel@crab.org</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

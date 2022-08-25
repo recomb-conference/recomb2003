@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>64. A Heuristic Approach for Finding Optimal Motifs for Protein Binding Sites</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category02.html'>&lt;&lt;</a> <a href='/recombdb/category03.html'><b>Recognition of Genes and Regulatory Elements</b> Overview</a> <a href='/recombdb/category04.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-03-063/'>&lt;&lt;</a> Poster 064 [ <a href='poster-03-064.pdf'>PDF</a> | <a href='poster-03-064.tgz'>TeX</a> | <a href='poster-03-064.ps'>PostScript</a> ] <a href='/recombdb/poster-03-065/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>64. A Heuristic Approach for
+ Finding Optimal Motifs for Protein Binding
+ Sites<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Osamu Maruyama <a name="tex2html1" href=
+ "#foot14"><sup>1</sup></a>, Daisuke Shinozaki <a name="tex2html2"
+ href="#foot15"><sup>2</sup></a>, Satoru Kuhara <a name="tex2html3"
+ href="#foot16"><sup>3</sup></a></b></div>
+ <p><font size="-1"><b>Keywords:</b> motif, word-enumeration,
+ pruning, co-regulated genes</font></p>
+ <h1><a name="SECTION00010000000000000000"></a> <a name=
+ "sec:intro"></a><br>
+ Introduction</h1>
+ <p><font size="-1">One of the important issues in bioinformatics is
+ to find potential promoter regulatory elements in the upstream
+ regions of co-regulated genes. Those regulatory elements are
+ so-called ``transcription factor binding sites'', which are
+ important factors in understanding the mechanisms of regulation of
+ transcription and gene expression. For each transcription factor,
+ the sequences of its binding sites are often approximately
+ conserved across the upstream regions of the regulated genes. A
+ <i>motif</i> means a pattern consistent with different binding
+ sites of a transcription factor. Determined genome sequences of
+ various organisms and microarrays let us have a great number of
+ collections of putatively co-regulated genes. Thus, it is urgently
+ needed to establish a method for finding convincing motifs
+ computationally.</font></p>
+ <p><font size="-1">There are three major models for motifs for
+ binding sites: position weight matrix, oligonucleotide with some
+ mismatches, and pattern over IUPAC nucleic acid codes. Position
+ weight matrices are mainly used in probabilistic methods,
+ especially, methods based on Expectation Maximization (EM) or Gibbs
+ sampling. The methods for finding significant oligonucleotides with
+ some mismatches have been investigated in [<a href=
+ "#Eskin02finding">1</a>]. In [<a href=
+ "#Sinha00:z_score">4</a>,<a href=
+ "#Sinha02:discriminative">3</a>], some methods
+ for finding optimal patterns over IUPAC nucleic acid codes with
+ <i>specific</i> score functions have been proposed.</font></p>
+ <h1><a name="SECTION00020000000000000000"></a> <a name=
+ "sec:method"></a><br>
+ Method</h1>
+ <p><font size="-1">In this work, we have investigated a heuristic
+ word-enumeration method for finding optimal pattern over IUPAC
+ nucleic acid codes, which works for any conic functions defined in
+ [<a href="#Shinohara02">2</a>]. It should be
+ noted here that most of the reasonable score functions like the
+ entropy information gain are conic. In the algorithm, a pruning
+ technique [<a href="#Shinohara02">2</a>] is
+ employed for pruning sub-spaces of such patterns. Our algorithm
+ enumerates those patterns from specific to general. First, the
+ algorithm extracts all of the oligonucleotides of a specific
+ length, and generates new patterns over IUPAC nucleic acid codes
+ from existing ones while pruning insignificant patterns.</font></p>
+ <h1><a name="SECTION00030000000000000000"></a> <a name=
+ "sec:experiment"></a><br>
+ Computational Experiments</h1>
+ <p><font size="-1">We apply our method to co-regulated genes of
+ yeast, and report successful experimental results which detect
+ several known transcription factor binding sites in a promoter
+ database of the yeast Saccharomyces cerevisiae
+ (<small>SCPD</small>)[<a href=
+ "#ZhuZhang1999">5</a>].</font></p>
+ <h1><a name="SECTION00040000000000000000">Acknowledgments</a></h1>
+ <p><font size="-1">This study was supported from the Research for
+ the Future Program of the Japan Society for the Promotion of
+ Science.</font></p>
+ <p></p>
+ <h2><a name="SECTION00050000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="Eskin02finding">1</a></dt>
+ <dd>Eskin, E., and Pevzner, P.&nbsp;A. 2002.<br>
+ Finding composite regulatory patterns in DNA sequences.<br>
+ <em>Bioinformatics 18</em>, supplement 1, S354-S363.</dd>
+ <dt><a name="Shinohara02">2</a></dt>
+ <dd>Shinohara, A., Takeda, M., Arikawa, S., Hirano, M., Hoshino,
+ H., and Inenaga, S. 2001.<br>
+ Finding best patterns practically.<br>
+ In <em>Progress in Discovery Science</em>, S.&nbsp;Arikawa and
+ A.&nbsp;Shinohara, Eds., Springer-Verlag Berlin Heidelberg,
+ pp.&nbsp;307-317.</dd>
+ <dt><a name="Sinha02:discriminative">3</a></dt>
+ <dd>Sinha, S.<br>
+ Discriminative motifs. 2002.<br>
+ In <em>Proceedings of the 6th Annual International Conference on
+ Computational Biology</em>, pp.&nbsp;291-298.</dd>
+ <dt><a name="Sinha00:z_score">4</a></dt>
+ <dd>Sinha, S., and Tompa, M. 2000.<br>
+ A statistical method for finding transcription factor binding
+ sites.<br>
+ In <em>Proceedings of the 8th International Conference on
+ Intelligent Systems for Molecular Biology</em>,
+ pp.&nbsp;344-354.</dd>
+ <dt><a name="ZhuZhang1999">5</a></dt>
+ <dd>Zhu, J., and Zhang, M.&nbsp;Q. 1999.<br>
+ SCPD: a promoter database of the yeast Saccharomyces
+ cerevisiae.<br>
+ <em>Bioinformatics 15</em>, 7/8, 607-611.</dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot14">... Maruyama</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Faculty of Mathematics, Kyushu University, Fukuoka 812-8581,
+ Japan. om@math.kyushu-u.ac.jp</dd>
+ <dt><a name="foot15">... Shinozaki</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>Faculty of Mathematics, Kyushu University, Fukuoka 812-8581,
+ Japan. ma202035@math.kyushu-u.ac.jp</dd>
+ <dt><a name="foot16">... Kuhara</a><a href=
+ "#tex2html3"><sup>3</sup></a></dt>
+ <dd>Graduate School of Genetic Resources Technology, Kyushu
+ University, Fukuoka 812-8581, Japan.
+ kuhara@grt.kyushu-u.ac.jp</dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

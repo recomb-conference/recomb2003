@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>54. Optimizing Property Codes in Protein Sequences Reveals Structural Characteristics</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-053/'>&lt;&lt;</a> Poster 054 [ <a href='poster-02-054.pdf'>PDF</a> | <a href='poster-02-054.tgz'>TeX</a> | <a href='poster-02-054.ps'>PostScript</a> ] <a href='/recombdb/poster-02-055/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>54. Optimizing Property
+ Codes in Protein Sequences Reveals Structural
+ Characteristics<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Olaf Weiss, <a name="tex2html1" href=
+ "#foot84"><sup>1</sup></a> Andreas Ziehe, <a name="tex2html2"
+    href="#foot85"><sup>2</sup></a> Hanspeter Herzel <a name=
+    "tex2html3" href="#foot86"><sup>3</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> Protein sequence analysis,
+ property codes, autocorrelation function</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+  <font size="-1">Many popular techniques used in protein
+ bioinformatics such as neural networks or autocorrelation functions
+ rely on numerical input rather than protein sequence input. Usually
+ the necessary translation is performed by choosing heuristically
+ from one of the many property codes (e.g. hydrophobicities) in the
+ biochemical literature. We propose a novel approach of finding
+ property codes specifically adapted to and derived from given sets
+ of protein sequences. This is done by maximizing the
+ autocorrelation function values in the sequences with respect to
+ the property code used to translate the amino acids to numerical
+ values.</font> 
+ <p><font size="-1">As already done in [<a href=
+ "#Weiss:98">5</a>], we aim at finding property
+ codes leading to a large autocorrelation function signal strength
+ in given protein sequence. We present an iterative method based on
+ matrix diagonalization. Furthermore, the similar concept of joint
+ matrix diagonalization with Jacobi methods [<a href=
+ "#Cardoso:96">1</a>] is also applied. To our
+ knowledge, this is the first use of this method in a bioinformatics
+ context. We compare our results to off-the-shelf optimizers and get
+ similar results. However, our method has the advantage of
+ discovering other additional biologically relevant property codes
+ from secondary optima.</font></p>
+ <h1><a name="SECTION00020000000000000000">Methods</a></h1>
+  <font size="-1">The autocorrelation function (acf) <img width="38"
+      height="32" align="middle" border="0" src="img1.png" alt=
+      "$C(k)$"> measures, whether patterns tend to reoccur at a
+      distance <img width="13" height="14" align="bottom" border="0"
+      src="img2.png" alt="$k$"> in a time series. Protein sequences,
+      however, have to be converted into numerical sequences using a
+      property code <img width="12" height="13" align="bottom"
+      border="0" src="img3.png" alt="$\mathsf{a}$">. In other words,
+      the correlation function in protein sequence 
+ <img width="43" height="32" align="middle" border="0" src=
+ "img4.png" alt="$C_{\mathsf{a}}(k)$"> has the property code as
+ parameter.</font> 
+ <p><font size="-1">We consider property codes as assignments of a
+ number to each of the 20 amino acids in protein sequences. We write
+ the property codes as vectors with the 20 values of the property
+ codes being its coefficients.</font></p>
+ <p><font size="-1">The acf can then be written as a quadratic
+ form</font></p>
+ <div align="right">
+ <table width="100%" align="center">
+ <tr valign="middle">
+ <td align="center" nowrap><a name="eq:acf_Dij"></a><img width="113"
+ height="49" border="0" src="img5.png" alt=
+ "\begin{displaymath} C_{\mathsf{a}} (k) = \mathsf{a}^t \mathbf{D}(k) \mathsf{a} \end{displaymath}">
+ </td>
+ <td width="10" align="right">(1)</td></tr></table></div>
+ <br clear="all">
+  <font size="-1">of the matrix <img width="39" height="32"
+      align="middle" border="0" src="img6.png" alt=
+      "$\mathbf{D}(k)$"> whose elements are defined by 
+ <img width="160" height="32" align="middle" border="0" src=
+ "img7.png" alt="$ D_{ij}(k)=P_{ij}(k) - p_i q_j $">, where
+ <img width="47" height="32" align="middle" border="0" src=
+ "img8.png" alt="$P_{ij}(k)$"> is the joint probability of finding
+ residues <img width="10" height="14" align="bottom" border="0"
+      src="img9.png" alt="$i$"> and <img width="11" height="29"
+      align="middle" border="0" src="img10.png" alt="$j$"> separated
+      by <img width="40" height="30" align="middle" border="0" src=
+      "img11.png" alt="$k-1$"> positions, 
+ <img width="107" height="32" align="middle" border="0" src=
+ "img12.png" alt="$p_i = \sum_j P_{ij}(k)$">, and 
+ <img width="106" height="32" align="middle" border="0" src=
+ "img13.png" alt="$q_j = \sum_i P_{ij}(k)$"> [<a href=
+ "#Herzel:95">2</a>]. A plot of the Kyte-Doolittle
+ hydrophobicity [<a href="#Kyte:82">4</a>] acf
+ using (<a href="#eq:acf_Dij">1</a>) averaged over the
+ <tt>pdb_select set</tt> of protein sequences [<a href=
+ "#Hobohm:94">3</a>] is plotted as the black line
+ in Fig. 1.</font> 
+ <div align="center"><a name="89"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure:</strong> <font size=
+ "-1">Acfs of the Kyte-Doolittle hydrophobicity [<a href=
+ "#Kyte:82">4</a>] (black, enlarged in the insert)
+ and the optimized property code (grey) in the</font>
+       <font size="-1"><tt>pdb_select</tt> sequences [<a href=
+       "#Hobohm:94">3</a>].</font></caption>
+ <tr>
+ <td><img width="450" height="204" border="0" src="img14.png"
+      alt="\begin{figure} \begin{center} \epsfig{figure=poster-02-054-fig01.eps, width=100mm} \end{center} \end{figure}">
+ </td></tr></table></div>
+  <font size="-1">Our optimization aims at maximizing 
+ <img width="152" height="40" align="middle" border="0" src=
+ "img15.png" alt=
+ "$ S_{\mathsf{a}}:=\sum_{k=1}^{k_{\max}} \left(C_{\mathsf{a}} (k) \right)^2 $">
+  with 
+ <img width="59" height="32" align="middle" border="0" src=
+ "img16.png" alt="$ \vert\vert \mathsf{a} \vert\vert = 1$">, by
+ varying <img width="12" height="13" align="bottom" border="0"
+      src="img3.png" alt="$\mathsf{a}$">.</font> 
+ <p><font size="-1">We propose one method that iterates finding the
+ largest Eigenvalue of linear combinations of <img width="37"
+      height="32" align="middle" border="0" src="img17.png" alt=
+      "$\mathsf{D}(k)$">, to maximize 
+ <img width="20" height="30" align="middle" border="0" src=
+ "img18.png" alt="$S_{\mathsf{a}}$">. As an alternative approach, we
+ apply the extended Jacobi method for joint diagonalization
+    [<a href="#Cardoso:96">1</a>] to the matrices
+    <img width="37" height="32" align="middle" border="0" src=
+    "img17.png" alt="$\mathsf{D}(k)$"> i.e. without integrating over
+    <img width="13" height="14" align="bottom" border="0" src=
+    "img2.png" alt="$k$">. This is compared with an off-the-shelf
+    optimization of 
+ <img width="20" height="30" align="middle" border="0" src=
+ "img18.png" alt="$S_{\mathsf{a}}$">.</font></p>
+ <h1><a name="SECTION00030000000000000000">Results &amp;
+ Discussion</a></h1>
+ <p><font size="-1">The different methods applied yield similar
+ optimal property codes, but differ in their abilities to find
+ secondary optima. For the <tt>pdb_select</tt> sequences, the
+ according optimized acf is plotted in grey in Fig. 1. Although the
+ the optimized acf is similar to that of the hydrophobicity acf in
+ shape, it has a much larger amplitude. In fact, the corresponding
+ optimized property code is similar to hydrophobicities, such that
+ it can be seen as an optimized hydrophobicity.</font></p>
+ <p><font size="-1">We also applied our methods to sets of protein
+ sequences rich in <img width="14" height="13" align="bottom"
+      border="0" src="img19.png" alt="$\alpha$">-helices and
+      <img width="14" height="30" align="middle" border="0" src=
+      "img20.png" alt="$\beta$">-strands respectively. We could
+      reproduce known acf patterns for <img width="14" height="13"
+      align="bottom" border="0" src="img19.png" alt=
+      "$\alpha$">-helices and give optimized property codes. For
+      <img width="14" height="30" align="middle" border="0" src=
+      "img20.png" alt="$\beta$">-strands we also found novel
+      correlation patterns.</font></p>
+ <p><font size="-1">With the proposed concept of optimizing property
+ codes we find the amino acid properties, that are most structured
+ (least random) along the underlying protein sequences. The methods
+ reproduce and enhance known biological findings and find novel
+ features.</font></p>
+ <p></p>
+ <h2><a name="SECTION00040000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="Cardoso:96">1</a></dt>
+ <dd>Cardoso, J.-F. and Souloumiac A. 1996.<br>
+ Jacobi angles for simultaneous diagonalization.<br>
+ <em>SIAM J. Mat. Anal. Appl.</em>, 17(1):161-164.</dd>
+ <dt><a name="Herzel:95">2</a></dt>
+ <dd>Herzel, H. and Gro&szlig;e, I. 1995.<br>
+ Measuring correlations in symbol sequences.<br>
+ <em>Physica A</em>, 216:518-542.</dd>
+ <dt><a name="Hobohm:94">3</a></dt>
+ <dd>Hobohm, U. and Sander, C. 1994.<br>
+ Enlarged representative set of protein structures.<br>
+ <em>Protein Sci.</em>, 3(3):552-554.</dd>
+ <dt><a name="Kyte:82">4</a></dt>
+ <dd>Kyte, J. and Doolittle, R. F. 1982<br>
+ A simple method for displaying the hydropathic character of a
+ protein.<br>
+ <em>J. Mol. Biol.</em>, 157:105-132.</dd>
+ <dt><a name="Weiss:98">5</a></dt>
+ <dd>Weiss, O. and Herzel, H. 1998.<br>
+ Correlations in protein sequences and property codes.<br>
+ <em>J. theor. Biol.</em>, 190:341-353.</dd></dl>
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot84">... Weiss,</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Fraunhofer FIRST.IDA, Kekul&eacute;str. 7, 12489 Berlin,
+ Germany.<br>
+  E-mail: 
+ <div align="center">
+ <b><tt>olaf.weiss@first.fraunhofer.de</tt></b></div></dd>
+ <dt><a name="foot85">... Ziehe,</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>Fraunhofer FIRST.IDA, Kekul&eacute;str. 7, 12489 Berlin,
+ Germany.<br>
+  E-mail: 
+ <div align="center">
+ <b><tt>andreas.ziehe@first.fraunhofer.de</tt></b></div></dd>
+ <dt><a name="foot86">... Herzel</a><a href=
+ "#tex2html3"><sup>3</sup></a></dt>
+ <dd>Innovationskolleg Theoretische Biologie, Humboldt-University
+ Berlin Invalidenstr. 43, 10115 Berlin, Germany. 
+ <div align="center">
+ <b><tt>h.herzel@itb.biologie.hu-berlin.de</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

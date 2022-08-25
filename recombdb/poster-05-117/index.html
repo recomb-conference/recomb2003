@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>117. Consensus approach for benchmarking domain assignment in protein structures</title>
+ <style id="dynCom" type="text/css">
+ 
+ </style>
+ 
+ <script language="JavaScript" type="text/javascript">
+ 
+ </script>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category04.html'>&lt;&lt;</a> <a href='/recombdb/category05.html'><b>Protein Structure</b> Overview</a> <a href='/recombdb/category06.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-05-116/'>&lt;&lt;</a> Poster 117 [ <a href='poster-05-117.pdf'>PDF</a> | <a href='poster-05-117.doc'>MSWORD</a> ] <a href='/recombdb/poster-05-118/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>117.&nbsp; Consensus approach for benchmarking domain
+ assignment in protein structures</h2>
+ <p align="center"><b>Stella Veretnik, Nickolai Alexandrov, Phil
+ Bourne, and Ilya Shindyalov</b></p>
+ <p><b>Keywords:</b> protein structure, domain assignment, algorithm
+ benchmarking</p>
+ <p><b>Introduction</b></p>
+ <p>Assignment of domains in protein structures remains to be a
+ difficult and unsolved problem. Existing algorithms frequently
+ produce contradicting results, different from expert&rsquo;s
+ assignment.&nbsp; In this work we examine trends in the performance
+ of a new generation of completely automated domain assignment
+ algorithms. We have benchmarked the following automatic methods:
+ DALI [3], DomainParser [4], and PDP [5] using the dataset of
+ proteins with domains assigned by experts [6] and using the
+ consensus subset of these proteins in which the domain definition
+ agrees with two other expert-based assignments by SCOP [1] and CATH
+ [2]..</p>
+ <p><b>Methods and Results</b></p>
+ <p>The benchmark was created from 2363 protein chains cut into
+ domains by authors of the crystal structures [6].&nbsp; The set was
+ cleaned by purging chains that have more than 90% sequence
+ identity, resulting in a set of 749 structures which was further
+ reduced to 599 chains present in all manually curated databases
+ (SCOP, CATH, and author&rsquo;s assignments).&nbsp; Using this
+ benchmark we assessed the correctness of the number of domains
+ assigned by each method as well as the consistency in the domain
+ boundaries definition.</p>
+ <p>We first compared consistency of prediction of automatic and
+ manual assignments.&nbsp; We defined disagreement value as
+ (variance of the number of domains&nbsp; +1).&nbsp; Disagreement
+ values for each chain were calculated separately for automatic
+ methods (DALI, DomainParser, PDP) and for manual methods (CATH,
+ SCOP, author&rsquo;s assignment).&nbsp; We then looked at the ratio
+ of disagreement value produced by automatic methods and the
+ disagreement value produced by manual methods (for each
+ chain).&nbsp; We find that in 80% of the chains this ratio is 1,
+ indicating that the domain assignment disagreement of automatic and
+ manual methods is identical.&nbsp; The remaining 20% of the chains
+ are nearly evenly split between the cases in which manual
+ disagreement is higher that automatic disagreement and visa
+ versa.&nbsp; We interpret this as an indication that for some
+ proteins, consensus on domain assignment is as difficult to reach
+ for human experts as for algorithms.<a id="_anchor_1"
+    onmouseover="msoCommentShow('_anchor_1','_com_1')" onmouseout=
+    "msoCommentHide('_com_1')" href="#_msocom_1" language=
+    "JavaScript" name="_msoanchor_1">[n1]</a>&nbsp;</p>
+ <p>Compared to the author&rsquo;s assignment, most of the methods
+ tend to under-cut (i.e. to assign too few domains), this tendency
+ is particularly evident in SCOP (Figure 1).&nbsp; The exception to
+ this is automatic assignment method DALI, which produces equal
+ fraction of over-cuts and undercuts.&nbsp; For all methods the
+ correct assignment rate is between 80 and 90%, with lowest for DALI
+ (automatic assignment) and highest for CATH (manual
+ assignment).</p>
+ <p><img width="192" height="155" src="image002.gif" align="left"
+ hspace="12" alt="Text Box: "></p>
+ <p><img width="237" height="110" src="image003.gif" align="left"
+ hspace="12" alt=
+ "Text Box: Figure 1. Domain assignments by different methods (author&rsquo;s dataset used as reference). Gray bars: correct number of domains, checkered bars: under-cut (less domains than in reference dataset), black bars: over-cut (more domains than in reference dataset).">
+ </p>
+ <p>Domain assignment can be done differently even by experts. To
+ avoid ambiguity in domain definition we have eliminated problematic
+ cases from the benchmark and focused on the 84% of the chains
+ (total of 502 chains), in which manual assignment methods reached
+ the consensus.&nbsp; When chains without manual consensus were
+ removed, all automatic methods showed a rather dramatic drop in the
+ fraction of incorrectly predicted under-cut assignments; while the
+ effect on incorrectly predicted over-cuts was rather modest&nbsp;
+ (Figure 2).</p>
+ <table cellpadding="0" cellspacing="0">
+ <tr>
+ <td width="254" height="122" align="left" valign="top">
+ <table cellpadding="0" cellspacing="0" width="100%">
+ <tr>
+ <td>
+ <div v:shape="_x0000_s1034">
+ <p><b>Figure 2.&nbsp; The effect of removal of chains with no
+ manual consensus</b>.&nbsp; Gray bars: fraction of mis-assigned
+ chains in the entire set ( 599 chains), back bars: fraction of
+ mis-assigned chains in 502 chains with manual consensus.&nbsp;
+ Left: total mis-assignments, middle: under-cut mis-assignments,
+ right: over-cut mis-assignments.</p></div></td></tr></table>
+ &nbsp;</td></tr></table>
+ <img width="228" height="148" src="image005.jpg"><br>
+ <br>
+  
+ <p>Automatic assignments were grouped by the number of chains which
+ disagree with manual consensus.&nbsp; We find that all automatic
+ methods tested agreed with manual consensus for 443 chains; this
+ represent 88% of all chains for which manual consensus was
+ reached.&nbsp; In the remaining cases (59 chains) one or more
+ automatic method disagreed with manually assigned consensus.&nbsp;
+ We are studying these cases in further detail in an attempt to
+ understand the underlying assumptions that lead to erroneous
+ automatic assignments.&nbsp; Some interesting cases are those in
+ which automatic methods produced 3 different assignments (in 3
+ cases, one example in Figure 3).&nbsp;&nbsp; Other interesting
+ cases are those where all automatic methods failed to cut a chain,
+ which is predicted by manual consensus to have 2 or 3 domains (3
+ such cases).&nbsp; For all three cases failure to cut is associated
+ with short DNA-binding proteins.</p>
+ <table cellpadding="0" cellspacing="0" align="left">
+ <tr>
+ <td width="366" height="7"></td></tr>
+ <tr>
+ <td width="140" height="134" align="left" valign="top">
+ <table cellpadding="0" cellspacing="0" width="100%">
+ <tr>
+ <td>
+ <div v:shape="_x0000_s1035">
+ <p><b>Figure 3. Three different as&shy;signments by three different
+ automatic methods for chain 1png.</b></p>
+ <p>A. PDP method: 2 domains,<br>
+  B. DomainParser method:</p>
+ <p>&nbsp;&nbsp;&nbsp;&nbsp; 1 domain,<br>
+  C. DALI method: 3 domains.</p>
+ <p>Manual consensus: 2 domains.</p></div></td></tr></table>
+ &nbsp;</td></tr></table>
+ &nbsp;<br>
+ <br>
+ <br clear="all">
+  
+ <p><b><img width="132" height="97" src=
+ "image007.jpg"></b><img width="121" height="95" src=
+ "image009.jpg"><img width="132" height="96" src="image011.jpg"></p>
+ <p>
+ <b>A.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ B.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ C.</b></p>
+ <p><b>References:</b></p>
+ <p>[1] Murzin AG, Brenner SE, Hubbard T, Chothia C.1995.&nbsp;
+ SCOP: a structural classification of proteins database for the
+ investigation of sequences and structures<i>.&nbsp; J Mol Biol.
+ <b>247</b>:536-540.</i></p>
+ <p>[2] Orengo CA, Michie AD, Jones S, Jones DT, Swindells MB,
+ Thornton JM.&nbsp;&nbsp; 1997. CATH--a hierarchic classification of
+ protein domain structures<i>. Structure <b>5</b>:1093-1108.</i></p>
+ <p>[3] Holm L, Sander C.&nbsp; 1993. Protein structure comparison
+ by alignment of distance matrices. <i>J Mol Biol</i>
+ &nbsp;<b>233</b>:123-138</p>
+ <p>[4] Xu Y, Xu D, Gabow. N.&nbsp; 2000.&nbsp; Protein domain
+ decomposition using a graph-theoretic approachDomainParser.&nbsp;
+ <i>Bioinformatics <b>16</b>:1-14.</i></p>
+ <p>[5] Alexandrov N, Shindyalov I.&nbsp; 2003.&nbsp; PDP: Protein
+ Domain Parser . Bioinformatics (<i>in press</i>).</p>
+ <p>[6]&nbsp;&nbsp; Islam SA, Luo J, Sternberg MJE.&nbsp;
+ 1995.&nbsp; Identification and analysis of domains in
+ proteins.&nbsp; <i>Protein Engineering</i> <b>8</b>:513-525.</p>
+ <p>http://www.bmm.icnet.uk/~domains/assign-earlier.html</p></div>
+ <div>
+ <hr align="left" size="1" width="33%">
+ <div>
+ <div id="_com_1" language="JavaScript" onmouseover=
+ "msoCommentShow('_anchor_1','_com_1')" onmouseout=
+ "msoCommentHide('_com_1')"><a name="_msocom_1"></a> 
+ <p>&nbsp;<a href="#_msoanchor_1">[n1]</a>I did not understand how
+ the disagreement value is computed. I did not understand Figure
+ 1.</p></div></div></div>
+ </body>
+ </html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>4. A new approach to the annotation of bacterial genomes using phylogenomic profiles</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center">  <a href='/recombdb/category01.html'><b>Genomics</b> Overview</a> <a href='/recombdb/category02.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-01-003/'>&lt;&lt;</a> Poster 004 [ <a href='poster-01-004.pdf'>PDF</a> | <a href='poster-01-004.doc'>MSWORD</a> ] <a href='/recombdb/poster-01-005/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>4. A new approach to the annotation of bacterial genomes using
+ phylogenomic profiles</h2>
+ <p>Fran&ccedil;ois Enault,&nbsp; Karsten Suhre, Olivier Poirot,
+ Chantal Abergel and</p>
+ <p align="center"><b>Jean-Michel Claverie</b><a href="#_ftn1"
+    name="_ftnref1" title=""><b>[1]</b></a></p>
+ <p><b>Keywords:</b> phylogenomic, functional prediction, automated
+ annotation, bacteria, evolution.</p>
+ <p><b>1&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Introduction.</b></p>
+ <p>Phylogenomic profiling is a non-sequence-homology-based method
+ designed to infer a likely functional relationship between
+ proteins. It is based on the assumption that proteins involved in a
+ common metabolic pathway are likely to evolve in a correlated
+ manner. This paradigm was put to use by Pellegrini <i>et al</i>.
+ [1] and first apply to <i>Escherichia coli</i>. According to this
+ study, a phylogenomic profile is defined as a string of bits, each
+ bit representing the presence or absence of an orthologous gene in
+ a given genome. Two proteins are said to have co-evolved if their
+ profiles differ at most at one bit position. The limitation of this
+ approach is that arbitrary sequence alignment score thresholds are
+ used to decide about the presence of orthologous genes between
+ organisms. The method presented here avoids making such a decision,
+ as the concept of orthologous relationships is not explicitly
+ used.</p>
+ <p>We replace the binary phylogenomic profiles by continuous values
+ consisting of the normalized scores of the best Blastp [2]
+ alignments between each <i>E. coli</i> protein and its best
+ matching ORFs in the 71 other genomes. We further normalize the
+ columns of the profile matrix so that all organisms are given a
+ similar phylogenomic weight, independently of their global
+ evolutionary relatedness.</p>
+ <p>Four different ways to compute a phylogenomic pairwise distance
+ between genes from their conservation profiles were evaluated and
+ compared to Pellegrini's method using the Ecocyc database of
+ metabolic pathways as reference [3]. Our definition of functionally
+ linked proteins corresponds to the enzymes involved in the same
+ metabolic pathways, that most likely co-evolved. We thus expect the
+ best method to find most of such pairs of genes. Our validation
+ protocol was as follows. For each enzyme <i>e</i> of Ecocyc, we
+ determined its neighbors, i.e. the proteins of <i>E. coli</i>
+ exhibiting the smallest phylogenomic distance with <i>e</i>, and
+ identified in this set the number of proteins truly involved in the
+ same pathways as <i>e</i>. This procedure was repeated for neighbor
+ sets of increasing sizes, between 1 and 100, and computed using the
+ four different distances we defined and the classical method [1].
+ 1000 random results were also generated.</p>
+ <p>&nbsp;Finally, we introduced and validated an original procedure
+ to automatically predict possible functions for anonymous genes
+ based on the annotation of their best phylogenomic neighbors, using
+ the MultiFun database [4]. For each gene, a p-value is associated
+ to each class appearing in the neighbors of this gene (the
+ probability to have at least such a number of neighbors belonging
+ to this class by chance). The classes with the lowest p-values were
+ retained as the best candidate annotations. This procedure was
+ evaluated through its application to the 3069 genes annotated in
+ MultiFun.</p>
+ <p><b>2&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Results.</b></p>
+ <p>The best distance found is the distance (4) computed from the
+ correlation coefficient between any two profiles, those correlation
+ coefficients being computed without the means (Figure 1). It allows
+ to identify 2118 pairs of enzymes acting in the same metabolic
+ pathway, while only 1677, 1344 and 2063 for the other distance
+ tested (1-3). Our method also outperformed the binary one, only
+ predicting 1677 pairs of functionally linked enzymes. Using
+ randomized datasets, we find that at most 395 gene pairs would be
+ associated by chance at a p-value of 10<sup>-3</sup>.</p>
+ <p><img width="245" height="245" src=
+      "image002.jpg"><img width="245" height="245" src=
+      "image004.jpg"></p>
+ <p><b>Figure 1</b> : Comparison between our method computed with
+ the four different distances (1-4), that of Pellegrini et al.
+ (1999) [Pel99] and the best of the 1000 random simulations. For
+ each neighborhood size from 1 to 100, the number of correctly
+ identified functionally related proteins (belonging to the same
+ Ecocyc pathway) is indicated. <b>Figure 2</b> : Comparison of the
+ predictions made for the MultiFun genes and their actual
+ annotations at various p-value thresholds.</p>
+ <p>Using this distance (4) at a 10<sup>-11</sup> p-value threshold,
+ our method produced 3122 predictions with 50% of them appearing in
+ the 6433 annotations of the 3069 genes of MultiFun (Figure 2). Out
+ of the total annotations to be retrieved, 1555 are correctly
+ generated. At this p-value threshold,&nbsp; phylogenomic
+ information alone thus appear to generate already known annotations
+ with a sensitivity of 25%. In addition, the 200 ''best
+ predictions'' (the smallest p-values) correspond to 160 already
+ known annotations. A more precise evaluation of the specificity is
+ difficult to make given that annotated genes may have additional -
+ yet unknown - functions. Thus, a prediction not corresponding to
+ the MultiFun annotation should not be automatically counted as
+ being wrong. <b>&nbsp;</b></p>
+ <h1>References</h1>
+ <p>[1] Pellegrini, M., Marcotte, EM., Thompson, MJ., Eisenberg, D.,
+ Yeates, TO. 1999. Assigning protein functions by comparative genome
+ analysis: protein phylogenomic profiles, <i>Proceedings of the
+ National Academy of Sciences</i> USA 96:4285&mdash;4288.</p>
+ <p>[2] Altschul, SF., Madden, TL., Schaffer, AA., Zhang, J., Zhang,
+ Z., Miller, W., Lipman, DJ. 1997. Gapped&nbsp; BLAST and PSI-BLAST:
+ a new generation of protein database search programs. <i>Nucleic
+ Acids Res</i> 25:3389&mdash;3402.</p>
+ <p>[3] Karp, PD., Riley, M., Saier, M., Paulsen, IT.,
+ Collado-Vides, J., Paley, SM., Pellegrini-Toole, A., Bonavides, C.,
+ Gama-Castro, S. 2002. The EcoCyc Database. <i>Nucleic Acids Res</i>
+ 30:56&mdash;58.</p>
+ <p>[4] Serres, MH., Riley, M. 2000. MultiFun, a multifunctional
+ classification scheme for Escherichia coli K-12 gene products.
+ Microb Comp Genomics 5:205&mdash;222.</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a> Structural and
+ Genomic Information, 31 chemin Joseph Aiguier, 13402 Marseille,
+ c&eacute;dex 20, France. E-mail :
+ enault@igs.cnrs-mrs.fr.</p></div></div>
+ </body>
+ </html>

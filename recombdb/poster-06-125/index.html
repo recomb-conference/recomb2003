@@ -1,0 +1,288 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>125. Clustering binary fingerprint vectors with missing values for DNA array data analysis</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category05.html'>&lt;&lt;</a> <a href='/recombdb/category06.html'><b>Gene Expression</b> Overview</a> <a href='/recombdb/category07.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-06-124/'>&lt;&lt;</a> Poster 125 [ <a href='poster-06-125.pdf'>PDF</a> | <a href='poster-06-125.tgz'>TeX</a> | <a href='poster-06-125.ps'>PostScript</a> ] <a href='/recombdb/poster-06-126/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>125. Clustering binary
+ fingerprint vectors with missing values for DNA array data
+ analysis<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Andres Figueroa, <a name="tex2html1"
+    href="#foot81"><sup>1</sup></a> James Borneman, <a name=
+    "tex2html2" href="#foot82"><sup>2</sup></a> Tao Jiang <a name=
+    "tex2html3" href="#foot83"><sup>3</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> oligonucleotide fingerprinting,
+ cluster analysis, DNA clone classification, algorithm, DNA
+ array</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+  <font size="-1"><br>
+  Oligonucleotide fingerprinting is a powerful DNA array based
+ method to characterize cDNA and ribosomal RNA gene (rDNA) libraries
+ and has many applications including gene expression profiling and
+ DNA clone classification. We are especially interested in the
+ latter application. A key step in the method is the cluster
+ analysis of fingerprint data obtained from DNA array hybridization
+ experiments. Most of the existing approaches to clustering use
+ (normalized) real intensity values and thus do not treat positive
+ and negative hybridization signals equally (positive signals are
+ much more emphasized). In this work, we consider a discrete
+ approach. Fingerprint data are first normalized and binarized using
+ control DNA clones. Because there may exist unresolved (or missing)
+ values in this binarization process, we formulate the clustering of
+ (binary) oligonucleotide fingerprints as a combinatorial
+ optimization problem that attempts to identify clusters and resolve
+ the missing values in the fingerprints simultaneously. We study the
+ computational complexity of this clustering problem and a natural
+ parameterized version, and present an efficient greedy algorithm
+ based on M<small>INIMUM</small> C<small>LIQUE</small>
+ P<small>ARTITION</small> on graphs.</font> 
+ <h1><a name="SECTION00020000000000000000"><font size="+1">The
+ Binary Clustering Problem and its Complexity</font></a></h1>
+  <font size="-1"><br>
+  In this work, we are especially interested to classify a community
+ of microorganisms (extracted, <i>e.g.</i>, from soil), a library of
+ (randomly selected) ribosomal RNA genes (rDNA clones) is created.
+ These clones are then subjected to a series of hybridization
+ experiments, each of which uses a single DNA oligonucleotide probe,
+ resulting in a set of fingerprints. Based on a cluster analysis of
+ these fingerprints, the rDNA clones are classified into
+ <em>operational taxonomic units</em> (OTUs) to reflect their
+ different characteristics with respect to the probes (<i>i.e.</i>
+ what probes hybridized and what did not). Once classified,
+ taxonomic descriptions of each OTU can be determined by clustering
+ them with fingerprints of known sequences or by nucleotide sequence
+ analyses of representative clones from the OTUs. This has already
+ proven to be a powerful high-throughput technique for studying
+ microorganisms&nbsp;[<a href=
+ "#James02">4</a>,<a href=
+ "#James01">5</a>].</font> 
+ <p><font size="-1">Ideally, we would like to translate
+ hybridization intensity values into binary values where
+      <img width="12" height="13" align="bottom" border="0" src=
+      "img3.png" alt="$1$"> indicates hybridization and <img width=
+      "12" height="13" align="bottom" border="0" src="img4.png" alt=
+      "$0$"> indicates the opposite. Unfortunately, given the
+      intensity values provided by the scanned array, it is not
+      always easy to determine which clones hybridized and which did
+      not. Control clones with known characteristics with respect to
+      the probes are included in DNA array experiments to provide
+      reference intensity values. Oligonucleotide fingerprint data
+      are normalized and binarized using the reference values from
+      the control DNA clones. Here, each intensity value is
+      classified into a <img width="12" height="13" align="bottom"
+      border="0" src="img3.png" alt="$1$"> (for hybridization) or a
+      <img width="12" height="13" align="bottom" border="0" src=
+      "img4.png" alt="$0$"> (for no hybridization) or an <img width=
+      "19" height="14" align="bottom" border="0" src="img2.png" alt=
+      "$N$"> (for unknown, which is also called a <em>missing</em>
+      value). The problem is formally defined below.</font></p>
+ <p><font size="-1"><br></font></p>
+ <pre>
+ <tt>
+  
+ <br> B<small>INARY</small> C<small>LUSTERING WITH</small> M<small>ISSING</small> V<small>ALUES (</small>BCMV)
+ <br><em>Instance:</em> a set <img width="16" height="14"
+      align="bottom" border="0" src="img5.png" alt=
+      "${F}$"> of 0-1-<img width="19" height="14" align="bottom"
+      border="0" src="img2.png" alt="$N$"> fingerprint vectors.
+ <br><em>Feasible solution:</em> a partition of <img width="16"
+ height="14" align="bottom" border="0" src="img5.png" alt=
+ "${F}$"> into
+  disjoint subsets <img width="75" height="30" align="middle"
+      border="0" src="img6.png" alt=
+      "${F}_1, \ldots, {F}_k$"> such that
+ <br>                                 for each <img width="69"
+ height="30" align="middle" border="0" src="img7.png" alt=
+ "$1 \leq i \leq k$">, any two vectors in <img width="20"
+      height="30" align="middle" border="0" src="img8.png" alt=
+      "${F}_i$"> are compatible.
+ <br><em>Measure:</em> Cardinality of the partition, to be
+  minimized.
+  
+ </tt>
+ </pre>
+ <p><font size="-1">In practice, the number of <img width="19"
+ height="14" align="bottom" border="0" src="img2.png" alt="$N$">'s
+ in a binarized fingerprint vector is often upper bounded by a small
+ constant, depending on the quality of hybridization intensity
+ values and choice of control clones. It is thus interesting to
+ consider the following parameterized version of BCMV, denoted as
+ BCMV(<img width="12" height="29" align="middle" border="0"
+      src="img9.png" alt="$p$">), where each input fingerprint
+      vector is assumed to have at most <img width="12" height="29"
+      align="middle" border="0" src="img9.png" alt="$p$">
+      <img width="19" height="14" align="bottom" border="0" src=
+      "img2.png" alt="$N$">'s. Unfortunately, we can show that BCMV
+      is NP-hard. In fact, we can prove a stronger result:
+      BCMV(<img width="12" height="29" align="middle" border="0"
+      src="img9.png" alt="$p$">) is NP-hard for any <img width="41"
+      height="29" align="middle" border="0" src="img10.png" alt=
+      "$p \geq 3$">.</font></p>
+ <h1><a name="SECTION00030000000000000000"><font size=
+ "+1">Experimental Results</font></a></h1>
+  <font size="-1"><br>
+  The algorithm takes advantage of some unique properties of the
+ graphs considered here, which allow us to efficiently find the
+ maximum cliques as well as some special maximal cliques
+ efficiently. Our experimental results on simulated and real data
+ demonstrate that the algorithm runs faster and performs better than
+ some popular hierarchical and graph-based clustering methods. UPGMA
+ from PAUP&nbsp;[<a href="#Swofford2002">3</a>]
+ (which was used in&nbsp;[<a href=
+ "#James02">4</a>,<a href=
+ "#James01">5</a>]) and CLUSTER&nbsp;[<a href=
+ "#Eisen1998">2</a>]. CLUSTER offers hierarchical
+ clustering with four linkage options: centroid, single, complete,
+ and average. We used the centroid linkage method, denoted as
+ CLUSTERc. We have compared the performance of GCP, UPGMA and
+ CLUSTERc on two sets of real fingerprint data. The first data set
+ is a collection of 1491 bacterial small subunit rRNA genes analyzed
+ in&nbsp;[<a href="#James01">5</a>]. The second
+ one is a set of 1507 fungal small subunit rRNA genes studied
+ in&nbsp;[<a href="#James02">4</a>]. Two sets of
+ 27 and 26 probes were designed based on the algorithm
+ in&nbsp;[<a href="#James2001">1</a>] to hybridize
+ the bacterial rDNA clones and the fungal rDNA clones, respectively.
+ The DNA array experiment for the bacterial clones used 26 control
+ clones and the one for the fungal clones used 29 control clones.
+ Table&nbsp;<a href="#fig:real_data_results">1</a> shows the numbers
+ of of clusters found by GCP, UPGMA and CLUSTERc for real data
+ sets.</font> 
+ <div align="center"><a name="88"></a> 
+ <table>
+ <caption><strong>Table:</strong> <font size="-1">The numbers of
+ clusters found by GCP, UPGMA and CLUSTERc for the bacterial and
+ fungal data sets. <img width="12" height="29" align="middle"
+      border="0" src="img13.png" alt="$\bar{p}$"> denotes the
+      average of <img width="19" height="14" align="bottom" border=
+      "0" src="img2.png" alt="$N$">'s per vector.</font></caption>
+ <tr>
+ <td>
+ <div align="center">
+ <table cellpadding="3" border="1" align="center">
+ <tr>
+ <td align="center"><font size="-1">Data Set</font></td>
+ <td align="center"><font size="-1"><img width="14" height="13"
+ align="bottom" border="0" src="img11.png" alt="$n$"></font></td>
+ <td align="center"><font size="-1"><img width="15" height="14"
+ align="bottom" border="0" src="img12.png" alt="$L$"></font></td>
+ <td align="center"><font size="-1"><img width="12" height="29"
+ align="middle" border="0" src="img13.png" alt=
+ "$\bar{p}$"></font></td>
+ <td align="center"><font size="-1">GCP</font></td>
+ <td align="center"><font size="-1">UPGMA</font></td>
+ <td align="center"><font size="-1">CLUSTERc</font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">Bacteria</font></td>
+ <td align="center"><font size="-1">1491</font></td>
+ <td align="center"><font size="-1">27</font></td>
+ <td align="center"><font size="-1">3.84</font></td>
+ <td align="center"><font size="-1">769</font></td>
+ <td align="center"><font size="-1">773</font></td>
+ <td align="center"><font size="-1">991</font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">Fungi</font></td>
+ <td align="center"><font size="-1">1507</font></td>
+ <td align="center"><font size="-1">26</font></td>
+ <td align="center"><font size="-1">4.54</font></td>
+ <td align="center"><font size="-1">556</font></td>
+ <td align="center"><font size="-1">566</font></td>
+ <td align="center"><font size=
+ "-1">870</font></td></tr></table></div>
+ <br>
+  <a name="fig:real_data_results"></a></td></tr></table></div>
+ <br>
+ <p><font size="-1"><br></font> </p>
+ <h2><a name="SECTION00040000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dd><br></dd>
+ <dt><a name="James2001">1</a></dt>
+ <dd>Borneman, J., Chrobak, M., Della Vedova, G., Figueroa, A. and
+ Jiang, T. 2001. Probe selection algorithms with applications in
+ analysis of microbial communities. <em>Bioinformatics</em>,
+ 17(Suppl. 1)S39-S48.</dd>
+ <dt><a name="Eisen1998">2</a></dt>
+ <dd>Eisen, M.B., Spellman, P.T., Brown, P.O. and Botstein, D. 1998.
+ Cluster analysis and display of genome-wide expression patterns.
+ <em>Proc. Natl. Acad. Sci. USA</em>, 95:14863-14868.</dd>
+ <dt><a name="Swofford2002">3</a></dt>
+ <dd>Swofford, D.L. 2002. PAUP: Phylogenetic Analysis Using
+ Parsimony version 4.0 beta 10. Sinauer Associates, Sunderland,
+ Massachusetts.</dd>
+ <dt><a name="James02">4</a></dt>
+ <dd>Valinsky, L., Della Vedova, G., Jiang, T. and Borneman, J.
+ 2002. Oligonucleotide fingerprinting of ribosomal RNA genes for
+ analysis of fungal community composition. <em>Applied and
+ Environmental Microbiology</em> to appear.</dd>
+ <dt><a name="James01">5</a></dt>
+ <dd>Valinsky, L., Della Vedova, G., Scupham, A., Alvey, S.,
+ Figueroa, A., Yin, B., Hartin, R., Chrobak, M., Crowley, D., Jiang,
+ T. and Borneman, J. 2002. Analysis of bacterial community
+ composition by oligonucleotide fingerprinting of rRNA genes.
+ <em>Applied and Environmental Microbiology,</em>
+ 68(7):3243-3250.</dd></dl>
+  
+ <p><br></p>
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot81">... Figueroa,</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Dept. of Comp. Sci., Univ. of Calif., Riverside. E-mail: 
+ <div align="center"><b><tt>andres@cs.ucr.edu</tt></b></div></dd>
+ <dt><a name="foot82">... Borneman,</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>Dept. of Plant Pathology, Univ. of Calif., Riverside. E-mail: 
+ <div align="center">
+ <b><tt>borneman@ucrac1.ucr.edu</tt></b></div></dd>
+ <dt><a name="foot83">... Jiang</a><a href=
+ "#tex2html3"><sup>3</sup></a></dt>
+ <dd>Dept. of Comp. Sci., Univ. of Calif., Riverside. E-mail: 
+ <div align="center">
+ <b><tt>jiang@cs.ucr.edu</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>26. Random generation of structured genomic sequences</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-024/'>&lt;&lt;</a> Poster 026 [ <a href='poster-02-026.pdf'>PDF</a> | <a href='poster-02-026.doc'>MSWORD</a> ] <a href='/recombdb/poster-02-027/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>26. Random generation of structured genomic sequences</h2>
+ <p align="center"><b>Alain Denise<a href="#_ftn1" name="_ftnref1"
+ title="">[1]</a>, Yann Ponty<sup>1</sup>, Michel Termier<a href=
+ "#_ftn2" name="_ftnref2" title="">[2]</a></b></p>
+ <p><b>Keywords:</b> random sequences, random generation,
+ context-free grammars, RNA structures</p>
+ <p><b>1&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Introduction</b></p>
+ <p>Random sequences are very useful in bioinformatics. According to
+ a very powerful paradigm, they represent the &ldquo;background
+ noise&rdquo; from which the actual biological information must
+ differentiate. For example, random sequences are widely used in
+ order to detect over- and under-represented motifs, or to determine
+ whether scores of pairwise alignments are relevant. Analytic
+ approaches do exist for these kinds of problems. But, for the most
+ complex cases, experimental approach (i.e. <i>in silico</i>
+ generation of random sequences) is still necessary.</p>
+ <p>Random sequences must obey to a model that takes into account
+ some relevant properties of actual sequences. Usually, the model is
+ based on statistical parameters only: the numbers of occurrences of
+ oligomers in a given biological sequence lead to the parameters of
+ a Markovian model. Our aim is to enrich these classical models by
+ adding <i>structural</i> parameters. Comparing biological sequences
+ to such more &ldquo;realistic&rdquo; random sequences may help to
+ discover more refined biological properties.</p>
+ <p>We present a methodology and a software, GenRGenS, for
+ generating genomic sequences and structures, which obey both to
+ statistical and syntaxic (grammatical) parameters. In section 2, we
+ briefly describe an algorithm which generates random words of a
+ context-free language according to a given probability
+ distribution. In section 3, we illustrate the method by applying it
+ to basic RNA secondary structures, using the GenRGenS software.</p>
+ <p><b>2&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Random generation of words
+ of context-free languages</b></p>
+ <p>The problem of generating uniformly at random combinatorial
+ structures, and particularly words of context-free languages, has
+ been widely studied by computer scientists. Regarding context-free
+ languages, the problem is the following: find an algorithm which,
+ given an integer <i>n</i> and a non ambiguous grammar <i>G</i> of a
+ context-free language <i>L</i>, generates random words of length
+ <i>n</i> of <i>L</i>, so that they appear with equal probability.
+ The method consists in drawing a sequence of derivations from the
+ axiom of <i>G</i> to a word of length <i>n,</i> as follows: at each
+ step of the algorithm, take a non-terminal symbol of the word being
+ generated and rewrite it according to a rule of <i>G</i>, chosen
+ with a suitable probability. The key point is the computation of
+ this probability: for the generation to be uniform on words of
+ length <i>n</i>, it must depend on the context, i.e. on the length
+ of the word being generated and on the non-terminal symbols that it
+ contains. The best algorithms, which are based on this crude
+ general scheme, generate a word in O(<i>n log n</i>) arithmetic
+ operations in the worst case [2].</p>
+ <p>The problem we address here is more general. Two of the authors,
+ together with Olivier Roques, have given in [1] the principles of a
+ method for generating words according to a given probability
+ distribution on the number of occurrences of letters. Suppose that
+ the language <i>L</i> is on the alphabet
+ <i>A</i>={<i>a<sub>1</sub></i>, <i>a<sub>2</sub></i>, &hellip;,
+ <i>a<sub>k</sub></i>}, and let <b>v</b>=(<i>v<sub>1</sub></i>,
+ <i>v<sub>2</sub></i>, &hellip;, <i>v<sub>k</sub></i>) a vector of
+ positive real number whose sum equals 1. The problem is to generate
+ random words of <i>L</i> of given length <i>n</i>, in such a way
+ that (i) for any <i>i</i>, the average proportion of letter
+ <i>a<sub>i</sub></i> in the words equals <i>v<sub>i</sub></i>
+ <sub>,</sub> (ii) any word has a positive probability to be
+ generated, and (iii) two words having the same distribution of
+ letters have the same probability to be generated. In [1], we
+ attack the problem by assigning to each letter a <i>weight</i>, and
+ defining the weight of a word as the product of the weights of its
+ letters. The generation algorithm is such that the probability of
+ any word is proportional to its weight. (The uniform generation
+ scheme is the particular case where all the weights are equal.) The
+ main difficulty is to determine the suitable weights in order to
+ get the desired distribution of letters. This is partially solved
+ in [1], by using a <i>generating series</i>
+ approach.&nbsp;&nbsp;</p>
+ <p><b>3&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>RNA secondary structures
+ generated with GenRGenS</b></p>
+ <p>GenRGenS (for <b>Gen</b>eration of <b>R</b>andom <b>Gen</b>omic
+ <b>S</b>equences) is a program which implements the concepts just
+ presented, and other more classical ones. Source and executable
+ files (in Java) can be freely downloaded at the following address:
+ <a href=
+ "http://www.lri.fr/~denise/GenRGenS">http://www.lri.fr/~denise/GenRGenS</a>.</p>
+ <p>Context-free grammars can describe a number of classical
+ constraints, as, for example, the presence of particular motifs in
+ sequences. They can also express long-range interactions, as
+ pairings in RNA. Secondary structures without pseudoknots can be
+ encoded by words of a context-free language [3,4] given by the
+ grammar: <i>M</i> &agrave; <i>aMbM</i> | <i>cM</i> | e. The
+ <i>a</i>&rsquo;s and <i>b</i>&rsquo;s code for the paired
+ nucleotides, the c&rsquo;s for the unpaired ones. In order to get
+ &ldquo;realistic&rdquo; random secondary structures, one can modify
+ this simple grammar and add some statistical parameters by
+ assigning weights to letters. As an example, the four structures of
+ Figure 1 obey to a simple variant of the above grammar. The first
+ two are generated uniformly, while the last two are subject to a
+ weight which reduces the average number of loops (and,
+ consequently, increases the length of each loop).</p>
+ <table cellpadding="0" cellspacing="0" align="left">
+ <tr>
+ <td width="65" height="2"></td></tr>
+ <tr>
+ <td><img width="396" height="143" src=
+ "image003.gif"></td></tr></table>
+ &nbsp;<br>
+ <br>
+ <br clear="all">
+  
+ <p align="center">Figure 1: Random RNA secondary structures
+ (generated with GenRGenS and drawn with RNAViz).</p>
+ <h1>References</h1>
+ <p>&nbsp;</p>
+ <p>[1] Denise, A., Roques, O. and Termier, M. 2000. Random
+ generation of words of context-free languages according to the
+ frequencies of letters. In Gardy, D. and Mokkadem, A., editors,
+ <i>Mathematics and Computer Science: Algorithms, Trees,
+ Combinatorics and Probabilities</i>. Trends in Mathematics,
+ Birkha&uuml;ser pp.113-125. Preliminary version available at
+ <a href=
+ "http://www.lri.fr/~denise/publications/NonUnifRandGen.ps">http://www.lri.fr/~denise/publications/NonUnifRandGen.ps</a></p>
+ <p>[2] Flajolet, Ph., Zimmermann, P. and Van Cutsem, B. 1994. A
+ calculus for the random generation of labeled combinatorial
+ structures. <i>Theoretical Computer Science</i> 132:1-35.</p>
+ <p>[3] Searls, D.B. Formal language theory and biological
+ macromolecules, 1999. <i>Series in Discrete Mathematics and
+ Theoretical Computer Science</i> 47:117-140.</p>
+ <p>[4] Vauchaussade de Chaumont, M. and Viennot, X.G 1985.
+ Enumeration of RNA&rsquo;s secondary structures by complexity. In
+ Capasso, D., Grosso, E. and Paven-Fontana, S.L., editors,
+ <i>Mathematics in Medicine and Biology</i>, <i>Lecture Notes in
+ Biomathematics</i>&nbsp; vol. 57 pp. 360-365.</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a> Laboratoire de
+ Recherche en Informatique (LRI), UMR CNRS 8623, b&acirc;t. 490,
+ Universit&eacute; Paris-Sud, F91405 Orsay cedex, France.
+ E&#8209;mail: [Alain.Denise, Yann.Ponty]@lri.fr</p></div>
+ <div id="ftn2">
+ <p><a href="#_ftnref2" name="_ftn2" title="">[2]</a> Institut de
+ G&eacute;n&eacute;tique et Microbiologie (IGM), UMR CNRS 8621,
+ b&acirc;t. 400, Universit&eacute; Paris-Sud, F91405 Orsay cedex,
+ France. E&#8209;mail: termier@igmors.u-psud.fr</p></div></div>
+ </body>
+ </html>

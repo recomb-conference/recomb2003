@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>111. 3D-Hit, Fast Structural Comparison of Proteins</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category04.html'>&lt;&lt;</a> <a href='/recombdb/category05.html'><b>Protein Structure</b> Overview</a> <a href='/recombdb/category06.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-05-110/'>&lt;&lt;</a> Poster 111 [ <a href='poster-05-111.pdf'>PDF</a> | <a href='poster-05-111.doc'>MSWORD</a> ] <a href='/recombdb/poster-05-112/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>111.&nbsp; 3D-Hit, Fast Structural Comparison of Proteins</h2>
+ <p align="center"><b>Dariusz Plewczy&#324;ski<a href="#_ftn1"
+    name="_ftnref1" title="">[1]</a>, Jakub Pa&#347;<a href="#_ftn2"
+    name="_ftnref2" title="">[2]</a>, Marcin von
+    Grotthuss<sup>2</sup>, Leszek Rychlewski<sup>2</sup></b></p>
+ <p><b>Keywords:</b> 3D-Hit, Protein Structure Comparison, Protein
+ Structure Hashing, LiveBench, ToolShop</p>
+ <p><b>Short Structured Abstract</b></p>
+ <p><b>&nbsp;</b></p>
+ <p><b>Summary:</b></p>
+ <p>3D-Hit is a fast scanning method for detecting structural
+ similarities between proteins. The algorithm is based on a hashing
+ function, which decomposes proteins into segments of 13 residues.
+ The scanning procedures start with assigning a set of similar
+ segments from database to each segment in the query protein. These
+ initial hits are expanded by two iterations of structural
+ superposition of larger segments of 99 and 299 residues. The method
+ generates an alignment for the query protein by concatenating
+ partial structural alignments.</p>
+ <p><b>&nbsp;</b></p>
+ <p><b>Availability:</b></p>
+ <p>3D-Hit is available as an http server at <a href=
+ "http://BioInfo.PL/3D-Hit/">http://BioInfo.PL/3D-Hit/</a> or as an
+ e-mail server at <a href=
+ "mailto:3dhit@cyborg.bioinfo.pl">3dhit@cyborg.bioinfo.pl</a>. The
+ best (user-friendly) access to the server is through the protein
+ structure analysis service at <a href=
+ "http://BioInfo.PL/Meta/pdb-test.pl">http://BioInfo.PL/Meta/pdb-test.pl</a>.The
+ program will be also incorporated into the Biodesigner package
+ (<a href=
+ "http://www.pirx.com/biodesigner/">http://www.pirx.com/biodesigner/</a>).</p>
+ <p><b>Contact:</b></p>
+ <p>Dariusz Plewczynski (<a href=
+ "mailto:darman@icm.edu.pl">darman@icm.edu.pl</a>)</p>
+ <p><b>&nbsp;</b></p>
+ <p><b>Supplementary information:</b></p>
+ <p><b>&nbsp;</b></p>
+ <p>3D-Hit was compared with DALI using the ToolShop server
+    (<a href="http://BioInfo.PL/ToolShop/">http://BioInfo.PL/ToolShop/</a>,
+    dataset: 4). 3D-Hit is coupled to the continuous online server
+    evaluation program LiveBench (<a href=
+    "http://BioInfo.PL/LiveBench/">http://BioInfo.PL/LiveBench/</a>),
+    as a reference server.</p>
+ <p><b>&nbsp;</b></p>
+ <p><b>Text:</b></p>
+ <p>Three dimensional structure of proteins is highly conserved [1]
+ during the evolution. The comparison between 3D structures makes it
+ possible to establish distant relationships, even between protein
+ families distinct in terms of sequence comparison alone. That is
+ why the structural alignment of proteins increase our understanding
+ of more distant evolutionary relationships [2]. The link between
+ structural classification and sequence families enable us to study
+ functions of various protein groups or fold classes (see the CATH
+ or SCOP structural classification of proteins). Structural
+ comparison is also extensively used in the experimental structure
+ determination process for detecting potential tracing shifts in
+ low-resolution models [3]. Intermediate conformations in folding
+ simulation can be quickly compared with known folds to find
+ structural classification of proteins.</p>
+ <p>Our search procedure enables the complete alignment of protein
+ pairs. This algorithm is able to find rapidly all structurally
+ related cousins for a query protein within templates database.
+ Post-processing of the structural alignment can be conducted
+ manually or using other, slower, but more accurate superposition
+ methods.</p>
+ <p>Our structure comparison server uses a database of 5000 proteins
+ collected from the PDB and clustered at 90% identity level. The
+ database update is repeated every week to accommodate new
+ structures appearing in the PDB.</p>
+ <p>The server was coupled to the ToolShop [4] structure prediction
+ evaluation program, which compares protein structure prediction
+ servers. The direct comparison of the DALI server with our server
+ was done on the evaluation set including 100 query proteins (easy
+ and hard targets). The number of correct models generated by both
+ servers for easy targets was very similar, however the final
+ alignment quality was better in the case of the DALI server. In
+ case of hard targets with the evaluation method used based on
+ MaxSub [5], our server gets better ratings in all categories,
+ especially in the specificity analysis. On the contrary different
+ results are in the case of two other evaluation methods: Touch [6]
+ and LGscore [7].</p>
+ <p>We conclude that structural comparison based on segments
+ similarity is comparable with the DALI server and represents an
+ interesting complement to current structure comparison programs.
+ Our algorithm is fast - it takes 1 minute standard PC (2 GHz) to
+ search for structural homologous for a query protein of 200aa in a
+ database of 5000 templates.</p>
+ <p><b>REFERENCES:</b></p>
+ <p>[1] Chothia,C., Lesk,A.M. (1986) The relation between the
+ divergence of sequence and structure in proteins, <i>EMBO J,</i>
+ &nbsp;<b>5,</b> 823-826.</p>
+ <p>[2] Pointing,C.P., Russel,R.B. (1995) Swaposins: circular
+ permutations within genes encoding saposin homologues, <i>Trends
+ Biochem Sci,</i> &nbsp;<b>20,</b> 179-180.</p>
+ <p>[3] Bujnicki,J.M., Rychlewski,L., Fischer,D., (2002)
+ Fold-recognition detects an error in the protein data bank,
+ <i>Bioinformatics</i>, <b>18</b>, 1391-1395.</p>
+ <p>[4] Rychlewski,L. (2001) ToolShop: prerelease inspections for
+ protein structure prediction servers, <i>Bioinformatics,</i>
+ &nbsp;<b>12,</b> 1240-1241.</p>
+ <p>[5] Siew,N., Elofsson,A., Rychlewski,L., Fischer,D. (2000)
+ MaxSub: an automated measure for the assessment of protein
+ structure prediction quality, <i>Bioinformatics,</i>&nbsp;
+ <b>16(9),</b> 776-85.</p>
+ <p>[6] Bujnicki,J.M., Elofsson,A., Fischer,D.,&nbsp; Rychlewski,L.
+ (2001) LiveBench-2: Large-scale automated evaluation of protein
+ structure prediction servers, <i>Proteins,</i> &nbsp;<b>45</b>
+ Suppl <b>5,</b> 184-191.</p>
+ <p>[7] Cristobal,S., Zemla,A., Fischer,D., Rychlewski,L.,
+ Elofsson,A. (2001) How can the accuracy of a protein model be
+ measured ?, <i>BMC Bioinformatics,</i> <b>&nbsp;2</b>, 5.</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a>
+ Interdisciplinary Center for Mathematical and Computational
+ Modeling, University of Warsaw, Pawinskiego Street 5a, 02-106
+ Warsaw, Poland, E-mail: <a href=
+ "mailto:darman@icm.edu.pl">darman@icm.edu.pl</a></p></div>
+ <div id="ftn2">
+ <p><a href="#_ftnref2" name="_ftn2" title="">[2]</a> Bioinformatics
+ Laboratory, BioInfoBank Institute, ul. Limanowskiego 24A, 60-744
+ Poznan, Poland</p></div></div>
+ </body>
+ </html>

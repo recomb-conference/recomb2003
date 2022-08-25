@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>23. Normalizing sequence alignment scores for composition bias</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-022/'>&lt;&lt;</a> Poster 023 [ <a href='poster-02-023.pdf'>PDF</a> | <a href='poster-02-023.tgz'>TeX</a> | <a href='poster-02-023.ps'>PostScript</a> ] <a href='/recombdb/poster-02-024/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>23. Normalizing sequence
+ alignment scores for composition bias<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Hilary S Booth<a name="footfnm1" href=
+ "#fnm1"><sup>1</sup></a><a name="footfnm2" href=
+ "#fnm2"><sup>2</sup></a><a name="footfnm3" href=
+ "#fnm3"><sup>3</sup></a>, John H Maindonald<a name="tex2html1"
+    href="#footfnm1"><sup>1</sup></a><a name="tex2html2" href=
+    "#footfnm3"><sup>3</sup></a>, Ole M Nielsen<a name="tex2html3"
+    href="#footfnm3"><sup>3</sup></a><a name="footfnm4" href=
+    "#fnm4"><sup>4</sup></a>, Susan R Wilson<a name="tex2html4"
+    href="#footfnm1"><sup>1</sup></a><a name="tex2html5" href=
+    "#footfnm3"><sup>3</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> sequence analysis, composition
+ bias</font></p>
+ <p><font size="-1">We describe a normalization procedure for the
+ score of a pairwise alignment of two biological sequences and an
+ algorithm (POZITIVE) that finds the normalized score efficiently.
+ Designed to overcome the bias due to the composition of the
+ alignment, the normalized score (which we call the POZ score)
+ measures the distance (in standard deviations) between
+ Smith-Waterman (S-W) score of the aligned letters and the mean
+ value of all other S-W scores obtained by a permutation of either
+ sequence. Unlike the usual Z-score calculation used in sequence
+ alignment, the mean and standard deviation are taken without
+ realigning the permuted sequences. We demonstrate that calculating
+ the mean and standard deviation in this way enables us to calculate
+ exactly and in two steps, the first being <img width="44"
+      height="32" align="middle" border="0" src="img1.png" alt=
+      "$O(N)$"> time, where <img width="19" height="14" align=
+      "bottom" border="0" src="img2.png" alt="$N$"> is the length of
+      the sequence, the second in a fixed number of calculations
+      i.e. in <img width="37" height="32" align="middle" border="0"
+      src="img3.png" alt="$O(1)$"> time.</font></p>
+ <p><font size="-1">The score is tested against the aravinde yeast
+ database of true and false positives available from NCBI
+    [<a href="#sch1">1</a>]. We characterize those
+    protein sequences that benefit from the use of the normalized
+    score, in terms of the gaps in the alignments and the
+    composition of the aligned sequences. We demonstrate the protein
+    queries for which POZITIVE increases the number of true positive
+    matches as a function of the false positive matches measured
+    using standard ROC curves.</font></p>
+ <p><font size="-1">Z-scores are usually calculated by taking the
+ mean and standard deviation over either a random sample taken from
+ the set of all permutations of the query sequence [<a href=
+ "#com2">2</a>], or a sample from a standard
+ database [<a href="#pea">3</a>]. The mean is
+ calculated as the mean score of the query sequence aligned with all
+ sequences from the sample set. The standard deviation is taken over
+ the same set of realigned sequence pairs. The Z-score is defined
+ as</font></p>
+ <div align="right">
+ <table width="100%" align="center">
+ <tr valign="middle">
+ <td align="center" nowrap><img width="351" height="28" border="0"
+ src="img4.png" alt=
+ "\begin{displaymath} Z(A,B) =\left( S(A,B) - mean \right) / standard \;\; deviation \end{displaymath}">
+ </td>
+ <td width="10" align="right">(1)</td></tr></table></div>
+ <br clear="all">
+  <font size="-1">where <img width="59" height="32" align="middle"
+ border="0" src="img5.png" alt="$S(A,B)$"> is the Smith-Waterman
+ (S-W) score between two sequences <img width="16" height="14"
+      align="bottom" border="0" src="img6.png" alt="$A$"> and
+      <img width="17" height="14" align="bottom" border="0" src=
+      "img7.png" alt="$B$"> and <img width="60" height="32" align=
+      "middle" border="0" src="img8.png" alt="$Z(A,B)$"> is the
+      Z-score. The S-W score of a local alignment between two
+      proteins is found using standard dynamic programming [<a href=
+      "#smi1">4</a>] [<a href=
+      "#wat">5</a>] techniques.</font> 
+ <p><font size="-1">Say we have aligned two sequences
+      <img width="16" height="14" align="bottom" border="0" src=
+      "img6.png" alt="$A$"> and <img width="17" height="14" align=
+      "bottom" border="0" src="img7.png" alt="$B$"> of different
+      lengths. Some gaps were left in the alignment and these
+      resulted in gap penalties which contributed to the S-W score.
+      Now let us consider the subsequences <em>consisting only of
+      the matched letters in the above alignment</em>. In other
+      words, we ignore all letters which were aligned to a gap. The
+      subsequences will be of equal length <img width="19" height=
+      "14" align="bottom" border="0" src="img2.png" alt="$N$"> say.
+      We will refer to the two subsequences as <img width="16"
+      height="17" align="bottom" border="0" src="img9.png" alt=
+      "$\overline{A}$"> and <img width="17" height="17" align=
+      "bottom" border="0" src="img10.png" alt=
+      "$\overline{B}$">.</font></p>
+ <div align="center">
+ <img width="261" height="46" border="0" src="img11.png" alt=
+ "\begin{displaymath} \begin{array}{cccccc} \overline{A} &amp; = (A_{i_1}, &amp; A_{i_... ..._1}, &amp; B_{j_2}, &amp; B_{j_3}, &amp; \ldots, &amp; B_{j_N}) \end{array} \end{displaymath}">
+ </div>
+ <br clear="all">
+  <font size="-1">where 
+ <img width="142" height="32" align="middle" border="0" src=
+ "img12.png" alt="$i_k, j_l \in (1,2,\ldots,20)$">. <img width="21"
+ height="30" align="middle" border="0" src="img13.png" alt=
+ "$A_{i}$"> and <img width="23" height="30" align="middle"
+      border="0" src="img14.png" alt="$B_{j}$"> are letters in the
+      amino acid alphabet.</font> 
+ <p><font size="-1">If we used a substitution matrix 
+ <img width="38" height="32" align="middle" border="0" src=
+ "img15.png" alt="$\left[ m_{ij} \right]$"> to align sequences
+ <img width="16" height="14" align="bottom" border="0" src=
+ "img6.png" alt="$A$"> and <img width="17" height="14" align=
+ "bottom" border="0" src="img7.png" alt="$B$">, then the S-W score,
+ <img width="59" height="32" align="middle" border="0" src=
+ "img5.png" alt="$S(A,B)$"> is essentially the sum of the score of
+ each of the pairs 
+ <img width="73" height="32" align="middle" border="0" src=
+ "img16.png" alt="$(A_{i_k},B_{j_k})$"> corresponding to the matrix
+ entry 
+ <img width="42" height="29" align="middle" border="0" src=
+ "img17.png" alt="$m_{{i_k}{j_k}}$"> with the gap penalties
+ subtracted: 
+ <img width="270" height="35" align="middle" border="0" src=
+ "img18.png" alt=
+ "$S(A,B) = \Sigma_{k=1}^{N} m_{{i_k}{j_k}} - \mbox{gap penalites}.$">
+  We now calculate the mean and standard deviation of the sum 
+ 
+ <img width="78" height="35" align="middle" border="0" src=
+ "img19.png" alt="$\Sigma_{k=1}^{N} m_{{i_k}{j_k}}$"> for all
+ possible permutations of <img width="16" height="17" align="bottom"
+ border="0" src="img9.png" alt="$\overline{A}$"> or <img width="17"
+ height="17" align="bottom" border="0" src="img10.png" alt=
+ "$\overline{B}$">. (Permuting either sequence will result in the
+ same values.)</font></p>
+ <p><font size="-1">The POZ-score normalizes the S-W score with the
+ (ungapped) scores of all permutations of sequence <img width="16"
+ height="17" align="bottom" border="0" src="img9.png" alt=
+ "$\overline{A}$">. It is defined as</font></p>
+ <div align="right">
+ <table width="100%" align="center">
+ <tr valign="middle">
+ <td align="center" nowrap><img width="279" height="29" border="0"
+ src="img20.png" alt=
+ "\begin{displaymath} POZ(A,B) =\left( S(A,B) - \mu_{perm} \right) / \sigma_{perm} \end{displaymath}">
+ </td>
+ <td width="10" align="right">(2)</td></tr></table></div>
+ <br clear="all">
+  <font size="-1">where <img width="45" height="29" align="middle"
+ border="0" src="img21.png" alt="$\mu_{perm}$"> is the mean and
+ <img width="44" height="29" align="middle" border="0" src=
+ "img22.png" alt="$\sigma_{perm}$"> is the standard deviation of the
+ scores of all permutations. The POZITIVE algorithm calculates
+ <img width="45" height="29" align="middle" border="0" src=
+ "img21.png" alt="$\mu_{perm}$"> and <img width="44" height="29"
+ align="middle" border="0" src="img22.png" alt="$\sigma_{perm}$">
+ efficiently and returns <img width="85" height="32" align="middle"
+ border="0" src="img23.png" alt="$POZ(A,B)$">.</font> 
+ <p><font size="-1">Unlike the usual Z-score calculation used in
+ sequence alignment [<a href="#com2">2</a>] both
+ the mean and standard deviation are taken <em>without realigning
+ the permuted sequences</em>. Calculating the mean and standard
+ deviation in this way enables us to calculate exactly and in two
+ steps, the first being <img width="44" height="32" align="middle"
+ border="0" src="img1.png" alt="$O(N)$"> time, where <img width="19"
+      height="14" align="bottom" border="0" src="img2.png" alt=
+      "$N$"> is the length of the sequence, the second in a fixed
+      number of calculations i.e. in <img width="37" height="32"
+      align="middle" border="0" src="img3.png" alt="$O(1)$">
+      time.</font></p>
+ <p><font size="-1">Some protein sequences in the aravinde dataset
+ [<a href="#sch1">1</a>] benefit from this
+ normalization procedure (see Figure 1 for an example). Other
+ queries are not improved. The poster shows the outcome of sorting
+ all of the aravinde proteins according to the POZITIVE
+ score.</font></p>
+ <div align="center"><a name="80"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure:</strong> <font size="-1">A
+ ROC curve showing an example of one of the queries (CYCLIN) whose
+ ROC100 value was improved by using POZITIVE (left) compared with
+ the S-W score (right).</font></caption>
+ <tr>
+ <td><img width="244" height="356" border="0" src="img24.png"
+      alt="\begin{figure} \epsfxsize =0.47\textwidth \epsfbox{poster-02-023-fig02.eps} \epsfxsize =0.47\textwidth \epsfbox{poster-02-023-fig01.eps} \end{figure}">
+ </td></tr></table></div>
+ <p></p>
+ <h2><a name="SECTION00010000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="sch1">1</a></dt>
+ <dd>Sch&auml;ffer, A.&nbsp;A., Aravind, L., Madden, T.&nbsp;L.,
+ Shavirin, S., Spouge, J.&nbsp;L., Wolf, Y.&nbsp;I. , Koonin,
+ E.&nbsp;V., &amp; Altschul, S.&nbsp;F. 2001. Improving the accuracy
+ of PSI-BLAST protein database searches with composition-based
+ statistics and other refinements. <em>Nucl. Acids Res.</em>
+ 29:2994-3005.</dd>
+ <dt><a name="com2">2</a></dt>
+ <dd>Comet J.&nbsp;P. and Bacro J.&nbsp;N. 2000. Sequence alignment:
+ as approximation law for the Z-value with applications to databank
+ scanning. <em>Computers and Chemistry</em> 25:401-410.</dd>
+ <dt><a name="pea">3</a></dt>
+ <dd>Pearson W.&nbsp;R. and Lipman D.&nbsp;J. 1988. Improved tools
+ for biological sequence comparison <i>Proc. Natl. Acad. Sci.
+ USA</i> 85:2444-2448.</dd>
+ <dt><a name="smi1">4</a></dt>
+ <dd>Smith T.&nbsp;F. and Waterman M.&nbsp;S. 1981. Identification
+ of common molecular subsequences <i>J. Mol.Biol.</i>
+ 147:195-197.</dd>
+ <dt><a name="wat">5</a></dt>
+ <dd>Waterman M.&nbsp;S. and Vingron M. 1994. Sequence comparison
+ significance and Poisson approximation. <i>Statistical Science</i>
+ 9:367-381.</dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="fnm1">... Booth</a><a href=
+ "#footfnm1"><sup>1</sup></a></dt>
+ <dd>Centre for Bioinformation Science (CBiS), Australian National
+ University (ANU) E-mail: 
+ <div align="center">
+ <b><tt>Hilary.Booth@anu.edu.au</tt></b></div></dd>
+ <dt><a name="fnm2">...1</a><a href=
+ "#footfnm2"><sup>2</sup></a></dt>
+ <dd>John Curtin School of Medical Research (JCSMR), ANU</dd>
+ <dt><a name="fnm3">...2</a><a href=
+ "#footfnm3"><sup>3</sup></a></dt>
+ <dd>Mathematical Sciences Institute (MSI), ANU</dd>
+ <dt><a name="fnm4">...3</a><a href=
+ "#footfnm4"><sup>4</sup></a></dt>
+ <dd>Australian Partnership for Advanced Computing (APAC)</dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

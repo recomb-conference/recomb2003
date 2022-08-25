@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>49. Using Hidden Markov Models and Support Vector Machines to Determine the G-Protein specificity of a given G-Protein Coupled Receptor (GPCR)</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-048/'>&lt;&lt;</a> Poster 049 [ <a href='poster-02-049.pdf'>PDF</a> | <a href='poster-02-049.doc'>MSWORD</a> ] <a href='/recombdb/poster-02-051/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>49. Using Hidden Markov Models and Support Vector Machines to
+ Determine the G-Protein specificity of a given G-Protein Coupled
+ Receptor (GPCR)</h2>
+ <p align="center"><b>Orkun S. Soyer<a href="#_ftn1" name="_ftnref1"
+ title="">[1]</a>, Bin Qian<a href="#_ftn2" name="_ftnref2"
+    title="">[2]</a>, Richard R. Neubig<a href="#_ftn3" name=
+    "_ftnref3" title="">[3]</a>, Richard A. Goldstein<a href=
+    "#_ftn4" name="_ftnref4" title="">[4]</a></b></p>
+ <p><b>Keywords:</b> Hidden Markov Models, Support Vector Machines,
+ classification, G-Protein coupled receptors, G-Proteins, evolution,
+ sequence analysis.</p>
+ <p><b>1&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Introduction</b></p>
+ <p>G-Protein Coupled Receptors (GPCRs) make up one of the largest
+ protein superfamilies. Found in a range of species from yeast to
+ mammals, these membrane embedded proteins facilitate communication
+ between the cell and its environment. This essential function makes
+ them a key figure in many diseases, including Alzheimer&rsquo;s,
+ anxiety, depression, and Parkinson&rsquo;s.</p>
+ <p>As the name of the superfamily suggests, GPCRs function through
+ the intermediary of a heterotrimeric guanine nucleotide-binding
+ protein (G-Protein). Upon binding a signaling entity (ligand) on
+ its outer surface, the receptor activates the G-Protein, which
+ dissociates into its subunits, allowing them to react with
+ downstream effectors. G-proteins constitute another large protein
+ family that are divided into four subfamilies based on amino acid
+ similarity of their a subunits; G<sub>i/o</sub>, G<sub>q/11</sub>,
+ G<sub>s</sub>, and G<sub>12</sub>. The difference between members
+ of each subfamily lies in the identity of downstream effectors they
+ interact with. Acting on such different effectors each family of
+ G-Protein allows the receptors to initiate diverse set of
+ physiological responses. Thus it is necessary to find the identity
+ of the G-Protein a receptor couples to, in order to understand its
+ role on cell physiology.</p>
+ <p>Here we evaluate the application of three different
+ computational methods in determining the G-Protein specificity of a
+ given receptor, using its primary sequence. First we use two
+ methods from the alignment dependent approach based on Hidden
+ Markov Models. Second we use an alignment independent method
+ coupled with Support Vector Machines. Used with intracellular
+ segments of receptor sequences, both approaches achieve high levels
+ of success in determining the G-Protein specificity of receptors.
+ The results show that the alignment dependent HMM methods are
+ robust towards the composition of training and test sets, proving
+ their capacity to provide a more reliable model for G-Protein
+ specificity. The SVM based method is less successful in this task,
+ mainly due to problems associated with choosing alignment
+ independent features correlated with G-Protein specificity.</p>
+ <p><b>2&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Software and files</b></p>
+ <p>In order to represent an alignment dependent approach we used
+ two HMM based methods; HMMer [1], and T-HMM, an HMM that
+ incorporates phylogenetic relations among proteins into model
+ creation process [2]. For an alignment independent method we make
+ use of the general idea of transforming protein sequences into
+ features, independent of their length. Such transformation allows
+ comparison of proteins without aligning their sequences. The
+ transformed sequences could then be analyzed and classified using
+ general statistical tools such as principal component analysis.
+ Here we use an SVM algorithm to carry the classification of derived
+ features.</p>
+ <p>This analysis is constrained on receptors from aminergic and
+ peptide subfamilies, which make up the most studied group of GPCRs.
+ The sequences are derived from March 2002 release of GPCRdb, a GPCR
+ specific database [3]. Those sequences for which there is no
+ coupling information, or dual coupling information reported in the
+ latest TiPS Nomenclature Supplement are eliminated. This procedure
+ resulted in 470 sequences, which are labeled according to their
+ G-Protein coupling specificity.&nbsp; In order to find the
+ intracellular segments of these sequences we used THMM, a web-based
+ HMM for predicting the location of transmembrane helices in
+ membrane proteins. We eliminated receptors that are predicted to
+ contain more or less than 7 transmembrane helices by this program,
+ resulting in 418 sequences for the analysis. The final set of
+ sequences are labeled according to their G-Protein specificity and
+ partitioned in two, to be used as test and training sets in a
+ &ldquo;two-fold-cross-validation&rdquo; format.</p>
+ <p>Grouping receptors in training set according to their G-Protein
+ specificity, we used their alignments to create a model with T-HMM
+ and HMMer. A test sequence is then scored against each model and
+ the highest score determined its G-Protein specificity. For the SVM
+ based application we converted both training and test sequences
+ into sequence-extracted features. These were the lagged cross
+ correlation among three amino acid z-scales, the average of the
+ three z-scales over the sequence, and the length of the
+ intracellular segment used. Once every sequence is transformed into
+ these features an SVM model is trained on the training set and used
+ to classify the test sequences. The SVM classification is carried
+ using SVMTorch, publicly available SVM software [4].</p>
+ <p><b>3&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Figures and tables</b></p>
+ <p>We carried the above-explained analysis, using different
+ partition techniques on the original data set. &ldquo;Even-Odd
+ Split&rdquo; results in homogeneous distribution of subfamily
+ members among training and test sets, while the &ldquo;Random
+ Split&rdquo; could result in a heterogeneous distribution. Finally
+ the &ldquo;Subset Exclusion&rdquo; method specifically excludes
+ certain subfamilies from the training set, to be used as test set.
+ These different partitioning procedures resulted in increasingly
+ difficult training and test cases, challenging the performance of
+ each method. The results of these analyses are summarized in Table
+ 1.</p>
+ <div align="center">
+ <table border="1" cellspacing="0" cellpadding="0">
+ <tr>
+ <td width="107"></td>
+ <td width="114">
+ <p align="center">&ldquo;Even-Odd Split&rdquo;</p></td>
+ <td width="90">
+ <p align="center">&ldquo;Random Split&rdquo;</p></td>
+ <td width="117">
+ <p align="center">&ldquo;Subset Exclusion&rdquo;</p></td></tr>
+ <tr>
+ <td width="107">
+ <p align="center">Features with SVM</p></td>
+ <td width="114">
+ <p align="center">99%</p></td>
+ <td width="90">
+ <p align="center">91%</p></td>
+ <td width="117">
+ <p align="center">54%</p></td></tr>
+ <tr>
+ <td width="107">
+ <p align="center">HMMer</p></td>
+ <td width="114">
+ <p align="center">88%</p></td>
+ <td width="90">
+ <p align="center">90%</p></td>
+ <td width="117">
+ <p align="center">66%</p></td></tr>
+ <tr>
+ <td width="107">
+ <p align="center">T-HMM</p></td>
+ <td width="114">
+ <p align="center">99%</p></td>
+ <td width="90">
+ <p align="center">99%</p></td>
+ <td width="117">
+ <p align="center">90%</p></td></tr></table></div>
+ <p align="center">Table 1:&nbsp; Success percentage of different
+ methods on different test cases.</p>
+ <p><b>4&nbsp; References and bibliography</b></p>
+ <p>[1] Eddy S.R. (1998). Profile Hidden Markov Models.
+ <i>Bioinformatics</i> 14, 755-763.</p>
+ <p>[2] Qian B. &amp; Goldstein R.A. (2002). Detecting Distant
+ Homologs Using Phylogenetic Tree Based HMMs. <i>Proteins:
+ Structure, Function, and Genetics</i>.</p>
+ <p>[3] Horn F, Weare J, Beukers MW, Horsch S, Bairoch A, Chen W,
+ Edvardsen O, Campagne F &amp; Vriend G. (1998). GPCRDB: an
+ information system for G protein coupled receptors. <i>Nucleic Acid
+ Research</i> 26, 275-279</p>
+ <p>[4] Collobert R. &amp; Bengio S. (2001). SVMTorch: Support
+ Vector Machines for Large-Scale Regression Problems. <i>Journal of
+ Machine Learning Research</i> 1, 143-160.</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a> Department of
+ Chemistry, University of Michigan, MI, USA. E&#8209;mail:
+ osoyer@umich.edu</p></div>
+ <div id="ftn2">
+ <p><a href="#_ftnref2" name="_ftn2" title="">[2]</a> Biophysics
+ Research Division, University of Michigan, MI, USA. E-mail:
+ bqian@umich.edu</p></div>
+ <div id="ftn3">
+ <p><a href="#_ftnref3" name="_ftn3" title="">[3]</a> Dept. of
+ Pharmacology, University of Michigan, MI, USA. E-mail:
+ rneubig@umich.edu</p></div>
+ <div id="ftn4">
+ <p><a href="#_ftnref4" name="_ftn4" title="">[4]</a> Siena Biotech,
+ via Fiorentina 1, 53100, Siena, Italy. E-mail:
+ rgoldstein@sienabiotech.it</p></div></div>
+ </body>
+ </html>

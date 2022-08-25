@@ -1,0 +1,43 @@
+<HTML>
+<HEAD>
+<TITLE>LaTeX Example Figure</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<UL>
+<FONT FACE="HELVETICA" SIZE="+3">
+LaTeX Example Figure
+</FONT><P>
+
+<PRE>
+
+\begin{figure}[h]
+\begin{center}
+\footnotesize
+\begin{picture}(300,60)
+\put(30,20){\circle{40}}
+\thicklines
+\qbezier(36,40)(45,38)(50,26)
+\put(120,20){\vector(1,0){50}}
+\thinlines
+\put(60,35){turn of length $f$}
+\put(60,35){\vector(-2,-1){10}}
+\put(20,45){\line(1,-2){5}}
+\put(20,45){\line(1,-2){5}}
+\put(28,45){$d$}
+\put(40,33){\line(1,2){5}}
+\put(240,20){\circle{40}}
+\put(230,45){\line(1,-2){5}}
+\put(255,25){\line(1,0){10}}
+\put(248,41){$d'$}
+\end{picture}
+\end{center}
+\caption{\footnotesize Effect of turns of length $f$ on the distance from $d$ to
+$d'$}
+\label{circles}
+\end{figure} 
+
+</PRE>
+</BODY>
+</HTML>
+

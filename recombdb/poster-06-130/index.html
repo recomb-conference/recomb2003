@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>130. Simulation Model for Gene Expression Data</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category05.html'>&lt;&lt;</a> <a href='/recombdb/category06.html'><b>Gene Expression</b> Overview</a> <a href='/recombdb/category07.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-06-129/'>&lt;&lt;</a> Poster 130 [ <a href='poster-06-130.pdf'>PDF</a> | <a href='poster-06-130.tgz'>TeX</a> | <a href='poster-06-130.ps'>PostScript</a> ] <a href='/recombdb/poster-06-131/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>130. Simulation Model for
+ Gene Expression Data<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Mikko Katajamaa and Jaakko
+ Hollm&eacute;n<a name="tex2html1" href=
+ "#foot93"><sup>1</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> data analysis, gene expression
+ data, simulation model, test bench</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+ <p><font size="-1">Microarray technology is widely used to yield
+ thousands of simultaneous measurements. The measurement data must
+ be analyzed in order to make inferences about the phenomenon under
+ interest. However, the experiments are often designed with the
+ needs of biological and medical sciences in view and only a few
+ sample points are available. This is also caused by the high cost
+ of conducting additional measurements. Therefore, it is utterly
+ important to understand the limitations of the measurement process,
+ specifically with regard to the measurement noise. For these
+ reasons, we have developed a simulation model of the cDNA
+ microarray measurement process [<a href=
+ "#Katajamaa2003">1</a>]. The simulation model
+ replaces the subsequent early stages of the measurement process
+ preceding data analysis and uses numerical user-defined protein
+ production levels instead of the source tissue sample. With the
+ simulation model it is possible to produce an artificial data set
+ of desired size under measurement conditions controlled with a set
+ of adjustable parameters. Currently, systematic and random noise
+ components can be controlled.&nbsp;</font></p>
+ <h1><a name="SECTION00020000000000000000"><font size=
+ "+1">Simulation model for creating artificial microarray
+ data</font></a></h1>
+ <p><font size="-1">The input to the simulation model comprises of
+ two source profiles, which are vectors of user-defined protein
+ levels. The model itself consists of three successive layers, each
+ of which corresponds to a central stage in the microarray
+ measurement process. The profiles enter the layers in order; each
+ layer disturbs the profile independently of the other layers. The
+ last layer produces an intensity image as an output.</font></p>
+ <div align="center">
+ <div align="center"><a name="26"></a> 
+ <table cellpadding="3" border="1">
+ <caption><strong>Table:</strong> <font size="-1">The simulation
+ model contains three layers. Types of disturbances and the
+ parameters for controlling the disturbances are listed in the
+ middle and right column of the table,
+ respectively.</font></caption>
+ <tr>
+ <td align="left" valign="top" width="91"><font size="-1">Layer
+ name</font></td>
+ <td align="left" valign="top" width="130"><font size="-1">Type of
+ disturbance</font></td>
+ <td align="left" valign="top" width="91"><font size="-1">Model
+ Parameter</font></td></tr>
+ <tr>
+ <td align="left" valign="top" width="91"><font size="-1">Layer for
+ biochemical noise</font></td>
+ <td align="left" valign="top" width="130"><font size=
+ "-1">Multiplicative noise. Picked up independently for every value
+ in both profiles.</font></td>
+ <td align="left" valign="top" width="91"><font size=
+ "-1">Multiplicative noise variance 
+ <img width="21" height="34" align="middle" border="0" src=
+ "img1.png" alt="$\sigma_{1}^{2}$"></font></td></tr>
+ <tr>
+ <td align="left" valign="top" width="91"><font size="-1">Layer for
+ hybridization distortion</font></td>
+ <td align="left" valign="top" width="130"><font size=
+ "-1">Non-linear mapping. Same type of mapping for both profiles,
+ but different slope.</font></td>
+ <td align="left" valign="top" width="91"><font size="-1">Maximum
+ departure from linear mapping <img width="39" height="29"
+      align="middle" border="0" src="img2.png" alt=
+      "$a_{max}$"></font></td></tr>
+ <tr>
+ <td align="left" valign="top" width="91"><font size="-1">Layer for
+ scanning noise</font></td>
+ <td align="left" valign="top" width="130"><font size="-1">Additive
+ noise. Picked up independently for every pixel on both color
+ channels of intensity image.</font></td>
+ <td align="left" valign="top" width="91"><font size="-1">Additive
+ noise variance 
+ <img width="21" height="34" align="middle" border="0" src=
+ "img3.png" alt="$\sigma_{3}^{2}$"></font></td></tr></table></div>
+ <a name="modellayers"></a></div>
+ <br>
+   
+ <div align="center"><a name="fig:sirut"></a><a name="44"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure:</strong> <font size=
+ "-1">Three intensity images created by the simulation model with
+ different parameter settings. The left image contains no noise, and
+ the center and right images contain intermediate and strong levels
+ of noise, respectively.</font></caption>
+ <tr>
+ <td>
+ <div align="center">
+ [width=0.8]poster-06-130-fig01.eps</div></td></tr></table></div>
+ <h1><a name="SECTION00030000000000000000"><font size="+1">Test
+ bench for data analysis methods</font></a></h1>
+ <p><font size="-1">The simulation model is a central part of a test
+ bench framework (see Figure&nbsp;<a href=
+ "#testbenchframework">2</a>), which can be used for testing the
+ data preprocessing and data analysis methods for the cDNA
+ microarray data. As already described, the simulation model
+ distorts the ideal protein levels defined by the user, and the
+ results from the model are fed to the data analysis method. It is
+ possible to verify the performance of a data analysis method by
+ comparing the results of analyzing the original, ideal data and the
+ data distorted by the simulator.</font></p>
+ <div align="center"><a name="testbenchframework"></a><a name=
+ "78"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure:</strong> <font size=
+ "-1">User-defined source profiles enter the simulation model, which
+ distorts the profiles and produces an intensity image. The rest of
+ the process follows the usual steps in the preprocessing and data
+ analysis process.</font></caption>
+ <tr>
+ <td><img width="594" height="66" border="0" src="img4.png"
+      alt="\begin{figure} \begin{center} \footnotesize \begin{picture}(370,40) \t... ...2){\makebox(52,20)[t]{results}} \end{picture} \end{center} \end{figure}">
+ </td></tr></table></div>
+   
+ <p><font size="-1">The components following the simulation model
+ should be provided by the user. They are not included in the
+ simulation model itself, to enable testing different
+ implementations for those components. However, if one is interested
+ in testing only a new data analysis algorithm, for example, it is
+ not necessary to implement all other components. For instance, it
+ is possible to apply a third-party image analysis software, or to
+ experiment with advanced algorithms for image analysis [<a href=
+ "#Ruosaari2002">2</a>]. We have carried out
+ preliminary experiments with the test bench in gene ranking and
+ patient profile clustering tasks with varying noise levels
+    [<a href="#Katajamaa2003">1</a>].</font></p>
+ <p></p>
+ <h2><a name="SECTION00040000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="Katajamaa2003">1</a></dt>
+ <dd>Mikko Katajamaa.<br>
+ <em>Simulation Model for Exploring Variations in the gene
+ Expression Data and its Analysis</em>.<br>
+ Manuscript for a Master's thesis, 2003</dd>
+ <dt><a name="Ruosaari2002">2</a></dt>
+ <dd>Salla Ruosaari and Jaakko Hollm&eacute;n.<br>
+ Image analysis for detecting faulty spots from microarray images.
+ <em>Proceedings of the 5th International Conference on Discovery
+ Science (DS 2002)</em>, volume 2534 of <em>Lecture Notes in
+ Computer Science</em>, pages 259-266. Springer-Verlag,
+ 2002.</dd></dl>
+  
+ <p><br></p>
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot93">...en</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Helsinki University of Technology, Laboratory of Computer and
+ Information Science, P.O. Box 5400, FIN-02015 HUT, Finland. e-mail:
+ 
+ <div align="center">
+ <b><tt>Jaakko.Hollmen@hut.fi</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

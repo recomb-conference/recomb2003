@@ -1,0 +1,229 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>31. Haplotype Inference by Pure Parsimony</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-029/'>&lt;&lt;</a> Poster 031 [ <a href='poster-02-031.pdf'>PDF</a> | <a href='poster-02-031.tgz'>TeX</a> | <a href='poster-02-031.ps'>PostScript</a> ] <a href='/recombdb/poster-02-032/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>31. Haplotype Inference by
+ Pure Parsimony<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Dan Gusfield<a name="tex2html1" href=
+ "#foot53"><sup>1</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> haplotype inference, genotypes,
+ SNPs, parsimony, integer programming</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+  <font size="-1">Progress on population-scale genomics has focused
+ on the acquisition and use of SNP's and SNP-haplotypes.
+ Consequently, the next high-priority phase of human genomics will
+ involve the development of a full <i>Haplotype Map</i> of the human
+ genome [<a href="#HEL2001">2</a>]. It will be
+ used in large-scale screens of populations to associate specific
+ SNP-haplotypes with specific complex genetic-influenced diseases.
+ Building a Haplotype Map of the human genome has become a central
+ NIH promoted goal [<a href=
+ "#HEL2001">2</a>,<a href=
+ "#NIHWWW">4</a>]. A critical, perhaps dominating,
+ problem in all such efforts is the determination of large-scale
+ SNP-haplotypes from raw genotype SNP data.</font> 
+ <p><font size="-1">Abstractly, for a population of <img width="14"
+ height="13" align="bottom" border="0" src="img1.png" alt="$n$">
+ individuals, input to the haplotyping problem (HI) consists of
+ <img width="14" height="13" align="bottom" border="0" src=
+ "img1.png" alt="$n$"> <i>genotype</i> vectors, each of length
+ <img width="18" height="13" align="bottom" border="0" src=
+ "img2.png" alt="$m$">, where each value in the vector is either
+ 0,1, or 2. Each position in a vector is associated with a site of
+ interest on the chromosome. The position in the genotype vector has
+ a value of 0 or 1 if the associated chromosome site has that state
+ on both of the two copies (it is a <i>homozygous</i> site), and has
+ a value of 2 otherwise (the chromosome site is
+ <i>hetrozygous</i>).</font></p>
+ <p><font size="-1">Given an input set of <img width="14"
+      height="13" align="bottom" border="0" src="img1.png" alt=
+      "$n$"> genotype vectors, a <i>solution</i> to the <i>Haplotype
+      Inference (HI) Problem</i> is a set of <img width="14" height=
+      "13" align="bottom" border="0" src="img1.png" alt="$n$"> pairs
+      of binary vectors, one pair for each genotype. For any
+      genotype <img width="12" height="29" align="middle" border="0"
+      src="img3.png" alt="$g$">, the associated binary vectors
+      <img width="41" height="29" align="middle" border="0" src=
+      "img4.png" alt="$v_1, v_2$"> must both have value 0 (or 1) at
+      any position where <img width="12" height="29" align="middle"
+      border="0" src="img3.png" alt="$g$"> has value 0 (or 1); but
+      for any position where <img width="12" height="29" align=
+      "middle" border="0" src="img3.png" alt="$g$"> has value 2,
+      exactly one of <img width="41" height="29" align="middle"
+      border="0" src="img4.png" alt="$v_1, v_2$"> must have value 0,
+      while the other has value 1. That is, <img width="41" height=
+      "29" align="middle" border="0" src="img4.png" alt=
+      "$v_1, v_2$"> must be a feasible ``resolution" of <img width=
+      "12" height="29" align="middle" border="0" src="img3.png" alt=
+      "$g$"> into two haplotypes that could explain how <img width=
+      "12" height="29" align="middle" border="0" src="img3.png" alt=
+      "$g$"> was created. Hence, for an individual with <img width=
+      "13" height="14" align="bottom" border="0" src="img5.png" alt=
+      "$k$"> hetrozygous sites there are <img width="36" height="17"
+      align="bottom" border="0" src="img6.png" alt="$2^{k-1}$">
+      haplotype pairs that can resolve it. Haplotype inference by
+      computer would be impossible without the implicit or explicit
+      use of some genetic model, either to assess the biological
+      fidelity of any proposed solution, or to guide the algorithm
+      in constructing a solution.</font></p>
+ <h1><a name="SECTION00020000000000000000"><font size="+1">The
+ Pure-Parsimony-criteria</font></a></h1>
+ <p><font size="-1">One approach to the HI problem that is often
+ mentioned in the literature is called here the
+ <i>Pure-Parsimony</i> approach<a name="tex2html2" href=
+ "#foot54"><sup>2</sup></a>: Find a solution to the HI problem that
+ <i>minimizes</i> the total number of <i>distinct</i> haplotypes
+ used. For example, consider the set of genotypes: 02120, 22110, and
+ 20120. There are HI solutions for this example that use six
+ distinct haplotypes, but the solution 00100, 01110; 01110, 10110;
+ 00100, 10110, for the three genotype vectors respectively, uses
+ only the three distinct haplotypes 00100, 01110, and
+ 10110.</font></p>
+ <p><font size="-1">The parsimony criteria reflects the fact that in
+ populations, the number of observed distinct haplotypes is vastly
+ smaller than the number of combinatorially possible haplotypes, and
+ this is also expected from population genetics theory. Moreover,
+ the parsimony criteria is at the heart of several, more complex,
+ computational methods for haplotype inference. For example, Clark's
+ method is often interpreted as an attempt to solve the parsimony
+ problem [<a href="#NQXL02">5</a>], and the method
+ PHASE [<a href="#SSD">6</a>] has been explained
+ in terms of the parsimony criteria [<a href=
+ "#DON">1</a>]. However, the indirect role of the
+ parsimony criteria in existing methods, and the complex details of
+ those methods, makes it hard to access the effectiveness of the
+ parsimony criteria. Further, no paper has previously shown how an
+ optimal pure-parsimony solution can be computed efficiently in a
+ practical range of problem instances.</font></p>
+ <p><font size="-1">Here, we do several things. We show how to
+ compute, via integer-linear-programming, an HI solution that truly
+ minimizes the number of distinct haplotypes, i.e., when it
+ terminates, the program is guaranteed to have found the
+ pure-parsimony solution; we explain how to improve the practicality
+ of the integer programming formulation; and we show the results of
+ extensive experimentation we have done to show the time and memory
+ practicality of the method, and to compare its accuracy against
+ solutions found by the methods PHASE and HAPLOTYPER. We also
+ formulate and experiment with two variations of the Pure-Parsimony
+ criteria, that allow greater practicality.</font></p>
+ <p><font size="-1">Empirically, the end result is that for
+ haplotyping problem instances of current interest, pure-parsimony
+ <i>can</i> be computed efficiently in most cases. However, it's
+ accuracy is somewhat inferior to the solutions produced by PHASE,
+ although this depends on the number of sites and the level of
+ recombination, and particular choices in the model used to generate
+ the test data.</font></p>
+ <p><font size="-1">In more detail, the practicality and accuracy of
+ our approach depends on the level of recombination in the data (the
+ more recombination, the more practical but less accurate is the
+ method). We show that the Pure-Parsimony approach is practical for
+ genotype data of up to 30 sites and 50 individuals (which is large
+ enough for practical use in many current haplotyping projects). Up
+ to moderate levels of recombination, the haplotype calls are 80 to
+ 95 percent correct, and the solutions are generally found in
+ several seconds to minutes, except for the no-recombination case
+ with 30 sites, where some solutions require a few hours. However,
+ in the no-recombination case, other methods are particularly fast
+ and accurate.</font></p>
+ <p><font size="-1">While the main point of this paper is to report
+ that Pure-Parsimony solutions <i>can</i> be practically obtained,
+ so that the efficacy of the criteria can be accesses, the level of
+ accuracy observed is a validation of the genetic model implicit in
+ the Pure-Parsimony objective function. Purely randomly picked
+ solutions to the HI problem would correctly resolve only a
+ minuscule fraction of the genotypes, in contrast to the observed 80
+ to 90 percent accuracy of the pure-parsimony-based
+ method.</font></p>
+ <h1><a name="SECTION00030000000000000000"><font size=
+ "+1">References and bibliography</font></a></h1>
+ <p></p>
+ <h2><a name="SECTION00040000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="DON">1</a></dt>
+ <dd>P.&nbsp;Donnelly.<br>
+ Comments made in a lecture given at the DIMACS conference on
+ haplotype inference, November 2002.</dd>
+ <dt><a name="HEL2001">2</a></dt>
+ <dd>L.&nbsp;Helmuth.<br>
+ Genome research: Map of the human genome 3.0.<br>
+ <em>Science</em>, 293(5530):583-585, 2001.</dd>
+ <dt><a name="HPC">3</a></dt>
+ <dd>E.&nbsp;Hubbel.<br>
+ Personal Communication.</dd>
+ <dt><a name="NIHWWW">4</a></dt>
+ <dd>NIH.<br>
+ Report on variation and the haplotype map:
+ http://www.nhgri.nih.gov/About_NHGRI/Der/variat.htm.</dd>
+ <dt><a name="NQXL02">5</a></dt>
+ <dd>T.&nbsp;Niu, Z.&nbsp;Qin, X.&nbsp;Xu, and J.S. Liu.<br>
+ Bayesian haplotype inference for multiple linked single-nucleotide
+ polymorphisms.<br>
+ <em>Am. J. Hum. Genet</em>, 70:157-169, 2002.</dd>
+ <dt><a name="SSD">6</a></dt>
+ <dd>M.&nbsp;Stephens, N.&nbsp;Smith, and P.&nbsp;Donnelly.<br>
+ A new statistical method for haplotype reconstruction from
+ population data.<br>
+ <em>Am. J. Human Genetics</em>, 68:978-989, 2001.</dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot53">... Gusfield</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Dept. of Computer Science, 3051 Engineering II, University of
+ California, One Shields Avenue, Davis, CA 95616. Email: 
+ <div align="center">
+ <b><tt>gusfield@cs.ucdavis.edu</tt></b></div></dd>
+ <dt><a name="foot54">... approach</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>This criteria was suggested to us Earl Hubbell, who also proved
+ that the problem of finding such solutions is NP-hard [<a href=
+ "#HPC">3</a>].</dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

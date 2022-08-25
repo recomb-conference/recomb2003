@@ -1,0 +1,220 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>69. Annotating Significant Pairs of Transcription Factor Binding Sites in Regulatory DNA</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category02.html'>&lt;&lt;</a> <a href='/recombdb/category03.html'><b>Recognition of Genes and Regulatory Elements</b> Overview</a> <a href='/recombdb/category04.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-03-068/'>&lt;&lt;</a> Poster 069 [ <a href='poster-03-069.pdf'>PDF</a> | <a href='poster-03-069.tgz'>TeX</a> | <a href='poster-03-069.ps'>PostScript</a> ] <a href='/recombdb/poster-03-070/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>69. Annotating Significant
+ Pairs of Transcription Factor Binding Sites in Regulatory
+ DNA<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Katja Rateitschak<img width="11" height="18"
+      align="bottom" border="0" src="img1.png" alt="${}^1$">, Tobias
+      M&uuml;ller<img width="11" height="18" align="bottom" border=
+      "0" src="img1.png" alt="${}^1$">, Martin Vingron<a name=
+      "tex2html1" href="#foot17"><sup>1</sup></a>
+      <tt>Katja.Rateitschak|Tobias.Mueller|Martin.Vingron@molgen.mpg.de</tt></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> recognition of genes and
+ regulatory elements, transcription factor binding site, score
+ matrix</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+  <font size="-1">Vital processes in cells require a coordinated
+ regulation of gene transcription. Gene transcription is controlled
+ by protein complexes embedding transcription factors which bind to
+ specific sequence patterns in regulatory DNA. These transcription
+ factor binding sites (BS) occur in combinations of core sites and
+ sites that are specific for groups of genes in consideration of
+ order, distance and strand orientation. Therefore investigating the
+ organization of BS in regulatory DNA is essential for understanding
+ transcriptional regulation [<a href=
+ "#HGCM02">1</a>].</font> 
+ <p><font size="-1">Binding sites are patterns of conserved
+ nucleotides, and can be described by TRANSFAC matrices [<a href=
+ "#TRANSFAC">2</a>]. Searching BS with TRANSFAC
+ matrices in regulatory DNA leads to many putative sites covering
+ biological BS, but also many random hits. With the advent of many
+ completely sequenced genomes, discriminating signal from noise
+ becomes more and more important and difficult. The goal of the
+ presented work is to improve the search power for BS by including
+ additional information about typical BS pattern.</font></p>
+ <p><font size="-1">The new proposed score combines the ordinary
+ profile score based on the TRANSFAC matrices together with a score
+ based on pairs of BS. The latter score positively weights pairs of
+ BS that tend to occur together in many regulatory DNA-sequences, in
+ contrast to a random background model. The empirical BS pair
+ frequencies result from our evaluation of a large dataset of
+ orthologous genes. We describe our approach in Section 2. In
+ Section&nbsp;3 we apply our approach to muscle specific genes
+ [<a href="#WaFi98">3</a>] and EPD-promoters
+ [<a href="#EPD">4</a>].</font></p>
+ <h1><a name="SECTION00020000000000000000"><font size="+1">Data and
+ Method</font></a></h1>
+  <font size="-1">In this section we describe the steps to obtain a
+ set of significant pairs of BS. We extract conserved regulatory
+ sequences of 7574 man-mouse orthologs from the CORG database
+ [<a href="#CORG">5</a>]. Then we search with
+ TRANSFAC matrices for BS in these sequences. The score for a
+ sequence 
+ <img width="111" height="32" align="middle" border="0" src=
+ "img2.png" alt="$s=(s_1,\ldots,s_n)$"></font> <br>
+ <div align="right">
+ <table width="100%" align="center">
+ <tr valign="middle">
+ <td align="center" nowrap><img width="168" height="50" border="0"
+ src="img3.png" alt=
+ "\begin{displaymath} S_{BS}(s)=\sum_i \log \frac{p_i(s_i)}{b(s_i)} \,, \end{displaymath}">
+ </td>
+ <td width="10" align="right">(1)</td></tr></table></div>
+ <br clear="all">
+  <font size="-1">where <img width="42" height="32" align="middle"
+ border="0" src="img4.png" alt="$p_i(s_i)$"> is the probability for
+ nucleotide <img width="17" height="29" align="middle" border="0"
+ src="img5.png" alt="$s_i$"> at position <img width="10" height="14"
+      align="bottom" border="0" src="img6.png" alt="$i$"> based on
+      the TRANSFAC profile and <img width="36" height="32" align=
+      "middle" border="0" src="img7.png" alt="$b(s_i)$"> is the
+      background probability for nucleotide <img width="17" height=
+      "29" align="middle" border="0" src="img5.png" alt="$s_i$">.
+      This score defines a quantitative measure for the similarity
+      between a sequence pattern and a TRANSFAC profile. The score
+      <img width="33" height="30" align="middle" border="0" src=
+      "img8.png" alt="$S_{BS}$"> can be transformed to a
+      score</font> <br>
+ <div align="right">
+ <table width="100%" align="center">
+ <tr valign="middle">
+ <td align="center" nowrap><img width="130" height="49" border="0"
+ src="img9.png" alt=
+ "\begin{displaymath} S_{BS}'=\frac{S_{BS}-\overline{S_{BS}}}{\sqrt{\sigma(S_{BS})}} \end{displaymath}">
+ </td>
+ <td width="10" align="right">(2)</td></tr></table></div>
+ <br clear="all">
+  <font size="-1">with zero mean and unit variance for all matrices.
+ This roughly allows to compare scores of different matrices. We
+ collect candidate BS which are (1) conserved between man and mouse
+ and (2) score higher than a fixed threshold.</font> 
+ <p><font size="-1">Next we search in this collection for pairs of
+ BS. We are interested in significant coocurrences of pairs of
+ binding sites. We therefore introduce a score as</font></p>
+ <div align="right">
+ <table width="100%" align="center">
+ <tr valign="middle">
+ <td align="center" nowrap><img width="98" height="39" border="0"
+ src="img10.png" alt=
+ "\begin{displaymath} S_{ij}=\log\frac{m_{ij}}{\pi_i \pi_j} \end{displaymath}">
+ </td>
+ <td width="10" align="right">(3)</td></tr></table></div>
+ <br clear="all">
+  <font size="-1">where <img width="29" height="29" align="middle"
+ border="0" src="img11.png" alt="$m_{ij}$"> are the pair frequencies
+ of BS <img width="10" height="14" align="bottom" border="0"
+      src="img6.png" alt="$i$"> and <img width="11" height="29"
+      align="middle" border="0" src="img12.png" alt="$j$">, and
+      <img width="18" height="29" align="middle" border="0" src=
+      "img13.png" alt="$\pi_i$"> and <img width="20" height="29"
+      align="middle" border="0" src="img14.png" alt="$\pi_j$"> are
+      the associated marginals.</font> 
+ <h1><a name="SECTION00030000000000000000"><font size="+1">Results
+ and Outlook</font></a></h1>
+  <font size="-1">We apply our method to two datasets. First we
+ screen a set of muscle specific genes [<a href=
+ "#WaFi98">3</a>]. It consists of upstream
+ sequences of 27 orthologous genes from man and mouse. We collect
+ all positive scoring BS. Among the highest scoring pairs are the
+ well known muscle specific pairs (SRF,SRF) and
+ (MYOGENIN,MYOGENIN).</font> 
+ <p><font size="-1">A second dataset is composed of non redundant
+ EPD-promoters from man and mouse. Some identified high-scoring
+ pairs occur exclusively in one EPD class: (SRF,SRF) regulates only
+ contractile genes, and (ATF6,MAX/MYCMAX) regulates only genes
+ relevant for amino acid metabolism. Other identified pairs,
+ however, regulate genes of different EPD classes: (NRF,NRF)
+ regulates protooncogenes, genes relevant for amino acid metabolism,
+ and others.</font></p>
+ <p><font size="-1">In future work we will augment the scoring
+ scheme to include information on the position, on strand
+ orientation, and on the length of the intermediate sequence between
+ binding sites. The challenges are the functional form of the score
+ and the weighting of the individual pieces of information.</font>
+ </p>
+ <h2><a name="SECTION00040000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="HGCM02">1</a></dt>
+ <dd>Halfon, M.&nbsp;S., Grad, Y., Church, G.M. and Michelson
+ A.&nbsp;M. 2002 Computation-based discovery of related
+ transcriptional regulatory modules and motifs using an
+ experimentally validated combinatorial model. <em>Genome
+ Research</em> 12:1019-1028.</dd>
+ <dt><a name="TRANSFAC">2</a></dt>
+ <dd>Wingender, E., Dietze, P., Karas and H., Kn&uuml;ppel, R. 1996.
+ TRANSFAC: a database on transcription factors and their DNA binding
+ sites. <em>Nucleic Acids Research</em> 24:238-241.</dd>
+ <dt><a name="WaFi98">3</a></dt>
+ <dd>Wassermann, W.&nbsp;W. and Fickett, J.&nbsp;W. 1998.
+ Identification of regulatory regions which confer muscle-specific
+ gene expression. <em>Journal Molecular Biology</em>
+ 278:167-181.</dd>
+ <dt><a name="EPD">4</a></dt>
+ <dd>Bucher P. 1998. The eukaryotic promoter database EPD.
+ <em>Nucleic Acids Research</em> 26:353-357.</dd>
+ <dt><a name="CORG">5</a></dt>
+ <dd>Dieterich, C., Wang, H., Rateitschak, K., Luz, H. and Vingron,
+ M. 2002. CORG: A database for Comparative Regulatory
+ Genomics.<em>Nucleic Acids Research</em> in press.</dd>
+ <dt><a name="SVEN">6</a></dt>
+ <dd>Rahmann, S., M&uuml;ller, T. and Vingron, M. 2002. Measuring
+ the Quality of Profiles for Transcription Factor Binding Site
+ Detection. Manuscript submitted.</dd></dl>
+ <br>
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot17">... Vingron</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Max Planck Institute for Molecular Genetics Ihnestr. 73,
+ D-14195 Berlin, Germany</dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

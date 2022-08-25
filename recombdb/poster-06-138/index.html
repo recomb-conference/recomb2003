@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>138. A Biological Information System for Homo sapiens: integrating expression, function, interaction and localisation</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category05.html'>&lt;&lt;</a> <a href='/recombdb/category06.html'><b>Gene Expression</b> Overview</a> <a href='/recombdb/category07.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-06-137/'>&lt;&lt;</a> Poster 138 [ <a href='poster-06-138.pdf'>PDF</a> | <a href='poster-06-138.doc'>MSWORD</a> ] <a href='/recombdb/poster-06-139/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>138. A Biological Information System for Homo sapiens:
+ integrating expression, function, interaction and localisation</h2>
+ <p align="center"><b>Dieter Maier<a href="#_ftn1" name="_ftnref1"
+ title="">[1]</a> and Matthias Fellenberg<sup>1</sup></b></p>
+ <p><b>Keywords</b>: Biolgical Information System, gene expression,
+ funcition, localisation</p>
+ <p><b>1. Introduction</b></p>
+ <p>In Computational Biology a long term goal clearly is the
+ computation of simulations that represent system behaviour. The
+ lever we need to apply to this end is the integration of
+ qualitative models with quantitative data. Currently neither the
+ models, due to a lack of sufficient qualitative understanding of
+ biological processes on a system level, nor the required
+ quantitative data exist. Creation of such models requires an
+ iterative refinement going back and forth between model predictions
+ and experimental results. As a first step a model will have to
+ include all information that is available concerning a specific
+ system, requiring a fixed point to anchor that information. In
+ Geography software anchoring disperse information to one entity
+ (the geographical localisation) is known as Geographic Information
+ System. Accordingly the biological equivalent, using genes as
+ anchor, has been labelled Biological Information Systems (BIS) by
+ Endy and Brent (2002). We have developed a BIS which enables us to
+ integrate all available gene centred information into one
+ qualitative model (Fellenberg et al., 2002). The variety of
+ information to be integrated is limited only by the current lack of
+ computer readable information in the databases.</p>
+ <p>Here we present the application of our BIS to the human genome.
+ We integrate information from ex-pression data with functional
+ annotation regarding the biological process, molecular function and
+ locali-sation of a gene product. Data integration allows us to
+ compute multilevel correlations between different, independent
+ experimental information. These multilevel correlations provide
+ much stronger evidence for causal relation between genes than
+ correlation based on single experimental approaches. Another
+ impor-tant aspect of data integration is the discovery of new and
+ unexpected dependencies, like the recent dis-covery of correlation
+ between expression and genomic gene localisation (Spellman and
+ Rubin, 2002). Using all available information allows us to reduce
+ the complexity of a system by selecting specific subsets. For these
+ subsets we are already able to compute qualitative system behaviour
+ e.g. regarding active metabolic pathways of an organism. In this
+ way we can start the iterative process of qualitative model
+ development on a simplified system level.</p>
+ <p><b>2. Results</b></p>
+ <p>We have applied our method to the human expression data set of
+ Iyer et al. (1999) and integrated it with the manual annotation of
+ the Human Genome provided by Biomax Informatics AG (www.biomax.de).
+ Expression of 9495 genes has been measured at 12 time points during
+ human fibroblast serum induced differentiation, using cDNA
+ microarrays.&nbsp; The expression data are clustered using a
+ neuronal network approach, the Self organising map (SOM) (Kohonen
+ et al. 1995). From all currently available clustering algorithms
+ the SOM is especially well suited to our approach as the topology
+ of the data is conserved to a certain degree. Every clustering
+ algorithm tries to group similar expression profiles into one
+ cluster. However, similar profiles will sometimes be split
+ artificially due to the arbitrary nature of clustering. Using a SOM
+ similar expression profiles will still end up in neighbouring
+ clusters, allowing us to calculate cluster similarities and
+ correlate these with functional information.</p>
+ <p>SOM clustering requires the heuristic predetermination of the
+ required cluster number to which the multidimensional data space is
+ mapped by the neuronal network. We found that clusters averaging
+ 20-30 expression profiles provide an optimal balance between
+ splitting similar versus joining dissimilar expres-sion profiles.
+ We therefore set the number of clusters to 400, which resulted in
+ most of the clusters con-taining 20-25 expression profiles (mean:
+ 25, min: 9, max: 56). From these clusters we can generate
+ superclusters of similar expression profiles by calculating
+ correlation coefficients for all clusters in rela-tion to a seed
+ cluster.</p>
+ <p>Our method allows us to integrate other available data with the
+ gene expression data as long as it is mapped to genes. Therefore we
+ searched the integrated Human Genome database provided by Biomax
+ with sequences retrieved from Genbank according to the EST and cDNA
+ IDs provided by Iyers et al. From 9495 sequence IDs we retrieved 17
+ 692 5&acute; and 3&acute; sequences which were searched against the
+ 39,882 ORFs of the Biomax Human Genome Database. This allowed us to
+ map the sequences from the Iyers data to annotated human genes,
+ enabling the integration of the functional information with the
+ expression data.</p>
+ <p>The first step of integration is the identification of groups of
+ clusters which contain a significant number of genes with the same
+ functional annotation. As mentioned above a functional annotation
+ can be a defined biological process (e.g. cell cycle), a metabolic
+ function (e.g. kinase), a metabolic process (e.g. amino acid
+ synthesis), a localisation (e.g. mitochondria), a phenotype (e.g.
+ oncogene) or any other defined, computer readable description. Once
+ a set of clusters sharing genes of the same functional annotation
+ has been identified the significance of that group is calculated.
+ If genes without functional annotation are co-expressed within
+ significant groups of specific function they can tentatively be
+ labelled with the same process and become primary targets for
+ experimental validation. If several compatible functional
+ annotations (e.g. cell cycle, oncogene, nucleus) group a gene with
+ unknown function to the same expression clusters the probability
+ for association grows accordingly.&nbsp; At the same time, where
+ groups from different functional annotations overlap, the
+ intersection may represent genes joining different biological
+ programs.</p>
+ <p>From the correlated superclusters or the functional groups of
+ clusters computed as described above we are able to develop
+ qualitative models for co-expressed parts of the complete system.
+ In this way we avoid the overt complexity of modelling all possible
+ interactions and at the same time choose a meaningful subset for
+ modelling, avoiding arbitrary partition.</p>
+ <p>Here we present an analysis of co-expressed genes for metabolic
+ processes. We construct possible meta-bolic pathways dynamically by
+ linking proteins according to common metabolites of their
+ respective en-zymatic reaction. These dynamic pathways are
+ then&nbsp; compared to static pathways constructed from the
+ literature. In this way we are able to define biologically
+ meaningful reaction subsets from the large space of theoretically
+ possible reactions. In addition the available genomic information
+ can be checked against the biochemical requirements allowing the
+ specific search for unidentified enzymes.</p>
+ <p>From the data integration and modelling presented above we can
+ build refined theories available to experimental evaluation. The
+ new data from these experiments will allow us to refine our models
+ and expand the space of available data for integration. Once our
+ models are sophisticated enough to qualitatively represent system
+ behaviour and more quantitative data becomes available, the
+ creation of quantitative simulations will become possible.</p>
+ <p><b>3. REFERENCES</b></p>
+ <p>Endy and Brent (2002). Modelling cellular behaviour.
+ <i>Nature</i>, <b>409</b>, 391-395</p>
+ <p>Fellenberg, Hani, Mewes and Albermann (2002). Interpreting
+ clustered gene expression data by functional projection and
+ metabolic mapping. <i>Bioinformatics</i>, submitted</p>
+ <p>Iyer et al. (1999). The Transcriptional Program in the Response
+ of Human Fibroblasts to Serum. <i>Science</i> <b>283</b>, 83-87</p>
+ <p>Spellman and Rubin (2002). Evidence for large domains of
+ similarly expressed genes in the <i>Drosophila</i> genome.
+ <i>Journal of Biology</i> <b>1</b>:5</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a> Biomax
+ Informatics AG, Lochhammer Str. 11, 82152 Martinsried, Germany</p>
+ <p>e-mail: Dieter.Maier@biomax.de,
+ Matthias.Fellenberg@biomax.de</p></div></div>
+ </body>
+ </html>

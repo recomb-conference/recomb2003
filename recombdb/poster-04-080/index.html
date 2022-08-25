@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>80. Efficient Reconstruction of Phylogenetic Networks with Constrained Recombination</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category03.html'>&lt;&lt;</a> <a href='/recombdb/category04.html'><b>Molecular Evolution</b> Overview</a> <a href='/recombdb/category05.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-04-079/'>&lt;&lt;</a> Poster 080 [ <a href='poster-04-080.pdf'>PDF</a> | <a href='poster-04-080.tgz'>TeX</a> | <a href='poster-04-080.ps'>PostScript</a> ] <a href='/recombdb/poster-04-081/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>80. Efficient Reconstruction
+ of Phylogenetic Networks with Constrained
+ Recombination<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Dan Gusfield<a name="tex2html1" href=
+ "#foot42"><sup>1</sup></a> Sattish Eddhu <a name="tex2html2"
+    href="#foot16"><sup>2</sup></a> Charles Langley <a name=
+    "tex2html3" href="#foot17"><sup>3</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> phylogenetic networks, perfect
+ phylogeny, recombination, evolution, sequence analysis, graph
+ algorithms</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+   
+ <p><font size="-1">A phylogenetic network is a generalization of a
+ phylogenetic tree, allowing structural properties that are not
+ tree-like. With the growth of genomic data, much of which does not
+ fit ideal tree models, and the increasing appreciation of the
+ genomic role of such phenomena as recombination, recurrent
+ mutation, horizontal gene transfer, gene conversion, and mobile
+ genetic elements, there is greater need to understand phylogenetic
+ networks. However, to date, very little has been published on
+ algorithmic and combinatorial aspects of phylogenetic networks. One
+ notable exception is the paper by Wang et al.[<a href=
+ "#WZZ">5</a>]. Other related papers include
+ [<a href="#HEIN90">2</a>,<a href=
+ "#HEIN93">3</a>,<a href=
+ "#KG98">4</a>]</font></p>
+ <p><font size="-1">Wang et al. [<a href=
+ "#WZZ">5</a>] introduced the problem of
+ constructing a phylogenetic network for a set of <img width="14"
+ height="13" align="bottom" border="0" src="img1.png" alt="$n$">
+ binary sequences derived from the all-0 ancestral sequence, when
+ each site in the sequence can change from 0 to 1 at most once in
+ the network, and recombination between sequences is allowed. This
+ differs from the classic ``perfect phylogeny" problem for binary
+ sequences [<a href="#G91">1</a>] by the allowance
+ of recombination between sequences. Wang et al. showed that the
+ problem of finding a phylogenetic network that minimizes the number
+ of recombination events is NP-hard, but gave a polynomial-time
+ algorithm (<img width="82" height="34" align="middle" border="0"
+ src="img2.png" alt="$O(nm + n^4$">)-time, for <img width="14"
+ height="13" align="bottom" border="0" src="img1.png" alt="$n$">
+ sequences of length <img width="18" height="13" align="bottom"
+ border="0" src="img3.png" alt="$m$"> each) that was intended to
+ recognize cases of ``cycle-disjoint recombination". That is, the
+ algorithm was to determine if the sequences could be derived on a
+ phylogenetic network where no two ``recombination cycles" share a
+ node. We call such a phylogenetic network a ``galled-tree". When
+ the algorithm recognizes that the input data can be generated on a
+ galled-tree, it finds one that minimizes the number of
+ recombination events. While cycle disjointness is a strong
+ assumption, it is likely to hold under certain circumstances when
+ the recombination rate is not too high. The model also has
+ applications in sequence analysis of particular biological
+ sequences, for example, to search for intervals in a chromosome
+ where the sequences roughly fit a perfect phylogeny model, but do
+ not exactly fit one.</font></p>
+ <h1><a name="SECTION00020000000000000000"><font size="+1">A Faster,
+ Complete Algorithm</font></a></h1>
+ <p><font size="-1">Unfortunately, the algorithm in [<a href=
+ "#WZZ">5</a>] is incomplete and only provides a
+ sufficient and not a necessary test for the existence of a
+ galled-tree for the data. We show this by example.</font></p>
+ <p><font size="-1">In this paper we do several things. By more
+ deeply analyzing the combinatorial constraints on cycle-disjoint
+ phylogenetic networks, we obtain an algorithm that runs in
+ <img width="89" height="34" align="middle" border="0" src=
+ "img4.png" alt="$O(nm + n^3)$">-time and is guaranteed to be both a
+ necessary and sufficient test for the existence of a galled-tree
+ for the data. If there is a galled-tree for the data, the algorithm
+ constructs a ``canonical" galled-tree that simultaneously minimizes
+ the number of recombination events, the number of mutations
+ occurring on recombination cycles, and the number of branches off
+ of recombination cycles. The effect is that the canonical
+ galled-tree is the phylogenetic network that explains the input
+ sequences in a way that is the most ``tree-like", exposing the
+ places where the tree model must be modified. We prove that the
+ cycles and the mutations on them in the canonical solution must be
+ in every galled-tree solution for the data. The algorithm also
+ obtains a count of the number of galled-trees that exist for the
+ input data, and can generate these in linear time for each one,
+ starting from the canonical galled-tree. This approach also
+ establishes that the solution is ``nearly-unique", in that the
+ different solutions differ only in minor ways.</font></p>
+ <p><font size="-1">In addition to solving the galled-tree problem
+ efficiently, we show that the ``Maximum Compatibility Problem" is
+ solvable in <img width="53" height="32" align="middle" border="0"
+ src="img5.png" alt="$O(nm)$"> time for sequences that can be
+ derived on a galled-tree. The Maximum Compatibility Problem is to
+ find a largest set of mutations in the data that can be explained
+ by a perfect phylogeny. Extracting and using such a subset of
+ mutations is a common approach taken in practice to handling
+ sequences that cannot be derived on a perfect phylogeny, although
+ the problem of finding this subset is NP-hard in
+ general.</font></p>
+ <p><font size="-1">More broadly, in this paper we introduce a set
+ of graph-theoretic observations about recombination cycles that can
+ be generalized, and suggest ways to develop algorithms for more
+ complex (special-case) data, where recombination cycles are allowed
+ to intersect, but in constrained ways. These generalizations will
+ be explored in a future paper.</font></p>
+ <p></p>
+ <h2><a name="SECTION00030000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="G91">1</a></dt>
+ <dd>D.&nbsp;Gusfield.<br>
+ Efficient algorithms for inferring evolutionary history.<br>
+ <em>Networks</em>, 21:19-28, 1991.</dd>
+ <dt><a name="HEIN90">2</a></dt>
+ <dd>J.&nbsp;Hein.<br>
+ Reconstructing evolution of sequences subject to recombination
+ using parsimony.<br>
+ <em>Math. Biosci</em>, 98:185-200, 1990.</dd>
+ <dt><a name="HEIN93">3</a></dt>
+ <dd>J.&nbsp;Hein.<br>
+ A heuristic method to reconstruct the history of sequences subject
+ to recombination.<br>
+ <em>J. Mol. Evol.</em>, 36:396-405, 1993.</dd>
+ <dt><a name="KG98">4</a></dt>
+ <dd>J.&nbsp;D. Kececioglu and D.&nbsp;Gusfield.<br>
+ Reconstructing a history of recombinations from a set of
+ sequences.<br>
+ <em>Discrete Applied Math.</em>, pages 239-260, 1998.</dd>
+ <dt><a name="WZZ">5</a></dt>
+ <dd>L.&nbsp;Wang, K.&nbsp;Zhang, and L.&nbsp;Zhang.<br>
+ Perfect phylogenetic networks with recombination.<br>
+ <em>J. of Comp. Biology</em>, 8:69-78, 2001.</dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot42">... Gusfield</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Dept. of Computer Science, 3051 Engineering II, University of
+ California, One Shields Avenue, Davis, CA 95616. Email: 
+ <div align="center">
+ <b><tt>gusfield@cs.ucdavis.edu</tt></b></div></dd>
+ <dt><a name="foot16">... Eddhu</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>Dept. of Computer Science, 3051 Engineering II, University of
+ California, One Shields Avenue, Davis, CA 95616.</dd>
+ <dt><a name="foot17">... Langley</a><a href=
+ "#tex2html3"><sup>3</sup></a></dt>
+ <dd>Evolution and Ecology, University of California,
+ Davis</dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

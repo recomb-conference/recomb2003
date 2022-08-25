@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>126. Modular Decision System and Information Integration for Cancer Outcome Prediction</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category05.html'>&lt;&lt;</a> <a href='/recombdb/category06.html'><b>Gene Expression</b> Overview</a> <a href='/recombdb/category07.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-06-125/'>&lt;&lt;</a> Poster 126 [ <a href='poster-06-126.pdf'>PDF</a> | <a href='poster-06-126.tgz'>TeX</a> | <a href='poster-06-126.ps'>PostScript</a> ] <a href='/recombdb/poster-06-127/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>126. Modular Decision System
+ and Information Integration for Cancer Outcome
+ Prediction<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Matthias E. Futschik, <a name="tex2html1"
+ href="#foot60"><sup>1</sup></a> Mike Sullivan, <a name="tex2html2"
+ href="#foot61"><sup>2</sup></a> Anthony Reeve, <a name="tex2html3"
+ href="#foot62"><sup>3</sup></a><br>
+  Nikola Kasabov <a name="tex2html4" href=
+ "#foot63"><sup>4</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> disease outcome prediction,
+ gene expression, clinical information, modular decision model,
+ information integration</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+  <font size="-1">Prediction of clinical behaviour and treatment for
+ cancers is based on the integration of clinical and pathologic
+ parameters. Recent reports have demonstrated that gene expression
+ profiling provides a powerful new approach for determining disease
+ outcome [<a href="#shipp">1</a>,<a href=
+ "#pomeroy">2</a>,<a href=
+ "#veer">3</a>]. If clinical and microarray data
+ each contain independent information then it should be possible to
+ combine these data sets to gain more accurate prognostic
+ information. Here we have used existing clinical information and
+ microarray data to generate a combined prognostic model which
+ achieves a significant improvement in the accuracy of outcome
+ prediction for diffuse large B-cell lymphoma (DLBCL).</font> 
+ <h1><a name="SECTION00020000000000000000"><font size=
+ "+1">Construction of prognostic modules</font></a></h1>
+  <font size="-1">To test the hypothesis that clinical and
+ microarray data contain independent information, we constructed two
+ separate prognostic models for DLBCL using the clinical information
+ and microarray data published recently by Shipp <i>et
+ al.</i>&nbsp;[<a href="#shipp">1</a>]. For the
+ clinical model, the hitherto standard International Prediction
+ Index (IPI) for DLBCL was converted into a Bayesian classifier
+ based on the five-year survival rates in the original IPI clinical
+ study&nbsp;[<a href="#ipi">4</a>]. The clinical
+ prognostic model achieved an accuracy of 73.2%.</font> 
+ <p><font size="-1">For the microarray-based predictor, we used an
+ evolving fuzzy neural network (EFuNN) classifier for adaptive
+ supervised learning [<a href="#kasabov">5</a>].
+ The microarray-based predictor achieved an accuracy of 78.5% which
+ was slightly better than that of the previously used support vector
+ machines (SVMs)&nbsp;[<a href=
+ "#shipp">1</a>].</font></p>
+ <h1><a name="SECTION00030000000000000000"><font size=
+ "+1">Independence of modules</font></a></h1>
+  <font size="-1">The calculation of the mutual information
+ <img width="6" height="11" align="bottom" border="0" src="img1.png"
+ alt="$I$"> of the predictions by the two models (deriving
+ <img width="659" height="1043" align="bottom" border="0" src=
+ "img2.png" alt="$I=0.001$">) shows the surprising result that the
+ clinical prognostic model is statistically independent of the
+ microarray-based predictor even though several of the IPI risk
+ factors were considered biological surrogates of underlying
+ molecular mechanisms and were expected to be correlated with the
+ gene expression in the tumour&nbsp;[<a href=
+ "#shipp">1</a>,<a href=
+ "#ipi">4</a>].</font> 
+ <h1><a name="SECTION00040000000000000000"><font size="+1">Modular
+ decision system</font></a></h1>
+  <font size="-1">To exploit the complementary nature of the two
+ prognostic models, we combined both predictors in a hierarchical
+ modular prognostic model (Fig.1). Model parameters were optimized
+ by error-backpropagation. Our combined model achieved an improved
+ accuracy of 87.5%. An analysis of the combined model showed that
+ both microarray data and clinical information were required for
+ improved prediction accuracy. Stratification of the samples into
+ clinical subgroups according to their IPI value revealed that the
+ two predictor modules differed in their `areas of
+ expertise'.</font> 
+ <div align="center"><a name="combi"></a><a name="65"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure:</strong> <font size=
+ "-1">Three-layered hierarchical model for combination of clinical
+ and microarray-based predictors: The first layer (<i>Predictor
+ module layer</i>) consists of independently trained predictor
+ modules; the second layer (<i>Class unit layer</i>) integrates the
+ weighted predictions of both predictors for classes
+ `cured'/`fatal'; the third layer (<i>Decision layer</i>) produces
+ the final prediction based on the weighted sum of the outputs of
+ class units.</font></caption>
+ <tr>
+ <td><img width="659" height="1043" border="0" src="img3.png"
+      alt="\begin{figure} \centering % \ifpdf \par \epsfig{file=poster-06-126-fig01.eps,width=0.36\linewidth} \end{figure}">
+ </td></tr></table></div>
+ <p><font size="-1">Our study demonstrates for the first time (to
+ our knowledge) that the integration of microarray data with
+ previously established clinical parameters can considerably improve
+ the disease outcome prediction.</font></p>
+ <p></p>
+ <h2><a name="SECTION00050000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="shipp">1</a></dt>
+ <dd>M.A. Shipp <i>et al.</i> 2002. Diffuse large B-cell lymphoma
+ outcome prediction by gene-expression profiling and supervised
+ machine learning. <i>Nature Medicine</i> 8(1): 68-74</dd>
+ <dt><a name="pomeroy">2</a></dt>
+ <dd>S.L. Pomeroy <i>et al.</i> 2002. Prediction of central nervous
+ system embryonal tumour outcome based on gene expression.
+ <i>Nature</i> 415: 436-442</dd>
+ <dt><a name="veer">3</a></dt>
+ <dd>L.J. van 't Veer <i>et al.</i> 2002. Gene expression profiling
+ predicts clinical outcome of breast cancer. <i>Nature</i> 415:
+ 530-536</dd>
+ <dt><a name="ipi">4</a></dt>
+ <dd>The International Non-Hodgkin's Lymphoma Prognostic Project.
+ 1993. A predictive model for aggressive non-Hodgkin's lymphoma,
+ <i>New England Journal of Medicine</i> 329:987-994</dd>
+ <dt><a name="kasabov">5</a></dt>
+ <dd>N. Kasabov. 2001. On-line learning, reasoning, rule extraction
+ and aggregation in locally optimised evolving fuzzy neural
+ networks. <i>Neurocomputation</i> 41(1-4): 25-45</dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot60">... Futschik,</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Department of Information Science, University of Otago,
+ Dunedin, New Zealand. E-mail: 
+ <div align="center">
+ <b><tt>mfutschik@infoscience.otago.ac.nz</tt></b></div></dd>
+ <dt><a name="foot61">... Sullivan,</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>Department of Biochemistry, University of Otago , Dunedin, New
+ Zealand. E-mail: 
+ <div align="center">
+ <b><tt>mike.sullivan@otago.ac.nz</tt></b></div></dd>
+ <dt><a name="foot62">... Reeve,</a><a href=
+ "#tex2html3"><sup>3</sup></a></dt>
+ <dd>Department of Biochemistry, University of Otago, Dunedin, New
+ Zealand. E-mail: 
+ <div align="center">
+ <b><tt>anthony.reeve@stonebow.otago.ac.nz</tt></b></div></dd>
+ <dt><a name="foot63">... Kasabov</a><a href=
+ "#tex2html4"><sup>4</sup></a></dt>
+ <dd>Knowledge Engineering and Discovery Research Institute,
+ Auckland University of Technology, Auckland, New Zealand. E-mail: 
+ <div align="center">
+ <b><tt>nkasabov@aut.ac.nz</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

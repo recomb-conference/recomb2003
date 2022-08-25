@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>72. In Silico Prediction of transcription factors that cooperate with E2F</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category02.html'>&lt;&lt;</a> <a href='/recombdb/category03.html'><b>Recognition of Genes and Regulatory Elements</b> Overview</a> <a href='/recombdb/category04.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-03-071/'>&lt;&lt;</a> Poster 072 [ <a href='poster-03-072.pdf'>PDF</a> | <a href='poster-03-072.doc'>MSWORD</a> ] <a href='/recombdb/poster-04-073/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>72. In Silico Prediction of transcription factors that
+ cooperate with E2F</h2>
+ <p align="center"><b>Sheng Zhong<a href="#_ftn1" name="_ftnref1"
+ title="">[1]</a>,&nbsp; Qing Zhou<a href="#_ftn2" name="_ftnref2"
+ title="">[2]</a>,&nbsp; Wing Hung Wong2</b></p>
+ <p><b>Keywords:</b> transcription factor, binding site module,
+ cluster, E2F</p>
+ <p><b>1&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Introduction</b></p>
+ <p>At sequences level, eukaryotic gene expressions are usually
+ controlled by regulatory modules rather than isolated single
+ transcription factor biding sites (TFBS) [1]. Berman et al
+ introduced an approach to utilize TFBS clustering information to
+ discover cis-regulatory modules in Drosophila genome [2]. However,
+ according to our knowledge, there are few successful mammalian
+ module discovery exercises being described. This is mainly due to
+ the large number of mammalian transcription factors and the high
+ false positive rate of predicted TFBSs. We show that by starting
+ from a promoter set of pre-collected responsive genes of a given
+ TF, it is possible to computationally predict its interacting
+ partners with high sensitivity and specificity.</p>
+ <p>The E2F family of transcription factors is essential for the
+ timely activation of genes involved in DNA replication and cell
+ cycle control, exerting both positive and negative effects on gene
+ expression [3]. However, it has been shown that the presence of an
+ E2F site is not sufficient for G1/S phase transcriptional
+ regulation. Some transcription factors can interact with E2F and
+ activate promoters in a synergistic manner. Such interactions
+ stabilize DNA binding and contribute to promoter-specificity. In
+ this poster we use E2F as an example to demonstrate a computational
+ approach in identifying transcription factors that can cooperate
+ with a given transcription factor to either activate or repress
+ gene expression. Our algorithm reported 15 such transcription
+ factors, of which, 4 (TFE3, YY1, &ldquo;ccaat&rdquo; binding
+ protein, P53) have been proven to activate or repress promoters
+ together with E2F in a synergistic manner; 2(YY1, E box binding
+ protein/Myc) are supported by ChIP results; 2(RAR, Myb) have
+ suggestive evidence from hybrid screens with E2F proteins [4] [5]
+ [6].</p>
+ <p><b>2&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Method</b></p>
+ <p>332 human and mouse promoters of E2F target genes are collected
+ as training set. 2000 randomly selected promoters are used as
+ control. Every promoter covers1000 nt upstream and 50 nt
+ down&shy;stream to Transcription Start Site (TSS). We downloaded
+ all (342) vertebrate position specific score matrices (PSSM) from
+ Transfac. We applied the Match [7] program to scan every upstream
+ sequence for PSSM calls.</p>
+ <p>To reduce false positive calls, we looked for clusters of PSSM
+ calls. For a given PSSM, a clus&shy;ter is defined by a significant
+ grouping of its calls, on any training upstream sequence, comparing
+ to all possible groupings of calls of the same PSSM on all control
+ upstream sequences.</p>
+ <p>We introduced a sliding window scheme to find the groupings of
+ PSSM calls on all control sequences. The window size to be 300 nt.
+ The window is shifted by 100 nt in each step of the scanning
+ process. For every PSSM, every time the window slid, we calculated
+ the number of calls that were covered by the window. After the
+ window slid through all control sequences one by one, we added up
+ the number of windows that covered the same number of calls. Thus
+ we got a &ldquo;background grouping distribution&rdquo; for this
+ particular PSSM. Such background grouping distribu&shy;tion was
+ calculated for every PSSM.</p>
+ <p>For every PSSM, setting the p value to be 0.0005, we calculated
+ a critical value (CV) for its groupings of calls. The CV was
+ defined that less than 0.0005 of the groupings having equal to or
+ more than CV calls among all sliding windows.</p>
+ <p>We used the same sliding window system to scan the training
+ promoters. Fixing a PSSM, if any one window contained more than or
+ equal to CV calls, we would identify the calls within this window
+ as a cluster. We identified all clusters for all PSSMs, and grouped
+ together the PSSMs for the same transcription factor. We identified
+ all the transcription factors that had clusters on two or more
+ promoters, including at least one human promoter, in the training
+ set.</p>
+ <p><b>3&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Result and
+ discussion</b></p>
+ <p>15 transcription factors with 40 clusters were identified. These
+ transcription factors are highly likely to activate or repress
+ promoters with E2F in a synergistic manner. Our algorithm gave the
+ cluster and a closest putative E2F binding site as a module.</p>
+ <p>By searching literature, we have found 8 transcription factors,
+ which have been verified at various levels to activate or repress
+ promoters synergisticly with E2F family factors. As discussed in
+ the introduction section, 7 of them showed up in our 15 reported
+ transcription factors. Only one transcription factor, DMP1[8], was
+ missed by our algorithm. This was due to the lack of a PSSM for
+ DMP1 in Transfac.</p>
+ <p>Therefore we believe our algorithm can serve as a good guidance
+ in looking for E2F&rsquo;s cooperative partners. It would be
+ interesting if in vitro or in vivo experiments can be done to test
+ the modules given by our algorithm. We also see that our approach
+ is limited by the fact that not all transcription factors have PSSM
+ compiled for their binding sites. Future work could first apply
+ motif finding software like Bioprospector 9 to harvest novel PSSMs
+ and combine those PSSMs with PSSMs provided by Transfac. Then feed
+ all those PSSMs into our algorithm.</p>
+ <p><b>4&nbsp; References</b></p>
+ <p>[1] Davidson, E.H. Genomic Regulatory Systems. Development and
+ Evolution. Academic Press, San Diego, 2001</p>
+ <p>[2] Berman, B. P. et al. Exploiting transcription factor binding
+ site clustering to identify cis-regulatory modules involved in
+ pattern formation in the Drosophila genome. <i>Proc Natl Acad Sci U
+ S A</i> 99, 757-62</p>
+ <p>[3] Dyson, N. The regulation of E2F by pRB-family proteins.
+ <i>Genes Dev</i> 12, 2245-62</p>
+ <p>[4] van Ginkel, P. R., Hsiao, K. M., Schjerven, H. &amp;
+ Farnham, P. J. E2F-mediated growth regulation requires
+ transcription factor cooperation. <i>J Biol Chem</i> 272,
+ 18367-74</p>
+ <p>[5] Rotheneder, H., Geymayer, S. &amp; Haidweger, E.
+ Transcription factors of the Sp1 family: interaction with E2F and
+ regulation of the murine thymidine kinase promoter. <i>J Mol
+ Biol</i> 293, 1005-15</p>
+ <p>[6] O'Connor, D. J. et al. Physical and functional interactions
+ between p53 and cell cycle co-operating transcription factors, E2F1
+ and DP1. <i>Embo J</i> 14, 6184-92</p>
+ <p>[7] Wingender, E. et al. TRANSFAC: an integrated system for gene
+ expression regulation. <i>Nucleic Acids Res</i> 28, 316-9</p>
+ <p>[8] Hirai, H. &amp; Sherr, C. J. Interaction of D-type cyclins
+ with a novel myb-like transcription factor, DMP1. <i>Mol Cell
+ Biol</i> 16, 6457-67 (1996).</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a>Department of
+ Biostatistics, Harvard School of Public Health, Boston, MA, USA.
+ Email: szhong@hsph.harvard.edu</p></div>
+ <div id="ftn2">
+ <p><a href="#_ftnref2" name="_ftn2" title="">[2]</a> Department of
+ Statistics, Harvard University, Cambridge, MA, USA.</p></div></div>
+ </body>
+ </html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+ <html>
+ <head>
+ 
+ <title>39. Large-Scale Clustering of Proteins with Sequence Similarity Based on the Extraction of Maximal Cliques</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-038/'>&lt;&lt;</a> Poster 039 [ <a href='poster-02-039.pdf'>PDF</a> | <a href='poster-02-039.doc'>MSWORD</a> ] <a href='/recombdb/poster-02-040/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>39.&nbsp; Large-Scale Clustering of Proteins with Sequence
+ Similarity Based on the Extraction of Maximal Cliques</h2>
+ <p align="center"><b>Sarah Mohseni-Zadeh, Pierre Br&eacute;zellec,
+ Jean-Loup Risler</b></p>
+ <p><b>Keywords:</b> protein clustering, clustering algorithm,
+ maximal clique, multidomain proteins, sequence similarity</p>
+ <p><b>1&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Introduction</b></p>
+ <p>The wealth of recent data from sequencing and structural
+ annotation of genomes has led to a rapid enrichment of structural
+ and functional identification of predicted protein sequences. While
+ some proteins yet has been experimentally characterised, most of
+ them were annotated on the basis of shared sequence similarities
+ and 30 to 60% (depending on organisms) have unknown functions.
+ Massive intra- and inter-species sequence comparisons are
+ preliminary steps helping a better understanding of sequenced
+ proteomes [3]. However, grouping the sequences into families or
+ clusters allows a more rapid interpretation of the huge amount of
+ data and brings new insights into mechanisms of action and
+ interaction of proteins. Most clustering databases and softwares
+ are dedicated to a further type of biological research such as the
+ identification of orthologous proteins or the collect of protein
+ motifs. Besides, the great majority of existing methods has
+ established proteins connections on the basis of single transitive
+ closures. These approaches resulted in the case of big sets of
+ sequences, in a massive chain effect due to multidomain
+ proteins.</p>
+ <p><b>2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>An
+ algorithm for large-scale classification of proteins</b></p>
+ <p>We designed a general and rapid classification method for
+ protein sequences, suitable to the analysis of limited sequence
+ samples as well as for the clustering of many compared proteomes.
+ This method does not intend to distinguish between paralogs and
+ orthologs. Our clustering principle is aimed to be simple. Hence,
+ only one selected criterion of connectivity chosen by biologists is
+ used at all the steps for comparing elements. We tended to combine
+ three principal requirements:</p>
+ <p>1/ In each cluster, the level of connections between all the
+ elements is close to the maximum</p>
+ <p>2/ Chain effects must be avoided but to some extent, transitive
+ linkages are not excluded because they may suggest interesting
+ information on gene fusion events.&nbsp; As a consequence, all the
+ sequences in a given cluster may not share the same domains while
+ the proximity of two motifs in a small number of elements gives
+ clues for the evolutionary study of the whole group.</p>
+ <p>3/ We are aware that characterisation of proteins cannot solely
+ rely upon sequence homology. Nevertheless, it has been widely
+ proved that all-by-all massive sequence comparison may be an
+ effective approach for many predictions of biochemical functions or
+ shared properties. It is therefore essential that each multidomain
+ protein ought to be attributed to all the clusters where its
+ different putative functions are represented. We allow these
+ multiple representations.</p>
+ <p>The algorithm for classification was devised into three
+ essential parts:</p>
+ <p>1/ In order to keep the highest level of connectivity we
+ developed an alternative method for the search of maximal cliques.
+ Indeed, an exhaustive detection of maximal cliques requires an
+ excessive computational complexity and proved to be unapproachable
+ for very connected sets of thousands elements. Instead, we chose to
+ search a limited but large number of cliques. From each sequence,
+ we constituted a group of all its connected elements (Z&gt;14).</p>
+ <p>_________________________________________</p>
+ <p>CNRS UMR 8116 "G&eacute;nome et Informatique", Tour Evry2, 523
+ Pce des Terrasses, 91034 Evry Cedex, France</p>
+ <p>E&#8209;mail:&nbsp; <a href=
+ "mailto:mohseni@genopole.infobiogen.fr">mohseni@genopole.cnrs.fr</a><a name="_Hlt27036665">
+ </a>&nbsp;&nbsp;&nbsp; brezel<a href=
+ "mailto:mohseni@genopole.infobiogen.fr">@genopole.cnrs.fr</a>&nbsp;&nbsp;&nbsp;&nbsp;
+ risler<a href=
+ "mailto:mohseni@genopole.infobiogen.fr">@genopole.cnrs.fr</a></p>
+ <p>Any group that verifies a maximal clique properties (a- within
+ the maximal clique each element has pairwise links with all the
+ others, b- No external element to that clique could verify the rule
+ a-) is then considered as a core cluster.</p>
+ <p>2/ Each core cluster grows with new elements that possess at
+ least one connection (Z&gt;14) with any sequence of the core
+ cluster. This step increases the chance of classifying multidomain
+ proteins into more than one cluster.</p>
+ <p>3/ Lastly, the clusters that share more than 80% elements were
+ iteratively combined to form a bigger common cluster. These
+ groupings last as long as it remains a new cluster sharing enough
+ elements with any subcluster of the preceding iteration.
+ Experimentally, we could show that the biggest clusters that
+ contained redundant information were unified and became easier to
+ further biological analysis.&nbsp;</p>
+ <p>The algorithm was implemented in Perl and C++.&nbsp; It is fast
+ and robust.</p>
+ <p><b>3&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Applications</b></p>
+ <p>Our first application was the classification of 48811 plants
+ sequences extracted from Swissprot and TrEMBL [*]. These proteins
+ could not be correctly clusterized with a single-transitive linkage
+ method since a mass chain effect grouped half of them together. The
+ first step calculation of alignment scores and Z-scores were
+ executed by a software package[1]. It included the pairwise
+ comparisons of all sequences and additional runs with
+ randomizations of each sequence. In that case, our criterion for
+ connectivity was a Z-score &gt;14, given that a significant
+ similarity has been admitted for Z-score &gt;10 [2]. They generated
+ 2.4 10<sup>6</sup> pairwise links involving 43626 proteins and
+ leaving 5185 singletons.</p>
+ <p>This example yielded 3917 clusters versus 2809 previously
+ obtained by a transitive closure method. The largest cluster
+ contained 2180 sequences mainly related to kinase proteins. Similar
+ computations could be performed for a group of 143000 sequences
+ from 53 bacteria. Reliable assignment of proteins to their correct
+ functional groups was proved. A biological analysis could be
+ partially done for the distribution of <i>Arabidopsis thaliana</i>
+ sequences. By comparison, each of the <i>Arabidopsis</i> protein
+ families listed in the web server "The Arabidopsis Information
+ Resource" (<a href=
+ "http://www.arabidopsis.org)/">www.arabidopsis.org)</a>, showed one
+ or more corresponding specific groups in our clustering. This was
+ for instance true for ABC-transporters, kinases, ion channels, cyt.
+ p450 and heat shock proteins.</p>
+ <p>These results show that we have designed and developed a fast
+ algorithm for general classification of proteins, applicable to a
+ large number of proteomes. It is much more sensitive than the
+ methods using transitive linkages. Indeed, the level of total
+ connections is equal or higher in all the clusters since they
+ derive from maximal cliques. In addition, mass chain effect is
+ always suppressed. Lastly this sort of clustering represents
+ multidomain proteins with the possibility to include them in
+ several clusters. As a result, we better reflect their functional
+ assignment and correlation with other proteins. The biological
+ relevance of the algorithm has been proved by comparing the
+ clusters composition to known protein families. We have began to
+ apply this method for the massive clusterization of 80 compared
+ proteomes (including archea, bacteria, yeasts, plants,
+ <i>Caenorhabditis elegans</i>, <i>Drosophila melanogaster</i> and
+ mammalian species) in the context of Teraprot project
+ (http://www.infobiogen.fr/services/Teraprot/).</p>
+ <p>*sponsored by G&eacute;noplante-Info
+ (http://genoplante-info.infobiogen.fr/)</p>
+ <p><b>4&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>References.</b></p>
+ <p>[1]&nbsp; Gl&eacute;met E. and Codani J.J. 1997. LASSAP, a LArge
+ Scale Sequence compArison Package, <i>Bioinformatics</i></p>
+ <p>(<i>Comput. Appl.</i> <i>Biosci</i>.) 13: 137-143.</p>
+ <p>[2]&nbsp; Comet J.P., Aude J.C., Gl&eacute;met E., Risler J-L.,
+ H&eacute;naut A., Slonimski P.P. and Codani J-J. 1999. Significance
+ of</p>
+ <p>Z-value statistics of Smith-Waterman scores for protein
+ alignments. <i>Comput. Chem</i>. 23(3-4): 317-31.</p>
+ <p>[3]&nbsp; Louis A., Ollivier E., Aude J-C. and Risler J-L. 2001.
+ Massive Sequence Comparisons as a Help in Annotating</p>
+ <p>Genomic Sequences. <i>Genome Research</i> 11:1296
+ -1303.</p></div>
+ </body>
+ </html>

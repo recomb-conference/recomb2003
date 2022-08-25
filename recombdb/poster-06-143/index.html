@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>143. Singular Value Decomposition for</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category05.html'>&lt;&lt;</a> <a href='/recombdb/category06.html'><b>Gene Expression</b> Overview</a> <a href='/recombdb/category07.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-06-142/'>&lt;&lt;</a> Poster 143 [ <a href='poster-06-143.pdf'>PDF</a> | <a href='poster-06-143.tgz'>TeX</a> | <a href='poster-06-143.ps'>PostScript</a> ] <a href='/recombdb/poster-06-144/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>143. Singular Value
+ Decomposition for<br>
+  Analysis of Gene Expression<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Andreas Rechtsteiner <a name="tex2html1"
+ href="#foot25"><sup>1</sup></a> <a name="tex2html2" href=
+ "#foot26"><sup>2</sup></a>, Raphael Gottardo <a name="tex2html3"
+ href="#foot27"><sup>3</sup></a>,<br>
+  Luis Rocha <img width="11" height="18" align="bottom" border="0"
+ src="img1.png" alt="$^2$">, Michael E. Wall <img width="11"
+      height="18" align="bottom" border="0" src="img1.png" alt=
+      "$^2$"></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> gene expression analysis,
+ filtering noise, Singular Value Decomposition</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+  <font size="-1">Three algorithms, 2 of them novel, are introduced
+ for gene expression analysis. Two of them use Singular Value
+ Decomposition (SVD) [<a href=
+ "#bib:signal">1</a>], or 2 dimensional subspaces
+ in gene expression space identified by it.</font> 
+ <p><font size="-1">The first algorithm that we present is the
+ Serial Correlation Test [<a href=
+ "#bib:test">2</a>]. We find it to be more useful
+ for filtering out very noisy gene expression profiles in
+ time-series experiments than the commonly used fold-change
+ approaches. Filtering out noise from gene expression data can
+ significantly improve subsequent analysis. To our knowledge the
+ serial correlation test has never been applied to gene expression
+ data.</font></p>
+ <p><font size="-1">Our second algorithm is applied to the filtered
+ gene expression data set. Alter <i>et al.</i> and Holter <i>et
+ al.</i> [<a href="#bib:alter">3</a>,<a href=
+ "#bib:holter">4</a>] have shown that the first 2
+ or 3 expression patterns detected by SVD, linear combinations of
+ the gene expression profiles, typically capture most of the
+ variance in the data. Alter <i>et al.</i> introduced the term
+ 'eigengene' for these patterns, we adapt this notation. In
+ algorithm 2 we project the gene expression profiles into a
+ 2-dimensional subspace of interest of the first few eigengenes. We
+ then search for structure, or clusters, in that projection among
+ the genes with high correlation with that subspace, <i>i.e.</i>
+ away from the origin of the plot. This performs a kind of second
+ 'filtering' of the data. Gene expression profiles which are noisy
+ or with patterns unrelated to the subspace will be removed. The
+ search for structure is automated. It is important to note that no
+ parameters need to be specified a priori, the algorithm is
+ completely data driven. For example, it adapts to different levels
+ of noise in the data.</font></p>
+ <p><font size="-1">Our 3rd algorithm is a 'clustering algorithm'.
+ It clusters the genes identified by algorithm 2, the genes with
+ high correlation with the subspace and some structure in the
+ projection plot.</font></p>
+ <h1><a name="SECTION00020000000000000000"><font size=
+ "+1">Application to Yeast Cell-Cycle Data</font></a></h1>
+   
+ <p><font size="-1">We illustrate the algorithms by application to
+ the time-series yeast cell-cycle data published by Cho <i>et
+ al.</i> [<a href="#bib:cho">5</a>]. Our goal was
+ to detect cell-cycle related genes and compare our findings to the
+ analysis by Cho <i>et al.</i> . We therefore attempt to detect
+ periodic expression patterns (see [<a href=
+ "#bib:cho">5</a>]).</font></p>
+ <p><font size="-1">First the serial correlation test was used to
+ remove from the 6200 about 3000 gene profiles which seemed mostly
+ random. SVD was performed on the remaining gene expression
+ profiles. The second and third eigengenes are periodic, sine-like
+ patterns with approximately <img width="30" height="32" align=
+ "middle" border="0" src="img2.png" alt="$\pi/2$"> phase difference
+ <a name="tex2html4" href="#foot38"><sup>4</sup></a>. To detect
+ genes with periodic expression profiles we project the data into
+ the subspace of eigengenes 2 and 3.</font></p>
+ <p><font size="-1">Algorithm 2 detected about 800 genes with
+ periodic expression profiles that seemed significant. 235 of these
+ were also detected by Cho <i>et al.</i> . We found that most of the
+ others were probably removed by Cho <i>et al.</i> 's fold-change
+ approach. Algorithm 3 is applied to the expression profiles of
+ these genes and 3 clusters with different phases in their periodic
+ profiles are found (see Figure <a href=
+ "#fig:clusters">1</a>).</font></p>
+ <div align="center"><a name="fig:clusters"></a><a name="44"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure:</strong> <font size=
+ "-1">The three averaged expression profiles of the three clusters
+ of periodic genes identified by the application of the 3
+ algorithms. (95% confidence intervals for the mean values are also
+ plotted.)</font></caption>
+ <tr>
+ <td></td></tr></table></div>
+   
+ <p><font size="-1">The clusters can be associated with different
+ phases of the cell-cycle. One observation was that of the 184
+ hand-selected genes that were annotated as being involved in
+ transcription, 32 were among the genes that our analysis reported
+ as cell-cycle related. Of the 32 only 1 is found within one of the
+ clusters, indicating a underrepresentation of transcription-related
+ genes in this cluster. Another observation we report is the
+ inclusion of genes encoding SWI6 and MBP1 among our predicted
+ cell-cycle genes. These genes were not among the cell-cycle genes
+ identified by Cho <i>et al.</i> , despite being known cell-cycle
+ regulators.</font></p>
+ <p></p>
+ <h2><a name="SECTION00030000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="bib:signal">1</a></dt>
+ <dd>Deprette, E.&nbsp;F, ed.<br>
+ (1988) <em>SVD and signal processing, Algorithms, Applications and
+ Architectures</em>.<br>
+ (North-Holland).</dd>
+ <dt><a name="bib:test">2</a></dt>
+ <dd>Kanji, G.&nbsp;K.<br>
+ (1993) <em>100 Statistical Tests</em>.<br>
+ (Sage).</dd>
+ <dt><a name="bib:alter">3</a></dt>
+ <dd>Alter, O, Brown, P.&nbsp;O, &amp; Botstein, D.<br>
+ (2000) <em>PNAS</em> <b>97</b>, 10101-10106.</dd>
+ <dt><a name="bib:holter">4</a></dt>
+ <dd>Holter, N, Mitra, M, Maritan, A, Cieplak, M, Banavar, J, &amp;
+ Fedoroff, N.<br>
+ (2000) <em>Proc. Natl. Acad. Sci. USA</em> <b>97</b>,
+ 8409-8414.</dd>
+ <dt><a name="bib:cho">5</a></dt>
+ <dd>Cho, R.&nbsp;J, Campbell, M.&nbsp;J, Winzeler, E.&nbsp;A,
+ Steinmetz, L, Conway, A, Wodicka, L, Wolfsberg, T.&nbsp;G,
+ Gabrielian, A.&nbsp;E, Lockhart, D.&nbsp;J, &amp; Davis,
+ R.&nbsp;W.<br>
+ (1998) <em>Molecular Cell</em> <b>2</b>, 65-73.</dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot25">...</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>To whom correspondence should be addressed. Contact:
+ andreas@lanl.gov</dd>
+ <dt><a name="foot26">...</a> <a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>CCS-3, Los Alamos National Laboratory</dd>
+ <dt><a name="foot27">...</a><a href=
+ "#tex2html3"><sup>3</sup></a></dt>
+ <dd>Bioscience division, Los Alamos National Laboratory</dd>
+ <dt><a name="foot38">... difference</a><a href=
+ "#tex2html4"><sup>4</sup></a></dt>
+ <dd>The first eigengene is non-periodic, it shows a slow, linear
+ decrease. It might capture transient expression changes due to the
+ experimental setup, <i>e.g.</i> the release of the yeast cells from
+ cell-cycle arrest at the beginning of the experiment.</dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

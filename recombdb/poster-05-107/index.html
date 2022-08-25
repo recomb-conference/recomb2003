@@ -1,0 +1,266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>107. Common Structural Cliques: Efficient Algorithm for Automatic Extraction of Local Similarities from Protein Structures</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category04.html'>&lt;&lt;</a> <a href='/recombdb/category05.html'><b>Protein Structure</b> Overview</a> <a href='/recombdb/category06.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-05-106/'>&lt;&lt;</a> Poster 107 [ <a href='poster-05-107.pdf'>PDF</a> | <a href='poster-05-107.doc'>MSWORD</a> ] <a href='/recombdb/poster-05-108/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>107.&nbsp; Common Structural Cliques: Efficient Algorithm for
+ Automatic Extraction of Local Similarities from Protein
+ Structures</h2>
+ <p align="center"><b>Mariusz Milik<a href="#_ftn1" name="_ftnref1"
+ title="">[1]</a>, S&aacute;ndor Szalma<a href="#_ftn2" name=
+ "_ftnref2" title="">[2]</a> and Krzysztof Olszewski<a href="#_ftn3"
+ name="_ftnref3" title="">[3]</a></b></p>
+ <p><b>Keywords:</b> protein structure, structural templates,
+ functional convergence, enzymes</p>
+ <p><b>1&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Introduction</b></p>
+ <p>Proteins sharing common biological functions often have common
+ local structural features. The reason for it is that in many cases
+ protein function is determined by chemical character and spatial
+ arrangement of few selected atoms. Looking at protein structures
+ from the functional perspective, one may distinguish two classes of
+ protein residues: (i) functionally relevant residues that
+ participate in the specific protein function, and (ii) scaffold
+ residues that form structural environment for the functional
+ residues, keeping them in proper spatial configuration. The
+ algorithm presented here allows for automatic selection of
+ potential functionally relevant residues by analysis of local
+ similarities in different structures of proteins belonging to the
+ same functional family. The presented work is a modification and
+ expansion of the previously published &ldquo;FAUST&rdquo; algorithm
+ for extraction of functionally relevant templates from protein
+ structures [1].</p>
+ <p><b>2&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Methods</b></p>
+ <p>The presented search method is based on a comparison of local
+ sub-structures (atom cliques) of proteins sharing a common
+ biological function, and does not depend on overall similarity of
+ the compared protein structures and sequences, or on the previous
+ knowledge about functionally relevant residues in the considered
+ protein family.</p>
+ <p>The Common Structural Clique (CSC) establishes correspondence
+ between two compact subsets of atoms (atom cliques) selected from
+ two protein structures. The correspondence is defined in such way
+ that all inter-atomic distances between atoms belonging to the CSC
+ are approximately equal in both protein structures, and both atoms
+ belonging to the same pair have the same chemical identity. In the
+ presented study, structures of proteins are represented by selected
+ atoms from amino acid side chains, because we are interested in
+ protein structures with enzymatic function. For other application
+ of our CSC algorithm, other criteria may be used for choice of
+ representative set of atoms.</p>
+ <p>The CSC procedure for structural template extraction may be
+ summarized in three main steps. First, the graph representations of
+ two compared protein structures are created and all possible
+ four-atom cliques are extracted from these graphs. Second, the
+ extracted cliques are exhaustively searched for CSC&rsquo;s &ndash;
+ pairs of isomorphic atom cliques, where first clique is extracted
+ from first structure and the other one from the second protein
+ structure. In the third step, extracted CSCs are filtered and
+ combined in order to create a common sub-graph of two graphs
+ representing protein structures. The goal of this stage of the
+ procedure is to choose atoms most likely to be related to the
+ common function of the compared proteins.</p>
+ <p><b>3&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Results</b></p>
+ <p>Performance of the algorithm was tested on four structures of
+ serine proteases: (i) 1A0J &ndash; trypsin, E.C. number 3.4.21.4,
+ (ii) 1C5Y - urokinase-type plasminogen activator, E.C. number
+ 3.4.21.73, (iii) 1BH6 &ndash; subtilisin, E.C. number 3.4.21.62,
+ (iv) 1IC6 &ndash; proteinase K, E.C. number 3.4.21.64. Two of these
+ proteins (1A0J and 1C5Y) belong to the trypsin family and two
+ others (1BH6 and 1IC6) to the subtilisin family. The catalytic
+ activity of the serine proteases from these families is provided by
+ a charge relay system involving an aspartic acid residue
+ hydrogen-bonded to a histidine, which itself is hydrogen-bonded to
+ a serine (catalytic triad). The sequence around the residues
+ involved in the catalytic triad of the subtilisin family proteins
+ is completely different from that of the analogous residues in the
+ trypsin family and most probably evolved by independent convergent
+ evolution.</p>
+ <p>In this test we applied our automatic procedure for structural
+ template extraction to three pairs of these proteins. First two
+ pairs contained proteins from the same structural families, the
+ third pair contained one protein from the trypsine and one protein
+ from the subtilisin family. Table 2 presents condensed results of
+ these experiments.</p>
+ <table border="1" cellspacing="0" cellpadding="0">
+ <tr>
+ <td width="64" valign="top">
+ <p><b>Structure</b></p></td>
+ <td width="71" valign="top">
+ <p><b>No. of extracted atoms</b></p></td>
+ <td width="72" valign="top">
+ <p><b>Number of 4-atom cliques</b></p></td>
+ <td width="24" rowspan="5" valign="top">
+ <p>&nbsp;</p></td>
+ <td width="78" valign="top">
+ <p><b>Structure pair</b></p></td>
+ <td width="66" valign="top">
+ <p><b>Number of CSC&rsquo;s</b></p></td>
+ <td width="84" valign="top">
+ <p><b>No. of atoms in common graph</b></p></td></tr>
+ <tr>
+ <td width="64" valign="top">
+ <p align="center">1A0J</p></td>
+ <td width="71" valign="top">
+ <p align="center">245</p></td>
+ <td width="72" valign="top">
+ <p align="center">858</p></td>
+ <td width="78" valign="top">
+ <p align="center">1A0J / 1C5Y</p></td>
+ <td width="66" valign="top">
+ <p align="center">165</p></td>
+ <td width="84" valign="top">
+ <p align="center">13</p></td></tr>
+ <tr>
+ <td width="64" valign="top">
+ <p align="center">1C5Y</p></td>
+ <td width="71" valign="top">
+ <p align="center">245</p></td>
+ <td width="72" valign="top">
+ <p align="center">1134</p></td>
+ <td width="78" valign="top">
+ <p align="center">1BH6 / 1IC6</p></td>
+ <td width="66" valign="top">
+ <p align="center">199</p></td>
+ <td width="84" valign="top">
+ <p align="center">15</p></td></tr>
+ <tr>
+ <td width="64" valign="top">
+ <p align="center">1BH6</p></td>
+ <td width="71" valign="top">
+ <p align="center">275</p></td>
+ <td width="72" valign="top">
+ <p align="center">618</p></td>
+ <td width="78" valign="top">
+ <p align="center">1A0J / 1BH6</p></td>
+ <td width="66" valign="top">
+ <p align="center">26</p></td>
+ <td width="84" valign="top">
+ <p align="center">6</p></td></tr>
+ <tr>
+ <td width="64" valign="top">
+ <p align="center">1IC6</p></td>
+ <td width="71" valign="top">
+ <p align="center">278</p></td>
+ <td width="72" valign="top">
+ <p align="center">1211</p></td>
+ <td width="78" valign="top"></td>
+ <td width="66" valign="top"></td>
+ <td width="84" valign="top"></td></tr>
+ <tr>
+ <td width="459" colspan="7" valign="top">
+ <p>Table 2. Results of application of CSC algorithm to four
+ structures of serine proteases</p></td></tr></table>
+ <p>It may be seen that the number of extracted CSCs and size of
+ common graphs depends on similarity of compared structures. All
+ automatically extracted common graphs contained, among others,
+ atoms from residues from the catalytic triad. As an example, Table
+ 3 presents a list of atom pairs (mapping) for the 1a0j and 1bh6
+ structures.</p>
+ <table border="1" cellspacing="0" cellpadding="0">
+ <tr>
+ <td width="30" valign="top"></td>
+ <td width="140" valign="top">
+ <p align="center"><b>Atoms from struct. 1a0j</b></p></td>
+ <td width="162" valign="top">
+ <p align="center"><b>Atoms from struct. 1bh6</b></p></td></tr>
+ <tr>
+ <td width="30" valign="top">
+ <p align="right"><b>1</b></p></td>
+ <td width="140" valign="top">
+ <p align="center">57 HIS&nbsp; ND1</p></td>
+ <td width="162" valign="top">
+ <p align="center">64 HIS&nbsp; ND1</p></td></tr>
+ <tr>
+ <td width="30" valign="top">
+ <p align="right"><b>2</b></p></td>
+ <td width="140" valign="top">
+ <p align="center">57 HIS&nbsp; NE2</p></td>
+ <td width="162" valign="top">
+ <p align="center">64 HIS&nbsp; NE2</p></td></tr>
+ <tr>
+ <td width="30" valign="top">
+ <p align="right"><b>3</b></p></td>
+ <td width="140" valign="top">
+ <p align="center">102 ASP&nbsp; OD1</p></td>
+ <td width="162" valign="top">
+ <p align="center">32 ASP&nbsp; OD2</p></td></tr>
+ <tr>
+ <td width="30" valign="top">
+ <p align="right"><b>4</b></p></td>
+ <td width="140" valign="top">
+ <p align="center">102 ASP&nbsp; OD2</p></td>
+ <td width="162" valign="top">
+ <p align="center">32 ASP&nbsp; OD1</p></td></tr>
+ <tr>
+ <td width="30" valign="top">
+ <p align="right"><b>5</b></p></td>
+ <td width="140" valign="top">
+ <p align="center">214 SER&nbsp; OG</p></td>
+ <td width="162" valign="top">
+ <p align="center">125 SER&nbsp; OG</p></td></tr>
+ <tr>
+ <td width="30" valign="top">
+ <p align="right"><b>6</b></p></td>
+ <td width="140" valign="top">
+ <p align="center">195 SER&nbsp; OG</p></td>
+ <td width="162" valign="top">
+ <p align="center">221 SER&nbsp; OG</p></td></tr>
+ <tr>
+ <td width="333" colspan="3" valign="top">
+ <p><b>Table 3.</b> List of atoms extracted by the automatic
+ procedure by comparison structures of trypsin (1a0j) and subtilisin
+ (1bh6)</p></td></tr></table>
+ <h1>References</h1>
+ <p>[1] Milik M., Szalma S. and Olszewski, K.A. <i>FAUST-An
+ Algorithm for Extraction of Functionally Relevant Templates from
+ Protein Structures</i> in Lecture Notes in Computer Science, 2002,
+ Eds. R. Guigo and D. Gusfield.</p>
+ <p>[2] Brenner S., The molecular evolution of genes and proteins: a
+ tale of two serines, Nature 334:528-530(1988).</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a> Accelrys, 9685
+ Scranton Road, San Diego, CA 92121, USA. E-mail:
+ mmilik@accelrys.com</p></div>
+ <div id="ftn2">
+ <p><a href="#_ftnref2" name="_ftn2" title="">[2]</a> Accelrys, 9685
+ Scranton Road, San Diego, CA 92121, USA. E-mail:
+ ssz@accelrys.com</p></div>
+ <div id="ftn3">
+ <p><a href="#_ftnref3" name="_ftn3" title="">[3]</a> Accelrys, 9685
+ Scranton Road, San Diego, CA 92121, USA. E-mail:
+ kato@accelrys.com</p></div></div>
+ </body>
+ </html>

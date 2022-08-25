@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>71. Bacterial RM-systems revisited using degenerate pattern consensi</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category02.html'>&lt;&lt;</a> <a href='/recombdb/category03.html'><b>Recognition of Genes and Regulatory Elements</b> Overview</a> <a href='/recombdb/category04.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-03-070/'>&lt;&lt;</a> Poster 071 [ <a href='poster-03-071.pdf'>PDF</a> | <a href='poster-03-071.tgz'>TeX</a> | <a href='poster-03-071.ps'>PostScript</a> ] <a href='/recombdb/poster-03-072/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>71. Bacterial RM-systems
+ revisited using degenerate pattern consensi<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Mathias Vandenbogaert <a name="tex2html1"
+ href="#foot61"><sup>1</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> restriction- and modification
+ systems, word probabilities, IUPAC ambiguity codes, implementation,
+ QuickScore-library, combinatorics.</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+ <p><font size="-1">Recognition sites for type II RM enzymes in
+ genomes of several bacteria are semi&shy;-palindromes that are
+ avoided at a significant degree, relating the avoidance of those
+ short oligonucleotide words to RM-systems&nbsp;[<a href=
+ "#PaMiGe00">3</a>]. In this context, distinct
+ words that are recognized are selected against, creating so-called
+ ``contrast'' words. Bacteria that show a more stringent word usage
+ bias cope with less selective pressure than those that have words
+ of a more random composition. In this study, focusing on pattern
+ analysis methods applied to semi&shy;-palindromes in bacterial
+ RM-systems, the correlation between contrasting individual
+ 6-palindromes in genomic texts and the presence of RM enzymatic
+ systems is being analysed systematically.</font></p>
+ <h1><a name="SECTION00020000000000000000"><font size=
+ "+1">Experimental Results - Discussion</font></a></h1>
+ <p><font size="-1">Statistical methods have been widely used in
+ determining the level of over&shy;- or under&shy;-representation of
+ contrast words&nbsp;[<a href=
+ "#ScPrTu95">5</a>,<a href=
+ "#NiSaFla99">2</a>,<a href=
+ "#DeReVa01">1</a>] in the field of genomics. Our
+ objective is to check whether the observed repertoire of avoided
+ words according to various models, is reflecting homology from
+ similarity as compared by BLAST protein comparisons only. In other
+ terms, we wonder about the correspondance between the scope of
+ avoided words in a microorganism, the similarity between RM-system
+ enzymes for this organism, and eventually the degree of homology
+ between them.</font></p>
+ <p><font size="-1">Considering degenerate palindromes in a genome,
+ their significance has been assessed using word&shy;-counting
+ procedures, through a comparison against various models available
+ in the <i>QuickScore</i> library [<a href=
+ "#DeReVa01">1</a>]. The avoidance patterns we
+ consider take into account the words included in the set of
+ degenerate palindromes with retained symmetry. So far, the included
+ patterns are those that allow at most 2 conventional ACGT letters.
+ This has been done in order to avoid the blurring effect of
+ intermingling <img width="12" height="13" align="bottom" border="0"
+      src="img1.png" alt="$z$">-scores for 2- and 3-letter ambiguity
+      codes.</font></p>
+ <p><font size="-1">As we are dealing with statistics that are
+ admitting some error in the words (while respecting their
+ palindromic symmetry), the list of avoided words sorted on
+ <img width="12" height="13" align="bottom" border="0" src=
+ "img1.png" alt="$z$">&shy;-score shows similarity in the
+ list&shy;-tops, through comparison of taxonomically related
+ genomes. The preservation of the rankings of the words, can be
+ explained for organisms that are closely related by taxonomic
+ branchings, by overall gene similarity, and hence avoidance of the
+ same words, due to the presence of related RM-systems.</font></p>
+ <p><font size="-1">The same relation cannot be clearly made when we
+ consider the similarity through Blast searches for RM proteic
+ sequences. For example, although <em>Bacillus</em> and
+ <em>Listeria</em> are part of the same taxonomic branch, the
+ similarity for the sequences in both genomes is not
+ striking.</font></p>
+ <p><font size="-1">As an example we state the proteins from
+ <em>L.&nbsp;monocytogenes</em> that have some degree of similarity
+ (not better than an <img width="17" height="14" align="bottom"
+ border="0" src="img2.png" alt="$E$">-value of <img width="35"
+ height="16" align="bottom" border="0" src="img3.png" alt=
+ "$e^{-10}$">) with proteins encoded by <em>B.&nbsp;subtilis</em>:
+ M.BsuFI and M.BsuRI are similar with <em>L.&nbsp;monocytogenes</em>
+ ppk1 gene (acc.&nbsp;AJ302030.1). Their recognition sequence is
+ 5'&nbsp;CCGG&nbsp;3' and 5'&nbsp;GGCC&nbsp;3'; their prototypes are
+ HpaII and HaeIII from <em>Haemophilus&nbsp;aegyptius</em>,
+ respectively. The other way round, no <em>Listeria</em> similar
+ proteins can be found in the Blast results for
+ <em>B.&nbsp;subtilis</em>.</font></p>
+ <p><font size="-1">This means that although the fact a certain
+ degree of similarity can be found among the recognition sequences
+ for close genomes, this is only due to selective pressure on the
+ recognition sequence, and that the rate of evolution of RMS
+ sequences is higher than the point mutations that are allowed on
+ the recognition sequence.</font></p>
+ <p><font size="-1">If we neglige the importance of being
+ phylogenetically close, certain properties for well-determined
+ genomic strains are brought to day-light. The used methodology is
+ the following, when focussing on <em>Listeria</em>.</font></p>
+ <ul>
+ <li>We investigate by a regular Blast to what orgnanism the
+ sequences do belong that most resemble the RMS proteic sequences of
+ <em>Listeria</em>.</li>
+ <li>We look up its recognition sequence from the ReBase Database
+ for restriction systems&nbsp;[<a href=
+ "#RoMa00">4</a>], if known.</li>
+ <li>We compare the avoidance of patterns with degeneracy for
+ <em>Listeria</em> and this orgnanism. It is very likely that a
+ variant of the former mentioned recognition sequence will be shared
+ by both organisms.</li></ul>
+ <p><font size="-1">This way, as an exerpt from our results, we see
+ that for the genome of <em>Mycobacterium tuberculosis</em>, when
+ looking at the best candidates through similarity according to
+ Blast, a lot of <em>E.&nbsp;coli</em> sequences can be found, and
+ the best are encoded in <em>H.&nbsp;influenzae</em> sd.</font></p>
+ <h1><a name="SECTION00030000000000000000"><font size=
+ "+1">Conclusion and perspectives</font></a></h1>
+  <font size="-1">This study extends previous analyses undertaken at
+ establishing phylogenetic relationships, starting from contrast
+ words, with respect to RM-systems present in specific clades. The
+ model used in this study is able to reflect related RMS in closely
+ related taxa, and can reveal events that are classified as mediated
+ by horizontal gene transfers (HGT). The use of IUPAC ambiguity
+ codes, eventually supplemented with information about divergent
+ evolutionary rates among RMS families of proteins, will eventually
+ give a better and more refined understanding of genome
+ organization, interaction and dynamics of evolution mechanisms
+ through mobile elements, like transposons and plasmids.</font> 
+ <p></p>
+ <h2><a name="SECTION00040000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="DeReVa01">1</a></dt>
+ <dd>Denise, A., R&eacute;gnier, M. and Vandenbogaert, M. 2001.
+ Assessing statistical significance of overrepresented
+ oligonucleotides. <em>in Proc. First Intern. Workshop on Algorithms
+ in Bioinformatics, Aarhus, Denmark, August 2001; preliminary
+ version as INRIA research report 4132.</em> WABI'01,
+ Springer-Verlag, O. Gascuel and B. Moret 85-97.</dd>
+ <dt><a name="NiSaFla99">2</a></dt>
+ <dd>Nicod&egrave;me, P., Salvy, B. and Flajolet, P. 1999. Motif
+ Statistics. <em>European Symposium on Algorithms-ESA99, Lecture
+ Notes in Computer Science</em> 1643:194-211.</dd>
+ <dt><a name="PaMiGe00">3</a></dt>
+ <dd>Panina, E.M., Mironov, A.A. and Gelfand, M.S. 2000. Statistical
+ Analysis of Complete Bacterial Genomes: Avoidance of Palindromes
+ and Restriction-Modification Systems. <em>Molecular Biology</em>
+ 34, 2: 215-221.</dd>
+ <dt><a name="RoMa00">4</a></dt>
+ <dd>Roberts, R.J. and Macelis, M. 2000. REBASE - restriction
+ enzymes and methylases. <em>Nucleic Acids Research</em>
+ 28,1:306-307.</dd>
+ <dt><a name="ScPrTu95">5</a></dt>
+ <dd>Schbath, S., Prum, B., de Turckheim, E. 1995. Exceptional
+ motifs in different Markov chain models for a statistical analysis
+ of DNA sequences. <em>J. Comp. Biol.</em> 2:417-437.</dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot61">... Vandenbogaert</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>INRIA Rocquencourt - LaBRI Bordeaux I, Domaine de Voluceau,
+ B.P. 105 78153 Le Chesnay Cedex, France. E-mail: 
+ <div align="center">
+ <b><tt>Mathias.Vandenbogaert@inria.fr</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

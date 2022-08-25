@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>144. Selecting genes by Bayesian Inference</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category05.html'>&lt;&lt;</a> <a href='/recombdb/category06.html'><b>Gene Expression</b> Overview</a> <a href='/recombdb/category07.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-06-143/'>&lt;&lt;</a> Poster 144 [ <a href='poster-06-144.pdf'>PDF</a> | <a href='poster-06-144.tgz'>TeX</a> | <a href='poster-06-144.ps'>PostScript</a> ] <a href='/recombdb/poster-06-145/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>144. Selecting genes by
+ Bayesian Inference<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font> <b>Volker Roth <a name="tex2html1" href=
+ "#foot78"><sup>1</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> Gene expression, sample
+ classification, automatic relevance determination.</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+ <p><font size="-1">Microarray experiments typically measure the
+ expression levels of several thousands of genes simultaneously. In
+ the context of cancer diagnostics, the discrimination between
+ either diseased and healthy tissues, or between different kinds of
+ diseased tissues, constitutes a major application for this
+ technology. The aim is to improve the understanding of cancer
+ pathogenesis on a molecular level. A central goal of the analysis
+ of microarray data is the identification of small subsets of
+ informative genes with cancer-specific expression profiles. From a
+ machine learning viewpoint, this problem of identifying relevant
+ genes is known as the problem of feature selection in supervised
+ learning. For microarray experiments with several thousands of
+ genes, however, the combinatorial explosion of the space of all
+ possible subsets of features precludes the use of greedy search
+ strategies. This paper reports on the successful application of a
+ Bayesian inference method to the problem of selecting
+ discriminative subsets of features. Contrary to most other
+ approaches in the literature, our method implements a <i>wrapper
+ strategy</i> for gene selection by directly optimizing the
+ discriminative power of a logistic classification model. The
+ selection process can be interpreted as a special instance of the
+ Bayesian automatic relevance determination (ARD) principle. For
+ technical details see [<a href=
+ "#Roth02TR8">1</a>]. The most outstanding
+ properties of this combined classification and selection method
+ are: (i) excellent generalization ability; (ii) probabilistic
+ outputs, rather than only binary class labels; (iii) generic
+ definition of a doubt class collecting samples with uncertain
+ predicted label; (iv) simultaneous assessment of prediction
+ strength and stability of gene selection under resampling; (v)
+ availability of a highly efficient optimization algorithm which is
+ capable of dealing with large-scale real-world applications. Note
+ that the latter is particularly important for wrapper
+ methods.</font></p>
+ <p><font size="-1">Experiments for several microarray datasets
+ demonstrate both the outstanding classification performance and the
+ biological relevance of the selected genes. All these features make
+ it possible to use our <i>GenLASSO</i> software<a name="tex2html2"
+ href="#foot79"><sup>2</sup></a> in a ``black-box'' manner for
+ high-quality analysis of large-scale microarray
+ datasets.</font></p>
+ <h1><a name="SECTION00020000000000000000"><font size=
+ "+1">Results</font></a></h1>
+  <font size="-1">We applied our method to several microarray
+ datasets, e.g.&nbsp;the ones published by <b>Golub</b> et al,
+ [<a href="#golub">2</a>], and by <b>Alon</b> et
+ al, [<a href="#alon">3</a>]. In all experiments,
+ the Generalized LASSO classifier was able to separate the classes
+ with a cross-validation-error that compares favorably to previous
+ studies. Due to the high standard deviations, however, we feel that
+ their is no evidence for preferring one method over the other ones
+ solely based on estimated error rates. The real advantages of our
+ method over most related approaches are the following: the
+ possibility of quantifying the classification confidence allows us
+ to naturally introduce a <i>doubt-class</i> that collects samples
+ with uncertain class membership. In the left panel of figure
+ <a href="#hist_giolub">1</a> the empirical distribution of
+ classification confidences both for the correctly classified
+ samples and for the misclassified ones are depicted (Leukemia
+ dataset). It it obvious that correct classification correlates with
+ high confidence, whereas misclassifications are widely spread over
+ the whole range between 0.5 and 1. In the right panel, the
+ influence of introducing a doubt-class by thresholding is depicted.
+ By leaving 20% of the samples unclassified, we obtain a classifier
+ with vanishingly small expected error for the remaining 80% of the
+ samples. For practical applications in cancer diagnostics, such a
+ doubt class is certainly an appropriate statistical model: taking
+ into account all possible experimental uncertainties and noise
+ sources involved in a microarray experiment (see
+    eg.&nbsp;[<a href="#Lee_ML">4</a>]), one
+    usually is willing to leave a certain fraction of samples with
+    uncertain labels unclassified.</font> 
+ <div align="center"><a name="hist_giolub"></a><a name="80"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure:</strong> dataset. Left:
+ empirical distribution of classification confidence levels both for
+ correctly classified samples (black) and for misclassified samples
+ (grey). Right: effect of thresholding by confidence level. Error
+ rate (solid) and fraction of samples in doubt class
+ (dotted).</caption>
+ <tr>
+ <td>
+ <table width="272">
+ <tr>
+ <td>
+ <div align="center"><img width="156" height="95" align="bottom"
+ border="0" src="img2.png" alt=
+ "\includegraphics[height=2.1cm]{poster-06-144-fig02.eps}"></div></td></tr></table>
+ <table width="272">
+ <tr>
+ <td><img width="156" height="95" align="bottom" border="0"
+      src="img3.png" alt=
+      "\includegraphics[height=2.1cm]{poster-06-144-fig01.eps}"></td></tr></table></td></tr></table></div>
+   
+ <p><font size="-1"><br>
+  A second advantageous property is the gene selection mechanism
+ being independent of the actual test-sets during resampling. For a
+ <i>fixed classification model</i>, we can simultaneously estimate
+ the error rate (without selection bias!) and the stability of the
+ selected genes under different splits of the dataset. The
+ expression patterns of the highest-scoring genes (figure
+    <a href="#golub_rg">2</a>) clearly indicate that they are
+    significantly over-expressed in one of the Leukemia classes. A
+    careful analysis of the high-scoring genes shows that all
+    automatically identified genes are highly relevant for
+    discriminating the classes from a biological
+    viewpoint.</font></p>
+ <div align="center"><a name="golub_rg"></a><a name="82"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure:</strong> ALL and AML
+ samples. Expression patterns of high-scoring genes and their
+ relative stability score under resampling (histogram on right
+ panel). The genes are ordered according to either high expression
+ values for AML (upper part), or for ALL (lower part).</caption>
+ <tr>
+ <td>
+ <div align="center"><font size="-1">ALL</font> <font size=
+ "-1">AML</font> 
+ <img width="79" height="33" align="middle" border="0" src=
+ "img4.png" alt=
+ "$ \vert \underset{-----\longrightarrow}{\text{ \small Score}}$"><br>
+ 
+ <br>
+  <img width="453" height="79" align="bottom" border="0" src=
+ "img5.png" alt=
+ "\includegraphics[width=10.0cm, height=1.75cm]{poster-06-144-fig03.eps}">
+ </div></td></tr></table></div>
+ <p><font size="-1"><font size="-1"><br></font></font> </p>
+ <h2><a name="SECTION00030000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="Roth02TR8">1</a></dt>
+ <dd>Roth, V., 2002. The Generalized LASSO: a wrapper approach to
+ gene selection for microarray data. University of Bonn, Dep.
+ Computer Science III, Tech.&nbsp;Rep. IAI-TR-2002-8.</dd>
+ <dt><a name="golub">2</a></dt>
+ <dd>Golub, T.R. et al., 1999. Molecular Classification of Cancer:
+ Class Discovery and Class Prediction by Gene Expression Monitoring,
+ <i>Science</i> 286:531-537.</dd>
+ <dt><a name="alon">3</a></dt>
+ <dd>Alon, U. et al., 1999. Broad patterns of gene expression
+ revealed by clustering analysis of tumor and normal colon tissues
+ probed by oligonucleotide arrays. <i>PNAS</i> 96:6745-6750.</dd>
+ <dt><a name="Lee_ML">4</a></dt>
+ <dd>Lee, M.L. et al., 2000. Importance of replication in microarray
+ gene expression studies: Statistical methods and evidence from
+ repetitive cDNA hybridizations. <i>PNAS</i>
+ 97(18):9834-9839.</dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot78">... Roth</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>University of Bonn, Department of Computer Science III,
+ Roemerstr. 164, D-53117 Bonn, Germany. E-mail: 
+ <div align="center"><b><tt>roth@cs.uni-bonn.de</tt></b></div></dd>
+ <dt><a name="foot79">... software</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd><font size=
+      "-1"><tt>http://www-dbv.iai.uni-bonn.de/<img width="16"
+      height="15" align="bottom" border="0" src="img1.png" alt=
+      "$ \sim$">roth/GenLASSO/</tt></font></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

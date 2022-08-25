@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>2. Visualization of the genome-wide haplotype structure in mice using SNPview</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center">  <a href='/recombdb/category01.html'><b>Genomics</b> Overview</a> <a href='/recombdb/category02.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-01-001/'>&lt;&lt;</a> Poster 002 [ <a href='poster-01-002.pdf'>PDF</a> | <a href='poster-01-002.doc'>MSWORD</a> ] <a href='/recombdb/poster-01-003/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>2. Visualization of the genome-wide haplotype structure in mice
+ using <i>SNPview</i></h2>
+ <p align="center"><b>Serge Batalov<sup>1</sup>, Tim
+ Wiltshire<sup>1</sup>, Mathew T. Pletcher<sup>1,2</sup>, Colin F.
+ Fletcher<a href="#_ftn1" name="_ftnref1" title=
+ "">[1]</a><sup>,2</sup></b></p>
+ <p><b>Keywords:</b> haplotype, diversity, SNP, SSLP, marker, QTL,
+ genotyping, mouse.</p>
+ <h3>1&nbsp;&nbsp; Introduction</h3>
+ <p>The laboratory mouse is an excellent experimental model, in part
+ because of well-defined strain genealogies, standardized mapping
+ tools, and the availability of sophisticated genetic technologies.
+ Simple sequence-length polymorphic (SSLP) markers have, until now,
+ provided the foundation for genetic mapping in the mouse but the
+ use of single-nucleotide polymorphisms (SNPs) is an attractive
+ option because they are by far the most abundant variation in the
+ genome [1,2], potentially providing a much larger marker set.</p>
+ <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; To identify a
+ genome-wide panel of SNPs, we selected 2,600 evenly distributed
+ loci (STSs) for PCR amplification and sequencing from 6 common and
+ well characterized inbred ("laboratory") mouse strains (C57BL/6J,
+ 129S1/SvImJ, C3H/HeJ, DBA/2J, A/J, BALB/cByJ) and two inbred
+ strains derived from wild mice, <i>M. m. castaneus</i> and <i>M.
+ spretus</i>. This approach provides complete allele information and
+ thus allows simultaneous comparison of all strains. A significant
+ challenge is the visualization of the data.</p>
+ <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; These data were
+ incorporated with publicly available data [1,3] to form a database
+ containing 18,000+ individual SNPs across 3950 loci. After mapping
+ these SNPs to the assembled mouse genome [4], we developed a Web
+ based interface to the database (see below) to examine the
+ distribution of polymorphisms between strains. Pairwise comparison
+ of C57BL/6J with each of the other laboratory strains in this
+ dataset revealed 23 non-polymorphic regions greater than 20 Mb; the
+ largest 'gap' is 61 Mb on chromosome 10 between C57BL/6J and
+ DBA/2J. Two regions averaging over 20 Mb, on chromosomes 10 and 13,
+ are completely deficient in polymorphisms in all five
+ combinations.</p>
+ <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; We have extended this
+ analysis to all strain comparisons by identifying regions of shared
+ haplotype. Thus, regions containing a series of identical alleles
+ between two or more strains are indicated as blocks of identical
+ color in those strains. Shared haplotypes were defined by 1)
+ Identifying the longest regions of contiguous strain pair identity;
+ 2) Taking those two strain pairs, and all other strains bearing the
+ same alleles, and coloring them as shared haplotypes within that
+ region; 3) Where alleles diverged, or, any different allele
+ pairings occurred within a longest block, they were identified with
+ different colors, the same allele groups bearing the same
+ colors.</p>
+ <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Regions of haplotype
+ sharing were in some cases surprisingly large, up to 120Mb, where
+ no SNPs were identified between strain pairs by our sampling
+ methods. In most regions no more than three haplotypes were
+ identified for a given interval, suggesting that common laboratory
+ mouse strains represent a genetic mosaic of a smaller number of
+ founder strains.</p>
+ <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; These results
+ indicate that large, but discrete regions of the genome are not
+ very polymorphic between particular strain pairs, and thus cannot
+ easily be interrogated by SNPs or SSLPs for natural genetic
+ variations influencing QTLs. A comprehensive survey of variation
+ allows the identification of strains pairs that share the fewest
+ haplotypes. To that end, we have typed 21 additional strains with a
+ smaller set of 934 SNP assays to determine the extent of strain
+ diversity.</p>
+ <p><b>2 &nbsp;&nbsp; GNF SNP database and <i>SNPview.</i></b></p>
+ <p>A Web-based, fully searchable database was developed containing
+ sequence data and allele information across 8 inbred strains for
+ all SNP loci. We incorporated publicly available SNPs that were
+ useful in a C57BL/6J strain combination, 2757 SNPs from the
+ Whitehead Institute SNP data
+ (http://www-genome.wi.mit.edu/SNP/mouse) and 296 SNPs from the
+ Roche database (http://mouseSNP.roche.com).</p>
+ <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SNPview, the
+ interactive navigator for the individual SNPs, SSLPs, alleles and
+ haplotypes projected to the genomic axis is available on-line at
+ http://www.gnf.org/SNP/ . Several different views are available for
+ each chromosome: a "chromatogram" view of SNPs, major and minor
+ alleles, haplotypes, and combinations of the above. The data for
+ the selected strains is displayed at the full chromosomes or
+ user-defined intervals, along with the reference tracks of the
+ LocusLink gene loci, publicly available SSLP markers, and the
+ subset of SSLP markers informative for the two selected strains.
+ The choice of the Celera or Ensembl genomic coordinates is
+ available. DerBrowser [5] is used as a tool to present the genomic
+ mapping for ease of SNP, SSLP and haplotype comparison. DerBrowser
+ features scrolling, zooming, text labels and hyperlinks to the
+ original and external data.</p>
+ <p><b>3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Conclusions</b></p>
+ <p>Will a very dense set of SNPs be required to define haplotypes,
+ as suggested by studies in the human? Our study says no. For many
+ other plant and animal strains that have population histories
+ similar to the mouse, we can expect that a much smaller sampling of
+ SNPs will define genome haplotypes.</p>
+ <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Can the mouse still
+ be used as an experimental model to understand the evolutionary
+ forces that affect haplotypes? Yes - in fact our study provides the
+ needed framework for designing and interpreting those experiments.
+ As one example, this study identifies genomic regions that can be
+ interrogated to define mutation rates in different genetic
+ backgrounds.</p>
+ <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This study provides a
+ framework in the mouse for investigating the mechanisms that
+ underlie haplotype conservation and the extent of linkage
+ disequilibrium, as well as a powerful toolset for exploiting this
+ knowledge to clone mouse genes from mutant or quantitatively
+ variant strains. The genotyping and haplotype analysis for 24
+ additional strains is currently under way.</p>
+ <h1>References</h1>
+ <p>[1] Lindblad-Toh, K., Winchester E., Daly M.J., Wang D.G.,
+ Hirschhorn J.N., Laviolette J.P., Ardlie K., Reich D.E., Robinson
+ E., Sklar P., Shah N., Thomas D., Fan J.B., Gingeras T., Warrington
+ J., Patil N., Hudson T.J., Lander E.S. 2000.&nbsp; Large-scale
+ discovery and genotyping of single-nucleotide polymorphisms in the
+ mouse. <i>Nat Genet</i>. 24: 381-6.</p>
+ <p>[2] Kerlavage, A., Bonazzi V., di Tommaso M., Lawrence C., Li
+ P., Mayberry F., Mural R., Nodell M., Yandell M., Zhang J., Thomas
+ P. 2002. The Celera Discovery System. <i>Nucleic Acids Res</i>.
+ 30(1): 129-136.</p>
+ <p>[3] Grupe, A., Germer S., Usuka J., Aud D., Belknap J.K., Klein
+ R.F., Ahluwalia M.K., Higuchi R., Peltz G. 2001. In silico mapping
+ of complex disease-related traits in mice. <i>Science</i>. 292:
+ 1915-8.</p>
+ <p>[4] Mouse Genome Sequencing Consortium. Initial sequencing and
+ comparative analysis of the mouse genome. 2002. <i>Nature</i>, 420:
+ 520-563.</p>
+ <p>[5] Grigoriev, A. 1997. Genomes with a view. <i>Trends
+ Genet</i>, 13(12): 499.</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a> Genomics
+ Institute of the Novartis Research Foundation, San Diego,
+ California, 92121, USA.</p>
+ <p>E&#8209;mail: {batalov,twiltshi,mpletcher,fletcher}@gnf.org</p>
+ <p>2 The Scripps Research Institute, La Jolla, California, 92121,
+ USA.</p>
+ <p>E&#8209;mail: colin@scripps.edu</p></div></div>
+ </body>
+ </html>

@@ -1,0 +1,240 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>38. Exact Distribution of the Local Score</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-037/'>&lt;&lt;</a> Poster 038 [ <a href='poster-02-038.pdf'>PDF</a> | <a href='poster-02-038.tgz'>TeX</a> | <a href='poster-02-038.ps'>PostScript</a> ] <a href='/recombdb/poster-02-039/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>38. Exact Distribution of
+ the Local Score<br>
+  in Markovian Case<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Sabine MERCIER, <a name="tex2html1" href=
+ "#foot54"><sup>1</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> sequence analysis, local score,
+ statistical significance, Markov Chain, sequence
+ alignment</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+  <font size="-1">Post-sequencing period has arrived. Developing
+ tools to analyze the numerous sequences in the data banks is one of
+ the goals of the Genome Project started in 1990. In order to point
+ out biologically interesting regions of the sequences, numerical
+ values called scores are attributed to each component of the
+ sequences (nucleotides, amino acids), reflecting physicochemical
+ characteristics or geometrical structure attributes. Let
+      <img width="95" height="30" align="middle" border="0" src=
+      "img1.png" alt="$X=X_1...X_n$"> be the corresponding score
+      sequence where <img width="23" height="30" align="middle"
+      border="0" src="img2.png" alt="$X_i$"> is the score of the
+      <img width="10" height="14" align="bottom" border="0" src=
+      "img3.png" alt="$i$">-th component of the studied
+      sequence.</font> 
+ <p><font size="-1">Let's define the local score as</font></p>
+ <div align="center">
+ <img width="155" height="57" border="0" src="img4.png" alt=
+ "\begin{displaymath}H_n=\max_{1\leq i\leq j\leq n}\sum_{k=i}^{j}X_k\ .\end{displaymath}">
+ </div>
+ <br clear="all">
+  <font size="-1">Segment that realized the local score will be the
+ most hydrophobic (resp. acidic, ...) segment if the scores are
+ chosen for an hydrophobic (resp. acidic, ...) problem.</font> 
+ <h1><a name="SECTION00020000000000000000"><font size=
+ "+1">Statistical problem and solutions in i.i.d.
+ case</font></a></h1>
+  <font size="-1">In order to determine really interesting regions,
+ we must establish the statistical significance of the local score
+ and first we need a model for the biological sequences. Let
+ <img width="18" height="14" align="bottom" border="0" src=
+ "img5.png" alt="$X$"> be a sequence of random variables taking
+ values in 
+ <img width="125" height="32" align="middle" border="0" src=
+ "img6.png" alt="$\{-u, ..., 0, ..., +v\}$"> the chosen
+ scores.</font> 
+ <p><font size="-1">The i.i.d. model represents the sequence
+ <img width="18" height="14" align="bottom" border="0" src=
+ "img5.png" alt="$X$"> as a succession of independently and
+ identically distributed variables. This model has been studied a
+ lot.</font></p>
+ <p><font size="-1">Karlin <i>et al.</i> [<a href=
+ "#KAl90">1</a>] [<a href=
+ "#KDe92">2</a>] proposed an approximation of the
+ distribution of the local score when the average score is
+ non-positive. This formula is asymptotic with <img width="14"
+ height="13" align="bottom" border="0" src="img7.png" alt="$n$">,
+ the length of the sequence.</font></p>
+ <p><font size="-1">Mercier <i>et al.</i> [<a href=
+ "#CCD01">3</a>] extended this result with
+ additional and correctional terms that bring a more precise
+ approximation. These two works are mainly based on renewal
+ theory.</font></p>
+ <p><font size="-1">Using simple tools of Markov chain theory,
+ Daudin and Mercier [<a href="#MDa01">4</a>] gave
+ a method to get the exact statistical significance for the local
+ score in i.i.d. model. This method is valid independently of the
+ sign of the average score. The P-value <img width="79" height="32"
+ align="middle" border="0" src="img8.png" alt="$P[Hn \geq a]$"> is
+ obtained with the use of a scare matrix <img width="16" height="14"
+      align="bottom" border="0" src="img9.png" alt="$\Pi$"> of size
+      <img width="52" height="32" align="middle" border="0" src=
+      "img10.png" alt="$(a+1)$">, directly built with the parameters
+      of the model. The matrix <img width="16" height="14" align=
+      "bottom" border="0" src="img9.png" alt="$\Pi$"> have to be put
+      to the power <img width="14" height="13" align="bottom"
+      border="0" src="img7.png" alt="$n$">, implementations are thus
+      more rapid and precise with short sequences. For very long
+      sequences, genome analysis or long DNA sequences, asymptotic
+      formulas should be preferred.</font></p>
+ <h1><a name="SECTION00030000000000000000"><font size=
+ "+1">Statistical significance in Markovian case</font></a></h1>
+  <font size="-1">We propose in this poster to study the markovian
+ model. The exact distribution of the local score when the sequence
+ <img width="18" height="14" align="bottom" border="0" src=
+ "img5.png" alt="$X$"> is a Markov chain is presented. The theory
+ used is similar as the work for the i.i.d. case in [<a href=
+ "#MDa01">4</a>]. The local score is written as
+ the maximum of a Windley process <img width="21" height="14"
+      align="bottom" border="0" src="img11.png" alt="$W$"></font>
+      <br>
+ <div align="center">
+ <img width="119" height="38" border="0" src="img12.png" alt=
+ "\begin{displaymath}H_n = \max_{0\leq k\leq n} W_k\ ,\end{displaymath}">
+ </div>
+ <br clear="all">
+  <font size="-1">where</font> <br>
+ <div align="center">
+ <img width="278" height="28" border="0" src="img13.png" alt=
+ "\begin{displaymath}W_0 = 0\quad {\rm and}\quad W_{k+1}=(W_k +X_{k+1})^+\ .\end{displaymath}">
+ </div>
+ <br clear="all">
+  <font size="-1">The P-value of the local score <img width="77"
+ height="32" align="middle" border="0" src="img14.png" alt=
+ "$P[H_n\geq a]$"> is obtained from the distribution of the process
+ <img width="29" height="14" align="bottom" border="0" src=
+ "img15.png" alt="$W^*$">, the process <img width="21" height="14"
+ align="bottom" border="0" src="img11.png" alt="$W$"> stopped in
+ <img width="12" height="13" align="bottom" border="0" src=
+ "img16.png" alt="$a$"> : <img width="73" height="30" align="middle"
+ border="0" src="img17.png" alt="$W_k^* = W_k$"> for <img width="49"
+      height="30" align="middle" border="0" src="img18.png" alt=
+      "$k &lt;\tau_a$"> and <img width="58" height="30" align=
+      "middle" border="0" src="img19.png" alt="$W_k^* = a$"> for
+      <img width="49" height="30" align="middle" border="0" src=
+      "img20.png" alt="$k =\tau_a$"> with 
+ <img width="150" height="32" align="middle" border="0" src=
+ "img21.png" alt="$\tau_a =\inf\{k : W_k\geq a\}$">.</font> 
+ <p><font size="-1">We have</font></p>
+ <div align="center">
+ <img width="384" height="28" border="0" src="img22.png" alt=
+ "\begin{displaymath}\{H_n\geq a\}=\{\tau_a\geq n\}\quad {\rm and}\quad P[H_n\geq a]=P[W_n^*=a]\ .\end{displaymath}">
+ </div>
+ <br clear="all">
+  <font size="-1">When <img width="18" height="14" align="bottom"
+ border="0" src="img5.png" alt="$X$"> is an i.i.d. sequence,
+ <img width="29" height="14" align="bottom" border="0" src=
+ "img15.png" alt="$W^*$"> is an homogenous Markov chain. Let
+ <img width="16" height="14" align="bottom" border="0" src=
+ "img9.png" alt="$\Pi$"> be its probability transition matrix. The
+ P-value <img width="77" height="32" align="middle" border="0"
+      src="img14.png" alt="$P[H_n\geq a]$"> is extracted from
+      <img width="25" height="14" align="bottom" border="0" src=
+      "img23.png" alt="$\Pi^n$">. In the Markovian case, <img width=
+      "29" height="14" align="bottom" border="0" src="img15.png"
+      alt="$W^*$"> is no more homogenous, and we consider (see
+      [<a href="#MHa03">5</a>]) the process</font>
+      <br>
+ <div align="center">
+ <img width="130" height="29" border="0" src="img24.png" alt=
+ "\begin{displaymath}Y_n =( W_{n-1}^*, X_n)\ ,\end{displaymath}"></div>
+ <br clear="all">
+  <font size="-1">which is an homogenous Markov chain in 
+ <img width="184" height="32" align="middle" border="0" src=
+ "img25.png" alt="$\{0,1, ...,a\}\times\{-u, ..., +v\}$">.</font> 
+ <h1><a name="SECTION00040000000000000000"><font size=
+ "+1">Applications</font></a></h1>
+  <font size="-1">Comparisons of the distributions in both i.i.d.
+ and markovian models with an empirical distribution calculated with
+ real data is done. As the distributions are not approximations, it
+ is possible to make a comparison between i.i.d. and markovian
+ models without any bias of the formulas.</font> 
+ <p><font size="-1">An application of this new result is also
+ possible for the sequences comparison problem and brings a new
+ approximation of the distribution of the local score of two
+ sequences gapless alignment case.</font></p>
+ <p></p>
+ <h2><a name="SECTION00050000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="KAl90">1</a></dt>
+ <dd>Karlin, S. and Altshul, S.F., 1990. Methods for assessing the
+ statistical significance of molecular sequence features by using
+ general scoring schemes. <em>Proceedings of the National Academy of
+ Sciences USA</em> 87: 2264-2268.</dd>
+ <dt><a name="KDe92">2</a></dt>
+ <dd>Karlin, S. and Dembo, A. 1992. Limit distributions of maximal
+ segmental score among Markov-dependent partial sums, <em>Advances
+ in Applied Probability</em> 24: 113-140.</dd>
+ <dt><a name="CCD01">3</a></dt>
+ <dd>Cellier, D., Charlot, F., Daudin, J.-J. and Mercier, S. 2001.
+ Exact and asymptotic Distribution of the Local Score of one i.i.d.
+ Random Sequence. <em>LNCS volume for JOBIM 2000</em>, p:74-85.</dd>
+ <dt><a name="MDa01">4</a></dt>
+ <dd>Mercier, S. and Daudin, J.-J. 2001. Exact Distribution for the
+ Local Score of one i.i.d. Random Sequence. <em>Journal of
+ Computational Biology</em>, 8(4): 373-380.</dd>
+ <dt><a name="MHa03">5</a></dt>
+ <dd>Mercier, S. and Hassenforder, C., 2003. Exact Distribution for
+ the Local Score of a Markov Chain. <em>C. R. Acad. Sci. Paris</em>,
+ submitted.</dd></dl>
+ <br>
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot54">... MERCIER,</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>University of Toulouse II, UFR SES, Department Math-Info, 31
+ 058 Toulouse Cedex 9, France. E-mail: 
+ <div align="center">
+ <b><tt>mercier@univ-tlse2.fr</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

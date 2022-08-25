@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>147. Gaussian Mixture Density Estimation</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category05.html'>&lt;&lt;</a> <a href='/recombdb/category06.html'><b>Gene Expression</b> Overview</a> <a href='/recombdb/category07.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-06-146/'>&lt;&lt;</a> Poster 147 [ <a href='poster-06-147.pdf'>PDF</a> | <a href='poster-06-147.tgz'>TeX</a> | <a href='poster-06-147.ps'>PostScript</a> ] <a href='/recombdb/poster-06-148/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>147. Gaussian Mixture
+ Density Estimation<br>
+  applied to Microarray Data<br>
+ <br>
+ <br></b></font> <b>Christine Steinhoff <a name="tex2html1" href=
+ "#foot62"><sup>1</sup></a>, Tobias M&uuml;ller <a name="tex2html2"
+ href="#foot62"><sup>1</sup></a>, Ulrike Nuber <a name="tex2html3"
+ href="#foot63"><sup>2</sup></a>, Martin Vingron <a name="tex2html4"
+ href="#foot62"><sup>1</sup></a></b></div>
+  <font size="-1"><br>
+ <br>
+  <b>Keywords:</b> Gaussian Mixture Model, EM algorithm,
+ microarray</font> 
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+  <font size="-1">Microarray experiments can be used to determine
+ gene expression profiles of specific cell types. In this way, genes
+ of a given cell type might be categorized into active or not.
+ Typically one would like to infer a probability for each gene
+ whether it is expressed in a given tissue or experiment or not.
+ This has mainly been addressed by selecting an arbitrary threshold
+ and defining spot intensities above this threshold as ``high
+ signal'' and below as ``low signal''. However, this approach does
+ not yield a probabilistic measure. As a probabilistic model we
+ propose to fit a mixture of normal distributions to the data and
+ thus to infer not only an overall description of the data but also
+ a probabilistic framework.</font> 
+ <p><font size="-1">In the literature many methods are described in
+ which various kinds of distributions are fitted to ratios of
+ microarray data (<a href="#ghosh2002">Ghosh and
+ Chinnaiyan (2002)</a>, <a href="#li2002">Li and
+ Yang (2002)</a>). Fitting distributions to the entire dataset of a
+ single sample rather than fitting the ratios of two experiment
+ profiles has not been studied very well. <a href=
+ "#hoyle02">Hoyle <i>et&nbsp;al.</i> (2002)</a>
+ propose to fit a log-normal distribution with a tail that is close
+ to a power law. This is - to our knowledge - the only publication
+ in which single sample-intensities are being approximated. The use
+ of one specific parameterized distribution however poses problems
+ when overall intensities occur in various shapes, esp. show
+ non-uniformly shaped tails. These effects can occur for different
+ reasons and cannot be captured by normalization in all cases.
+ <a href="#hoyle02">Hoyle <i>et&nbsp;al.</i>
+ (2002)</a> used only the highest genes for the fitting procedure.
+ This simultaneously reduces the probability of observing a mixture
+ of several densities but it focuses only on the highest expressed
+ genes and provides no overall model.</font></p>
+ <h1><a name="SECTION00020000000000000000"><font size=
+ "+1">Results</font></a></h1>
+  <font size="-1">Here, we present examples of microarray data which
+ are unlikely to be properly fitted by a single log-normal
+ distribution as described by <a href=
+ "#hoyle02">Hoyle <i>et&nbsp;al.</i> (2002)</a>.
+ One example is displayed in Figure 1. The data rather appears to be
+ a mixture of different distributions and can lead to multi-modal
+ shapes of various kinds. Different reasons may account for this:
+ (1) When using relatively small microarrays there might be genes
+ being over-represented at a specific intensity-range or kinds of
+ truncated data occur. (2) Saturation effects could be another
+ reason. (3) Also, specific effects which can not be localized and
+ captured by normalization might lead to varying shapes. (4) If one
+ microarray-design is based on different oligo selection procedures
+ the resulting intensity distribution could show more than one mode.
+ Thus we do not assume, that there is an unimodal single overall
+ distribution which can explain microarray experiments in
+ general.</font> 
+ <p><font size="-1">One biological motivation for our approach is
+ the selection of a set of genes which is highly expressed in a
+ specific tissue. Furthermore it might be desirable to give a
+ probability for a gene to be highly expressed. The main intention
+ of this work is to infer a robust probabilistic framework that
+ captures inhomogeneous datasets.</font></p>
+ <p><font size="-1">The goal of this study is to model the entity of
+ data points which do not follow a specific distribution but rather
+ show shapes which might represent several distributions. In fact
+ what we observe by looking at the whole dataset is the mixture of a
+ number of distributions. In our case we assume a mixture of normal
+ distributions. The maximum-likelihood parameters of this
+ probabilistic model are estimated by an application of the EM
+ algorithm. The optimal number of densities is being estimated using
+ the Bayesian information criterion (BIC).</font></p>
+ <h1><a name="SECTION00030000000000000000"><font size="+1">Software
+ and Data</font></a></h1>
+  <font size="-1">We used MatLab (version 6.1.0.450 (R12.1)) to
+ implement the EM algorithm including BIC calculation. We consider
+ three different types of datasets in order to examine the
+ performance of our fitting procedure. These comprise one dye-swap
+ experiment (displayed in Figure 1), a series of latin square
+ experiments using quantifiable spike-in samples and simulated
+ datasets.</font> 
+ <div align="center">
+ <table width="40%">
+ <tr>
+ <td><font size="-2">Figure 1: The figure displays the optimal
+ fitting of a biological dataset using the EM algorithm and BIC. In
+ the high intensity-range a potential saturation effect is being
+ described by one normal distribution given by <img width="95"
+ height="32" align="middle" border="0" src="img2.png" alt=
+ "$N(5.75,0.25)$">. In the lower left part of the first figure mean
+ +/- standard deviation and median +/- standard deviation of empty
+ spots which have been excluded from the mixture fitting are being
+ displayed. In the upper part of the figure the means and standard
+ deviations as estimated by the EM algorithm for housekeeping genes
+ is shown. In the very upper</font></td></tr></table>
+ <br>
+ <table width="100%">
+ <tr>
+ <td><font size="-2">part location of housekeeping genes is marked
+ with x followed by a number: (1) G6PD and (2) TAX1BP1 are known to
+ be expressed at a very low level in lymphoblastoid cells; (3)
+ ATP50, (4) EEF1A1, (5) RPL37A and (6) RPS4X are known to be highly
+ expressed.</font></td></tr></table></div>
+   
+ <h2><a name="SECTIONREF">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="ghosh2002">Ghosh, D. and Chinnaiyan, A.&nbsp;M. (2002)
+ Mixture modelling of gene expression data from microarray
+ experiments. <i>Bioinformatics</i>, <b>18</b>, 275-86.<br>
+ <br></a></dt>
+ <dt><a name="hoyle02">Hoyle, D.&nbsp;C., Rattray, M., Jupp, R. and
+ Brass, A. (2002) Making sense of microarray data distributions.
+ <i>Bioinformatics</i>, <b>18</b>, 576-84.<br>
+ <br></a></dt>
+ <dt><a name="li2002">Li, W. and Yang, Y. (2002) Zipf's law in
+ importance of genes for cancer classification using microarray
+ data. <i>J Theor Biol</i>, <b>219</b>, 539-551.<br>
+ <br></a></dt></dl>
+ <br>
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot62">... Steinhoff</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Computational Molecular Biology, Max Planck Institute for
+ Molecular Genetics, Ihnestra&szlig;e 63-73, D-14195 Berlin,
+ Germany. E-mail: 
+ <div align="center"><b><tt>{christine.steinhoff|tobias.mueller|
+ martin.vingron}@molgen.mpg.de</tt></b></div></dd>
+ <dt><a name="foot63">... Nuber</a><a href=
+ "#tex2html3"><sup>2</sup></a></dt>
+ <dd>Human Molecular Genetics, Max Planck Institute for Molecular
+ Genetics, Ihnestra&szlig;e 63-73, D-14195 Berlin, Germany. E-mail: 
+ <div align="center"><b><tt>nuber<img width="16" height="14"
+      align="bottom" border="0" src="img1.png" alt=
+      "$@$">molgen.mpg.de</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

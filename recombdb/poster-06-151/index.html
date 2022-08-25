@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>151. A first step towards an evolutionary model</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category05.html'>&lt;&lt;</a> <a href='/recombdb/category06.html'><b>Gene Expression</b> Overview</a> <a href='/recombdb/category07.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-06-150/'>&lt;&lt;</a> Poster 151 [ <a href='poster-06-151.pdf'>PDF</a> | <a href='poster-06-151.tgz'>TeX</a> | <a href='poster-06-151.ps'>PostScript</a> ] <a href='/recombdb/poster-06-152/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>151. A first step towards an
+ evolutionary model<br>
+  of gene expression<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Gunter Wei&szlig; <a name="tex2html1"
+    href="#foot118"><sup>1</sup></a> <a name="tex2html2" href=
+    "#foot119"><sup>2</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> gene expression, evolution,
+ probabilistic model</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+  <font size="-1">Differences in expression levels between two
+ species have arisen by some evolutionary process. Mutations in the
+ upstream part of a gene are one possible mechanism that leads to
+ changes of expression levels over time. The reasoning here might be
+ that mutations at promoter, repressor or enhancer binding sites
+ lead to an alteration of the efficiency of the transcription
+ process. Here, I propose a simple probabilistic model that already
+ catches some features we see in comparative data sets. I describe
+ the mutation process as a Poisson process and model the effect of a
+ mutation on the expression level multiplicatively. This is
+ reasonable, since it is more intuitive that mutations that hit
+ sites relevant for transcription do not add or subtract a value
+ from the expression level, but rather increase or decrease the rate
+ of transcription, i.e. a multiplicative effect on expression. Using
+ the resulting compound Poisson process model I am able to reproduce
+ a couple of interesting features one observes while comparing real
+ data expression profiles.</font> 
+ <h1><a name="SECTION00020000000000000000"><font size=
+ "+1">Probabilistic model and its features</font></a></h1>
+  <font size="-1"><b>Mutational model.</b> The mutational model is a
+ Poisson process with rate <img width="19" height="14" align=
+ "bottom" border="0" src="img3.png" alt="$\lambda t$">, where
+ <img width="10" height="13" align="bottom" border="0" src=
+ "img4.png" alt="$ t $"> describes a time period of evolution. Let
+ <img width="37" height="32" align="middle" border="0" src=
+ "img5.png" alt="$ N(t)$"> be the number of mutations within time
+ period <img width="10" height="13" align="bottom" border="0"
+      src="img4.png" alt="$ t $">, that hit the (relevant) upstream
+      region of a gene.</font> 
+ <p><font size="-1"><b>Modeling the effect of a mutation.</b><br>
+  The effect of a mutation is assumed to be multiplicative, i.e. a
+ mutation changes the expression level by a factor. Thus, I change
+ to the logarithm of variables, such that the model becomes
+ additive. Then, the effect <img width="18" height="14" align=
+ "bottom" border="0" src="img6.png" alt="$X$"> of a single mutation
+ is defined as the logarithm of the ratio of expression level after
+ and before the mutation. A mutation could cause an increase or
+ decrease in expression level. However, I assume that the net effect
+ of mutations in terms of expression changes equals zero. This means
+ that over evolutionary time the amount of mRNA molecules in a cell
+ remains stable. I also assume that a single random mutation causes
+ frequently a decrease and only rarely an increase of expression.
+ &gt;From an evolutionary point of view this seems reasonable, since
+ the already highly specialized transcription machinery will only
+ rarely benefit from a random alteration of the binding
+ sites.</font></p>
+ <p><font size="-1">Therefore, the distribution that models the
+ effect of a mutation should have two features: its mean should be
+ zero and its skewness should be positive.</font></p>
+ <p><font size="-1"><b>Compound Poisson process.</b><br>
+  Putting the two parts together we get the following model for the
+ evolution of gene expression. Let <img width="35" height="32"
+      align="middle" border="0" src="img7.png" alt="$ Y(t) $"> be
+      the logarithm of the ratio of expression levels at time
+      <img width="10" height="13" align="bottom" border="0" src=
+      "img4.png" alt="$ t $"> and time 0. We have 
+ <img width="125" height="41" align="middle" border="0" src=
+ "img8.png" alt="\( Y(t) = \sum_{i=1}^{N(t)} X_i , \)"> with the
+ <img width="23" height="30" align="middle" border="0" src=
+ "img9.png" alt="$X_i$"> independent and identically distributed as
+ <img width="18" height="14" align="bottom" border="0" src=
+ "img6.png" alt="$X$">. This defines a compound Poisson process with
+ independent increments. Obviously, I assume effects of several
+ mutations as mutually independent.</font></p>
+ <p><font size="-1"><b>Differences in expression levels between two
+ samples.</b><br>
+  For analyses of available comparative data [<a href=
+ "#Enard.etal02">1</a>,<a href=
+ "#KhaitoWeiss03">2</a>] I investigate the
+ distribution of differences between expression levels of two
+ samples (e.g. human / chimp).</font></p>
+ <p><font size="-1">Assume that the two samples involved (or their
+ expression levels) diverged at time 0. Let <img width="45"
+      height="32" align="middle" border="0" src="img10.png" alt=
+      "$ Y_j(t_j) $"> be the ratio of expression levels at time
+      <img width="16" height="29" align="middle" border="0" src=
+      "img11.png" alt="$t_j$"> and time 0 in sample <img width="56"
+      height="29" align="middle" border="0" src="img12.png" alt=
+      "$j = 1, 2$">. The actual expression difference between two
+      samples is the random variable 
+ <img width="144" height="32" align="middle" border="0" src=
+ "img13.png" alt="\( Z = Y_1(t_1) - Y_2(t_2).\)"></font></p>
+ <h1><a name="SECTION00030000000000000000"><font size=
+ "+1">Predictions of the model, qualitative results</font></a></h1>
+   
+ <div align="center"><a name="circles"></a><a name="148"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure:</strong> <font size=
+ "-1">Simulated distributions (
+ <img width="64" height="36" align="middle" border="0" src=
+ "img15.png" alt="$\log_2\left(\frac{H}{C} \right)$">) of
+ differences in expression level between genes from two samples H
+ and C; simulated distributions (
+ <img width="64" height="36" align="middle" border="0" src=
+ "img15.png" alt="$\log_2\left(\frac{H}{C} \right)$">) of
+ differences in expression level between two samples H and C, when
+ genes are grouped according to their ``evolutionary'' pattern using
+ an outgroup sample R. <img width="13" height="29" align="middle"
+ border="0" src="img2.png" alt="$ \gamma $"> denotes the skewness of
+ the distribution.</font></caption>
+ <tr>
+ <td>
+ <div align="center"><font size="-1"><br>
+ <img width="494" height="304" align="bottom" border="0" src=
+ "img14.png" alt=
+ "\begin{picture}(300,190) \put(0,0){\line(0,1){190}} \put(0,0){\line(1,0){300... ... \put(220,60){$ \gamma &lt; 0 $} \put(277,60){$ \gamma &gt; 0 $} \par \end{picture}">
+ <br></font></div></td></tr></table></div>
+   
+ <p><font size="-1"><img width="12" height="15" align="bottom"
+ border="0" src="img16.png" alt="$ \bullet $"> Model parameters can
+ be estimated via a system of equations containing moments of
+ <img width="16" height="14" align="bottom" border="0" src=
+ "img17.png" alt="$Z$">.</font></p>
+ <p><font size="-1"><img width="12" height="15" align="bottom"
+ border="0" src="img16.png" alt="$ \bullet $"> A symmetric
+ distribution of <img width="16" height="14" align="bottom"
+      border="0" src="img17.png" alt="$Z$"> is the result of an
+      equal amount of elapsed evolutionary time in both lineages.
+      The skewness of <img width="16" height="14" align="bottom"
+      border="0" src="img17.png" alt="$Z$"> is a measure for the
+      difference in evolutionary rate.</font></p>
+ <p><font size="-1"><img width="12" height="15" align="bottom"
+ border="0" src="img16.png" alt="$ \bullet $"> Given data from an
+ outgroup species, grouping genes according to their
+ ``evolutionary'' pattern disclose the assumed skewness in the
+ distribution of <img width="18" height="14" align="bottom"
+      border="0" src="img6.png" alt="$X$"> even when <img width="16"
+      height="14" align="bottom" border="0" src="img17.png" alt=
+      "$Z$"> is symmetric.</font></p>
+ <p><font size="-1"><img width="12" height="15" align="bottom"
+ border="0" src="img16.png" alt="$ \bullet $"> These predictions fit
+ very well with data characteristics we find when comparing primate
+ transcriptomes [<a href=
+ "#Enard.etal02">1</a>,<a href=
+ "#KhaitoWeiss03">2</a>].</font></p>
+ <p></p>
+ <h2><a name="SECTION00040000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="Enard.etal02">1</a></dt>
+ <dd>Enard, W.<em>et&nbsp;al.</em> 2002. Intra- and interspecific
+ variation in primate gene expression patterns. <em>Science</em>
+ 296:340-3.</dd>
+ <dt><a name="KhaitoWeiss03">2</a></dt>
+ <dd>Khaitovich, P., Weiss, G. and P&auml;&auml;bo, S. 2003.
+ Evolution of the Primate Transcriptome. <em>in
+ preparation</em></dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot118">...&szlig;</a> <a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>WE Informatik, Heinrich-Heine Universit&auml;t D&uuml;sseldorf.
+ E-mail: 
+ <div align="center">
+ <b><tt>weiss@cs.uni-duesseldorf.de</tt></b></div></dd>
+ <dt><a name="foot119">...</a> <a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>Max-Planck-Institut f&uuml;r evolution&auml;re Anthropologie,
+ Leipzig. E-mail: 
+ <div align="center">
+ <b><tt>weiss@eva.mpg.de</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

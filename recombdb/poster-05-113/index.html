@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>113. Two Maximum Step-Size Monte Carlo Simulation Combined with Multidimensional Histogram Techniques Applied to Engrailed Homeodomain and T4 Endonuclease V</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category04.html'>&lt;&lt;</a> <a href='/recombdb/category05.html'><b>Protein Structure</b> Overview</a> <a href='/recombdb/category06.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-05-112/'>&lt;&lt;</a> Poster 113 [ <a href='poster-05-113.pdf'>PDF</a> | <a href='poster-05-113.tgz'>TeX</a> | <a href='poster-05-113.ps'>PostScript</a> ] <a href='/recombdb/poster-05-114/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>113. Two Maximum Step-Size
+ Monte Carlo Simulation Combined with Multidimensional Histogram
+ Techniques Applied to Engrailed Homeodomain and T4 Endonuclease
+ V<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>J.-G. Siebers, <a name="tex2html1" href=
+ "#foot53"><sup>1</sup></a> H. Yamaguchi, <a name="tex2html2"
+    href="#foot54"><sup>2</sup></a> A. Sarai <a name="tex2html3"
+    href="#foot55"><sup>3</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> generalized Monte Carlo,
+ multidimensional histogram technique, direct readout, indirect
+ readout, curvilinear free energy maps</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+  <font size="-1">With this work we want to address two relatively
+ separate problems: The first problem deals with a simple algorithm
+ to generate entropic weight trajectories efficiently. First a
+ configuration space volume <img width="40" height="30" align=
+ "middle" border="0" src="img1.png" alt="$\Gamma_{max}$"> is chosen
+ which relates to a large maximum step size 
+ <img width="57" height="30" align="middle" border="0" src=
+ "img2.png" alt="$\Delta X_{max}$">. A low negative energy threshold
+ <img width="42" height="30" align="middle" border="0" src=
+ "img3.png" alt="$E_{max}$"> is used to bring the two macromolecular
+ interfaces close to each other. Therefore, solvent effects are
+ supposed to play a minor role at this stage and are taken
+ implicitly into accout using a distant dependent dielectric. The
+ generation of initial conditions takes about 50% of the
+ simulational time and is therefore inefficient. To improve the
+ efficiency about 99% of the production configurations are generated
+ using a smaller step size 
+ <img width="53" height="30" align="middle" border="0" src=
+ "img4.png" alt="$\Delta x_{max}$">. For all short trajectories we
+ aimed at an overall acceptance ratio of about 50% giving a total
+ acceptance ratio of about 75%. We applied the rigid rotor
+ approximation and attached the coordinates to the DNA so that the
+ inertia tensor is diagonal. Sampling was performed in cylindrical
+ coordinates. All production data are binned into a coarse-grained
+ 4-dimensional histogram, where three dimensions represent spatial
+ coordinates [<a href=
+    "#heermann">1</a>,<a href="#ma1981">
+ 2</a>] while the fourth dimension represents energy space. This
+ facilitates <i>a posteriori</i> weighting with the Boltzmann factor
+ and separate integration over ranges of interest in each dimension.
+ Integration over the radial and the weighted energy coordinates
+ gives curvilinear free energy plots from the DNA perspective.
+ Transformation of data to a spherical coordinate system attached to
+ the protein and performing a corresponding integration gives
+ curvilinear free energy plots from the protein perspective. The
+ temperature is scaled with respect to curves measuring the heat
+ capacity [<a href="#sarai1993">3</a>]. The second
+ problem deals with the question of protein-DNA recognition
+ mechanism. T4 Endonuclease V repairs thymine dimer (TD) damaged DNA
+ and is supposed to recognize a kink introduced by TD [<a href=
+ "#yamag1998">4</a>]. Engrailed Homeodomain as a
+ representative for homeodomains plays a fundamental role in diverse
+ developmental processes and is highly sequence specific.</font> 
+ <h1><a name="SECTION00020000000000000000"><font size="+1">Software
+ and files</font></a></h1>
+  <font size="-1">From a structural point of view two DNA-protein
+ compounds were used (PDB codes 2END and 3HDD). The program NUCGEN
+ of the AMBER suite [<a href="#amber41">5</a>] was
+ used to generate consensus B-DNA conformations of a given nucleic
+ acid sequence. The programs LINK, EDIT and PARM of the AMBER suite
+ were used to generate a topology and a separate force field file
+ for the DNA-protein complex. The force field is based on PARM94 and
+ uses a distant dependent dielectric to account for solvent effects.
+ We have written an F77 program using parts of AMBER to calculate
+ the interaction energies. The program is designed to generate short
+ local trajectories using a simple hit-and-miss criterion for the
+ energy [<a href="#tildesley">6</a>]. The multiple
+ trajectory file is analyzed and several files are generated in
+ AVS/Express formats [<a href=
+ "#avs_express41">7</a>]. We have used the
+ graphical programming interface of AVS/Express to generate scripts
+ which display curvilinear free energy plots saved in the files
+ described above.</font> 
+ <h1><a name="SECTION00030000000000000000"><font size="+1">Results
+ and Discussion</font></a></h1>
+  <font size="-1">The simulation results for Engrailed Homeodomain
+ suggest a reaction pathway tracking the major groove of the DNA.
+ There is a relatively sharp free energy transition between low and
+ high energy regions suggesting a substructure of the protein
+ fitting into the major groove. The protein model suggests a highly
+ oriented protein allowing to define a rotational axis enabling
+ hindered rotation about this axis. In contrast, the results for T4
+ Endonuclease V suggest no particular reaction pathway along an
+ undamaged consensus B-DNA consisting of 36 base pairs. T4
+ Endonuclease V may recognize the specific conformation of DNA
+ caused by the adduct, without tracking major groove of DNA. As for
+ T4 Endonuclease V the approach offers the opportunity to verify the
+ kink recognition assumption by computer experiments. The present
+ method may be applied for protein-ligand and protein-protein
+ docking analyses.</font> 
+ <p></p>
+ <h2><a name="SECTION00040000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="heermann">1</a></dt>
+ <dd>Heermann, D.W. Stochastic Methods. <em>Computer Simulation
+ Methods 2nd ed.</em>, Springer-Verlag 1990.</dd>
+ <dt><a name="ma1981">2</a></dt>
+ <dd>Ma, S.K. Calculation of Entropy from Data of Motion. <em>J Stat
+ Phys</em> 1981, 26, 221.</dd>
+ <dt><a name="sarai1993">3</a></dt>
+ <dd>Sarai, A., Uedaira, H., Yasukawa, T., Ogata, K., Nishimura, Y.,
+ Ishii, S., Thermal Stability of the DNA-Binding Domain of the Myb
+ Oncoprotein, <em>Biochemistry</em> 1993, 32, 7759.</dd>
+ <dt><a name="yamag1998">4</a></dt>
+ <dd>Yamaguchi, H., van Aalten, D.M.F., Pinak, M., Furukawa, A.,
+ Osman, R., Essential Dynamics of DNA containing a cis.syn
+ cyclobutane thymine dimer lesion, <em>Nucleic Acids Research</em>
+ 1998, 26, 1939.</dd>
+ <dt><a name="amber41">5</a></dt>
+ <dd>David A. Pearlman, David A. Case, James W. Caldwell, Wilson S.
+ Ross, Thomas E. Cheatham III, David M. Ferguson, George L. Seibel,
+ U. Chandra Singh, Paul K. Weiner and Peter A. Kollman (1995),
+ Assisted Model Building with Energy Refinement <em>AMBER 4.1</em>,
+ University of California, San Francisco.</dd>
+ <dt><a name="tildesley">6</a></dt>
+ <dd>Allen, M.P., Tildesley, D.J.. Monte Carlo Methods. <em>Computer
+ Simulation of Liquids</em>, Oxford University Press 1990.</dd>
+ <dt><a name="avs_express41">7</a></dt>
+ <dd>Advanced Visual Systems Inc. (1998), Release 4.1, AVS/Express,
+ <em>Getting Started, Visualization Techniques, Using
+ AVS/Express</em> Advanced Visual Systems Inc., 300 Fifth Ave.,
+ Waltham, MA 02154, USA.</dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot53">... Siebers,</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>RIKEN Tsukuba Institute, 3-1-1 Koyadai, Tsukuba 305-0074,
+ Ibaraki, Japan. E-mail: 
+ <div align="center">
+ <b><tt>siebers@rtc.riken.go.jp</tt></b></div></dd>
+ <dt><a name="foot54">... Yamaguchi,</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>National Institute of Radiological Sciences (NIRS), Anagawa
+ 4-9-1, Inage-ku, Chiba-shi 263-8555, Chiba-ken, Japan. E-mail: 
+ <div align="center"><b><tt>yamag@nirs.go.jp</tt></b></div></dd>
+ <dt><a name="foot55">... Sarai</a><a href=
+ "#tex2html3"><sup>3</sup></a></dt>
+ <dd>RIKEN Tsukuba Institute, 3-1-1 Koyadai, Tsukuba 305-0074,
+ Ibaraki, Japan. E-mail: 
+ <div align="center">
+ <b><tt>sarai@rtc.riken.go.jp</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

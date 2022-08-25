@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>17. On the Design of a Simple Genome Browser</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center">  <a href='/recombdb/category01.html'><b>Genomics</b> Overview</a> <a href='/recombdb/category02.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-01-016/'>&lt;&lt;</a> Poster 017 [ <a href='poster-01-017.pdf'>PDF</a> | <a href='poster-01-017.doc'>MSWORD</a> ] <a href='/recombdb/poster-02-018/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>17. On the Design of a Simple Genome Browser<a href="#_ftn1"
+ name="_ftnref1" title="">[1]</a></h2>
+ <p align="center"><b>Chia-Ying Yang<a href="#_ftn2" name="_ftnref2"
+ title="">[2]</a>, Lang-Yang Ch&rsquo;ang<a href="#_ftn3" name=
+ "_ftnref3" title="">[3]</a>, Wen-Chang Lin<a href="#_ftn4" name=
+ "_ftnref4" title="">[4]</a>, Chung-Shyan Liu<a href="#_ftn5"
+    name="_ftnref5" title="">[5]</a></b></p>
+ <p><b>Keywords:</b> genome browser, annotation, extensible software
+ tool,</p>
+ <p><b>1&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Introduction</b></p>
+ <p>With the advances of human genome project and other sequencing
+ projects, large volume of se&shy;quence data has been
+ generated.&nbsp; Recent progress of proteomics will generate even
+ larger amount of data. To extract biological signals from these
+ data will require a new generation of software tools, such as
+ genome browser or other data mining programs. A genome browser
+ allows a researcher to view genomic data at a level higher than
+ pure nucleic acids, for example, at level of genes, pathway, or
+ gene families, and is a valuable tool in genomic research.</p>
+ <p>Currently, there are already some good genome browsers available
+ for visualization of genomic data. UCSC human genome browser
+ displayed different annotation data, such as EST, gene
+ pre&shy;diction, SNP, etc, on each aligned track [1]. New
+ annotations can also be added as a new track in the display.
+ Ensemble is a web-based visualization tool that provides a
+ framework for displaying known and unknown genes, OMIN disease
+ annotation, protein family and gene family [2]. NCBI&rsquo;s map
+ viewer can display contigs, genes, STS markers, and reference links
+ to other resources [3].&nbsp; Although such browsers are very
+ useful tools for displaying the information that most users need,
+ some users may require different kinds of information to be shown.
+ Also, most of the information displayed are mostly pre-computed and
+ static, even though they are updated very quickly, some users may
+ need real-time data.&nbsp;</p>
+ <p>In this paper, we will describe the design and implementation of
+ a simple genome browser that allows a user to choose the datasets
+ to display, to select the information to display, and is extensible
+ that new features can be added as plug-in functions whose execution
+ results may be displayed as well.</p>
+ <p><b>2&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Results and
+ Discussion</b></p>
+ <p>In Figure 1, a display of our genome browser is shown, where
+ some gene related information are contained in different panels.
+ The organism is shown at the left corner. A user can click and
+ select the desired chromosome from the upper right panel. At the
+ upper left, the number of genes in each region is shown, where each
+ region consists of 2,500,000 nucleic acids. A user may move to the
+ desired region using the scroll-bar below. The size of the regions
+ may also be adjusted by zooming in or zooming out. At the central
+ part, the identity and location of each putative gene in the
+ selected region are shown. This panel is also scrollable.
+ Currently, the genes shown are either confirmed refGenes or
+ predicted by GenScan [4]. But more data sources can be added as
+ well. The exons and other detailed information about a gene are
+ shown at the lower left panel.</p>
+ <p>The lower right part is a novel feature of our browser where a
+ user can trigger BLAST or other programs to search the selected
+ database. For example, a user may use BLAST to search the whole
+ human genome for genes in the same family, or to search a protein
+ database for homologous protein sequences. Although only BLAST is
+ shown, a user may selected another search program, add more
+ databases, or add other programs for different processing.</p>
+ <p><b>&nbsp;</b></p>
+ <p><b>3&nbsp;&nbsp; Method</b></p>
+ <p><img width="408" height="306" src="image002.jpg"><br clear=
+ "all">
+  Figure 1: A display of the genome browser.</p>
+ <br clear="all">
+  
+ <p>The system is currently implemented as a stand-alone program,
+ but will be changed to a web-based tool in the future. The system
+ is consisted of about 6000 Java statements and was completed by
+ single a person within four months. The database system we used is
+ MySQL, which is widely available, but any database that supports
+ JDBC can be used as well. Our genomic datasets and annotations are
+ from UCSC Genome Bioinformatics. The genome sequences are Human
+ 05Apr2001, mmFeb2002, and rnNov2002, and the annotations are
+ RefGene and GenScan.</p>
+ <h1>4&nbsp;&nbsp; References</h1>
+ <p><b>&nbsp;</b></p>
+ <p>[1] W. Kent, C. Sugnet, T. Furey, K. Roskin, T. Pringle, A.
+ Zahler, and D. Haussler, 2002, The Human Genome Browser at UCSC,
+ <i>Genome Research,</i> 12:996-1006.</p>
+ <p>[2] T. Hubbard et al, 2002, The Ensemble Genome Database
+ Project, <i>Nucleic Acids Research,</i> 30:38-41.</p>
+ <p>[3] K. Pruitt and D. Maglott, 2001, RefSeq and LocusLink: NCBI
+ Gene-Centered Resources, <i>Nucleic Acids Research,</i>
+ 29:137-140.</p>
+ <p>[4] C. Burge and S. Karlin, 1997, Prediction of Complete Gene
+ Structures in Human Genomic Data, <i>J. Mol. Biol,</i>
+ 268:78-94.</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a> Supported in
+ part by NSC-Taiwan under contract number NSC
+ 91-2213-E033-016</p></div>
+ <div id="ftn2">
+ <p><a href="#_ftnref2" name="_ftn2" title="">[2]</a>Dept. of
+ Information and Computer Engineering, Chung-Yuan C. University,
+ Chung-Li, 320, Taiwan, E-mail:
+ yang@brahms.ice.cycu.edu.tw</p></div>
+ <div id="ftn3">
+ <p><a href="#_ftnref3" name="_ftn3" title="">[3]</a> Institute of
+ Biomedical Science, Academia Sinica, Taipei, Taiwan, E-mail:
+ lychang@ibms.sinica.edu.tw</p></div>
+ <div id="ftn4">
+ <p><a href="#_ftnref4" name="_ftn4" title="">[4]</a> Institute of
+ Biomedical Science, Academia Sinica, Taipei, Taiwan, E-mail:
+ wenlin@ibms.sinica.edu.tw</p></div>
+ <div id="ftn5">
+ <p><a href="#_ftnref5" name="_ftn5" title="">[5]</a> Corresponding
+ author, Dept. of Information and Computer Engineering, Chung-Yuan
+ C. University, Chung-Li, 320, Taiwan, E-mail:
+ liucs@ice.cycu.edu.tw</p></div></div>
+ </body>
+ </html>

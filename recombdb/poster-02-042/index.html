@@ -1,0 +1,281 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>42. Q-grams analysis and urns models</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-041/'>&lt;&lt;</a> Poster 042 [ <a href='poster-02-042.pdf'>PDF</a> | <a href='poster-02-042.tgz'>TeX</a> | <a href='poster-02-042.ps'>PostScript</a> ] <a href='/recombdb/poster-02-043/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>42. Q-grams analysis and
+ urns models<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font> <b>Pierre Nicod&egrave;me</b> <a name="tex2html1"
+ href="#foot114"><sup>1</sup></a></div>
+  <font size="-1"><b>Keywords:</b> sequence comparison,
+      <img width="12" height="29" align="middle" border="0" src=
+      "img1.png" alt="$ q$">-grams, urn models</font> 
+ <p><font size="-1">When <img width="12" height="29" align="middle"
+ border="0" src="img1.png" alt="$ q$">-gram&nbsp;<a name="tex2html2"
+ href="#foot22"><sup>2</sup></a> filtration is used during sequence
+ comparisons, target sequences which do not share enough
+      <img width="12" height="29" align="middle" border="0" src=
+      "img1.png" alt="$ q$">-grams with the query sequence are
+      eliminated. BLAST uses such a method. The statistical problem
+      of evaluating the probability that 2 sequences share
+      <img width="12" height="13" align="bottom" border="0" src=
+      "img2.png" alt="$ r$"> common <img width="12" height="29"
+      align="middle" border="0" src="img1.png" alt="$ q$">-grams has
+      been studied in the uniform case by Rahmann and
+      Rivals&nbsp;[<a href=
+      "#RahRiv00">1</a>,<a href=
+      "#RahRiv02">2</a>].</font></p>
+ <p><font size="-1">We give here results about the non-uniform case.
+ Our approach compares the statistics of the <img width="12"
+      height="29" align="middle" border="0" src="img1.png" alt=
+      "$ q$">-gram sequence problem, where a <img width="12" height=
+      "29" align="middle" border="0" src="img1.png" alt="$ q$">-gram
+      at position <img width="10" height="14" align="bottom" border=
+      "0" src="img3.png" alt="$ i$"> depends of the <img width="32"
+      height="29" align="middle" border="0" src="img4.png" alt=
+      "$ i\!-\!1$"> preceding positions of the sequence (dependant
+      model) and this of the <img width="12" height="29" align=
+      "middle" border="0" src="img1.png" alt="$ q$">-gram
+      independant model, where a <img width="12" height="29" align=
+      "middle" border="0" src="img1.png" alt="$ q$">-gram is drawn
+      at each position, independantly of the preceding positions. We
+      use for this last problem an urns and balls model; balls have
+      two possible colours, corresponding to the two sequences. We
+      give analytic results for the expectation and variance of
+      number of collisions in the independant model, and compare it
+      to results obtained by simulations, in both dependant and
+      independant models.</font></p>
+ <p><font size="-1">We consider an alphabet <img width="16"
+      height="14" align="bottom" border="0" src="img5.png" alt=
+      "$ \Sigma$"> of size <img width="11" height="13" align=
+      "bottom" border="0" src="img6.png" alt="$ s$">, words of size
+      <img width="12" height="29" align="middle" border="0" src=
+      "img1.png" alt="$ q$"> over this alphabet, and sequences of
+      length 
+ <img width="57" height="29" align="middle" border="0" src=
+ "img7.png" alt="$ n\!+\!q\!-\!1$">, corresponding to
+      <img width="14" height="13" align="bottom" border="0" src=
+      "img8.png" alt="$ n$"> <img width="12" height="29" align=
+      "middle" border="0" src="img1.png" alt="$ q$">-grams. There
+      are <img width="54" height="14" align="bottom" border="0" src=
+      "img9.png" alt="$ m=s^q$"> urns and we throw <img width="14"
+      height="13" align="bottom" border="0" src="img8.png" alt=
+      "$ n$"> balls of each colour in the urns. We are interested in
+      the number of urns with bicolour collisions (balls of each
+      colour are present in these urns).</font></p>
+ <p><font size="-1">Our counting tools are multivariate generating
+ functions. In the uniform case, the generating function of an urn
+ is 
+ <img width="116" height="32" align="middle" border="0" src=
+ "img10.png" alt="$ e^z=\sum (1/n!)z^n$">, where <img width="12"
+ height="13" align="bottom" border="0" src="img11.png" alt="$ z$">
+ counts the number of balls of one colour. (There is only one
+ configuration of <img width="14" height="13" align="bottom"
+      border="0" src="img8.png" alt="$ n$"> balls of one colour in
+      one urn). When a second variable <img width="10" height="13"
+      align="bottom" border="0" src="img12.png" alt="$ t$"> counts
+      the balls of the second colour, the generating function for
+      one urn is <img width="33" height="16" align="bottom" border=
+      "0" src="img13.png" alt="$ e^{z+t}$">. More generally, when
+      considering <img width="18" height="13" align="bottom" border=
+      "0" src="img14.png" alt="$ m$"> independant urns with equal
+      probability and a parameter <img width="13" height="13" align=
+      "bottom" border="0" src="img15.png" alt="$ u$"> counting the
+      urns with no bicolour collisions, the generating function of
+      the system is</font> 
+ </p>
+ <div align="center"><img width="306" height="37" align="middle"
+ border="0" src="img16.png" alt=
+ "$\displaystyle F(z,t,u)=\left(e^{z+t}+(u-1)(e^{z}+e^{t}-1)\right)^m.$">
+ </div>
+  <font size="-1">In the non-uniform case, corresponding to a
+ Bernoulli non-uniform model for the sequences, to each word of size
+ <img width="12" height="29" align="middle" border="0" src=
+ "img1.png" alt="$ q$"> is associated an urn, with probability equal
+ to the probability of this word. Let <img width="17" height="29"
+ align="middle" border="0" src="img17.png" alt="$ p_i$"> be the
+ probability of urn <img width="10" height="14" align="bottom"
+ border="0" src="img3.png" alt="$ i$">. The generating function is
+ now</font> 
+ <div align="center"><img width="392" height="54" align="middle"
+ border="0" src="img18.png" alt=
+ "$\displaystyle F(z,t,u)=\prod_{1\leq i \leq m}\left(e^{p_i(z+t)}+(u-1)\left(e^{p_i z}+e^{p_i t}-1\right)\right).$">
+ </div>
+  <font size="-1">The expectation of the number of bicolour
+ collisions <img width="22" height="29" align="middle" border="0"
+ src="img19.png" alt="$ \mu_n$"> (for 
+ <img width="36" height="29" align="middle" border="0" src=
+ "img20.png" alt="$ 2\!\times\! n$"> balls) is obtained as</font> 
+ 
+ <div align="center"><img width="237" height="129" align="middle"
+ border="0" src="img21.png" alt=
+ "$\displaystyle \mu_n=m-\frac{[z^n t^n]\left.\dfrac{\partial F(z,t,u)}{\partial u}\right\vert _{u=1}\rule[-4mm]{0mm}{12mm}}{[z^n t^n]F(z,t,1)}.$">
+ </div>
+  <font size="-1">The second moment <img width="35" height="29"
+ align="middle" border="0" src="img22.png" alt="$ m2_n$"> is
+ obtained in a similar manner by double differenciation with respect
+ to <img width="13" height="13" align="bottom" border="0" src=
+ "img15.png" alt="$ u$">. When <img width="14" height="13"
+      align="bottom" border="0" src="img8.png" alt="$ n$"> is large
+      enough, and 
+ <img width="75" height="30" align="middle" border="0" src=
+ "img23.png" alt="$ n\!\times\! p_i=\theta_i$">, we have</font> 
+ 
+ <div align="center"><img width="361" height="57" align="middle"
+ border="0" src="img24.png" alt=
+ "$\displaystyle \mu_n\approx m- \sum_i\left( e^{-\theta_i}(2-e^{-\theta_i}) +\frac{\theta_i^2 e^{-\theta_i}}{n}(1+e^{-\theta_i})\right)$">
+ </div>
+  
+ <div align="center">
+ <table cellpadding="0" width="100%" align="center">
+ <tr valign="middle">
+ <td nowrap align="center"><img width="606" height="70" align=
+ "middle" border="0" src="img25.png" alt=
+ "$\displaystyle \sigma^2_n=m2_n-\mu_n^2\approx \sum_i e^{-\theta_i}(2-e^{-\theta_... ...{2}{n}\left(\sum_i \theta_i e^{-\theta_i}\left( 1-e^{-\theta_i}\right)\right)^2$">
+ </td>
+ <td nowrap width="10" align="right">
+ &nbsp;&nbsp;&nbsp;</td></tr></table></div>
+ <br clear="all">
+  <font size="-1">In these formulas, we can group together the
+ indices <img width="10" height="14" align="bottom" border="0"
+      src="img3.png" alt="$ i$"> for urns with same probability
+      (corresponding to words with same distribution of letters).
+      The number of terms <img width="30" height="30" align="middle"
+      border="0" src="img26.png" alt="$ T_{s,q}$"> of the summations
+      is the number of groups so defined, and 
+ <img width="104" height="37" align="middle" border="0" src=
+ "img27.png" alt="$ T_{s,q}={\binom{q+s-1}{s-1}}$">. This is 286 for
+ 10-grams and DNA and 1540 (resp. 8855) for 3-grams (resp. 4-grams)
+ and amino-acids (20 letters alphabet).</font> 
+ <p><font size="-1">Figures 1 to 4 compare the theoretical results
+ of the independant case with the simulations made for the
+ independant and the dependant cases. This shows that the
+ independant approximation is excellent for the expectation.
+ (Similarly, the expectation of number of occurrences of words in
+ random texts is independant of autocorrelation, in contrast with
+ the standard deviation).</font></p>
+ <p><font size="-1">When considering the DNA alphabet, the letters
+ distribution of <i>H. influenzae</i> and 10-grams, we obtain 
+ 
+ <img width="88" height="29" align="middle" border="0" src=
+ "img28.png" alt="$ \mu_n=0.1523$"> and, for the simulations, 0.1514
+ (resp. 0.1503) in the independant (resp. dependant) model. We also
+ have 
+ <img width="87" height="34" align="middle" border="0" src=
+ "img29.png" alt="$ \sigma_n^2=0.3888$"> and for the simulations
+ 0.3884 (resp. 0.5051). The total variation distance of the
+ distribution obtained by simulations (independant case) and a
+ Poisson of parameter 0.1523 is under <img width="37" height="16"
+ align="bottom" border="0" src="img30.png" alt=
+ "$ 10^{-4}$">.</font></p>
+ <p><font size="-1">Future work includes theoretical studies of the
+ dependant case.</font></p>
+ <p><br></p>
+ <div align="center">
+ <table width="45%">
+ <tr>
+ <td>
+ <div align="center"><br>
+ <img width="519" height="287" align="bottom" border="0" src=
+ "img31.png" alt=
+ "\begin{picture}(60,50) \put(0,0){\epsfig{figure=poster-02-042-fig03.eps,height... ...put(0,-5){\footnotesize Figure 1: Independant model: expectation } \end{picture}">
+ <br></div></td></tr></table>
+ <table width="45%">
+ <tr>
+ <td>
+ <div align="center"><br>
+ <img width="262" height="236" align="bottom" border="0" src=
+ "img32.png" alt=
+ "\begin{picture}(60,50) \put(0,0){\epsfig{figure=poster-02-042-fig01.eps,height... ...ependant model: expectation } \put(5,40){\footnotesize nb. col.} \end{picture}">
+ <br></div></td></tr></table></div>
+ <p><font size="-1"><br></font></p>
+ <div align="center">
+ <table width="45%">
+ <tr>
+ <td>
+ <div align="center"><br>
+ <img width="264" height="236" align="bottom" border="0" src=
+ "img33.png" alt=
+ "\begin{picture}(60,50) \put(0,0){\epsfig{figure=poster-02-042-fig04.eps,height... ...pendant model: standard dev.} \put(5,40){\footnotesize nb. col.} \end{picture}">
+ <br></div></td></tr></table>
+ <table width="45%">
+ <tr>
+ <td>
+ <div align="center"><br>
+ <img width="262" height="236" align="bottom" border="0" src=
+ "img34.png" alt=
+ "\begin{picture}(60,50) \put(0,0){\epsfig{figure=poster-02-042-fig02.eps,height... ...pendant model: standard dev.} \put(5,40){\footnotesize nb. col.} \end{picture}">
+ <br></div></td></tr></table></div>
+ <p></p>
+ <h2><a name="SECTION00010000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="RahRiv00">1</a></dt>
+ <dd>Rahmann, S., and Rivals, E. 2000. Exact and efficient
+ computation of the expected number of missing and common words in
+ random texts. In <em>11th Symposium on Combinatorial Pattern
+ Matching (CPM 2000). Lecture Notes in Computer Science,
+ vol.1848</em>, Springer, pp.&nbsp;375-387.</dd>
+ <dt><a name="RahRiv02">2</a></dt>
+ <dd>Rahmann, S., and Rivals, E. 2002. On the distribution of the
+ number of missing words in random texts. Research Report 02-198,
+ LIRMM, 2002. To appear in Combinatorics, Probability and
+ Computing.</dd></dl>
+ <p><br></p>
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot114">... Nicod&egrave;me</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>LIX - Ecole polytechnique, Plateau de Saclay, 91128 Palaiseau
+ cedex, France. E-mail: 
+ <div align="center">
+ <tt>nicodeme@lix.polytechnique.fr</tt></div></dd>
+ <dt><a name="foot22">...-gram&nbsp;</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>We use the usual definition of a <img width="12" height="29"
+ align="middle" border="0" src="img1.png" alt="$ q$">-gram as a word
+ of size <img width="12" height="29" align="middle" border="0"
+      src="img1.png" alt="$ q$">.</dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

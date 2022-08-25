@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>100. Applying sequence-derived features from similar 3-D local structures to protein fold recognition</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category04.html'>&lt;&lt;</a> <a href='/recombdb/category05.html'><b>Protein Structure</b> Overview</a> <a href='/recombdb/category06.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-05-099/'>&lt;&lt;</a> Poster 100 [ <a href='poster-05-100.pdf'>PDF</a> | <a href='poster-05-100.tgz'>TeX</a> | <a href='poster-05-100.ps'>PostScript</a> ] <a href='/recombdb/poster-05-101/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>100. Applying
+ sequence-derived features from similar 3-D local structures to
+ protein fold recognition<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Torgeir R. Hvidsten<a name="tex2html1"
+    href="#foot51"><sup>1</sup></a>, Andriy Kryshtafovych<a name=
+    "tex2html2" href="#foot52"><sup>2</sup></a>, Jan
+    Komorowski<a name="tex2html3" href="#foot53"><sup>3</sup></a>
+    and Krzysztof Fidelis<a name="tex2html4" href=
+    "#foot54"><sup>4</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> fold recognition, 3-D local
+ structures, sequence-derived features, machine learning, boosting,
+ genetic algorithms</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+   
+ <p><font size="-1">With the increasing number of proteins being
+ solved, the chances that a protein with a yet unknown structure
+ shares its fold with proteins with known structure are becoming
+ considerable even when sequence similarity is low. Fold recognition
+ methods aim at identifying such fold relationships using the amino
+ acid sequence of the unknown protein and information comprised in
+ databases of known protein structures. We explore here a novel
+ approach to recognition of protein folds using sequence derived
+ features from similar 3-D local structures. To this end we define a
+ <em>structural descriptor</em> to be a set of sequence fragments
+ residing within a 3-D sphere centered on a specific amino acid.
+ Furthermore, we define groups of structural descriptors with
+ similar local structure and consider descriptors in the same group
+ to be examples of sequence fragments implementing the same 3-D
+ local structure. From these groups we extract sequence signals
+ (using sequence derived features) that are optimized to recognize
+ proteins with the correct local structure. Although the concept of
+ descriptors provides a general framework for modeling protein
+ structure we will here only explore its capability of recognizing
+ SCOP folds&nbsp;[<a href="#SCOP">2</a>] using a
+ simple voting scheme.</font></p>
+ <h1><a name="SECTION00020000000000000000"><font size=
+ "+1">Method</font></a></h1>
+   
+ <p><font size="-1">By aligning corresponding sequence fragments
+ from different descriptors within a group, we can extract a signal
+ vector from each set of aligned fragments. Each element in the
+ signal vector is a z-score based on the frequency of which a
+ particular feature occurs in a particular position on a particular
+ set of aligned sequence fragments. We use as features all the 258
+ substitution groups proposed by Yu&nbsp;[<a href=
+ "#YU">3</a>]. Each set of aligned fragments can
+ be matched to an equally long fragment of any protein sequence by
+ coding the sequence as a vector of 1's and -1's and computing the
+ product between this vector and the signal vector. Thus, each
+ z-score in the signal vector will contribute by increasing or
+ decreasing the overall matching score by a proportion equal to the
+ z-score itself depending on whether the protein sequence possess
+ the feature in that position or not. Finally, the overall matching
+ score between the signal vectors of a group and a protein sequence
+ is the sum of the scores from the optimal assignment of each vector
+ such that no vectors overlap.</font></p>
+ <div align="center"><a name="met"></a><a name="35"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure:</strong> <font size=
+ "-1">Methodology</font></caption>
+ <tr>
+ <td><img width="978" height="1265" border="0" src="img1.png"
+      alt="\begin{wrapfigure}{r}{9cm} \psfig{figure=poster-05-100-fig01.eps,width=9cm} \end{wrapfigure}">
+ </td></tr></table></div>
+   
+ <p><font size="-1">We optimize the discriminatory power of the
+ signal by testing it on proteins with the correct local structure
+ (i.e. proteins represented by descriptors in the group) and compare
+ these matching scores to scores we obtain from proteins without the
+ correct local structure. A threshold minimizing the error rate is
+ selected for each group so that scores above this threshold
+ indicate that the group should be assigned to the sequence, while
+ scores below the threshold indicate that the group should not be
+ assigned. A greedy boosting algorithm is used to extract several
+ sets of signal vectors from each group. Descriptors from correctly
+ predicted proteins are iteratively removed from the group and new
+ sets of signal vectors are extracted from the descriptors that were
+ wrongly predicted by the previous sets. Furthermore, in each
+ boosting iteration, a Genetic Algorithm is used to select a subset
+ of the features that minimize the error rate for the optimal
+ threshold (Figure&nbsp;<a href="#met">1</a>).</font></p>
+ <p><font size="-1">In the application of fold recognition we
+ consider groups with descriptors from proteins from the same SCOP
+ fold. We match all groups to the target sequence and keep only the
+ ones with a score higher than its corresponding threshold. The
+ accepted groups cast a number of votes to their corresponding fold
+ proportional to the popularity of the fold.</font></p>
+ <h1><a name="SECTION00030000000000000000"><font size=
+ "+1">Preliminary Results</font></a></h1>
+   
+ <p><font size="-1">We test our approach on 273 target proteins from
+ the 49 most popular folds in SCOP with 40% or less sequence
+ similarity to proteins used to build the groups. 2537 groups with
+ at least seven descriptors with at least three sequence fragments
+ were used. Ordering the folds according to the fraction of votes
+ received, 62% of the target sequences have the correct fold in the
+ top five predictions. ROC-analysis&nbsp;[<a href=
+ "#ROC">1</a>] selects predictions having a
+ fraction of votes higher than a threshold optimized for each fold.
+ Using this analysis with an appropriate cost on false positives
+ gives an average number of five predictions per target sequence.
+ The correct folds is among the predictions in 82% of the
+ cases.</font></p>
+ <p></p>
+ <h2><a name="SECTION00040000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="ROC">1</a></dt>
+ <dd>Hanley J.A. and McNeil B.J. 1982. The meaning and use of the
+ area under a receiver operating characteristic (ROC) curve.
+ <em>Radiology</em> 143:29-36.</dd>
+ <dt><a name="SCOP">2</a></dt>
+ <dd>Murzin, A.G., Conte, L.L., Ailey, B.G., Brenner S.E., Hubbard,
+ T.J.P. and Chothia, C. 1995. SCOP: a structural classification of
+ proteins for the investigation of sequences and structures. <em>J.
+ Mol. Biol.</em> 247:536-540.</dd>
+ <dt><a name="YU">3</a></dt>
+ <dd>Yu, K. Theoretical Determination of Amino Acid Substitution
+ Groups based on Qualitative Physicochemical Properties.<br>
+ <tt>http://cmgm.standford.edu/biochem218/Projects%202001/Yu.pdf</tt>.</dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot51">... Hvidsten</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Linnaeus Centre for Bioinformatics, Uppsala University,
+ Sweden.<br>
+  E-mail: 
+ <div align="center">
+ <b><tt>torgeir.hvidsten@lcb.uu.se</tt></b></div></dd>
+ <dt><a name="foot52">... Kryshtafovych</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>Lawrence Livermore National Laboratory, Livermore, CA, USA.
+ E-mail: 
+ <div align="center"><b><tt>andriy@llnl.gov</tt></b></div></dd>
+ <dt><a name="foot53">... Komorowski</a><a href=
+ "#tex2html3"><sup>3</sup></a></dt>
+ <dd>Linnaeus Centre for Bioinformatics, Uppsala University,
+ Sweden.<br>
+  E-mail: 
+ <div align="center">
+ <b><tt>jan.komorowski@lcb.uu.se</tt></b></div></dd>
+ <dt><a name="foot54">... Fidelis</a><a href=
+ "#tex2html4"><sup>4</sup></a></dt>
+ <dd>Lawrence Livermore National Laboratory, Livermore, CA, USA.
+ E-mail: 
+ <div align="center">
+ <b><tt>fidelis@llnl.gov</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

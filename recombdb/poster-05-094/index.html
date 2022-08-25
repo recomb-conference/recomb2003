@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>94. Multiple Structural Alignment by Order-Independent Secondary Structures</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category04.html'>&lt;&lt;</a> <a href='/recombdb/category05.html'><b>Protein Structure</b> Overview</a> <a href='/recombdb/category06.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-05-093/'>&lt;&lt;</a> Poster 094 [ <a href='poster-05-094.pdf'>PDF</a> | <a href='poster-05-094.tgz'>TeX</a> | <a href='poster-05-094.ps'>PostScript</a> ] <a href='/recombdb/poster-05-095/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>94. Multiple Structural
+ Alignment by Order-Independent Secondary
+ Structures<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font> <b>Oranit Dror <a name="tex2html1" href=
+ "#foot70"><sup>1</sup></a>, Hadar Benyamini <a name="tex2html2"
+ href="#foot19"><sup>2</sup></a>, Ruth Nussinov<a name="tex2html3"
+ href="#foot19"><sup>2</sup></a> <a name="tex2html4" href=
+ "#foot20"><sup>3</sup></a>, Haim J. Wolfson<a name="tex2html5"
+    href="#foot70"><sup>1</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> Structural Bioinformatics,
+ Partial alignment, Subset alignment, Non-sequential alignment,
+ Non-topological motif, Supersecondary structural motif.</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Abstract</font></a></h1>
+   
+ <p><font size="-1">We present a novel highly efficient algorithm
+ for aligning multiple protein structures and detecting common
+ structural motifs. The rapidly growing number of protein structures
+ increases the need of advanced structural alignment tools. Indeed,
+ many algorithms for pairwise structural alignment have been
+ developed. However, only a few methods are currently available for
+ addressing the multiple case. Multiple structural alignment is a
+ much more powerful tool for protein classification, structural
+ motif detection, evolutionary research, and structure prediction.
+ Most of the existing methods for multiple structure alignment are
+ based on a series of pairwise comparisons. Our method, <b>MASS</b>
+ (<b>M</b>ultiple <b>A</b>lignment by <b>S</b>econdary
+ <b>S</b>tructures), is a truly multiple-based application: it
+ considers all the given structures simultaneously. Additionally, it
+ is able to detect structural motifs common not only to the whole
+ input set of molecules, but also motifs common only to its subsets.
+ Exploiting the secondary structure information aids in filtering
+ out noisy solutions and achieves efficiency and robustness. The
+ method disregards the sequence order of the secondary structure
+ elements and thus is capable of detecting non-topological
+ structural motifs. MASS is suitable for a broad range of
+ challenging applications: It can handle large-scale protein
+ ensembles (on the order of tens) that may be heterogeneous, noisy,
+ topologically unrelated and contain low-resolution
+ structures.</font></p>
+ <p><font size="-1"><br>
+  <b>Software availability:</b>
+ <tt>http://www.cs.tau.ac.il/<img width="16" height="15" align=
+ "bottom" border="0" src="img1.png" alt=
+ "$\sim$">ornit/MASS</tt>.</font></p>
+ <h1><a name="SECTION00020000000000000000"><font size="+1">Method
+ Strategy</font></a></h1>
+  <font size="-1">MASS is based on a two-level alignment, using both
+ secondary structure and atomic representation. In the first stage
+ the method represents the proteins by their secondary structure
+ elements (SSEs). Each SSE (a helix or a strand) is represented by
+ its axis, which is defined by the <i>least squares line</i> from
+ all it <img width="24" height="30" align="middle" border="0"
+      src="img2.png" alt="$C_\alpha$"> atoms. Then, <i>Geometric
+      Hashing</i> [<a href=
+      "#Nussinov_Wolfson_1991">1</a>] is used to
+      efficiently detect pairs of SSEs, whose spatial configuration
+      appear in several (or all) given proteins. Such local SSE
+      similarities define initial multiple alignments between the
+      respective proteins whose common cores contain at least two
+      SSEs. In the second stage the initial multiple alignments are
+      extended into global ones by clustering and detection of
+      spatially conserved residues, which do not necessarily belong
+      to SSEs.</font> 
+ <h1><a name="SECTION00030000000000000000"><font size=
+ "+1">Results</font></a></h1>
+ <p><font size="-1">The following examples demonstrate the power of
+ MASS in addressing various interesting cases of structural
+ alignment (see <tt>http://www.cs.tau.ac.il/<img width="16"
+      height="15" align="bottom" border="0" src="img1.png" alt=
+      "$\sim$">ornit/MASS</tt> for details).</font></p>
+ <p><font size="-1"><br>
+  <b><img width="12" height="15" align="bottom" border="0" src=
+ "img3.png" alt="$\bullet$"> Non-topological motif detection:</b>
+ MASS was applied to an ensemble of 10 all-<img width="14"
+      height="13" align="bottom" border="0" src="img4.png" alt=
+      "$\alpha$"> proteins belonging to 4 different folds and 6
+      different superfamilies. It detected a conserved bundle of 4
+      <img width="14" height="13" align="bottom" border="0" src=
+      "img4.png" alt="$\alpha$">-helices (Figure <a href=
+      "#Fig:Helix_Bundle">1</a>a). Figure <a href=
+      "#Fig:Helix_Bundle">1</a>b shows that the alignment is
+      non-topological i.e. the order and the direction of the
+      corresponding SSEs along the polypeptide chain are not
+      conserved.</font></p>
+ <p><font size="-1"><br></font></p>
+ <div align="center"><a name="Fig:Helix_Bundle"></a><a name=
+ "73"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure:</strong> <font size=
+ "-1"><b>Non-topological motif</b>: (a) The structural alignment of
+ ten proteins. The backbone of the proteins is colored in gray.
+ Their common core is shown by assigning a different color to each
+ conserved helix. (b) The schematic TOPS representation [<a href=
+ "#TOPS">2</a>]. Triangles represent strands and
+ circles helices. Corresponding helices are drawn in the same
+ color.</font></caption>
+ <tr>
+ <td>
+ <div align="center">[] <img width="121" height="146" align="bottom"
+ border="0" src="img5.png" alt=
+ "\includegraphics[scale=0.16]{poster-05-094-fig01.eps}"> []
+ <img width="237" height="132" align="bottom" border="0" src=
+ "img6.png" alt=
+ "\includegraphics[scale=0.15]{poster-05-094-fig02.eps}"></div></td></tr></table></div>
+ <p><font size="-1"><br>
+  <b><img width="12" height="15" align="bottom" border="0" src=
+ "img3.png" alt="$\bullet$"> Subset alignment detection</b>: We
+ applied MASS to an ensemble of eleven proteins belonging to five
+ different families of the 'PLP-dependent transferases' superfamily.
+ All eleven proteins were aligned with a core containing the
+ complete seven-stranded <img width="14" height="30" align="middle"
+ border="0" src="img7.png" alt="$\beta$">-sheet of the fold and
+ three <img width="14" height="13" align="bottom" border="0"
+      src="img4.png" alt="$\alpha$">-helices. Moreover, a subset
+      alignment of ten proteins has been detected with an additional
+      <img width="14" height="13" align="bottom" border="0" src=
+      "img4.png" alt="$\alpha$">-helix. This subset alignment agrees
+      with a previously suggested evolutionary relationship tree
+      that has been generated by all-against-all pairwise
+      comparisons.</font></p>
+ <p><font size="-1"><br>
+  <b><img width="12" height="15" align="bottom" border="0" src=
+ "img3.png" alt="$\bullet$"> Large-scale structural alignments</b>:
+ We applied MASS to several structural families that contain between
+ 66 to 80 molecules. The running times were between 1min:28sec to
+ 1h:25min on a standard PC (Pentium&copy;&nbsp;4, 1800 MHz, 1GB
+ RAM). They were influenced by: (i) the number of molecules; (ii)
+ the average molecular size (and the average number of SSEs in a
+ molecule); and (iii) the structural variance among the
+ molecules.</font></p>
+ <h1><a name="SECTION00040000000000000000"><font size=
+ "+1">Conclusions</font></a></h1>
+ <p><font size="-1">MASS successfully handles a range of cases that
+ are considered hard for multiple structural alignments. These
+ include ensembles of large number of molecules (order of tens),
+ non-topologically related molecules and different sub-types of
+ molecules. MASS is likely to be useful for analysis of proteins
+ where only secondary structure information is available, like
+ theoretic models and cryo-EM density maps.</font></p>
+ <p></p>
+ <h2><a name="SECTION00050000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="Nussinov_Wolfson_1991">1</a></dt>
+ <dd>Nussinov, R. &amp; Wolfson, H. (1991).<br>
+ Efficient Detection of three-dimensional strcutral motifs in
+ biological macromolecules by computer vision techniques.<br>
+ <em>Proc. Natl. Acad. Sci. USA,</em> <b>88</b>, 10495-10499.<br>
+ Biophysics.</dd>
+ <dt><a name="TOPS">2</a></dt>
+ <dd>Flores, T., Moss, D. &amp; Thornton, J. (1994).<br>
+ An algorithm for automatically generating protein topology
+ cartoons.<br>
+ <em>Protein Eng.</em> <b>7(1)</b>, 31-37.</dd></dl>
+ <br>
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot70">... Dror</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>School of Computer Science, Tel Aviv University, Tel Aviv
+ 69978, Israel, Telefax: +972-3-640 6476, E-mail : 
+ <div align="center">
+ <b><tt>{ornit,wolfson}@tau.ac.il;</tt></b></div></dd>
+ <dt><a name="foot19">... Benyamini</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>Sackler Inst. of Molecular Medicine, Sackler Faculty of
+ Medicine, Tel Aviv University.</dd>
+ <dt><a name="foot20">...</a> <a href=
+ "#tex2html4"><sup>3</sup></a></dt>
+ <dd>Basic Research Program, SAIC-Frederick, Inc, Lab. of
+ Experimental and Computational Biology, NCI - FCRDC, Bldg 469, Rm
+ 151, Frederick, MD 21702, USA</dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

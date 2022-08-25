@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>57. A Space Efficient Implementation of a Persistent Suffix Tree</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-056/'>&lt;&lt;</a> Poster 057 [ <a href='poster-02-057.pdf'>PDF</a> | <a href='poster-02-057.doc'>MSWORD</a> ] <a href='/recombdb/poster-03-058/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>57. A Space Efficient Implementation<br>
+  of a Persistent Suffix Tree</h2>
+ <p align="center"><b>Gabriele Witterstein<a href="#_ftn1" name=
+ "_ftnref1" title="">[1]</a></b></p>
+ <p><b>Keywords:</b> DNA index structure, suffix tree, databases,
+ comparative genomics</p>
+ <p><b>1&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Introduction</b></p>
+ <p>Due to newly developed high-throughput technologies for
+ DNA-sequencing, the number of fully sequenced species increase
+ significantly. The statistics show that the size of databases
+ holding these sequences, like GenBank, has doubled every 15 months.
+ Index structures for very large string databases are needed.</p>
+ <p>Suffix trees have been established as a data structure allowing
+ many different kinds of search operations needed in this
+ application field ([2], [3]). They belong to the wider class of
+ suffix structures which are the most suitable data structures on
+ top of a text which can't broken in words. This situation also
+ appears in video databases or in large texts used for
+ spell-checking. The complexity of an exact search for a substring
+ in a suffix tree depends only on the length of this string, and is
+ independent of the length of the coded text unlike to suffix
+ arrays.</p>
+ <p>There is a large literature about transient suffix trees. But
+ even with the most space efficient implementation using 13 bytes
+ per indexed letter, a transient suffix tree for very large strings
+ cannot be created in-memory and cannot be held there. Therefore,
+ the construction of a persistent suffix tree is needed as well as
+ storing on disk in an efficient way.</p>
+ <p>A partitioning algorithm has been introduced in [1], where a
+ large tree is divided in partitions, each of them created in-memory
+ and then written on disk. Hereby PJama is used which makes the
+ in-memory structure automatically persistent. In [1] it has been
+ mentioned that a space efficient implementation is needed.</p>
+ <p>In [4] this partitioning algorithm has been improved by
+ introducing variable length of the prefixes determining the
+ partitions and therewith preventing the failure of the algorithm in
+ [1]. This approach is adapted to the blocksize of the disk and
+ avoids the creation of many low occupied partitions. Among other
+ things these small partitions support the big size of the index on
+ the disk.</p>
+ <p>This poster addresses the question in which way one can store
+ the tree on disk and makes fast access possible. I introduce a
+ coding scheme which optimizes disk saving and therefore preventing
+ unneeded disk access.</p>
+ <p><b>2&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>My Approach</b></p>
+ <p>A suffix tree is a compressed digital trie, which only stores
+ two references to all sistrings of the text in a trie. Here a
+ sistring is a substring of text which is defined by its starting
+ position and continues to the right as far as necessary to make the
+ string unique. In order to find the proper child node during a
+ search one has to jump to the DNA file, seek the position and match
+ the characters. Usually the DNA letters are not coded on the edges
+ of the tree. This causes a bottleneck which lies in the random
+ access to the text being indexed. To avoid this its useful to code
+ the sistrings in the index itself. Algorithms, which traverse
+ repeatedly the tree from bottom to up and reverse, profit from this
+ advantage. Therefore the tree I introduced is more a compacted
+ suffix trie ending with leaves&nbsp; making the suffixes unique.
+ Theoretically the transition from a trie to a tree reduces the
+ storage requirements from O(n&sup2;) to O(n). I show that the small
+ size alphabet of DNA enables an efficient coding of both, the tree
+ topology, and the letters of the DNA. In this way there is no
+ considerably loss of storage space.</p>
+ <p>For coding the local tree topology one can use a lookup table.
+ Due to the small alphabet size 4, every node of the tree can have
+ at most 4 child nodes leading to a branching configuration of the
+ tree in following manner:</p>
+ <table cellpadding="0" cellspacing="0" align="left">
+ <tr>
+ <td width="52" height="5"></td>
+ <td width="79"></td>
+ <td width="34"></td>
+ <td width="80"></td>
+ <td width="33"></td>
+ <td width="56"></td></tr>
+ <tr>
+ <td height="1"></td>
+ <td colspan="2"></td>
+ <td rowspan="2" align="left" valign="top"><img width="80"
+      height="28" src="image001.gif"></td>
+ <td rowspan="2" align="left" valign="top"><img width="56"
+      height="28" src="image002.gif"></td></tr>
+ <tr>
+ <td height="27"></td>
+ <td align="left" valign="top"><img width="79" height="27" src=
+ "image003.gif"></td></tr></table>
+ &nbsp;<br>
+ <br>
+ <br clear="all">
+  
+ <p>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ ,&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ ,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ ,&nbsp; &hellip;......</p>
+ <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A&nbsp;&nbsp;&nbsp;&nbsp;
+ T&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; G&nbsp;&nbsp;&nbsp;&nbsp;
+ C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ G&nbsp;&nbsp;&nbsp;&nbsp;
+ C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ A&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;T&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ G&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+ <p>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+ <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ 1111&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ 1011&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ 1110&nbsp;</p>
+ <p align="center">Figure 1: Treecode.</p>
+ <p>In this way, only maximal 4 bits for each branching node are
+ necessary in order to cipher the branching node as well as the
+ branching letter. Nodes with only one child are compressed and only
+ 2 bits are needed for the encoding of each letter of the sistring.
+ Now, one can store the local tree topology linearly in an
+ array.</p>
+ <p>In my application, it is necessary to be able to traverse the
+ tree selectively, i.e. to extract a subtree of the suffix tree.
+ Since the nodes are arranged in one large array, one has to know
+ the&nbsp; number of nodes which are skipped in order to find the
+ right branching node. To solve this problem I use additional
+ storage for relative branch pointers (skipp pointers). For each
+ node in the tree this pointer is exactly&nbsp; the number of bytes
+ in the subtree below. Thus the expensive storage of absolute
+ pointers is avoided, which would usually require more memory than
+ the data itself. But also some of the relative pointers can get
+ quite large, therefore it's useful to allocate variable sized
+ memory for the pointers. My experiments show that this can reduce
+ the storage requirement significantly.&nbsp; In this way, the
+ average storage requirement for a branch pointer is less than 3
+ bytes independently of the depth of the suffix tree.</p>
+ <p>I introduce different node modes taking into account the various
+ structure of different node types. Since each node has at most 4
+ subtrees it leads to the following data type:</p>
+ <table border="1" cellspacing="0" cellpadding="0" width="493">
+ <tr>
+ <td width="49" valign="top">
+ <p align="center">Node Mode</p>
+ <p align="center">2 bits</p></td>
+ <td width="57" valign="top">
+ <p align="center">Treecode</p>
+ <p align="center">4 bits</p></td>
+ <td width="67" valign="top">
+ <p align="center">Pointer Number</p>
+ <p align="center">2 bits</p></td>
+ <td width="46" valign="top">
+ <p align="center">Pointer Size</p>
+ <p align="center">2 bits</p></td>
+ <td width="28" valign="top">
+ <p align="center">&hellip;</p>
+ <p align="center">&hellip;</p></td>
+ <td width="50" valign="top">
+ <p align="center">Pointer Size</p>
+ <p align="center">2 bits</p></td>
+ <td width="82" valign="top">
+ <p align="center">Skipp Pointer</p>
+ <p align="center">variable sized</p></td>
+ <td width="28" valign="top">
+ <p align="center">&hellip;</p>
+ <p align="center">&hellip;</p></td>
+ <td width="85" valign="top">
+ <p align="center">Skipp Pointer</p>
+ <p align="center">variable sized</p></td></tr></table>
+ <p align="center">Figure 2: Data type of variable sized record
+ structure.</p>
+ <p>These scheme allows a very fast and efficient tree traversal,
+ since only a few bit operations are necessary to find subsequent
+ letters.</p>
+ <h1>References</h1>
+ <p>[1] Hunt, E., Irving, R.W. and Atkinson M.P. 2001. A database
+ index to large biological sequences. <i>Proceedings of the
+ 27<sup>th</sup> International Conference on Very Large Databases
+ (VLDB 2001),</i> pp. 139-148.</p>
+ <p>[2] Gusfield, D. 1997. <i>Algorithms on strings, trees and
+ sequences: computer science and computational biology.</i>
+ Cambridge: University Press.</p>
+ <p>[3] Marsan, L. and Sagot M.-F. 2000. Extracting structured
+ motifs using a suffix tree - algorithms and application to promoter
+ consensus identification. <i>RECOMB 2000,</i> pp. 210-219.</p>
+ <p>[4] Sch&uuml;rmann, K.-B. and Stoye B. 2002. Suffix Tree
+ Construction for Large Strings. In: <cite>Proceedings 14. Workshop
+ of Fundamentals of Databases.</cite> <cite>Rostock, Germany</cite>,
+ May.</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a> Institute of
+ Applied Informatics, University of Bonn, Roemerstr. 164, D-53117
+ Bonn, NRW, Germany. E&#8209;mail:
+ gw@iai.uni-bonn.de</p></div></div>
+ </body>
+ </html>

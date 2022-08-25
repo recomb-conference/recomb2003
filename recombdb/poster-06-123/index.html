@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>123. Functional Genomics and Maximum Matching</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category05.html'>&lt;&lt;</a> <a href='/recombdb/category06.html'><b>Gene Expression</b> Overview</a> <a href='/recombdb/category07.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-06-122/'>&lt;&lt;</a> Poster 123 [ <a href='poster-06-123.pdf'>PDF</a> | <a href='poster-06-123.doc'>MSWORD</a> ] <a href='/recombdb/poster-06-124/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>123.&nbsp; Functional Genomics and Maximum Matching</h2>
+ <p align="center"><b>J. Cahill<a href="#_ftn1" name="_ftnref1"
+ title="">[1]</a> and P. Clote<a href="#_ftn2" name="_ftnref2"
+    title="">[2]</a></b></p>
+ <p><b>1&nbsp;&nbsp;&nbsp; Abstract</b></p>
+ <p>In [6] the assignment of cell-cycle regulated genes of <i>S.
+ cerevisiae</i> was undertaken by hierarchical clustering of gene
+ expression data, where putative function was assigned by ascribing
+ the function of known genes lying in the cluster under
+ consideration. Here, we implement the error-tolerant clustering
+ algorithm CAST of [1] in C++ and apply Gabow's O(n<sup>3</sup>)
+ maximum matching algorithm [5], in order to ascribe putative
+ function using time-series gene expression data between two
+ different species. The current paper reports on stability of three
+ variants of our approach by using expression data with Gaussian
+ white noise variant of that data. In subsequent work, we will
+ report on the application of this method using the expression data
+ for yeast [3] and human [2].</p>
+ <p><b>2&nbsp;&nbsp;&nbsp; Introduction</b></p>
+ <p>Given an <b>n</b> x <b>n</b> affinity matrix A =
+ (a<sub>i,j</sub>) where a<sub>i,j</sub> is a similarity measure
+ (real number between 0 and 1), a <i>clique partition</i> of A is a
+ partition of {1,&hellip;,n} into classes which minimizing the sum
+ of the inter-clique edge weights and intra-clique non-edge weights.
+ Determining a clique partition is well-known to be NP-complete,
+ which explains the diversity of different heuristics and
+ approximation algorithms for clustering.</p>
+ <p>The Cluster Affinity Search Technique (CAST) of Ben-Dor <i>et
+ al.</i> [1] is a particularly appealing approach for certain kinds
+ of data, in that it incorporates an error model and (theoretically)
+ yields an optimal solution within the error model. Define the
+ affinity of node u to cluster C of nodes as the average similarity
+ of u to nodes v in C, and define the affinity of a cluster C to be
+ the average affinity of nodes of the cluster to all other nodes of
+ that cluster. The CAST heuristic proceeds by creating new clusters,
+ repeatedly adding nodes not yet processed while the average
+ affinity of&nbsp; the node to be added is above a given affinity
+ threshold, then removing nodes from clusters when that nodes
+ affinity to the cluster drops below the threshold, etc. See [1] for
+ details.&nbsp; CAST was implemented by the authors of [1] using
+ Matlab.</p>
+ <p><b>3&nbsp;&nbsp;&nbsp; Methods</b></p>
+ <p>We programmed an efficient implementation of CAST in C++, and to
+ test the implementation duplicated the results of [1] on artificial
+ data. Affinity between nodes was measured using Pearson
+ correlation, where negative correlation values were rounded up to
+ 0; we additionally considered a discretized or boolean affinity,
+ where correlation values less than a user-stipulated threshold T
+ were set to 0, while those above the threshold were set to 1. (We
+ experimented additionally with L0 norm, etc. &ndash; data not
+ shown.) Artificial time series data used for our artificial species
+ A, while Gaussian white noise was added to produce artificial
+ species B.</p>
+ <b><br clear="all"></b> 
+ <p><b>Basic Algorithm</b></p>
+ <p><b>&nbsp;</b></p>
+ <p>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Set affinity
+ threshold (e.g. 80% or 90%).Apply CAST to produce optimal
+ clustering <b>A</b>&nbsp; for time series data for species A. Apply
+ CAST to produce optimal clustering <b>B</b>&nbsp; for time series
+ data for species B</p>
+ <p>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Define weighted
+ perfect bipartite graph, whose node set consists of clusters from
+ (1), such that weight for edge {U,V} is the average correlation
+ coefficient between nodes in U, a cluster from species A, and V, a
+ cluster from species B.</p>
+ <p>3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Apply Gabow&rsquo;s
+ maximum weight matching algorithm to match clusters from <b>A</b>
+ to those from <b>B</b>. Assign function of genes in <b>B</b> by
+ known function of genes in <b>A</b></p>
+ <p><b>Algorithm: 3 variants</b></p>
+ <p>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i>Na&iuml;ve gene
+ matching</i>: apply maximum weight matching between genes without
+ first clustering; i.e. basic algorithm where (1) is replaced by
+ defining singleton clusters.</p>
+ <p>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i>Clustered
+ filtered gene matching</i>: clusters matched according to average
+ similarity between their constituent genes; i.e. basic algorithm,
+ where after matching cluster U to V, genes within cluster U are
+ matched to those in V.</p>
+ <p>3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img width="254"
+ height="197" src="image002.gif" align="left" hspace="12" alt=
+ "Text Box: "><img width="278" height="192" src="image004.gif"
+      align="left" hspace="12" alt="Text Box: "><i>Gene voted
+      cluster matching</i>: identify extremely similar gene&nbsp;
+      &ldquo;leader&rdquo; pairs, &ldquo;leader&rdquo; pairs vote to
+      match their clusters, match clusters with the most votes,
+      match remaining genes within cluster pairs.</p>
+ <p><b>4&nbsp;&nbsp;&nbsp; Bibliography</b></p>
+ <p>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;A. Ben-Dor,
+ R. Shamir, Z. Yahkini, &ldquo;Clustering gene expression
+ patterns&rdquo;, <i>J. Comput. Biol.</i> <b>6</b>(3/4): 281-297
+ (1999).</p>
+ <p>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; R. Cho et al.,
+ &ldquo;Transcriptional regulation and function during the human
+ cell cycle&rdquo;, <i>Nature Genetics</i> <b>27</b> :48-54
+ (2001).</p>
+ <p>3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; R. Cho et
+ al.&cedil; &ldquo;A genome-wide transcriptional analysis of the
+ mitotic cell cycle&rdquo;, <i>&nbsp;Molecular Cell</i>
+ <b>2</b>:65-73 (1997).</p>
+ <p>4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; P. Clote and R.
+ Backofen, <i>Computational Molecular Biology: An Introduction</i>,
+ John Wiley &amp; Sons (2000).</p>
+ <p>5.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; H. Gabow's
+ O(n<sup>3</sup>) maximum matching algorithm.
+ <b>http://elib.zib.de/pub/Packages/mathprog/matching/weighted/.</b></p>
+ <p>6.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; P. Spellman et al.,
+ &ldquo;Comprehensive identification of cell cycle-regulated genes
+ of the yeast <i>Saccharomyces cerevisiae</i>&nbsp; by microarray
+ hybridization&rdquo;, <i>Mol. Biol. Cell</i>&nbsp;
+ <b>9</b>:3273-3297 (1998).</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p><a href="#_ftnref1" name="_ftn1" title="">[1]</a> UBS Warburg,
+ Technology Investment Banking, 555 California St., Suite 3600, San
+ Francisco, CA 94104</p>
+ <p>jay.cahill@ubsw.com</p></div>
+ <div id="ftn2">
+ <p><a href="#_ftnref2" name="_ftn2" title="">[2]</a> Corresponding
+ author: Department of Biology, Boston College, Chestnut Hill, MA
+ 02467</p>
+ <p>clote@bc.edu</p></div></div>
+ </body>
+ </html>

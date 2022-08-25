@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>35. MLP: Mate-based Layout with PHRAP</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-034/'>&lt;&lt;</a> Poster 035 [ <a href='poster-02-035.pdf'>PDF</a> | <a href='poster-02-035.tgz'>TeX</a> | <a href='poster-02-035.ps'>PostScript</a> ] <a href='/recombdb/poster-02-036/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>35. MLP: Mate-based Layout
+ with PHRAP<a name="tex2html1" href="#foot17"><sup><img width="6"
+ height="8" align="bottom" border="0" src="img1.png" alt=
+ "% latex2html id marker 392 \setcounter{footnote}{1}\fnsymbol{footnote}">
+ </sup></a><br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font> <b>Jin Wook Kim, <a name="tex2html2" href=
+ "#foot109"><sup>2</sup></a> Kang-Ho Roh, <a name="tex2html3"
+    href="#foot109"><sup>2</sup></a> Kunsoo Park <a name="tex2html4"
+    href="#foot109"><sup>2</sup></a><br>
+  Hyunseok Park <a name="tex2html5" href="#foot110"><sup>3</sup></a>
+ Jeong-Sun Seo <a name="tex2html6" href=
+ "#foot110"><sup>3</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> fragment assembly, mate pair
+ information, repeat masking</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+ <p><font size="-1">The aim of fragment assembly programs is to find
+ the genome sequence from sequence reads - the fragments generated
+ by shotgun sequencing. Various assemblers have been developed for
+ this purpose such as PHRAP [<a href=
+ "#PHRAP">1</a>], TIGR, AMASS, CAP3, STROLL, the
+ Celera assembler, ARACHNE, and RePS [<a href=
+ "#REPS">2</a>]. Most of them adopt the
+ overlap-layout-consensus strategy.</font></p>
+ <p><font size="-1">PHRAP has been widely used for fragment
+ assembly, but it has two drawbacks. First it does not resolve well
+ the repeat problem, and second it does not use the mate pair
+ information in its assembly though mate pairs are specified in its
+ input. The latest assembler, RePS [<a href=
+ "#REPS">2</a>], uses PHRAP as it is, but adds two
+ processes: a pre-PHRAP process that identifies exactly repeated
+ 20mers and masks them out, and a post-PHRAP process that constructs
+ scaffolds from contigs using the mate pair information.</font></p>
+ <p><font size="-1">We have combined PHRAP, repeat masking, and a
+ new layout algorithm that uses the mate pair information into a
+ fragment assembly program, MLP (Mate-based Layout with PHRAP). We
+ dived into the source code of PHRAP and modified the layout part
+ (data structures and layout procedure) so that the mate pair
+ information can be used during the layout. In addition, MLP uses
+ repeat masking as RePS does. Our experiments show that MLP produces
+ significantly better sequencing results than PHRAP.</font></p>
+ <h1><a name="SECTION00020000000000000000"><font size="+1">Algorithm
+ and Experimental Results</font></a></h1>
+ <p><font size="-1">Let <img width="52" height="30" align="middle"
+ border="0" src="img2.png" alt="$a, b,\dots$"> and <img width="61"
+ height="32" align="middle" border="0" src="img3.png" alt=
+ "$a', b', \dots$"> denote the reads, where reads <img width="32"
+ height="32" align="middle" border="0" src="img4.png" alt="$a, a'$">
+ and reads <img width="29" height="32" align="middle" border="0"
+      src="img5.png" alt="$b, b'$"> are mate pairs. Suppose that
+      read <img width="12" height="13" align="bottom" border="0"
+      src="img6.png" alt="$a$"> is in contig <img width="16" height=
+      "14" align="bottom" border="0" src="img7.png" alt="$A$"> and
+      read <img width="11" height="14" align="bottom" border="0"
+      src="img8.png" alt="$b$"> is in contig <img width="17" height=
+      "14" align="bottom" border="0" src="img9.png" alt="$B$">. We
+      consider two cases that are used in the layout
+      procedure:</font></p>
+ <dl compact>
+ <dt>case 1:</dt>
+ <dd>Two mate pairs, <img width="32" height="32" align="middle"
+ border="0" src="img4.png" alt="$a, a'$"> and <img width="29"
+      height="32" align="middle" border="0" src="img5.png" alt=
+      "$b, b'$">, are aligned, i.e., <img width="12" height="13"
+      align="bottom" border="0" src="img6.png" alt="$a$"> and
+      <img width="11" height="14" align="bottom" border="0" src=
+      "img8.png" alt="$b$"> are aligned and also <img width="17"
+      height="15" align="bottom" border="0" src="img10.png" alt=
+      "$a'$"> and <img width="15" height="15" align="bottom" border=
+      "0" src="img11.png" alt="$b'$"> are aligned. See Figure
+      <a href="#case1">1</a>. 
+ <div align="center"><a name="case1"></a><a name="55"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure:</strong> <font size=
+ "-1">Case 1</font></caption>
+ <tr>
+ <td>
+ <div align="center"><img width="571" height="61" align="bottom"
+ border="0" src="img12.png" alt=
+ "\includegraphics{poster-02-035-fig01.eps}"></div></td></tr></table></div></dd>
+ <dt>case 2:</dt>
+ <dd>Reads <img width="12" height="13" align="bottom" border="0"
+      src="img6.png" alt="$a$"> and <img width="11" height="14"
+      align="bottom" border="0" src="img8.png" alt="$b$"> are
+      aligned, but their mate reads are not aligned. However, (i)
+      read <img width="15" height="15" align="bottom" border="0"
+      src="img11.png" alt="$b'$"> and read <img width="11" height=
+      "13" align="bottom" border="0" src="img13.png" alt="$c$"> that
+      is already in contig <img width="16" height="14" align=
+      "bottom" border="0" src="img7.png" alt="$A$"> and is lain in a
+      similar location with <img width="17" height="15" align=
+      "bottom" border="0" src="img10.png" alt="$a'$"> are aligned or
+      (ii) reads <img width="12" height="14" align="bottom" border=
+      "0" src="img14.png" alt="$d$"> and <img width="11" height="13"
+      align="bottom" border="0" src="img15.png" alt="$e$"> that are
+      already in contigs <img width="16" height="14" align="bottom"
+      border="0" src="img7.png" alt="$A$"> and <img width="17"
+      height="14" align="bottom" border="0" src="img9.png" alt=
+      "$B$"> and are lain in similar locations with <img width="17"
+      height="15" align="bottom" border="0" src="img10.png" alt=
+      "$a'$"> and <img width="15" height="15" align="bottom" border=
+      "0" src="img11.png" alt="$b'$">, respectively, are aligned.
+      See Figure <a href="#case2">2</a>.</dd></dl>
+ <p><font size="-1">In each case, we allow variation in gap lengths
+ of the contigs.</font></p>
+ <div align="center"><a name="case2"></a><a name="64"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure:</strong> <font size=
+ "-1">Case 2</font></caption>
+ <tr>
+ <td>
+ <div align="center"><img width="567" height="66" align="bottom"
+ border="0" src="img16.png" alt=
+ "\includegraphics{poster-02-035-fig03.eps}"></div></td></tr></table></div>
+ <p><font size="-1"><br></font></p>
+ <p><font size="-1">The layout algorithm is as follows. Assume that
+ the average insert size is 2 kbp and the average read size is 500
+ bp. Initially, we construct a contig with 1 kbp gap for each mate
+ pair. Then all aligned pairs are sorted in descending order of the
+ LLR scores [<a href="#PHRAP">1</a>]. By the
+ following five steps, we merge contigs:</font></p>
+ <dl compact>
+ <dt>step 1:</dt>
+ <dd>If the current aligned pair satisfies case 1, then the contigs
+ are merged together after some test. In step 1, the maximum
+ variation in the gap length of a contig is 100 bp.</dd>
+ <dt>step 2:</dt>
+ <dd>Same as step 1, but the maximum variation is increased to 150
+ bp.</dd>
+ <dt>step 3:</dt>
+ <dd>If the current aligned pair satisfies case 1 or case 2, then
+ the contigs are merged together after some test. The maximum
+ variation is 200 bp.</dd>
+ <dt>step 4:</dt>
+ <dd>Same as step 3, but the maximum variation is changed to 250
+ bp.</dd>
+ <dt>step 5:</dt>
+ <dd>Run the original PHRAP. In other words, we do not consider the
+ alignment of the mate reads, but consider only one aligned
+ pair.</dd></dl>
+ <p><font size="-1">We experimented MLP on simulated data from
+ <em>homo sapiens</em> chromosome 17 clone RP11-893F2 (GenBank Acc.
+ No. AC015909 (220 Kbp)), <em>rattus norvegicus</em> clone
+ RP31-256A2 (GenBank Acc. No. AC116662 (114 Kbp)) and <em>brucella
+ suis 1330</em> chromosome II (GenBank Acc. No. NC_004311 (1224
+ Kbp)). The coverage of the simulated data sets is 10-fold. Our
+ experimental results show that by using MLP instead of PHRAP, we
+ can significantly reduce the number of contigs and the difference
+ between the assembled sequence and the original genome sequence.
+ The results of <em>homo sapiens</em> and <em>rattus norvegicus</em>
+ are shown in Figure <a href="#result">3</a>.</font></p>
+ <div align="center"><a name="result"></a><a name="115"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure:</strong> <font size=
+ "-1">The CROSS_MATCH results of</font> <font size="-1"><em>homo
+ sapiens</em> and</font> <font size="-1"><em>rattus
+ norvegicus</em>.</font></caption>
+ <tr>
+ <td>
+ <div align="center"><img width="552" height="59" align="bottom"
+ border="0" src="img17.png" alt=
+ "\includegraphics{poster-02-035-fig02.eps}"></div></td></tr></table></div>
+ <p><font size="-1"><br></font></p>
+ <p></p>
+ <h2><a name="SECTION00030000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="PHRAP">1</a></dt>
+ <dd>Green, P. 1994. PHRAP documentation. http://www.phrap.org.</dd>
+ <dt><a name="REPS">2</a></dt>
+ <dd>Wang, J., Wong, G.&nbsp;K., Ni, P., Han, Y., Huang, X., et al.
+ 2002. RePS: A Sequence Assembler That Masks Exact Repeats
+ Identified from the Shotgun Data. <em>Genome Research</em> 12:
+ 824-831.</dd></dl>
+ <br>
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot17">... PHRAP</a><a href=
+ "#tex2html1"><sup><img width="6" height="8"
+      align="bottom" border="0" src="img1.png" alt=
+      "% latex2html id marker 392 \setcounter{footnote}{1}\fnsymbol{footnote}">
+ </sup></a></dt>
+ <dd>This work was supported by the BK 21 Project and the IMT 2000
+ Project ``Development of Automatic Analysis System for Agricultural
+ Genomes"</dd>
+ <dt><a name="foot109">... Kim,</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>School of Computer Science and Engineering, Seoul National
+ University, 151-742, Korea.<br>
+ E-mail: 
+ <div align="center">
+ <b><tt>{jwkim,khroh,kpark}@theory.snu.ac.kr</tt></b></div></dd>
+ <dt><a name="foot110">... Park</a><a href=
+ "#tex2html5"><sup>3</sup></a></dt>
+ <dd>Macrogen, Seian Building 116, Shinmun-Ro 1Ka, Chongro-Ku,
+ Seoul, Korea.<br>
+ E-mail: 
+ <div align="center">
+ <b><tt>{hspark,jeoungsun}@macrogen.co.kr</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

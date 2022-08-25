@@ -1,0 +1,371 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>137. Kernel based supervised learning for cancer phenotype prediction and gene selection</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category05.html'>&lt;&lt;</a> <a href='/recombdb/category06.html'><b>Gene Expression</b> Overview</a> <a href='/recombdb/category07.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-06-136/'>&lt;&lt;</a> Poster 137 [ <a href='poster-06-137.pdf'>PDF</a> | <a href='poster-06-137.tgz'>TeX</a> | <a href='poster-06-137.ps'>PostScript</a> ] <a href='/recombdb/poster-06-138/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>137. Kernel based supervised
+ learning for cancer phenotype prediction and gene selection<br>
+ <br>
+ <br></b></font> <b><br>
+ <br></b></div>
+ <div align="center"><b>Eisaku Maeda <a name="tex2html1" href=
+ "#foot70"><sup>1</sup></a>, Tomonori Izumitani <img width="11"
+ height="18" align="bottom" border="0" src="img1.png" alt="$^1$">,
+ Ichiro Takemasa <a name="tex2html2" href=
+ "#foot71"><sup>2</sup></a>,<br>
+  Kenichi Matsubara <a name="tex2html3" href=
+ "#foot19"><sup>3</sup></a>, Morito Monden <img width="11"
+      height="18" align="bottom" border="0" src="img2.png" alt=
+      "$^2$"></b></div>
+  <font size="-1"><br>
+ <br>
+  <b>Keywords:</b> gene expression analysis, support vector machine,
+ kernel method, recursive feature elimination<br></font> 
+ <p><font size="-1"><br>
+ <br>
+ <br></font></p>
+ <p><font size="-1">Advanced informatics such as supervised learning
+ and feature selection technique provides a powerful tool for
+ predicting cancer classes and identifying marker genes, which are
+ critically important for disease diagnosis and
+    treatment[<a href="#GOLSLOTAM99science">1</a>,<a href="#RamTamRif01pnas">
+ 4</a>]. DNA profiling data are captured from a few thousand genes,
+ and then each sample is characterized as a vector in a `gene
+ space', whose dimension is equal to the number of genes. By
+ contrast, the number of samples is usually much smaller than the
+ gene space dimension. In this type of case, traditional techniques
+ such as Fisher's discriminant function and the k-nearest neighbor
+ method (KNN) do not work well. Support vector machines (SVM)
+ generally achieve better performance, particularly under the above
+ condition, and have been successfully applied to various
+ classification problems including gene expression analysis
+    [<a href="#RamTamRif01pnas">4</a>]. Another
+    technique, the kernel based nonlinear subspace method (KNS),
+    which is a extended subspace method using kernel PCA, also
+    exhibits high performance under the above condition[<a href=
+    "#MaeMur99icassp">3</a>], and has not yet been
+    tried for gene expression analysis.</font></p>
+ <p><font size="-1"><br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br></font></p>
+ <div align="center"><a name="39"></a> 
+ <table>
+ <caption><strong>Table:</strong> <font size="-1">Prediction error
+ rates for histopathological phenotypes in colorectal carcinoma by
+ kernel based supervised learning methods.</font></caption>
+ <tr>
+ <td>
+ <div align="center">
+ <table cellpadding="3" border="1" align="center">
+ <tr>
+ <td align="center"><font size="-1">Classifier</font></td>
+ <td align="center"><font size="-1">Kernel</font></td>
+ <td align="right"><font size="-1">C</font></td>
+ <td align="left"><font size="-1">Mean</font></td>
+ <td align="left">$&plusmn;$</td>
+ <td align="left"><font size="-1">SD</font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">SVM</font></td>
+ <td align="center"><font size="-1">linear</font></td>
+ <td align="right"><font size="-1">1</font></td>
+ <td align="left"><font size="-1">0.070</font></td>
+ <td align="left">$&plusmn;$</td>
+ <td align="left"><font size="-1">0.054</font></td></tr>
+ <tr>
+ <td align="center"></td>
+ <td align="center"></td>
+ <td align="right"><font size="-1">10</font></td>
+ <td align="left"><font size="-1">0.067</font></td>
+ <td align="left">$&plusmn;$</td>
+ <td align="left"><font size="-1">0.049</font></td></tr>
+ <tr>
+ <td align="center"></td>
+ <td align="center"></td>
+ <td align="right"><font size="-1">100</font></td>
+ <td align="left"><font size="-1">0.065</font></td>
+ <td align="left">$&plusmn;$</td>
+ <td align="left"><font size="-1">0.052</font></td></tr>
+ <tr>
+ <td align="center"></td>
+ <td align="center"><font size="-1">ploy-2</font></td>
+ <td align="right"><font size="-1">1</font></td>
+ <td align="left"><font size="-1">0.054</font></td>
+ <td align="left">$&plusmn;$</td>
+ <td align="left"><font size="-1">0.051</font></td></tr>
+ <tr>
+ <td align="center"></td>
+ <td align="center"></td>
+ <td align="right"><font size="-1">10</font></td>
+ <td align="left"><font size="-1">0.064</font></td>
+ <td align="left">$&plusmn;$</td>
+ <td align="left"><font size="-1">0.046</font></td></tr>
+ <tr>
+ <td align="center"></td>
+ <td align="center"><font size="-1">ploy-3</font></td>
+ <td align="right"><font size="-1">1</font></td>
+ <td align="left"><font size="-1">0.556</font></td>
+ <td align="left">$&plusmn;$</td>
+ <td align="left"><font size="-1">0.160</font></td></tr>
+ <tr>
+ <td align="center"></td>
+ <td align="center"></td>
+ <td align="right"><font size="-1">10</font></td>
+ <td align="left"><font size="-1">0.547</font></td>
+ <td align="left">$&plusmn;$</td>
+ <td align="left"><font size="-1">0.131</font></td></tr>
+ <tr>
+ <td align="center"></td>
+ <td align="center"><font size="-1">rbf-20</font></td>
+ <td align="right"><font size="-1">1</font></td>
+ <td align="left"><font size="-1">0.202</font></td>
+ <td align="left">$&plusmn;$</td>
+ <td align="left"><font size="-1">0.022</font></td></tr>
+ <tr>
+ <td align="center"></td>
+ <td align="center"></td>
+ <td align="right"><font size="-1">10</font></td>
+ <td align="left"><font size="-1">0.052</font></td>
+ <td align="left">$&plusmn;$</td>
+ <td align="left"><font size="-1">0.041</font></td></tr>
+ <tr>
+ <td align="center"></td>
+ <td align="center"></td>
+ <td align="right"><font size="-1">100</font></td>
+ <td align="left"><font size="-1">0.050</font></td>
+ <td align="left">$&plusmn;$</td>
+ <td align="left"><font size="-1">0.046</font></td></tr>
+ <tr>
+ <td align="center"></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td align="left">$&plusmn;$</td>
+ <td></td></tr></table>
+  
+ <table cellpadding="3" border="1" align="center">
+ <tr>
+ <td align="center"><font size="-1">Classifier</font></td>
+ <td align="center"><font size="-1">Measure</font></td>
+ <td align="right"><font size="-1">k</font></td>
+ <td align="left"><font size="-1">Mean</font></td>
+ <td align="left">$&plusmn;$</td>
+ <td align="left"><font size="-1">SD</font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">KNN</font></td>
+ <td align="center"><font size="-1">Euclid</font></td>
+ <td align="right"><font size="-1">1</font></td>
+ <td align="left"><font size="-1">0.255</font></td>
+ <td align="left">$&plusmn;$</td>
+ <td align="left"><font size="-1">0.089</font></td></tr>
+ <tr>
+ <td align="center"></td>
+ <td align="center"></td>
+ <td align="right"><font size="-1">3</font></td>
+ <td align="left"><font size="-1">0.280</font></td>
+ <td align="left">$&plusmn;$</td>
+ <td align="left"><font size="-1">0.105</font></td></tr>
+ <tr>
+ <td align="center"></td>
+ <td align="center"><font size="-1">cosine</font></td>
+ <td align="right"><font size="-1">1</font></td>
+ <td align="left"><font size="-1">0.135</font></td>
+ <td align="left">$&plusmn;$</td>
+ <td align="left"><font size="-1">0.074</font></td></tr>
+ <tr>
+ <td align="center"></td>
+ <td align="center"></td>
+ <td align="right"><font size="-1">3</font></td>
+ <td align="left"><font size="-1">0.127</font></td>
+ <td align="left">$&plusmn;$</td>
+ <td align="left"><font size="-1">0.071</font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">Classifier</font></td>
+ <td align="center"><font size="-1">Kernel</font></td>
+ <td align="right"><font size="-1">d</font></td>
+ <td align="left"><font size="-1">Mean</font></td>
+ <td align="left">$&plusmn;$</td>
+ <td align="left"><font size="-1">SD</font></td></tr>
+ <tr>
+ <td align="center"><font size="-1">KNS</font></td>
+ <td align="center"><font size="-1">linear</font></td>
+ <td align="right"><font size="-1">30</font></td>
+ <td align="left"><font size="-1">0.019</font></td>
+ <td align="left">$&plusmn;$</td>
+ <td align="left"><font size="-1">0.028</font></td></tr>
+ <tr>
+ <td align="center"></td>
+ <td align="center"><font size="-1">poly-2</font></td>
+ <td align="right"><font size="-1">30</font></td>
+ <td align="left"><font size="-1">0.010</font></td>
+ <td align="left">$&plusmn;$</td>
+ <td align="left"><font size="-1">0.018</font></td></tr>
+ <tr>
+ <td align="center"></td>
+ <td align="center"><font size="-1">poly-3</font></td>
+ <td align="right"><font size="-1">30</font></td>
+ <td align="left"><font size="-1">0.027</font></td>
+ <td align="left">$&plusmn;$</td>
+ <td align="left"><font size="-1">0.035</font></td></tr>
+ <tr>
+ <td align="center"></td>
+ <td align="center"><font size="-1">rbf-10</font></td>
+ <td align="right"><font size="-1">30</font></td>
+ <td align="left"><font size="-1">0.080</font></td>
+ <td align="left">$&plusmn;$</td>
+ <td align="left"><font size="-1">0.061</font></td></tr>
+ <tr>
+ <td align="center"></td>
+ <td align="center"><font size="-1">rbf-20</font></td>
+ <td align="right"><font size="-1">30</font></td>
+ <td align="left"><font size="-1">0.012</font></td>
+ <td align="left">$&plusmn;$</td>
+ <td align="left"><font size="-1">0.023</font></td></tr>
+ <tr>
+ <td align="center"></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ <td align="left">$&plusmn;$</td>
+ <td></td></tr></table></div>
+ &nbsp;<br>
+  <a name="prediction"></a></td></tr></table></div>
+ <br>
+  <font size="-1"><br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+  We applied these two kernel based techniques, SVM and KNS, to two
+ kinds of gene expression analysis, histopathological phenotype
+ prediction in colorectal carcinoma [<a href=
+ "#Tak01bbrc">5</a>] and multi-class cancer
+ diagnosis[<a href="#RamTamRif01pnas">4</a>]. From
+ among an initial set of 71 samples (56 well and 15 poorly
+ differentiated), 23 samples were randomly sub-sampled as a test
+ set; the remaining samples were used as a training set. Error rates
+ were estimated using all 2313 genes. This process was repeated 100
+ times. As shown in table <a href="#prediction">1</a>, KNS performed
+ better than SVM on the phenotype prediction. On the multi-class
+ cancer classification, the accuracy was almost same as that
+ provided by SVM. Figure <a href="#selection">1</a> shows the
+ prediction accueracy with smaller sets of genes, which was
+ estimated by combining classifiers KNN, SVM or KNS with a gene
+ selection method, recursive feature elimination[<a href=
+ "#GuyWesBar02ml">2</a>]. The figure reveals KNS
+ performs better than SVM and KNN a wide range of selected-gene
+ number. These results suggest kernel based supervised learning
+ methods can be powerful means for gene expression analysis.</font> 
+ <div align="center"><a name="selection"></a><a name="53"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure:</strong> <font size=
+ "-1">Prediction accuracy in small gene sets by KNN,SVM or KNS with
+ RFE.</font></caption>
+ <tr>
+ <td>
+ <div align="center"><font size="-1">
+ <img width="336" height="197" align="bottom" border="0" src=
+ "img3.png" alt=
+ "\scalebox{0.40}{\includegraphics{poster-06-137-fig01.eps}}"></font></div></td></tr></table></div>
+    
+ <h2><a name="SECTION00010000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="GOLSLOTAM99science">1</a></dt>
+ <dd>Golub, T.&nbsp;R., Slonim, D.&nbsp;K., Tamayo, P., Huard, C.,
+ Gassenbeck, M., Mesirov, J.&nbsp;P., Coller, H., Loh, M.&nbsp;L.,
+ Downing, J.&nbsp;R., Caligiuri, M.&nbsp;A., Bloomfield, C.&nbsp;D.
+ and Lander, E.&nbsp;S. 1999. Molecular classification of cancer:
+ class discovery and class prediction by gene expression monitoring.
+ <em>Science,</em> 286:531-537.</dd>
+ <dt><a name="GuyWesBar02ml">2</a></dt>
+ <dd>Guyon, I., Weston, J., Barnhill, S. and Vapnik, V. 2002. Gene
+ Selection for Cancer Classification using Support Vector Machines.
+ <em>Machine Learning,</em> 46:389-422.</dd>
+ <dt><a name="MaeMur99icassp">3</a></dt>
+ <dd>Maeda, E. and Murase, H. 1999. Multi-category classification by
+ kernel based nonlinear subspace method. In <em>Proceedings of IEEE
+ International Conference on Acoustics, Speech, and Signal
+ Processing (ICASSP 99)</em>.</dd>
+ <dt><a name="RamTamRif01pnas">4</a></dt>
+ <dd>Ramaswamy, S., Tamayo, P., Rifkin, R., Mukherjee, S., Yeang,
+ C., Angelo, M., Ladd, C., Reich, M., Latulippe, E., Mesirov,
+ J.&nbsp;P., Poggio, T., Gerald, W., Loda, M., Lander, E.&nbsp;S.
+ and Golub, T. R. 2001. Multiclass cancer diagnosis using tumor gene
+ expression signatures. <em>Proceedings of the National Academy of
+ Science USA</em> 98:15149-15154.</dd>
+ <dt><a name="Tak01bbrc">5</a></dt>
+ <dd>Takemsa, I., Higuchi, H., Yamamoto, H., Sekimoto, M., Tomita,
+ N., Nakamori, S., Matoba, R., Monden M. and Matsubara K. 2001.
+ Construction of Preferential cDNA Microarray Specialized for Human
+ Colorectal Carcinoma: Molecular Sketch of Colorectal Cancer.
+ <em>Biochem Biophys Res Commun.,</em> 285:1244-1249.</dd></dl>
+ <br>
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot70">...</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>NTT Comm. Sci. Labs., Nippon Telegraph and Telephone Corp., 2-4
+ Hikaridai, Seika-cho, Soraku-gun, Kyoto 619-0237, Japan. E-mail: 
+ <div align="center"><b><tt>{maeda,
+ izumi}@cslab.kecl.ntt.co.jp</tt></b></div></dd>
+ <dt><a name="foot71">... Takemasa</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>Clinical Oncology and Surgery, Graduate School of Medicine,
+ Osaka University, 2-2 Yamadaoka, Suita, Osaka 565-0871, Japan.
+ E-mail: 
+ <div align="center">
+ <b><tt>alfa-t@sf6.so-net.ne.jp</tt></b></div></dd>
+ <dt><a name="foot19">... Matsubara</a><a href=
+ "#tex2html3"><sup>3</sup></a></dt>
+ <dd>DNA Chip Research Inst., 134 Kobecho, Hodogayaku, Yokohama,
+ Kanagawa, 240-0005, Japan.</dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

@@ -1,0 +1,297 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>41. Poisson approximation of the distribution of the number of repeats in biological sequences modelled by Markov chains</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-040/'>&lt;&lt;</a> Poster 041 [ <a href='poster-02-041.pdf'>PDF</a> | <a href='poster-02-041.tgz'>TeX</a> | <a href='poster-02-041.ps'>PostScript</a> ] <a href='/recombdb/poster-02-042/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>41. Poisson approximation of
+ the distribution of the number of repeats in biological sequences
+ modelled by Markov chains<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Touyar Narjiss <a name="tex2html1" href=
+ "#foot75"><sup>1</sup></a> Dominique Cellier <a name="tex2html2"
+ href="#foot76"><sup>2</sup></a> Sophie Schbath <a name="tex2html3"
+ href="#foot77"><sup>3</sup></a> Helene Dauchel<img width="16"
+ height="18" align="bottom" border="0" src="img1.png" alt=
+ "$\ ^1$"></b></div>
+ <p><font size="-1"><br>
+ <br>
+  <b>Abstract:</b> The aim of this work is to approximate the
+ distribution of the number of repeats in biological sequences
+ modelled by Markov chains. Because of the inaccessibility of this
+ distribution, we approximate it thanks to the Chen-Stein method
+ using the Poisson distribution.<br>
+  The goal of the application is to find the statistical
+ significance of the repeats in the genome of a biological
+ species.<br>
+  <b>Keywords:</b> repeated sequences, Chen-Stein method, Poisson
+ approximation.</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+  <font size="-1">Genomes are dynamic and redundant structures: over
+ a person's lifetime or over generations, genomes are regularly
+ subject to mutations, deletion, duplications and inversions. The
+ phenomenon of sequence repeats can concern the genes, or the
+ extragenic portions of the genome. It is therefore necessary to
+ study the repeats in order to understand better genome structures
+ and how they evolve. All the algorithmic methods dedicated to the
+ detection of repeats must be accompanied by a suitable mathematical
+ analysis providing a statistical interpretation of the detected
+ repeats (count, length and distribution). This analysis must make
+ it possible to distinguish the significant repeats from those
+ simply imputed randomly and so direct the biological analyses.<br>
+  The statistical study presented here is based on the modelling of
+ the sequences by a succession of random variables in a Markov chain
+ which belong to a finite alphabet.</font> 
+ <h1><a name="SECTION00020000000000000000"><font size="+1">Model and
+ notations</font></a></h1>
+  <font size="-1">We model the sequence 
+ <img width="102" height="30" align="middle" border="0" src=
+ "img2.png" alt="$ S=X_1\cdots X_n$"> of length <img width="14"
+ height="13" align="bottom" border="0" src="img3.png" alt="$n$"> by
+ a stationary Markov chain of order one on the alphabet 
+ <img width="123" height="32" align="middle" border="0" src=
+ "img4.png" alt="$\mathcal A = \{ A,C,G,T\}$"> with a transition
+ matrix 
+ <img width="130" height="32" align="middle" border="0" src=
+ "img5.png" alt="$\Pi=(\pi(a,b))_{a,b \in {\mathcal A}}$">.<br>
+  We define 
+ <img width="132" height="32" align="middle" border="0" src=
+ "img6.png" alt="$\rho = \max_{a,b}\pi(a,b).$"><br>
+  <b>Definitions</b><br>
+  The sequence has a repeat of length <img width="10" height="13"
+ align="bottom" border="0" src="img7.png" alt="$t$"> at positions
+ <img width="10" height="14" align="bottom" border="0" src=
+ "img8.png" alt="$i$"> and <img width="11" height="29" align=
+ "middle" border="0" src="img9.png" alt="$j$"> if and only if the
+ word of <img width="10" height="13" align="bottom" border="0"
+      src="img7.png" alt="$t$"> letters starting at <img width="10"
+      height="14" align="bottom" border="0" src="img8.png" alt=
+      "$i$"> is identical to the one starting at <img width="11"
+      height="29" align="middle" border="0" src="img9.png" alt=
+      "$j$">, that is 
+ <img width="219" height="30" align="middle" border="0" src=
+ "img10.png" alt=
+ "$ X_i\cdots X_{i+t-1} = X_j\cdots X_{j+t-1} \,. $"><br>
+  We will say that a repeat starts at <img width="36" height="32"
+ align="middle" border="0" src="img11.png" alt="$(i,j)$"> if there
+ is a repeat at <img width="36" height="32" align="middle"
+      border="0" src="img11.png" alt="$(i,j)$"> but not at
+      <img width="96" height="32" align="middle" border="0" src=
+      "img12.png" alt="$(i-1, j-1).$"> That is 
+ <img width="356" height="30" align="middle" border="0" src=
+ "img13.png" alt=
+ "$ X_{i-1}\neq X_{j-1}\;\mbox{ and }\; X_i\cdots X_{i+t-1} = X_j\cdots X_{j+t-1}\,. $">
+ <br>
+  We will be only interested here in the case of
+ non-self-overlapping repeats, that means those relating to two
+ disjoined occurrences in the sequence <img width="15" height="15"
+ align="bottom" border="0" src="img14.png" alt="$S$">.<br>
+  By denoting <img width="12" height="14" align="bottom" border="0"
+      src="img15.png" alt="$I$"> the index set of the possible
+      positions <img width="68" height="32" align="middle" border=
+      "0" src="img16.png" alt="$\alpha=(i,j)$">, we have</font> <br>
+ <div align="center">
+ <img width="357" height="28" border="0" src="img17.png" alt=
+ "\begin{displaymath}I = \{\alpha=(i,j)\;/ \;1 \leq i&lt;i+t-1&lt;j\leq n-t+1\} \,.\end{displaymath}">
+ </div>
+ <br clear="all">
+  <font size="-1">We will neglect the edge effect, e.g. when
+ <img width="43" height="14" align="bottom" border="0" src=
+ "img18.png" alt="$i=1.$"><br>
+  For 
+ <img width="96" height="32" align="middle" border="0" src=
+ "img19.png" alt="$\alpha=(i,j)\in I$">, we consider the random
+ indicator function that a repeat starts at <img width="14"
+      height="13" align="bottom" border="0" src="img20.png" alt=
+      "$\alpha $"></font> <br>
+ <div align="center">
+ <img width="433" height="30" border="0" src="img21.png" alt=
+ "\begin{displaymath} Y_{\alpha} \equiv Y_{(i,j)} = {\mathbf 1}\{X_{i-1}\neq X_{j-1},X_i\cdots X_{i+t-1}=X_j\cdots X_{j+t-1}\}\,. \end{displaymath}">
+ </div>
+ <br clear="all">
+  <font size="-1">Finally, we define the random variable
+      <img width="21" height="14" align="bottom" border="0" src=
+      "img22.png" alt="$W$"> counting the number of repeats of
+      length <img width="10" height="13" align="bottom" border="0"
+      src="img7.png" alt="$t$"> by 
+ <img width="104" height="32" align="middle" border="0" src=
+ "img23.png" alt="$W=\sum_{\alpha \in I}Y_{\alpha} $"> and let
+ <img width="13" height="14" align="bottom" border="0" src=
+ "img24.png" alt="$\lambda $"> be its expectation : 
+ <img width="75" height="32" align="middle" border="0" src=
+ "img25.png" alt="$ \lambda = {\mathbb{E}}(W)$">.<br>
+  The study of the statistical significance of the repeats relies on
+ the possibility of evaluating the distribution of the random
+ variable <img width="21" height="14" align="bottom" border="0"
+      src="img22.png" alt="$W$"> in the Markov chain model
+      <img width="27" height="30" align="middle" border="0" src=
+      "img26.png" alt="$M_1$">. Unfortunately, this probability
+      distribution is not available and approximation techniques are
+      then used.</font> 
+ <h1><a name="SECTION00030000000000000000"><font size=
+ "+1">Result</font></a></h1>
+  <font size="-1"><b>Proposition</b> <i>If <img width="14"
+      height="13" align="bottom" border="0" src="img3.png" alt=
+      "$n$"> 
+ <img width="53" height="29" align="middle" border="0" src=
+ "img27.png" alt="$\rightarrow +\infty$"> and if 
+ <img width="99" height="32" align="middle" border="0" src=
+ "img28.png" alt="$t = O(\log{_{\frac{1}{\rho}}n})$"> then the
+ distribution of <img width="21" height="14" align="bottom"
+      border="0" src="img22.png" alt="$W$"> can be approximated by a
+      Poisson distribution with mean <img width="13" height="14"
+      align="bottom" border="0" src="img24.png" alt="$\lambda $">.
+      Consequently the <img width="12" height="29" align="middle"
+      border="0" src="img29.png" alt="$p$">-value associated to the
+      existence of at least one repeat of lenght <img width="10"
+      height="13" align="bottom" border="0" src="img7.png" alt=
+      "$t$"> is given by : &nbsp;&nbsp;&nbsp;&nbsp;
+ <img width="181" height="35" align="middle" border="0" src=
+ "img30.png" alt=
+ "$ p={\mathbb{P}}(W\geq 1)\approx 1-e^{-\lambda} .$"></i><br>
+  This proposition is obtained by getting a bound of the total
+ variation distance between the distribution of <img width="21"
+ height="14" align="bottom" border="0" src="img22.png" alt="$W$">
+ and the Poisson distribution with mean <img width="13" height="14"
+ align="bottom" border="0" src="img24.png" alt="$\lambda $">.(the
+ Chen-Stein method)<br>
+  The calculation of this bound relies on both judicious choice of
+ the neighborhoods system <img width="25" height="30" align="middle"
+ border="0" src="img31.png" alt="$B_\alpha$"> and calculation of
+ upper bounds of <img width="18" height="30" align="middle"
+      border="0" src="img32.png" alt="$b_1$">, <img width="18"
+      height="30" align="middle" border="0" src="img33.png" alt=
+      "$b_2$"> and <img width="18" height="30" align="middle"
+      border="0" src="img34.png" alt="$b_3$"> that tend to zero on
+      the condition that: 
+ <img width="96" height="32" align="middle" border="0" src=
+ "img35.png" alt="$ t = O(log_{\frac{1}{\rho}}n)$">.<br>
+  <b>Choice of the neighborhood :</b> We define <img width="25"
+ height="30" align="middle" border="0" src="img31.png" alt=
+ "$B_\alpha$"> by the following relation<br>
+  
+ <img width="364" height="32" align="middle" border="0" src=
+ "img36.png" alt=
+ "$ \beta \in B_{\alpha} \Leftrightarrow min(\vert i-i'\vert,\vert j-i'\vert,\vert i-j'\vert,\vert j-j'\vert)&lt; 2t. $">
+ <br>
+  <b>Calculation of the bounds on the error :</b> Concerning
+ <img width="18" height="30" align="middle" border="0" src=
+ "img32.png" alt="$b_1$">, we show that : 
+ <img width="97" height="35" align="middle" border="0" src=
+ "img37.png" alt="$ b_1=O(\lambda^2\frac{t}{n}).$"><br>
+  On the condition that 
+ <img width="99" height="32" align="middle" border="0" src=
+ "img28.png" alt="$t = O(\log{_{\frac{1}{\rho}}n})$">, the bound 
+ 
+ <img width="51" height="30" align="middle" border="0" src=
+ "img38.png" alt="$b_1 \rightarrow 0$"> when : 
+ <img width="67" height="29" align="middle" border="0" src=
+ "img39.png" alt="$n\rightarrow +\infty $">.<br>
+  For the calculation of <img width="18" height="30" align="middle"
+ border="0" src="img33.png" alt="$b_2$">, for instance, we need to
+ distinguish several cases depending on the overlaps between the
+ repeats starting at <img width="14" height="13" align="bottom"
+ border="0" src="img20.png" alt="$\alpha $"> and 
+ <img width="59" height="30" align="middle" border="0" src=
+ "img40.png" alt="$\beta \in B_{\alpha}.$"><br>
+  The calculation of <img width="18" height="30" align="middle"
+ border="0" src="img34.png" alt="$b_3$"> is based on the Markov
+ property.<br>
+  <b>Limiting Poisson distribution :</b> The parameter 
+ <img width="95" height="32" align="middle" border="0" src=
+ "img41.png" alt="$\lambda=\sum_{\alpha \in I}p_\alpha $"> is not
+ easily computable. We have however the following upper bound 
+ 
+ <img width="235" height="35" align="middle" border="0" src=
+ "img42.png" alt=
+ "$\lambda^*=\frac{3}{2}(n-2t-1)(n-2t+2)\rho^t.$"><br>
+  Consequently &nbsp;&nbsp;&nbsp;&nbsp;
+ <img width="97" height="37" align="middle" border="0" src=
+ "img43.png" alt="$p \leq 1-e^{-\lambda^*}.$"></font> 
+ <h1><a name="SECTION00040000000000000000"><font size=
+ "+1">Application</font></a></h1>
+  <font size="-1">The results obtained are now used for the
+ statistical study of the repeats detected over an entire genome, in
+ order to establish the common or distinctive characteristics
+ between the chromosomes of the same organism (intra-genomic
+ comparison) or between the chromosomes of two different organisms
+ (inter-genomic comparison). This statistical study will be
+ implemented and associated to the programs ForRepeat and EvoRep
+ developed within the ABISS laboratory.</font>  
+ <h2><a name="SECTION00050000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="HB98">1</a></dt>
+ <dd>Arratia, R., Goldstein, L. and Gordon, L. 1998. Two moments
+ suffice for Poisson approximation: the Chen-Stein method,
+ <em>Ann.Prob</em>.17, pp. 9-25.</dd>
+ <dt><a name="CA">2</a></dt>
+ <dd>Arratia, R., Martin, D., Reinert, G. and Waterman, M. 1996.
+ Poisson process approximation for sequence repeat and sequencing by
+ hybridization, <em>J.Comp.biol</em>. 3(3), pp. 425-463.</dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot75">... Narjiss</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Atelier Biologie Informatique Statistiques et Sociolinguistique
+ (ABISS), UMR CNRS 6037, 76821 Mont Saint Aignan Cedex France.
+ E-mail: 
+ <div align="center">
+ <b><tt>{Narjiss.Touyar,Helene.Dauchel}@univ-rouen.fr</tt></b></div></dd>
+ <dt><a name="foot76">... Cellier</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>Laboratoire de Math&eacute;matiques Rapha&euml;l Salem (LMRS),
+ UMR CNRS 6085, Universit&eacute; de Rouen, France. E-mail: 
+ <div align="center">
+ <b><tt>Dominique.Cellier@univ-rouen.fr</tt></b></div></dd>
+ <dt><a name="foot77">... Schbath</a><a href=
+ "#tex2html3"><sup>3</sup></a></dt>
+ <dd>INRA, Unit&eacute; Math&eacute;matique Informatique et
+ G&eacute;nome (MIG), 78352 Jouy-en-Josas,
+ France.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E-mail: 
+ <div align="center">
+ <b><tt>Sophie.Schbath@jouy.inra.fr</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

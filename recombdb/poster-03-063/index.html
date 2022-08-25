@@ -1,0 +1,464 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <html>
+ <head>
+ 
+ <title>63. A Computational Approach to Discover Differential Cooperation of Regulatory Sites in Functionally Related Genes in Yeast Genome</title>
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category02.html'>&lt;&lt;</a> <a href='/recombdb/category03.html'><b>Recognition of Genes and Regulatory Elements</b> Overview</a> <a href='/recombdb/category04.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-03-062/'>&lt;&lt;</a> Poster 063 [ <a href='poster-03-063.pdf'>PDF</a> | <a href='poster-03-063.doc'>MSWORD</a> ] <a href='/recombdb/poster-03-064/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div>
+ <h2>63. A Computational Approach to Discover Differential
+ Cooperation of Regulatory Sites in Functionally Related Genes in
+ Yeast Genome</h2>
+ <p align="center"><b>Hsien-Da Huang</b><a href="#_ftn1" name=
+ "_ftnref1" title=""><b>[1]</b></a><b>,</b> <b>Jorng-Tzong
+ Horng</b><a href="#_ftn2" name="_ftnref2" title=
+ ""><b>[2]</b></a><b>, Jing-Yue Hong</b><a href="#_ftn3" name=
+ "_ftnref3" title=""><b>[3]</b></a><b>,<br>
+  and Baw-Jhiune Liu3</b></p>
+ <p><b>Keywords:</b> Regulatory Elements, Gene Expression, Data
+ Mining, Promoter</p>
+ <p><b>1&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Introduction</b></p>
+ <p>The availability of genome-wide gene expression data provides a
+ unique set of genes from which to decipher the mechanisms
+ underlying the common transcriptional response. A set of
+ transcription factors which bind to target sites regulate the gene
+ transcription cooperatively. The functional-specific combinations
+ are discovered by a statistical approach and the over-represented
+ repetitive elements involving in the combinations are possible to
+ be transcription factor binding sites. The combinations facilitate
+ to predict functional-specific putative regulatory elements and to
+ identify genes potentially co-regulated by the putative regulatory
+ elements. Our proposed approach is applied to <i>Saccharomyces
+ cerevisiae</i> and the promoter regions of Yeast ORFs. The results
+ of the study are available at
+ http://bioinfo.csie.ncu.edu.tw/REDB/.</p>
+ <p>This study initially identifies the combinations of known
+ regulatory sites extracted from TRANSFAC [1] and over-represented
+ repetitive oligonucleotides statistically retrieved from RSDB [2]
+ in the promoter regions of a particular set of genes selected. The
+ data mining approach, mining association rules, is then applied to
+ mine the associations from the combinations of over-represented
+ repetitive elements and known regulatory sites. The combinations
+ found in each functional gene group are then statistically analyzed
+ in all other groups. Chi-square test is applied to determine the
+ dependence of the sites of the combinations, as well as the R-value
+ of each combination is computed among groups of genes to find its
+ differential occurrences in each group of functionally related
+ genes. Those target sites in highly dependent combinations with
+ large enough R-values, i.e., the small enough p-values, in a
+ functional gene group are candidates of putative
+ functional-specific regulatory sites in the group because of their
+ specificities in that functional gene group.</p>
+ <p><b>2&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Methods</b></p>
+ <p>We first preprocess the target sites and gene promoter regions
+ to find the combinations of known sites and over-represented
+ repetitive oligonucleotides located in the promoter regions of the
+ groups of functionally related genes. Next, AprioriAll algorithm
+ [3] is applied to mine the association rules by combining the known
+ sites and over-represented repeats. Chi-square test is then used to
+ select certain interesting and significant rules. The R-value of
+ each site combination is computed to investigate the differences of
+ transcriptional regulation in different functional categories of
+ genes. Finally, the over-represented repeats within the significant
+ and differential combinations, which are mapping to the items in
+ the association rules, are selected as putative regulatory sites
+ [4-5].</p>
+ <p>In order to investigate the occurrence differences of the site
+ combinations mined from different groups, we propose a R-statistic
+ to compute the hypothesis that each occurrence time is consistent
+ with the others. Computing R-statistic can extract the combinations
+ whose the occurrence most varied across different functional
+ categories. The statistic is denoted as <i>R<sub>j</sub></i> for
+ each combination <i>j</i> given by formula 1, where <i>m</i> is the
+ number of functional categories, <i>X<sub>i,j</sub></i> is the
+ occurrence times of the combination <i>j</i> in the functional
+ category <i>i</i>, and <i>N<sub>i</sub></i> is the total number of
+ genes, i.e., ORFs, in the <i>i</i>th functional category. The
+ frequency <i>f</i><sub>j</sub> of the combination <i>j</i> in all
+ of the functional categories is given by formula 2.</p>
+ <p align="center"><sub><img width="97" height="32" src=
+ "image002.gif"></sub>&nbsp;&nbsp;&nbsp;&nbsp;
+ (1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <sub><img width="52" height="58" src=
+ "image004.gif"></sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2)</p>
+ <p><b>3&nbsp;&nbsp;&nbsp;&nbsp;</b> <b>Results</b></p>
+ <p>As shown in Table 1, the number of genes in each functional
+ categories are shown in the third row, as well as the numeric of
+ MIPS functional categories. (a: Deoxyribonucleotide metabolism, b:
+ Amino-acid transport, and c: Homeostasis of protons) For example,
+ in the first row the combination &ldquo;GATAA,aacgc&rdquo; occur in
+ the gene upstreams of functional categories, 010307, 010107, and
+ 130102, with Chi-square values 7.20, 4.48, and 0.04, respectively.
+ The Chi-square value greater than 3.84 is shown with parentheses.
+ Similarly, the support values are 0.75, 0.00 and 0.00. The support
+ value greater than 0.4 is shown with parentheses. &nbsp;</p>
+ <div align="center">
+ <table border="0" cellspacing="0" cellpadding="0" width="522">
+ <tr>
+ <td width="1">
+ <p>&nbsp;</p></td>
+ <td width="33" valign="top"></td>
+ <td width="112" nowrap rowspan="2" valign="bottom"></td>
+ <td width="344" nowrap colspan="6">
+ <p align="center"><b>Functional Categories (Numeric in
+ MIPS)</b></p></td>
+ <td width="33" nowrap colspan="2" valign="bottom"></td></tr>
+ <tr>
+ <td width="33" colspan="2" rowspan="2" valign="top"></td>
+ <td width="56" nowrap valign="bottom">
+ <p align="center">010307<sup>a</sup></p></td>
+ <td width="56" nowrap valign="bottom">
+ <p align="center">010107<sup>b</sup></p></td>
+ <td width="56" nowrap valign="bottom">
+ <p align="center">130102<sup>c</sup></p></td>
+ <td width="56" nowrap valign="bottom">
+ <p align="center">010307<sup>a</sup></p></td>
+ <td width="56" nowrap valign="bottom">
+ <p align="center">010107<sup>b</sup></p></td>
+ <td width="64" nowrap valign="bottom">
+ <p align="center">130102<sup>c</sup></p></td>
+ <td width="31" nowrap rowspan="2" valign="bottom"></td>
+ <td width="2">
+ <p>&nbsp;</p></td></tr>
+ <tr>
+ <td width="112" nowrap valign="bottom">
+ <p><b>Number of Genes</b></p></td>
+ <td width="56" nowrap valign="bottom">
+ <p align="center">12</p></td>
+ <td width="56" nowrap valign="bottom">
+ <p align="center">23</p></td>
+ <td width="56" nowrap valign="bottom">
+ <p align="center">32</p></td>
+ <td width="56" nowrap valign="bottom">
+ <p align="center">12</p></td>
+ <td width="56" nowrap valign="bottom">
+ <p align="center">23</p></td>
+ <td width="64" nowrap valign="bottom">
+ <p align="center">32</p></td>
+ <td width="2">
+ <p>&nbsp;</p></td></tr>
+ <tr>
+ <td width="33" colspan="2" valign="top"></td>
+ <td width="112" nowrap valign="bottom"></td>
+ <td width="168" nowrap colspan="3">
+ <p align="center"><sub><img width="16" height="17" src=
+ "image006.gif"></sub><sup>2</sup> <b>values</b></p></td>
+ <td width="176" nowrap colspan="3">
+ <p align="center"><b>Support</b></p></td>
+ <td width="31" nowrap>
+ <p align="center"><b><i>R</i></b></p></td>
+ <td width="2">
+ <p>&nbsp;</p></td></tr>
+ <tr>
+ <td width="33" colspan="2" valign="top">
+ <p>010307</p></td>
+ <td width="112" nowrap valign="top">
+ <p>GATAA,aacgc</p></td>
+ <td width="56" nowrap valign="top">
+ <p>(7.20)</p></td>
+ <td width="56" nowrap valign="top">
+ <p>(4.48)</p></td>
+ <td width="56" nowrap valign="top">
+ <p>0.04</p></td>
+ <td width="56" nowrap valign="top">
+ <p>(0.75)</p></td>
+ <td width="56" nowrap valign="top">
+ <p>0.00</p></td>
+ <td width="64" nowrap valign="top">
+ <p>0.00</p></td>
+ <td width="31" nowrap valign="top">
+ <p>3.19</p></td>
+ <td width="2">
+ <p>&nbsp;</p></td></tr>
+ <tr>
+ <td width="33" colspan="2" valign="top"></td>
+ <td width="112" nowrap valign="top">
+ <p>GAGGA,cgcgtc</p></td>
+ <td width="56" nowrap valign="top">
+ <p>(6.12)</p></td>
+ <td width="56" nowrap valign="top">
+ <p>none</p></td>
+ <td width="56" nowrap valign="top">
+ <p>none</p></td>
+ <td width="56" nowrap valign="top">
+ <p>(0.42)</p></td>
+ <td width="56" nowrap valign="top">
+ <p>0.00</p></td>
+ <td width="64" nowrap valign="top">
+ <p>0.00</p></td>
+ <td width="31" nowrap valign="top">
+ <p>8.60</p></td>
+ <td width="2">
+ <p>&nbsp;</p></td></tr>
+ <tr>
+ <td width="33" colspan="2" valign="top"></td>
+ <td width="112" nowrap valign="top">
+ <p>GAGGA,acgcgtc</p></td>
+ <td width="56" nowrap valign="top">
+ <p>(6.12)</p></td>
+ <td width="56" nowrap valign="top">
+ <p>none</p></td>
+ <td width="56" nowrap valign="top">
+ <p>none</p></td>
+ <td width="56" nowrap valign="top">
+ <p>(0.42)</p></td>
+ <td width="56" nowrap valign="top">
+ <p>0.00</p></td>
+ <td width="64" nowrap valign="top">
+ <p>0.00</p></td>
+ <td width="31" nowrap valign="top">
+ <p>8.60</p></td>
+ <td width="2">
+ <p>&nbsp;</p></td></tr>
+ <tr>
+ <td width="33" colspan="2" valign="top"></td>
+ <td width="112" nowrap valign="top">
+ <p>ACGCGT,GAGGA</p></td>
+ <td width="56" nowrap valign="top">
+ <p>(5.18)</p></td>
+ <td width="56" nowrap valign="top">
+ <p>none</p></td>
+ <td width="56" nowrap valign="top">
+ <p>none</p></td>
+ <td width="56" nowrap valign="top">
+ <p>(0.50)</p></td>
+ <td width="56" nowrap valign="top">
+ <p>0.00</p></td>
+ <td width="64" nowrap valign="top">
+ <p>0.00</p></td>
+ <td width="31" nowrap valign="top">
+ <p>10.32</p></td>
+ <td width="2">
+ <p>&nbsp;</p></td></tr>
+ <tr>
+ <td width="33" colspan="2" valign="top">
+ <p>010107</p></td>
+ <td width="112" nowrap valign="top">
+ <p>cgtgc,gcgcc</p></td>
+ <td width="56" nowrap valign="top">
+ <p>0.01</p></td>
+ <td width="56" nowrap valign="top">
+ <p>(4.71)</p></td>
+ <td width="56" nowrap valign="top">
+ <p>0.30</p></td>
+ <td width="56" nowrap valign="top">
+ <p>0.17</p></td>
+ <td width="56" nowrap valign="top">
+ <p>(0.48)</p></td>
+ <td width="64" nowrap valign="top">
+ <p>0.00</p></td>
+ <td width="31" nowrap valign="top">
+ <p>6.76</p></td>
+ <td width="2">
+ <p>&nbsp;</p></td></tr>
+ <tr>
+ <td width="33" colspan="2" valign="top"></td>
+ <td width="112" nowrap valign="top">
+ <p>cgtgc,gccgc</p></td>
+ <td width="56" nowrap valign="top">
+ <p>0.01</p></td>
+ <td width="56" nowrap valign="top">
+ <p>(7.08)</p></td>
+ <td width="56" nowrap valign="top">
+ <p>0.18</p></td>
+ <td width="56" nowrap valign="top">
+ <p>0.17</p></td>
+ <td width="56" nowrap valign="top">
+ <p>(0.48)</p></td>
+ <td width="64" nowrap valign="top">
+ <p>0.00</p></td>
+ <td width="31" nowrap valign="top">
+ <p>4.12</p></td>
+ <td width="2">
+ <p>&nbsp;</p></td></tr>
+ <tr>
+ <td width="33" colspan="2" valign="top"></td>
+ <td width="112" nowrap valign="top">
+ <p>cgccg,cgtgc</p></td>
+ <td width="56" nowrap valign="top">
+ <p>0.69</p></td>
+ <td width="56" nowrap valign="top">
+ <p>(5.32)</p></td>
+ <td width="56" nowrap valign="top">
+ <p>0.03</p></td>
+ <td width="56" nowrap valign="top">
+ <p>0.08</p></td>
+ <td width="56" nowrap valign="top">
+ <p>(0.43)</p></td>
+ <td width="64" nowrap valign="top">
+ <p>0.00</p></td>
+ <td width="31" nowrap valign="top">
+ <p>4.96</p></td>
+ <td width="2">
+ <p>&nbsp;</p></td></tr>
+ <tr>
+ <td width="33" colspan="2" valign="top"></td>
+ <td width="112" nowrap valign="top">
+ <p>TTATC,cgccg</p></td>
+ <td width="56" nowrap valign="top">
+ <p>(8.00)</p></td>
+ <td width="56" nowrap valign="top">
+ <p>(5.28)</p></td>
+ <td width="56" nowrap valign="top">
+ <p>0.73</p></td>
+ <td width="56" nowrap valign="top">
+ <p>0.08</p></td>
+ <td width="56" nowrap valign="top">
+ <p>(0.52)</p></td>
+ <td width="64" nowrap valign="top">
+ <p>0.00</p></td>
+ <td width="31" nowrap valign="top">
+ <p>2.79</p></td>
+ <td width="2">
+ <p>&nbsp;</p></td></tr>
+ <tr>
+ <td width="33" colspan="2" valign="top"></td>
+ <td width="112" nowrap valign="top">
+ <p>ATATAA,cggcaa</p></td>
+ <td width="56" nowrap valign="top">
+ <p>1.50</p></td>
+ <td width="56" nowrap valign="top">
+ <p>(4.54)</p></td>
+ <td width="56" nowrap valign="top">
+ <p>0.73</p></td>
+ <td width="56" nowrap valign="top">
+ <p>0.08</p></td>
+ <td width="56" nowrap valign="top">
+ <p>(0.43)</p></td>
+ <td width="64" nowrap valign="top">
+ <p>0.00</p></td>
+ <td width="31" nowrap valign="top">
+ <p>2.82</p></td>
+ <td width="2">
+ <p>&nbsp;</p></td></tr>
+ <tr>
+ <td width="33" colspan="2" valign="top">
+ <p>130102</p></td>
+ <td width="112" nowrap valign="top">
+ <p>TTATC,atataat</p></td>
+ <td width="56" nowrap valign="top">
+ <p>3.27</p></td>
+ <td width="56" nowrap valign="top">
+ <p>0.61</p></td>
+ <td width="56" nowrap valign="top">
+ <p>(5.74)</p></td>
+ <td width="56" nowrap valign="top">
+ <p>0.00</p></td>
+ <td width="56" nowrap valign="top">
+ <p>0.09</p></td>
+ <td width="64" nowrap valign="top">
+ <p>(0.44)</p></td>
+ <td width="31" nowrap valign="top">
+ <p>6.46</p></td>
+ <td width="2">
+ <p>&nbsp;</p></td></tr>
+ <tr>
+ <td width="33" colspan="2" valign="top"></td>
+ <td width="112" nowrap valign="top">
+ <p>ATATAA,attataa</p></td>
+ <td width="56" nowrap valign="top">
+ <p>1.09</p></td>
+ <td width="56" nowrap valign="top">
+ <p>0.40</p></td>
+ <td width="56" nowrap valign="top">
+ <p>(6.73)</p></td>
+ <td width="56" nowrap valign="top">
+ <p>0.00</p></td>
+ <td width="56" nowrap valign="top">
+ <p>0.04</p></td>
+ <td width="64" nowrap valign="top">
+ <p>(0.41)</p></td>
+ <td width="31" nowrap valign="top">
+ <p>7.07</p></td>
+ <td width="2">
+ <p>&nbsp;</p></td></tr>
+ <tr height="0">
+ <td width="1"></td>
+ <td width="33"></td>
+ <td width="112"></td>
+ <td width="56"></td>
+ <td width="56"></td>
+ <td width="56"></td>
+ <td width="56"></td>
+ <td width="56"></td>
+ <td width="64"></td>
+ <td width="31"></td>
+ <td width="2"></td></tr></table></div>
+ <p>Table 1: The differential combinations of regulatory sites in
+ five different functional categories (R &gt; 2.0 and support &gt;
+ 0.4).</p>
+ <h1>References</h1>
+ <p><a name="_Ref5514780">&nbsp;</a></p>
+ <p>[1]&nbsp;&nbsp;&nbsp;&nbsp; E. Wingender, X. Chen, E. Fricke, R.
+ Geffers, R. Hehl, I. Liebich, M. Krull, V. Matys, H. Michael, R.
+ Ohnh&auml;user, M. Pr&uuml;&szlig;, F. Schacherer, S. Thiele, and
+ S. Urbach. &ldquo;<strong>The TRANSFAC system on gene expression
+ regulation</strong><strong>.&rdquo;</strong> <i>Nucl</i><i>eic</i>
+ <i>Acids Res.</i> 2001, 29, pp. 281-283.</p>
+ <p><a name="_Ref6075530"></a><a name=
+ "_Ref515444843">[2]&nbsp;&nbsp;&nbsp;&nbsp; J.T. Horng</a>, J.H.
+ Lin, and C.Y. Kao, &ldquo;RSDB-A Database of Repetitive Elements in
+ Complete Genomes&rdquo;, <i>Proceedings of</i> <i>the Atlantic
+ Symposium on Computational Biology and Genome Information</i>
+ <i>Systems &amp; Technology</i>, Durham, NC, USA, 2001, pp.
+ 220-223.</p>
+ <p><a name="_Ref482654564">[3]&nbsp;&nbsp;&nbsp;&nbsp; R.</a>
+ Agrawal, T. Imielinski, and A. Swami, &ldquo;Mining Associations
+ between Sets of Items in Large Databases&rdquo;, <i>Proc. of the
+ ACM SIGMOD Int'l Conference on Management of Data</i>, Washington
+ D.C., 1993, pp. 207-216.</p>
+ <p>[4]&nbsp;&nbsp;&nbsp;&nbsp; J.T. Horng and H.D. Huang.
+ &ldquo;Mining Putative Regulatory Elements in Gene Promoter
+ Regions.&rdquo; 2002, <i>In Silico Biology</i>, 2, 0025.</p>
+ <p><a name="_Ref6059926"></a><a name=
+ "_Ref6665630">[5]&nbsp;&nbsp;&nbsp;&nbsp; J.T.</a> Horng, and H.D.
+ Huang, C.C. Huang, and Y.K. Cheng. &ldquo;Mining Putative
+ Regulatory Elements in Gene Promoter Regions.&rdquo;
+ &nbsp;Proceedings of the German Conference on Bioinformatics. 2001,
+ pp. 90-95.</p></div>
+ <div><br clear="all">
+  
+ <hr align="left" size="1" width="33%">
+ <div id="ftn1">
+ <p align="left"><a href="#_ftnref1" name="_ftn1" title="">[1]</a>
+ Department of Computer Science and Information Engineering,
+ National Central University, Taiwan. E&#8209;mail:
+ damay@db.csie.ncu.edu.tw</p></div>
+ <div id="ftn2">
+ <p><a href="#_ftnref2" name="_ftn2" title="">[2]</a> Department of
+ Computer Science and Information Engineering, National Central
+ University, Taiwan. E&#8209;mail:
+ horng@db.csie.ncu.edu.tw</p></div>
+ <div id="ftn3">
+ <p><a href="#_ftnref3" name="_ftn3" title="">[3]</a> Department of
+ Computer Science and Engineering<sup>,</sup> Yuan-Ze University,
+ Taiwan.</p></div></div>
+ </body>
+ </html>

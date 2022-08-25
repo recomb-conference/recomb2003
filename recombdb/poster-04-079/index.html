@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>79. Artificial evolution. Algorithms for searching for amino acid sequences.</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category03.html'>&lt;&lt;</a> <a href='/recombdb/category04.html'><b>Molecular Evolution</b> Overview</a> <a href='/recombdb/category05.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-04-077/'>&lt;&lt;</a> Poster 079 [ <a href='poster-04-079.pdf'>PDF</a> | <a href='poster-04-079.tgz'>TeX</a> | <a href='poster-04-079.ps'>PostScript</a> ] <a href='/recombdb/poster-04-080/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>79. Artificial evolution.
+ Algorithms for searching for amino acid
+ sequences.<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Beniamin Dziurdza, <a name="tex2html1"
+    href="#foot63"><sup>1</sup></a> Jacek B<img width="5" height=
+    "14" align="bottom" border="0" src="img1.png" alt="\l">azewicz
+    <img width="21" height="18" align="bottom" border="0" src=
+    "img2.png" alt="$^{1,2}$"> and Wojciech T. Markiewicz <a name=
+    "tex2html2" href="#foot64"><sup>2</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> artificial evolution,
+ randomisation, genetic hyperspace, phage display, SELEX</font></p>
+ <h1><a name="SECTION00010000000000000000">Introduction</a></h1>
+  <font size="-1"><i>Artificial evolution</i> can be viewed as an
+ exploration of <i>genetic hyperspace</i>. One can say that a
+ <i>genetic hyperspace</i> is a "space" of DNA sequences, where DNA
+ sequences encode peptides and RNAs of one organism. In natural
+ evolution of living organisms mutations are random and a survival
+ of a given organism (and its genotype) depends on environment's
+ pressure. In an artificial evolution mutations are designed from
+ outside of a system by an investigator who decides what the "best
+ qualities of evoluating organism" are.</font> 
+ <p><font size="-1">&gt;From a technical point of view, mutations
+ are realised by cloning DNA with <i>randomisation</i>.
+ <i>Randomisation</i> of DNA gives a possibility to obtain DNA
+ sequences that belong into a product of sets, where each set is a
+ subset of 
+ <img width="89" height="32" align="middle" border="0" src=
+ "img3.png" alt="$\{A, G, C, T\}$">.</font></p>
+ <p><font size="-1">In practice, it is not possible to obtain all
+ organisms coded by generated DNA sequences. The reason is that a
+ number of possible DNA sequences grows exponentially with a length
+ of a sequence. In case when a number of sequences becomes too
+ large, there is no technology that enables an "implementation" of
+ all organisms coded by DNA sequences. For that reason the
+ artificial evolution methods such as <i>phage display</i>
+    [<a href="#pd">1</a>] or <i>SELEX</i>
+    [<a href="#sx">2</a>] exploit only a minute
+    and rather unknown part of genetic hyperspace [<a href=
+    "#MKT">3</a>].</font></p>
+ <p><font size="-1">Because of the reasons mentioned above, nowadays
+ we can search for very short sequences only. Good example is
+ searching for one peptide, where only few (6-10) positions of amino
+ acid sequence are randomised (it gives 18-30 bp) [<a href=
+ "#MKT">3</a>].</font></p>
+ <p><font size="-1">In this poster a new approach to this problem is
+ presented, however the obtained results can be in simple way
+ applied to instances with many peptides.</font></p>
+ <h1><a name="SECTION00020000000000000000">New concept of artificial
+ evolution</a></h1>
+  <font size="-1">The most popular randomisation's pattern is
+ <img width="64" height="32" align="middle" border="0" src=
+ "img4.png" alt="$(NNS)_{x}$">, where <img width="124" height="32"
+ align="middle" border="0" src="img5.png" alt="$N=\{A,G,C,T\}$">,
+ <img width="84" height="32" align="middle" border="0" src=
+ "img6.png" alt="$S=\{G,C\}$"> and <img width="13" height="13"
+      align="bottom" border="0" src="img7.png" alt="$x$"> is the
+      number of codons [3]. Unfortunately, although <img width="64"
+      height="32" align="middle" border="0" src="img4.png" alt=
+      "$(NNS)_{x}$"> pattern generates all amino acid sequences, in
+      fact using it does not ensure obtaining all amino acid
+      sequences due to technological constraints. Investigator can
+      only choose a best peptide, find its primary structure and
+      optionally repeat experiment. It is not possible to get the
+      knowledge about other sequences, because it is not known
+      exactly which of them were obtained [<a href=
+      "#MKT">3</a>].</font> 
+ <p><font size="-1">New approach to artificial evolution was
+ proposed in [<a href="#MKT">3</a>]. Instead of
+ <img width="64" height="32" align="middle" border="0" src=
+ "img4.png" alt="$(NNS)_{x}$"> pattern, partial randomisation
+ patterns are applied. These patterns generate just a part of
+ molecular variability but one can obtain really all required amino
+ acid sequences and test them. The result gives a significant
+ knowledge about the explored part of genetic hyperspace.</font></p>
+ <p><font size="-1">This knowledge is applied for navigation in
+ genetic hyperspace. In next iterations of experiment randomisations
+ (mutations) are chosen in such a way that one tries to obtain new
+ amino acid sequences that have not been tested yet. Thus, currently
+ chosen randomisation should generate a new set of sequences laying
+ in the neighbourhood of the best known so far sequence. It is based
+ on a reasonable assumption that peptides with similar primary
+ structure have similar properties. If one cannot find a better
+ sequence in a current iteration of the experiment then the
+ randomisation (explored neighbourhood) should be changed or another
+ amino acid sequence should be chosen in order to explore its
+ neighbourhood in genetic hyperspace.</font></p>
+ <h1><a name="SECTION00030000000000000000">Model of artificial
+ evolution</a></h1>
+  <font size="-1">Because we search for a peptide, it is useful to
+ analyse randomisation of DNA sequence as a sequence of randomised
+ codons. It is easy to observe that not all codon randomisation
+ patterns are as good as others, e.g. 
+ <img width="146" height="32" align="middle" border="0" src=
+ "img8.png" alt="$\{A\} \times \{T\} \times \{G,C\}$"> induces
+ <i>Tyr</i> only and 2 DNA sequences but 
+ <img width="146" height="32" align="middle" border="0" src=
+ "img9.png" alt="$\{A\} \times \{A,T\} \times \{G\}$"> induces
+ <i>Tyr</i>, <i>Phe</i> and also 2 DNA sequences.</font> 
+ <p><font size="-1">This observation is the reason for an
+ introduction of efficient codon patterns where efficient codon
+ pattern is defined as such a randomisation pattern that there's no
+ pattern which generates more (the same) different amino acid
+ sequences and generates no more (less) DNA sequences. Naturally,
+ using these patterns is always more efficient than using
+ non-efficient codon patterns.</font></p>
+ <p><font size="-1">In the poster an algorithm for finding efficient
+ codon patterns is presented. In addition the list of found patterns
+ is attached.</font></p>
+ <p><font size="-1">A mathematical model of this experiment is
+ proposed. It results in a new concept of artificial evolution.
+ Experiment iterations are presented as a collection of the
+ following randomisations. Each randomisation is presented as a
+ sequence of efficient codon patterns. The goal is to find the new
+ randomisation such that it generates as many new amino acid
+ sequences as possible and fulfils constraints on a maximal number
+ of DNA sequences. Moreover, it should generate neighbourhood of the
+ required sequence.</font></p>
+ <p><font size="-1">The above model makes an efficient exploration
+ of genetic hyperspace possible. Unfortunately, the corresponding
+ optimisation problem called Optimal Randomisation is NP-hard. An
+ algorithm for the optimal randomisation problem is described in the
+ poster.</font></p>
+ <h1><a name="SECTION00040000000000000000">ArtEvol</a></h1>
+  <font size="-1">The computational approach presented in the poster
+ has led to the computer program called ArtEvol (Artificial
+ Evolution). ArtEvol for Windows OSes can be downloaded from
+ <tt>http://www.cs.put.poznan.pl/bdziurdza</tt>.</font> 
+ <p></p>
+ <h2><a name="SECTION00050000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="pd">1</a></dt>
+ <dd>Houghten, R.&nbsp;A., Pinilla, C., Blondelle, S.&nbsp;E.,
+ Appel, J.&nbsp;R., Dooley, C.&nbsp;T. and Cuervo, J.&nbsp;H. (1991)
+ Generation and use of synthetic peptide combinatorial libraries for
+ basic research and drug discovery. <em>Nature</em>, <b>354</b>,
+ 84-86.</dd>
+ <dt><a name="sx">2</a></dt>
+ <dd>Tuerk, C., Gold, L. (1990). Systematic evolution of ligands by
+ expotential enrichment: RNA ligands to bacteriophage T4 DNA
+ polymerase. <em>Science</em>, 249: 505-510.</dd>
+ <dt><a name="MKT">3</a></dt>
+ <dd>(a) Markiewicz, W.&nbsp;T., Kwasnikowski, P., Talarek, J., a
+ manuscript in preparation and <em>The Polish Patent
+ Application</em>; (b) Kwasnikowski, P., Ph.D. Thesis:
+ Semi-synthetic combinatorial phage libraries (in Polish). Inst.
+ Bioorg. Chem., Poznan, 2000.</dd></dl>
+  
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot63">... Dziurdza,</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Institute of Computing Science, Poznan University of
+ Technology, Piotrowo 3a, PL-60965, Poznan, Poland. E-mail: 
+ <div align="center">
+ <b><tt>Beniamin.Dziurdza@cs.put.poznan.pl</tt></b></div></dd>
+ <dt><a name="foot64">... Markiewicz</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>Institute of Bioorganic Chemistry, Polish Academy of Sciences,
+ Noskowskiego 12, PL-61704, Poznan, Poland. E-mail: 
+ <div align="center">
+ <b><tt>markwt@ibch.poznan.pl</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

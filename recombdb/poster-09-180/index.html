@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>180. A New SVM-based Method for</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category08.html'>&lt;&lt;</a> <a href='/recombdb/category09.html'><b>Computational Proteomics</b> Overview</a> <a href='/recombdb/category10.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-09-179/'>&lt;&lt;</a> Poster 180 [ <a href='poster-09-180.pdf'>PDF</a> | <a href='poster-09-180.tgz'>TeX</a> | <a href='poster-09-180.ps'>PostScript</a> ] <a href='/recombdb/poster-09-181/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>180. A New SVM-based Method
+ for<br>
+  Protein Remote Homology Detection<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Hiroto Saigo, <a name="tex2html1" href=
+ "#foot74"><sup>1</sup></a> Jean-Philippe Vert, <a name="tex2html2"
+ href="#foot75"><sup>2</sup></a> Tatsuya Akutsu, <a name="tex2html3"
+ href="#foot76"><sup>3</sup></a> Nobuhisa Ueda <a name="tex2html4"
+ href="#foot77"><sup>4</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br>
+  <b>Keywords:</b> support vector machine, protein sequence
+ alignment, hidden Markov model</font></p>
+ <h1><a name="SECTION00010000000000000000"><font size=
+ "+1">Introduction</font></a></h1>
+  <font size="-1">Relating a new protein sequence to an existing
+ annotated protein sequence, i.e., protein homology detection, is
+ one of the important and well-studied problems in Bioinformatics.
+ There are many algorithms developed for this purpose. The
+ Smith-Waterman (SW) dynamic programming algorithm was developed in
+ early 1980's [<a href="#smit81">8</a>], and is
+ still used widely today. In 1990's, many methods were developed
+ based on <em>profiles</em> [<a href=
+ "#alts97">1</a>] and <em>hidden Markov
+ models</em> [<a href="#eddy95">2</a>,<a href=
+ "#karp98">4</a>]. In 2000's, methods using SVMs
+ (support vector machines) were developed such as the SVM-Fisher
+ method [<a href="#jaak00">3</a>]. Recently, Liao
+ and Noble proposed the SVM-pairwise method [<a href=
+ "#liao02">5</a>], which uses a vector of pairwise
+ similarities with all proteins in the training set. Quite recently,
+ we proposed a new SVM based method (SVM-SW), which uses the SW
+ algorithm as a kernel function [<a href=
+ "#saigo02">7</a>]. Though the SW algorithm is not
+ always a valid kernel, SVM-SW worked successfully in all cases we
+ tested. In this poster abstract, we briefly show the results of
+ comparison of algorithms for remote homology detection using the
+ SCOP database [<a href="#murz95">6</a>].</font> 
+ <h1><a name="SECTION00020000000000000000"><font size=
+ "+1">Computational experiment</font></a></h1>
+  <font size="-1">SVM-SW was compared with SVM-pHMM, SVM-Fisher,
+ SVM-pairwise, PSI-BLAST, HMMER, and SAM, where SVM-pHMM is an
+ SVM-based method that uses the score output by a pair HMM model
+ [<a href="#saigo02">7</a>]. In order to evaluate
+ the accuracy of each method, we follow the benchmark procedure used
+ in [<a href="#liao02">5</a>]. The algorithms are
+ tested on their ability to classify protein domains into
+ superfamilies in the Structural Classification of Proteins
+ (SCOP)&nbsp;[<a href="#murz95">6</a>] version
+ 1.53. We used the data set provided at
+ <tt>www.cs.columbia.edu/compbio/svm-pairwise</tt> . As a
+ performance measure, we used <img width="54" height="30"
+      align="middle" border="0" src="img1.png" alt="$ROC_{50}$">
+      score to compare different homology detection methods. The
+      <img width="54" height="30" align="middle" border="0" src=
+      "img1.png" alt="$ROC_{50}$"> score is the area under the
+      receiver operating characteristic curve - the plot of true
+      positives as a function of false positives - up to the first
+      50 false positives.</font> 
+ <div align="center"><a name="fig:roc50"></a><a name="43"></a> 
+ <table>
+ <caption align="bottom"><strong>Figure 1:</strong> Comparison of
+ seven homology detection methods</caption>
+ <tr>
+ <td>
+ <div align="center"><img width="417" height="283" align="bottom"
+ border="0" src="img2.png" alt=
+ "\includegraphics[height=2.5in]{poster-09-180-fig01.eps}"></div></td></tr></table></div>
+ <h1><a name="SECTION00030000000000000000"><font size=
+ "+1">Discussion</font></a></h1>
+  <font size="-1">The result of computational experiment show that
+ the SVM-SW method significantly outperforms all existing,
+ state-of-the-art algorithms we tested. Moreover the CPU time of
+ SVM-SW is an order of magnitude shorter than the CPU time of
+ SVM-pairwise. Therefore, we can conclude that SVM-SW is currently
+ the best method for detection of remote homology.<br>
+  From a mathematical viewpoint, SVM-SW is not always a valid
+ kernel. But in our case, proteins with closest homologies were
+ discarded and heuristics to raise the diagonal dominance issue were
+ applied, which made the kernel matrix of SVM-SW positive
+ semidefinite.</font> 
+ <h1><a name="SECTION00040000000000000000"><font size=
+ "+1">Acknowledgements</font></a></h1>
+  <font size="-1">We thank Li Liao and William Stafford Noble for
+ making their data set and software available. We also thank Richard
+ Hughey for making the SAM toolkit available, and Mark Diekhans for
+ providing information of the Fisher kernel.</font>  
+ <h2><a name="SECTION00050000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="alts97">1</a></dt>
+ <dd>Altschul, S.&nbsp;F. <em>et al.</em> 1997. Gapped blast and
+ psi-blast: A new generation of protein database search programs.
+ <em>Nucleic Acids Research</em> 25:3389-3402.</dd>
+ <dt><a name="eddy95">2</a></dt>
+ <dd>Eddy, S.&nbsp;R. 1995. Multiple alignment using Hidden Markov
+ models. In <em>Proc. 3rd International Conference on Intelligent
+ Systems for Molecular Biology (ISMB 95),</em> AAAI Press. pp.
+ 114-120.</dd>
+ <dt><a name="jaak00">3</a></dt>
+ <dd>Jaakkola, T., Diekhans, M. and Haussler, D. 2000. A
+ discriminative framework for detecting remote protein homologies.
+ <em>Journal of Computational Biology</em> 7:95-114.</dd>
+ <dt><a name="karp98">4</a></dt>
+ <dd>Karplus, K., Barrett, C. and Hughey, R. 1998. Hidden markov
+ models for detecting remote protein homologies.
+ <em>Bioinformatics</em> 14:846-856.</dd>
+ <dt><a name="liao02">5</a></dt>
+ <dd>Liao, L. and Noble, W.&nbsp;S. 2002. Combining pairwise
+ sequence similarity and support vector machines for remote protein
+ homology detection. In: <em>Proc. 6th Annual International
+ Conference on Computational Molecular Biology (RECOMB 2002),</em>
+ New York: ACM. pp. 225-232.</dd>
+ <dt><a name="murz95">6</a></dt>
+ <dd>Murzin, A.&nbsp;G. <em>et al.</em> 1995. SCOP: A structural
+ classification of proteins database for the investigation of
+ sequences and structures. <em>Journal of Molecular Biology</em>
+ 247:536-540.</dd>
+ <dt><a name="saigo02">7</a></dt>
+ <dd>Saigo, H., Vert, J-P., Akutsu, T. and Ueda, N. 2002. Protein
+ homology detection using string alignment kernels.
+ <em>Manuscript</em>.</dd>
+ <dt><a name="smit81">8</a></dt>
+ <dd>Smith, T. and Waterman, M.&nbsp;A. 1981. Identification of
+ common molecular subsequences. <em>Journal of Molecular
+ Biology</em> 147:195-197.</dd></dl>
+ <br>
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot74">... Saigo,</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Bioinformatics Center, Institute for Chemical Research, Kyoto
+ University, Gokasho, Uji-city, Kyoto 611-0011, Japan. E-mail:
+ <div align="center">
+ <b><tt>hiroto@kuicr.kyoto-u.ac.jp</tt></b></div></dd>
+ <dt><a name="foot75">... Vert,</a><a href=
+ "#tex2html2"><sup>2</sup></a></dt>
+ <dd>Geostatistics Center, Ecole des Mines de Paris, Fontainebleau,
+ France. E-mail:
+ <div align="center">
+ <b><tt>Jean-Philippe.Vert@mines.org</tt></b></div></dd>
+ <dt><a name="foot76">... Akutsu,</a><a href=
+ "#tex2html3"><sup>3</sup></a></dt>
+ <dd>Bioinformatics Center, Institute for Chemical Research, Kyoto
+ University, Gokasho, Uji-city, Kyoto 611-0011, Japan. E-mail:
+ <div align="center">
+ <b><tt>takutsu@kuicr.kyoto-u.ac.jp</tt></b></div></dd>
+ <dt><a name="foot77">... Ueda</a><a href=
+ "#tex2html4"><sup>4</sup></a></dt>
+ <dd>Bioinformatics Center, Institute for Chemical Research, Kyoto
+ University, Gokasho, Uji-city, Kyoto 611-0011, Japan. E-mail:
+ <div align="center">
+ <b><tt>ueda@kuicr.kyoto-u.ac.jp</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>

@@ -1,0 +1,225 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+ 
+ <html>
+ <head>
+ 
+ <title>53. Predicting the functions of ABC-transporters from phylogenetic analysis</title>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </head>
+ <body bgcolor="#ffffff" alink="#993333" link="#993333" vlink="#993333">
+<table bgcolor="#000000" width="100%" cellspacing=0 cellpadding=0 border=0><tr><td><table width="100%" cellspacing=2 cellpadding=4 border=0>
+<tr bgcolor="#bbbbbb"><td align="center"> <a href='/recombdb/'>Recomb 2003 PosterDB Overview</a> </td></tr>
+<tr bgcolor="#cccccc"><td align="center"> <a href='/recombdb/category01.html'>&lt;&lt;</a> <a href='/recombdb/category02.html'><b>Molecular Sequence Analysis</b> Overview</a> <a href='/recombdb/category03.html'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#dddddd"><td align="center"> <a href='/recombdb/poster-02-052/'>&lt;&lt;</a> Poster 053 [ <a href='poster-02-053.pdf'>PDF</a> | <a href='poster-02-053.tgz'>TeX</a> | <a href='poster-02-053.ps'>PostScript</a> ] <a href='/recombdb/poster-02-054/'>&gt;&gt;</a> </td></tr>
+<tr bgcolor="#eeeeee"><td align="center"> 
+<form method="post" action="/cgi-bin/htsearch">
+<font size="-1">
+Search Recomb2003 PosterDB:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="Search">
+&nbsp;
+Match: <select name="method">
+<option value="and">All
+<option value="or">Any
+<option value="boolean">Boolean
+</select>
+</form>
+</td></tr>
+</table>
+</td></tr>
+</table>
+<br>
+
+
+
+
+
+ <div align="center"><font size="+2"><b>53. Predicting the functions
+ of ABC-transporters from phylogenetic analysis<br></b></font></div>
+ <div align="center"><font size="+2"><b><br>
+ <br></b></font></div>
+ <div align="center"><b>Holger Wagner <a name="tex2html1" href=
+ "#foot64"><sup>1</sup></a></b></div>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1"><b>Keywords:</b> Phylogenetic analysis, multilpe
+ sequence alignments, ABC-transporters, Sinorhizobium meliloti,
+ physiological function, sequence evolution, repeats</font></p>
+ <p><font size="-1"><br>
+ <br></font></p>
+ <p><font size="-1">ABC-transporters [<a href=
+ "#Sch98">10</a>] are a class of active permeases,
+ where `active' means that the substrate transport is not restricted
+ to diffusion, but can also be performed in direction of the
+ concentration gradient. Such an active transport requires energy.
+ ABC-transporters use the decomposition of ATP as source of energy,
+ which particularly implies the name <u>A</u>TP <u>b</u>inding
+ <u>c</u>assette- (ABC-)transporter. In this study, we will use
+ `ABC-transporter' as a designation for the complete
+ aminoacid-sequences of the The physiological functions of
+ ABC-transporters are given by the transported substrates, for
+ example sugar, iron or aminoacids, together with the direction of
+ the transport, namely import or export.</font></p>
+ <p><font size="-1">In this study, we investigate the
+ ABC-transporters of <em>sinorhizobium meliloti</em>, a member in
+ the family of rhizobium bacteria. The symbiosis between rhizobia
+ and plants play an important r<img width="12" height="14"
+      align="bottom" border="0" src="img1.png" alt="$\rm\hat{o}$">le
+      for the fixation of nitrogen, which is an essential factor for
+      plant growth. Over 50 % of the nitrogen fixed by living
+      organisms is due to the symbiosis between rhizobia and plants,
+      which makes it an interesting possibility to improve plant
+      growth.</font></p>
+ <p><font size="-1">One of the most studied and best characterized
+ rhizobia is <em>sinorhizobium meliloti</em>, which have been chosen
+ as a model organism for symbiosis and nitrogen fixation studies by
+ many international groups. Particularly, the whole genome of this
+ bacterium was published in 2001 [<a href=
+ "#Bar01">1</a>,<a href=
+ "#Cap01">3</a>,<a href=
+ "#Gal01">6</a>,<a href=
+ "#sm-www">12</a>].</font></p>
+ <p><font size="-1">To make symbiosis possible, bacteria and plant
+ must exchange nutrients as well as signals. The latter is
+ particularly necessary to suppress plant resistance against
+ infection. It is supposed that ABC-transporters are essential for
+ this exchange of signals and nutrients.</font></p>
+ <p><font size="-1"><em>Sinorhizobium meliloti</em> have about 200
+ different ABC-transporters, which makes it impossible to determine
+ the functions of all ABC-transporters exclusively by experiments,
+ but requires to facilitate experimental work through `in
+ silicio'-predictions of physiological functions.</font></p>
+ <p><font size="-1">Some recently published articles [<a href=
+ "#Das01">4</a>,<a href=
+ "#Kos01">7</a>,<a href=
+ "#Sau99">9</a>] show the possiblity of obtaining
+ predictions of functions from phylogentic analyses [<a href=
+ "#Fel88">5</a>]: They showed, that the molecular
+ phylogeny of ABC-transporters from other organisms is composed of
+ subtrees each containing exclusively taxa with the same
+ physiological function. Thus, phylogenic analysis can be used, at
+ least for this protein super family, to derive hypotheses about
+ physiological functions of proteins: Supposed one calculates the
+ molecular phylogeny for a dataset of sequences of ABC-transporters,
+ where one knows the physiological functions of a part of these
+ proteins, and one finds a subtree in the phylogeny containing
+ exclusively ABC-transporters with the same known function or with
+ unknown function, then one can use as a hypothesis that all the
+ taxa of this subtree have the same function. In this sense,
+ molecular phylogeny can be considered as a generalization of
+ functional predictions by homology searches.</font></p>
+ <p><font size="-1">A necessary prerequisite for this way of
+ proceeding is the determination of stable phylogenies, that means:
+ Removing a sequence from the dataset and computing the molecular
+ phylogeny for this new dataset must lead to a tree with the same
+ same topology as the subtree of the original phylogeny with the
+ same taxa.</font></p>
+ <p><font size="-1">Some of the ABC-transporters show repetitive
+ structures. As we can demonstrate, this repetitivity together with
+ the necessity of using heuristic methods in algorithms for multiple
+ sequence alignments [<a href=
+ "#Mor96">8</a>,<a href=
+ "#Tho94">13</a>] causes instabilities of the
+ molecular phylogenies. To obtain stable phylogenies we must
+ separate the ABC-transporters with repeats suitably in N- and
+ C-termini.</font></p>
+ <p><font size="-1">To this aim, a new self-comparison-option of he
+ multiple sequence alignment-program <em>dialign</em> was used. This
+ option excludes the alignment of each site to itself, which makes
+ it possible to use pairwise alignment of a sequence with itself as
+ a search tool for repeats in sequences. Additionally, it yields an
+ appropriate position for the split of an aminoacid-sequence into N-
+ and C-terminus, namely the most right residue of the N-terminus is
+ aligned to the C-terminus of the whole sequence.</font></p>
+ <p><font size="-1">After solving these algorithmic problems, one
+ indeed finds a phylogeny with subtrees containing only transporters
+ of a certain substrate and taxa with unknown functions, so that a
+ prediction of the functions of ABC-transporters is
+ possible.</font></p>
+ <p><font size="-1">One also obtains interesting information about
+ the evolution of these permeases. In particular, one can observe
+ different duplication events leading to tandem repeats [<a href=
+ "#Ben97">2</a>] in ABC-transporter or,
+ alternatively, to two ABC-transporters adjacent in the genome of
+ sinorhizobium meliloti. In the second case, one ABC-transporter is
+ more closely related to the N-termini and one ABC-transporter is
+ more closely related to the C-termini of the repetitive
+ ABC-transporters created by the same duplication event. And, they
+ all have the same physiological function.</font> </p>
+ <h2><a name="SECTION00010000000000000000">Bibliography</a></h2>
+ <dl compact>
+ <dt><a name="Bar01">1</a></dt>
+ <dd>Barnett, M.&nbsp;J. et al. 2001, Composite Genome of the Legume
+ Symbiont Sinorhizobium meliloti, <em>Science</em> 293:668-672</dd>
+ <dt><a name="Ben97">2</a></dt>
+ <dd>Benson G. 1997, Sequence Alignment with Tandem Duplication,
+ <em>J. Comp. Biol.</em> 4:351-367</dd>
+ <dt><a name="Cap01">3</a></dt>
+ <dd>Capela, D. et al. 2001: Analysis of the chromosome sequence of
+ the legume symbiont Sinorhizobium meliloti strain 1021, <em>Proc.
+ Natl. Acad. Sci. USA</em> 98:9877-9882</dd>
+ <dt><a name="Das01">4</a></dt>
+ <dd>Dassa, E. and Bouige, P. 2001, The ABC of ABCs: a phylogenetic
+ and functional classification of ABC systems in living organisms,
+ <em>Res. Microbiol.</em> 152:211-229</dd>
+ <dt><a name="Fel88">5</a></dt>
+ <dd>Felsenstein, J. 1988, Phylogenies from molecular sequences:
+ inference and reliability, <em>Ann. Rev. Genet.</em>
+ 22:521-565</dd>
+ <dt><a name="Gal01">6</a></dt>
+ <dd>Galibert, F. et al. 2001: The Composite Genome of the Legume
+ Symbiont Sinorhizobium meliloti, <em>Science</em> 293:668-672</dd>
+ <dt><a name="Kos01">7</a></dt>
+ <dd>K&ouml;ster, W. 1999, ABC transporter-mediated uptake of iron,
+ siderophores, heme, and vitamin <img width="30" height="30"
+      align="middle" border="0" src="img2.png" alt="${\rm B_12}$">,
+      <em>Res. Microbiol.</em> 152:291-301</dd>
+ <dt><a name="Mor96">8</a></dt>
+ <dd>Morgenstern, B., Dress, A., and Werner, T. 1996, Multiple DNA
+ and protein sequence alignment based on segment-to-segment
+ comparison, <em>Proc. Natl. Acad. Sci. USA</em> 93:12098-12103</dd>
+ <dt><a name="Sau99">9</a></dt>
+ <dd>Saurin, W. , Hofnung, M. and Dassa, E. 1999, Getting In or Out:
+ Early Segregation Between Importers and Exporters in the Evolution
+ of ATP-Binding Cassette (ABC) Transporters,
+ <em>J.&nbsp;Mol.&nbsp;Evol.</em> 48:22-41</dd>
+ <dt><a name="Sch98">10</a></dt>
+ <dd>Schneider, E. and S.&nbsp;Hunke, S. 1998,ATP-binding cassette
+ (ABC)-transport systems: Functional and structural aspects of the
+ ATP-binding subunit of an ABC-transporter, <em>FEMS Microbiol.
+ Rev.</em> 22:1-20</dd>
+ <dt><a name="Swo90">11</a></dt>
+ <dd>Swofford, D.&nbsp;L. and Olsen, G.&nbsp;J. 1990, Phylogeny
+ reconstruction, In: Hillis, D.&nbsp;M. and Moritz, D., editors,
+ <em>Molecular Systematics</em>, Sinauer Associates, pp.
+ 407-511</dd>
+ <dt><a name="sm-www">12</a></dt>
+ <dd>
+ http://sequence.toulouse.inra.fr/rhime/Complete/doc/Complete</dd>
+ <dt><a name="Tho94">13</a></dt>
+ <dd>Thompson, J.&nbsp;D., Higgins D.&nbsp;G., and Gibson,
+ T.&nbsp;J. 1994, Clustal W: improving the sensitivity of
+ progressive multiple sequence alignment through sequnce weighting,
+ position-specific gap penalties and weight matrix choice, <em>Nucl.
+ Acid Res.</em> 22:4673-4680</dd></dl>
+ <br>
+ <hr>
+ <h4>Footnotes</h4>
+ <dl>
+ <dt><a name="foot64">... Wagner</a><a href=
+ "#tex2html1"><sup>1</sup></a></dt>
+ <dd>Center of Biotechnology, Technical Faculty, Bielefeld
+ University, Postfach 100131, 33501 Bielefeld, Germany. E-mail: 
+ <div align="center">
+ <b><tt>hwagner@mathematik.uni-bielefeld.de</tt></b></div></dd></dl>
+ <br>
+ <hr>
+ <address>2003-04-07</address>
+ </body>
+ </html>
